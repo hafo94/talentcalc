@@ -2,15 +2,18 @@ import targetsJson from "@data/targets.json";
 import baseStatsJson from "@manual/base-stats.json";
 import buffsJson from "@manual/buffs.json";
 import racialsJson from "@manual/racials.json";
+import rotationsJson from "@manual/rotations.json";
 import type {
   BaseStatsFile,
   BuffsFile,
   ClassesFile,
   ClassInfo,
+  ClassSpellFile,
   ClassToken,
   Manifest,
   RaceInfo,
   RacialsFile,
+  RotationsFile,
   TalentFile,
   TargetsFile,
   WeaponsFile,
@@ -52,6 +55,7 @@ export const targetsFile = targetsJson as unknown as TargetsFile;
 export const baseStatsFile = baseStatsJson as unknown as BaseStatsFile;
 export const buffsFile = buffsJson as unknown as BuffsFile;
 export const racialsFile = racialsJson as unknown as RacialsFile;
+export const rotationsFile = rotationsJson as unknown as RotationsFile;
 
 export function getRace(id: number): RaceInfo {
   const r = classesFile.races.find((x) => x.id === id);
@@ -65,4 +69,19 @@ export function loadWeapons(): Promise<WeaponsFile> {
   weaponsPromise ??= import("@data/weapons.json").then((m) => m.default as unknown as WeaponsFile);
   weaponsPromise.catch(() => (weaponsPromise = null));
   return weaponsPromise;
+}
+
+const spellLoaders = import.meta.glob<{ default: unknown }>("@data/spells/*.json");
+const spellCache = new Map<ClassToken, Promise<ClassSpellFile>>();
+/** spells/<class>.json (~20-30 KB gzip): one lazy chunk per class, loaded together with the talent file. */
+export function loadClassSpells(token: ClassToken): Promise<ClassSpellFile> {
+  const hit = spellCache.get(token);
+  if (hit) return hit;
+  const key = Object.keys(spellLoaders).find((k) => k.endsWith(`/spells/${token}.json`));
+  const loader = key ? spellLoaders[key] : undefined;
+  if (!loader) throw new Error(`no spell file for ${token}`);
+  const p = loader().then((m) => m.default as unknown as ClassSpellFile);
+  p.catch(() => spellCache.delete(token));
+  spellCache.set(token, p);
+  return p;
 }

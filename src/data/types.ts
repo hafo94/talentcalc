@@ -225,6 +225,7 @@ export type AttackSlot = "mainHand" | "offHand" | "ranged";
 export type EffectKey =
   | "stat" | "statPct" | "health" | "healthPct" | "mana" | "manaPct"
   | "attackPower" | "meleeAttackPower" | "rangedAttackPower" | "attackPowerPct" | "rangedAttackPowerPct"
+  | "attackPowerFromStat" | "rangedAttackPowerFromStat"
   | "spellPower" | "spellPowerFromStat"
   | "crit" | "weaponCrit" | "spellCrit"
   | "hit" | "weaponHit" | "spellHit"
@@ -235,9 +236,10 @@ export type EffectKey =
 export interface StatEffect {
   key: EffectKey;
   value: number;
-  stat?: PrimaryStat | "all"; // stat, statPct, spellPowerFromStat
+  stat?: PrimaryStat | "all"; // stat, statPct, spellPowerFromStat, attackPowerFromStat, rangedAttackPowerFromStat
   schools?: School[]; // spellPower, spellPen, damageDonePct, target*: absent = all magic schools (all schools for damageDonePct)
-  slots?: AttackSlot[]; // weaponCrit, weaponHit, weaponSkill, weaponDamage: absent = every weapon slot
+  slots?: AttackSlot[]; // weaponCrit, weaponHit, weaponSkill, weaponDamage, damageDonePct: absent = every weapon slot
+  // (damageDonePct with slots: only weapon attacks from those slots, e.g. Wand Specialization)
 }
 export interface ManualEffect extends StatEffect {
   src?: { effectIndex: number; field?: "base" | "perResource"; mult?: number };
@@ -311,4 +313,127 @@ export interface BaseStatsFile {
     manaPerInt: number;
     statsWithoutBonus: number;
   };
+}
+
+// ---- Phase 4: class spells (data/generated/<build>/spells/<token>.json, same records as spells.json) ----
+/** One SpellEffect row (Difficulty 0). Optional fields are omitted by the pipeline when 0. */
+export interface SpellEffect {
+  index: number;
+  effect: number; // SpellEffect.Effect: 2 school damage, 3 dummy, 6 apply aura, 17/58 weapon damage, 31 weapon %, 121 normalized ...
+  aura: number; // EffectAura (6 only): 3 periodic damage, 4 dummy, 23 periodic trigger, 42 proc trigger, 53 leech, ...
+  base: number; // EffectBasePointsF (average value)
+  misc: [number, number];
+  mask: [number, number, number, number];
+  variance?: number; // damage range = base x (1 +- variance/2)
+  perLevel?: number; // EffectRealPointsPerLevel
+  spCoef?: number; // EffectBonusCoefficient (1 on every physical effect: a client default, not a coefficient)
+  apCoef?: number; // BonusCoefficientFromAP (never set in 70888)
+  periodMs?: number;
+  amplitude?: number;
+  chainTargets?: number;
+  pointsPerCombo?: number; // EffectPointsPerResource
+  triggerSpell?: number;
+  mechanic?: number; // 15 = bleed
+  targets?: [number, number];
+  radiusIndex?: [number, number];
+}
+export interface SpellCost {
+  powerType: number; // 0 mana, 1 rage (already / 10), 2 focus, 3 energy, 4 combo points, -2 health
+  amount: number;
+  pct: number; // % of base mana
+  perLevel: number;
+  perSecond: number;
+  optional: number;
+}
+export type SpellSource = "ability" | "talent" | "triggered";
+export interface Spell {
+  id: number;
+  name: string;
+  subtext: string | null;
+  rank: number | null;
+  classIds: number[];
+  sources: SpellSource[];
+  icon: string | null;
+  iconFileId: number;
+  school: number; // SpellSchoolMask (1 physical, 2 holy, 4 fire, 8 nature, 16 frost, 32 shadow, 64 arcane)
+  passive: boolean;
+  channeled: boolean;
+  attributes: number[]; // SpellMisc.Attributes_0..16
+  levels: { base: number; max: number; spell: number } | null;
+  castMs: number; // < 0 (-1000000) on some instant hunter shots
+  gcdMs: number;
+  gcdCategory: number;
+  cooldownMs: number;
+  categoryCooldownMs: number;
+  category: number;
+  costs: SpellCost[];
+  range: { min: number; max: number } | null;
+  duration: { ms: number; perLevel: number; maxMs: number } | null;
+  family: { set: number; mask: [number, number, number, number] } | null;
+  proc: {
+    chance: number;
+    charges: number;
+    categoryRecoveryMs: number;
+    typeMask: [number, number];
+    ppm: number | null;
+  } | null;
+  maxStacks: number;
+  defenseType: number; // SpellCategories.DefenseType: 0 none, 1 magic, 2 melee, 3 ranged
+  dispelType: number;
+  mechanic: number;
+  preventionType: number;
+  description: string;
+  auraDescription: string;
+  unresolved?: string[];
+  effects: SpellEffect[];
+  equipped: EquippedRequirement | null;
+  shapeshiftMask: number;
+}
+export interface AbilityChain {
+  classId: number;
+  name: string;
+  skillLineId: number;
+  passive: boolean;
+  ranks: number[]; // spell ids by learn level; a talent-granted ability starts at rank 2 (rank 1 is the talent spell)
+}
+export interface ClassSpellFile {
+  build: string;
+  classId: number;
+  token: ClassToken;
+  spells: Spell[];
+  abilities: AbilityChain[];
+}
+
+// ---- Phase 4: default rotations (data/manual/rotations.json) ----
+export type RotationEntryKind = "cooldown" | "dot" | "maintain" | "filler" | "builder" | "finisher" | "nextSwing";
+export interface RotationEntry {
+  ability: string; // ability name (rank chain name in spells/<class>.json)
+  kind: RotationEntryKind;
+  cp?: number; // finisher: combo points spent (1..5)
+  everySec?: number; // maintain: recast interval in seconds (default: the spell's duration)
+  buff?: true; // the ability's caster auras are applied while the rotation runs (Slice and Dice, seals)
+  requires?: string; // only cast when this other rotation entry is cast (Conflagrate requires Immolate)
+  requiresTalent?: string; // only cast when this talent has a point (Scorch for Improved Scorch)
+  note?: string;
+}
+export type RotationRole = "dps" | "tank" | "healer";
+export type ShapeshiftForm = "cat" | "bear" | "moonkin" | "shadowform" | "battle" | "berserker" | "defensive";
+export interface SpecRotation {
+  id: string; // stable id, e.g. "mage-fire"
+  class: ClassToken;
+  spec: number; // 0..2 (talent tab order)
+  label: string;
+  role: RotationRole;
+  tier: 1 | 2 | 3; // 1 fully modeled, 2 generic model, 3 basic damage rotation for a tank/healer spec
+  form?: ShapeshiftForm;
+  selfBuffs: string[]; // abilities whose caster auras are always on (Shadowform, Aspect of the Hawk, Seal of Command)
+  melee: boolean; // white melee swings (main hand + off hand)
+  autoShot: boolean; // hunter Auto Shot
+  entries: RotationEntry[];
+  notes: string[];
+}
+export interface RotationsFile {
+  _source: string;
+  _status: string;
+  rotations: SpecRotation[];
 }

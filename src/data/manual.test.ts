@@ -5,7 +5,7 @@ import type { EffectKey } from "./types";
 const KEYS: EffectKey[] = [
   "stat", "statPct", "health", "healthPct", "mana", "manaPct", "attackPower", "meleeAttackPower", "rangedAttackPower",
   "attackPowerPct", "rangedAttackPowerPct", "spellPower", "spellPowerFromStat", "crit", "weaponCrit", "spellCrit", "hit",
-  "weaponHit", "spellHit", "haste", "meleeHaste", "rangedHaste", "spellHaste", "weaponSkill", "weaponDamage",
+  "weaponHit", "spellHit", "attackPowerFromStat", "rangedAttackPowerFromStat", "haste", "meleeHaste", "rangedHaste", "spellHaste", "weaponSkill", "weaponDamage",
   "offhandDamagePct", "expertise", "armorPenPct", "spellPen", "damageDonePct", "targetArmor", "targetResist",
   "targetDamageTakenPct",
 ];
