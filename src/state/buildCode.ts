@@ -1,4 +1,10 @@
 import type { ClassToken } from "@/data/types";
+import {
+  DEFAULT_CHARACTER,
+  decodeCharacterBytes,
+  encodeCharacterBytes,
+  type CharacterCode,
+} from "./charCode";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 const RANK_BITS = 3;
@@ -9,10 +15,11 @@ export interface BuildCode {
   level: number;
   talentedRank: number;
   ranks: Record<number, number>;
+  character: CharacterCode; // DEFAULT_CHARACTER for v1 links
 }
 export type DecodeResult =
   | { ok: true; build: BuildCode }
-  | { ok: false; reason: "empty" | "version" | "class" | "level" | "perk" | "payload" };
+  | { ok: false; reason: "empty" | "version" | "class" | "level" | "perk" | "payload" | "character" };
 
 export function bytesToBase64Url(bytes: Uint8Array): string {
   let out = "";
@@ -56,7 +63,7 @@ function writeVarint(out: number[], value: number): void {
   out.push(v);
 }
 
-export function encodeBuild(b: BuildCode): string {
+export function encodeBuild(b: Omit<BuildCode, "character"> & { character?: CharacterCode }): string {
   const ids = Object.keys(b.ranks)
     .map(Number)
     .filter((id) => (b.ranks[id] ?? 0) > 0)
@@ -70,8 +77,14 @@ export function encodeBuild(b: BuildCode): string {
     writeVarint(bytes, (id - prev) * (RANK_MAX + 1) + rank);
     prev = id;
   }
-  const head = `#v1.${b.classToken}.${b.level}.${b.talentedRank}`;
-  return bytes.length ? `${head}.${bytesToBase64Url(Uint8Array.from(bytes))}` : head;
+  const talents = bytesToBase64Url(Uint8Array.from(bytes));
+  const char = encodeCharacterBytes(b.character ?? DEFAULT_CHARACTER);
+  if (char.length === 0) {
+    // Talent-only builds keep the exact Phase 2 (v1) form.
+    const head = `#v1.${b.classToken}.${b.level}.${b.talentedRank}`;
+    return bytes.length ? `${head}.${talents}` : head;
+  }
+  return `#v2.${b.classToken}.${b.level}.${b.talentedRank}.${talents}.${bytesToBase64Url(Uint8Array.from(char))}`;
 }
 
 function decodePayload(payload: string): Record<number, number> | null {
@@ -104,8 +117,9 @@ export function decodeBuild(hash: string, isClassToken: (s: string) => s is Clas
   const h = hash.startsWith("#") ? hash.slice(1) : hash;
   if (h === "") return { ok: false, reason: "empty" };
   const parts = h.split(".");
-  if (parts[0] !== "v1") return { ok: false, reason: "version" };
-  if (parts.length < 4 || parts.length > 5) return { ok: false, reason: "payload" };
+  const v2 = parts[0] === "v2";
+  if (parts[0] !== "v1" && !v2) return { ok: false, reason: "version" };
+  if (v2 ? parts.length !== 6 : parts.length < 4 || parts.length > 5) return { ok: false, reason: "payload" };
   const token = parts[1]!;
   if (!isClassToken(token)) return { ok: false, reason: "class" };
   if (!/^\d{1,2}$/.test(parts[2]!)) return { ok: false, reason: "level" };
@@ -119,5 +133,12 @@ export function decodeBuild(hash: string, isClassToken: (s: string) => s is Clas
     if (!r) return { ok: false, reason: "payload" };
     ranks = r;
   }
-  return { ok: true, build: { classToken: token, level, talentedRank: Number(parts[3]), ranks } };
+  let character = structuredClone(DEFAULT_CHARACTER);
+  if (v2 && parts[5]) {
+    const bytes = base64UrlToBytes(parts[5]);
+    const c = bytes && decodeCharacterBytes(bytes);
+    if (!c) return { ok: false, reason: "character" };
+    character = c;
+  }
+  return { ok: true, build: { classToken: token, level, talentedRank: Number(parts[3]), ranks, character } };
 }

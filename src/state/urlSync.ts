@@ -1,5 +1,6 @@
 import { isClassToken } from "@/data";
 import { decodeBuild, encodeBuild } from "./buildCode";
+import { useCharacter } from "./character";
 import { useCalc } from "./store";
 
 /** Keeps location.hash and the store in sync. Call once before the first render. */
@@ -21,7 +22,8 @@ export function initUrlSync(): void {
     }
   });
 
-  useCalc.subscribe((s) => {
+  const write = () => {
+    const s = useCalc.getState();
     if (s.status === "loading") return;
     const next = s.classToken
       ? encodeBuild({
@@ -29,10 +31,13 @@ export function initUrlSync(): void {
           level: s.level,
           talentedRank: s.talentedRank,
           ranks: s.ranks,
+          character: useCharacter.getState().toCode(s.classToken),
         })
       : "";
     if (next === lastHash) return;
     lastHash = next;
     history.replaceState(null, "", next || location.pathname + location.search);
-  });
+  };
+  useCalc.subscribe(write);
+  useCharacter.subscribe(write);
 }

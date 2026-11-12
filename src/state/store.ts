@@ -13,6 +13,7 @@ import {
   type Ranks,
 } from "@/engine/talents";
 import type { BuildCode } from "./buildCode";
+import { useCharacter } from "./character";
 
 export interface CalcState {
   classToken: ClassToken | null;
@@ -64,9 +65,18 @@ export const useCalc = create<CalcState>()((set, get) => ({
     const id = ++requestId;
     set({ classToken: token, status: "loading", error: null });
     try {
-      const tree = await loadTree(token);
+      const [tree, charOk] = await Promise.all([
+        loadTree(token),
+        useCharacter.getState().fitToClass(token, get().level),
+      ]);
       if (id !== requestId) return;
-      set({ tree, status: "ready", ranks: {}, activeSpec: 0, notice: null });
+      set({
+        tree,
+        status: "ready",
+        ranks: {},
+        activeSpec: 0,
+        notice: charOk ? null : "Some equipped weapons cannot be used by this class and were removed.",
+      });
     } catch (e) {
       if (id !== requestId) return;
       set({ tree: null, status: "error", error: e instanceof Error ? e.message : String(e) });
@@ -76,7 +86,10 @@ export const useCalc = create<CalcState>()((set, get) => ({
     const id = ++requestId;
     set({ classToken: code.classToken, status: "loading", error: null });
     try {
-      const tree = await loadTree(code.classToken);
+      const [tree, charOk] = await Promise.all([
+        loadTree(code.classToken),
+        useCharacter.getState().applyCode(code.character, code.classToken, code.level),
+      ]);
       if (id !== requestId) return;
       const ctx = pointsContext({ level: code.level, talentedRank: code.talentedRank });
       const { ranks, dropped } = sanitize(tree, code.ranks, ctx);
@@ -87,7 +100,13 @@ export const useCalc = create<CalcState>()((set, get) => ({
         talentedRank: code.talentedRank,
         ranks,
         activeSpec: 0,
-        notice: dropped ? "Some talents in this link were not valid and were removed." : null,
+        notice:
+          [
+            dropped ? "Some talents in this link were not valid and were removed." : "",
+            charOk ? "" : "Some character settings in this link were not valid and were removed.",
+          ]
+            .filter(Boolean)
+            .join(" ") || null,
       });
     } catch (e) {
       if (id !== requestId) return;

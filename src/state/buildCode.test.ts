@@ -3,6 +3,7 @@ import { isClassToken } from "@/data";
 import { addPoint } from "@/engine/talents";
 import { MAGE_51, ctx60, treeFor } from "@/testkit/talents";
 import type { ClassToken } from "@/data/types";
+import { DEFAULT_CHARACTER } from "./charCode";
 import { base64UrlToBytes, bytesToBase64Url, decodeBuild, encodeBuild } from "./buildCode";
 
 const GOLDEN = "#v1.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N";
@@ -21,7 +22,7 @@ describe("buildCode", () => {
     const r = dec(GOLDEN);
     expect(r).toEqual({
       ok: true,
-      build: { classToken: "mage", level: 60, talentedRank: 0, ranks: MAGE_51 },
+      build: { classToken: "mage", level: 60, talentedRank: 0, ranks: MAGE_51, character: DEFAULT_CHARACTER },
     });
   });
 
@@ -44,7 +45,8 @@ describe("buildCode", () => {
   it("reports errors", () => {
     expect(reason("")).toBe("empty");
     expect(reason("#")).toBe("empty");
-    expect(reason("#v2.mage.60.0")).toBe("version");
+    expect(reason("#v3.mage.60.0")).toBe("version");
+    expect(reason("#v2.mage.60.0")).toBe("payload");
     expect(reason("#v1.foo.60.0")).toBe("class");
     expect(reason("#v1.mage.0.0")).toBe("level");
     expect(reason("#v1.mage.61.0")).toBe("level");

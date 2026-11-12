@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { isClassToken } from "@/data";
 import { pointsBySpec } from "@/engine/talents";
 import { decodeBuild } from "./buildCode";
+import { DEFAULT_CHARACTER } from "./charCode";
 import { useCalc } from "./store";
 
 const GOLDEN = "#v1.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N";
@@ -29,9 +30,13 @@ describe("store", () => {
   });
 
   it("sets a notice when a build had invalid talents", async () => {
-    await useCalc
-      .getState()
-      .applyBuildCode({ classToken: "mage", level: 60, talentedRank: 0, ranks: { 105786: 1 } });
+    await useCalc.getState().applyBuildCode({
+      classToken: "mage",
+      level: 60,
+      talentedRank: 0,
+      ranks: { 105786: 1 },
+      character: DEFAULT_CHARACTER,
+    });
     const s = useCalc.getState();
     expect(s.ranks).toEqual({});
     expect(s.notice).toContain("were not valid and were removed");
