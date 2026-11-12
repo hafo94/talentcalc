@@ -35,6 +35,10 @@ def spec_skill_lines(db):
     return out
 
 
+def _is_dummy(e):
+    return I(e["Effect"]) == C.EFFECT_DUMMY or (I(e["Effect"]) == 6 and I(e["EffectAura"]) == C.AURA_DUMMY)
+
+
 def collect_spells(db, talent_spell_class, report):
     """talent_spell_class: spellId -> classId. Returns dict spellId -> Seed."""
     names = db.by_id("SpellName")
@@ -84,6 +88,10 @@ def collect_spells(db, talent_spell_class, report):
                 kids.append(t)
             if I(e["EffectAura"]) == C.AURA_OVERRIDE_ACTIONBAR:
                 kids.append(int(F(e["EffectBasePointsF"])))
+            if _is_dummy(e) and names[str(sid)]["Name_lang"].startswith(C.JUDGEMENT_PARENT_PREFIXES):
+                j = int(F(e["EffectBasePointsF"]))
+                if str(j) in names and names[str(j)]["Name_lang"].startswith(C.JUDGEMENT_CHILD_PREFIX):
+                    kids.append(j)
             for k in kids:
                 if k == 0 or str(k) not in names:
                     continue

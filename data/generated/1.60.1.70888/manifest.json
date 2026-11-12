@@ -2,7 +2,7 @@
  "build": "1.60.1.70888",
  "eraBuild": "1.15.9.70576",
  "generatedAt": "2026-11-12",
- "pipelineVersion": 2,
+ "pipelineVersion": 3,
  "options": {
   "includeHiddenNodes": false,
   "eraFallback": true
@@ -253,7 +253,7 @@
   "specs": 27,
   "talents": 447,
   "hiddenTalents": 0,
-  "spells": 2300,
+  "spells": 2340,
   "abilityChains": 547,
   "weapons": 2721,
   "weaponsEraFallback": 1612,

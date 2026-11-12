@@ -60,7 +60,7 @@ class TestPhase3(unittest.TestCase):
 
     def test_manual_values_match_spell_effects(self):
         self.assertEqual(load(self.d, "report.json")["manualValidation"], [])
-        self.assertEqual(load(self.d, "manifest.json")["pipelineVersion"], 2)
+        self.assertEqual(load(self.d, "manifest.json")["pipelineVersion"], 3)
 
 
 @needs_raw

@@ -142,6 +142,12 @@ def run(a):
             n_hidden += sum(1 for t in s["talents"] if t.get("hidden"))
     write_json(os.path.join(out, "classes.json"), classes)
     write_records(os.path.join(out, "spells.json"), {"build": a.build}, {"spells": spells, "abilities": chains})
+    # Phase 4: one lazy chunk per class for the app (same records as spells.json; a spell may be in several files).
+    for cid, f in sorted(talent_files.items()):
+        hdr = {"build": a.build, "classId": cid, "token": f["token"]}
+        write_records(os.path.join(out, "spells", f["token"] + ".json"), hdr,
+                      {"spells": [s for s in spells if cid in s["classIds"]],
+                       "abilities": [c for c in chains if c["classId"] == cid]})
     write_records(os.path.join(out, "weapons.json"), {"build": a.build}, {"weapons": weapons, "ammo": ammo})
     write_json(os.path.join(out, "targets.json"), targets)
     write_json(os.path.join(out, "pet-families.json"), pets)

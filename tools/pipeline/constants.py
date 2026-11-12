@@ -3,7 +3,7 @@ import re
 
 BUILD_DEFAULT = "1.60.1.70888"
 ERA_BUILD_DEFAULT = "1.15.9.70576"
-PIPELINE_VERSION = 2
+PIPELINE_VERSION = 3
 
 # (ChrClasses.ID, token, TraitTreeID, ClassMask). Verified against SkillLineXTraitTree + SkillLineAbility.
 CLASS_TREES = [
@@ -59,6 +59,13 @@ POWER_RAGE = 1
 ATTR0_PASSIVE = 0x40
 ATTR1_CHANNELED = 0x44  # SPELL_ATTR1_CHANNELED_1 (0x4) | _2 (0x40)  [VERIFY]
 AURA_OVERRIDE_ACTIONBAR = 332
+# Phase 4: a Seal's judgement is not an EffectTriggerSpell; the seal (and the "Judgement of X" dummy spell) store the spell id
+# in the base points of a DUMMY effect (Effect 3, or Effect 6 + Aura 4). Follow those ids only when the target spell is named
+# "Judgement of ..." (other DUMMY base points are plain numbers that can collide with spell ids, e.g. Seal of Fury -> 707).
+EFFECT_DUMMY = 3
+AURA_DUMMY = 4
+JUDGEMENT_PARENT_PREFIXES = ("Seal of ", "Judgement of ")
+JUDGEMENT_CHILD_PREFIX = "Judgement of "
 
 # ---- Coverage classification (modern aura enum; names uncertain tagged [VERIFY]) ----
 APPLY_AURA_EFFECTS = {6, 35, 65, 119, 128, 129, 143}
