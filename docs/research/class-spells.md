@@ -1,0 +1,3365 @@
+# WoW Forever class spells (SkillLineAbility, class skill lines)
+
+Grouped by skill line; ranks are ordered by required level. Generated research dump.
+
+## Druid
+### Balance
+- **16815** — 1 rank(s): 16815@L?
+- **16816** — 1 rank(s): 16816@L?
+- **16817** — 1 rank(s): 16817@L?
+- **16818** — 1 rank(s): 16818@L?
+- **16820** — 1 rank(s): 16820@L?
+- **16822** — 1 rank(s): 16822@L?
+- **16823** — 1 rank(s): 16823@L?
+- **16824** — 1 rank(s): 16824@L?
+- **16825** — 1 rank(s): 16825@L?
+- **16834** — 1 rank(s): 16834@L?
+- **16835** — 1 rank(s): 16835@L?
+- **16846** — 1 rank(s): 16846@L?
+- **16847** — 1 rank(s): 16847@L?
+- **16897** — 1 rank(s): 16897@L?
+- **16899** — 1 rank(s): 16899@L?
+- **16900** — 1 rank(s): 16900@L?
+- **16901** — 1 rank(s): 16901@L?
+- **16910** — 1 rank(s): 16910@L?
+- **16911** — 1 rank(s): 16911@L?
+- **16912** — 1 rank(s): 16912@L?
+- **16913** — 1 rank(s): 16913@L?
+- **16919** — 1 rank(s): 16919@L?
+- **16920** — 1 rank(s): 16920@L?
+- **16923** — 1 rank(s): 16923@L?
+- **16924** — 1 rank(s): 16924@L?
+- **16925** — 1 rank(s): 16925@L?
+- **16926** — 1 rank(s): 16926@L?
+- **17247** — 1 rank(s): 17247@L?
+- **17248** — 1 rank(s): 17248@L?
+- **17249** — 1 rank(s): 17249@L?
+- **22839** — 1 rank(s): 22839@L?
+- **Barkskin** — 1 rank(s): 22812@L44
+- **Entangling Roots** — 6 rank(s): 339@L8, 1062@L18, 5195@L28, 5196@L38, 9852@L48, 9853@L58
+- **Faerie Fire** — 4 rank(s): 770@L18, 778@L30, 9749@L42, 9907@L54
+- **Hibernate** — 3 rank(s): 2637@L18, 18657@L38, 18658@L58
+- **Hurricane** — 3 rank(s): 16914@L40, 17401@L50, 17402@L60
+- **Improved Entangling Roots** — 1 rank(s): 16918@L?
+- **Improved Moonfire** — 1 rank(s): 16821@L?
+- **Improved Starfire** — 1 rank(s): 16850@L?
+- **Improved Thorns** — 3 rank(s): 16836@L?, 16839@L?, 16840@L?
+- **Improved Wrath** — 1 rank(s): 16814@L?
+- **Insect Swarm** — 5 rank(s): 5570@L20, 24974@L30, 24975@L40, 24976@L50, 24977@L60
+- **Moonfire** — 10 rank(s): 8921@L4, 8924@L10, 8925@L16, 8926@L22, 8927@L28, 8928@L34, 8929@L40, 9833@L46, 9834@L52, 9835@L58
+- **Moonfury** — 1 rank(s): 16896@L?
+- **Moonglow** — 1 rank(s): 16845@L?
+- **Moonkin Aura** — 1 rank(s): 24907@L40
+- **Moonkin Form** — 1 rank(s): 24858@L40
+- **Moonkin Form (Passive)** — 1 rank(s): 24905@L40
+- **Natural Shapeshifter** — 1 rank(s): 16833@L?
+- **Natural Weapons** — 5 rank(s): 16904@L?, 16902@L?, 16903@L?, 16905@L?, 16906@L?
+- **Nature's Grace** — 1 rank(s): 16880@L?
+- **Nature's Grasp** — 6 rank(s): 16689@L10, 16810@L18, 16811@L28, 16812@L38, 16813@L48, 17329@L58
+- **Nature's Reach** — 1 rank(s): 16819@L?
+- **Omen of Clarity** — 1 rank(s): 16864@L20
+- **Overgrowth** — 1 rank(s): 17245@L?
+- **Soothe Animal** — 3 rank(s): 2908@L22, 8955@L38, 9901@L54
+- **Starfall** — 3 rank(s): 439748@L0, 439753@L0, 439756@L0
+- **Starfire** — 7 rank(s): 2912@L20, 8949@L26, 8950@L34, 8951@L42, 9875@L50, 9876@L58, 25298@L60
+- **Starsurge** — 1 rank(s): 417157@L0
+- **Sunfire** — 3 rank(s): 414684@L0, 414689@L0, 414687@L0
+- **Teleport: Moonglade** — 1 rank(s): 18960@L10
+- **Thorns** — 6 rank(s): 467@L6, 782@L14, 1075@L24, 8914@L34, 9756@L44, 9910@L54
+- **Vengeance** — 1 rank(s): 16909@L?
+- **Wrath** — 8 rank(s): 5176@L1, 5177@L6, 5178@L14, 5179@L22, 5180@L30, 6780@L38, 8905@L46, 9912@L54
+
+### Engraving
+- **410030** — 1 rank(s): 410030@L?
+- **410032** — 1 rank(s): 410032@L?
+- **410034** — 1 rank(s): 410034@L?
+- **410057** — 1 rank(s): 410057@L?
+- **410058** — 1 rank(s): 410058@L?
+- **416041** — 1 rank(s): 416041@L?
+- **416043** — 1 rank(s): 416043@L?
+- **416045** — 1 rank(s): 416045@L?
+- **416053** — 1 rank(s): 416053@L?
+- **Engrave Belt - Berserk** — 1 rank(s): 424760@L0
+- **Engrave Belt - Eclipse** — 1 rank(s): 410029@L0
+- **Engrave Belt - Nourish** — 1 rank(s): 410059@L0
+- **Engrave Boots - Dreamstate** — 1 rank(s): 410060@L0
+- **Engrave Boots - King of the Jungle** — 1 rank(s): 424765@L0
+- **Engrave Boots - Survival Instincts** — 1 rank(s): 410027@L0
+- **Engrave Bracers - Efflorescence** — 1 rank(s): 431468@L0
+- **Engrave Bracers - Elune's Fires** — 1 rank(s): 416051@L0
+- **Engrave Bracers - Improved Frenzied Regeneration** — 1 rank(s): 431461@L0
+- **Engrave Chest - Fury of Stormrage** — 1 rank(s): 410061@L0
+- **Engrave Chest - Living Seed** — 1 rank(s): 416050@L0
+- **Engrave Chest - Survival of the Fittest** — 1 rank(s): 416042@L0
+- **Engrave Chest - Wild Strikes** — 1 rank(s): 410021@L0
+- **Engrave Cloak - Improved Swipe** — 1 rank(s): 439765@L0
+- **Engrave Cloak - Starfall** — 1 rank(s): 439770@L0
+- **Engrave Cloak - Tree of Life** — 1 rank(s): 439767@L0
+- **Engrave Gloves - Mangle** — 1 rank(s): 410025@L0
+- **Engrave Gloves - Skull Bash** — 1 rank(s): 416046@L0
+- **Engrave Gloves - Sunfire** — 1 rank(s): 416044@L0
+- **Engrave Gloves - Wild Growth** — 1 rank(s): 410028@L0
+- **Engrave Helm - Gale Winds** — 1 rank(s): 431451@L0
+- **Engrave Helm - Gore** — 1 rank(s): 431447@L0
+- **Engrave Helm - Improved Barkskin** — 1 rank(s): 431449@L0
+- **Engrave Pants - Lacerate** — 1 rank(s): 416049@L0
+- **Engrave Pants - Lifebloom** — 1 rank(s): 410033@L0
+- **Engrave Pants - Savage Roar** — 1 rank(s): 410023@L0
+- **Engrave Pants - Starsurge** — 1 rank(s): 424718@L0
+- **Engrave Ring - Arcane Specialization** — 1 rank(s): 453695@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Defense Specialization** — 1 rank(s): 459313@L0
+- **Engrave Ring - Feral Combat Specialization** — 1 rank(s): 453703@L0
+- **Engrave Ring - Fist Weapon Specialization** — 1 rank(s): 453691@L0
+- **Engrave Ring - Healing Specialization** — 1 rank(s): 468761@L0
+- **Engrave Ring - Mace Specialization** — 1 rank(s): 453689@L0
+- **Engrave Ring - Meditation Specialization** — 1 rank(s): 468763@L0
+- **Engrave Ring - Nature Specialization** — 1 rank(s): 453698@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+
+### Feral Combat
+- **1238064** — 1 rank(s): 1238064@L?
+- **1238065** — 1 rank(s): 1238065@L?
+- **1238067** — 1 rank(s): 1238067@L?
+- **1238074** — 1 rank(s): 1238074@L?
+- **1238075** — 1 rank(s): 1238075@L?
+- **1238077** — 1 rank(s): 1238077@L?
+- **1263849** — 1 rank(s): 1263849@L?
+- **1263850** — 1 rank(s): 1263850@L?
+- **16857** — 1 rank(s): 16857@L?
+- **16930** — 1 rank(s): 16930@L?
+- **16931** — 1 rank(s): 16931@L?
+- **16932** — 1 rank(s): 16932@L?
+- **16933** — 1 rank(s): 16933@L?
+- **16935** — 1 rank(s): 16935@L?
+- **16936** — 1 rank(s): 16936@L?
+- **16937** — 1 rank(s): 16937@L?
+- **16938** — 1 rank(s): 16938@L?
+- **16941** — 1 rank(s): 16941@L?
+- **16943** — 1 rank(s): 16943@L?
+- **16944** — 1 rank(s): 16944@L?
+- **16948** — 1 rank(s): 16948@L?
+- **16949** — 1 rank(s): 16949@L?
+- **16950** — 1 rank(s): 16950@L?
+- **16951** — 1 rank(s): 16951@L?
+- **16952** — 1 rank(s): 16952@L?
+- **16954** — 1 rank(s): 16954@L?
+- **16961** — 1 rank(s): 16961@L?
+- **16974** — 1 rank(s): 16974@L?
+- **16975** — 1 rank(s): 16975@L?
+- **16999** — 1 rank(s): 16999@L?
+- **17004** — 1 rank(s): 17004@L?
+- **17005** — 1 rank(s): 17005@L?
+- **17006** — 1 rank(s): 17006@L?
+- **17390** — 1 rank(s): 17390@L?
+- **17391** — 1 rank(s): 17391@L?
+- **17392** — 1 rank(s): 17392@L?
+- **22571** — 1 rank(s): 22571@L?
+- **22895** — 1 rank(s): 22895@L?
+- **22896** — 1 rank(s): 22896@L?
+- **24866** — 1 rank(s): 24866@L?
+- **24894** — 1 rank(s): 24894@L?
+- **407993** — 1 rank(s): 407993@L?
+- **6793** — 1 rank(s): 6793@L?
+- **9845** — 1 rank(s): 9845@L?
+- **9846** — 1 rank(s): 9846@L?
+- **Aquatic Form** — 1 rank(s): 1066@L16
+- **Aquatic Form (Passive)** — 1 rank(s): 5421@L16
+- **Bash** — 3 rank(s): 5211@L14, 6798@L30, 8983@L46
+- **Bear Form** — 1 rank(s): 5487@L10
+- **Bear Form (Passive)** — 1 rank(s): 1178@L10
+- **Bear Form (Passive2)** — 1 rank(s): 21178@L10
+- **Berserk** — 1 rank(s): 417141@L0
+- **Blood Frenzy** — 1 rank(s): 16958@L?
+- **Brutal Impact** — 1 rank(s): 16940@L?
+- **Cat Form** — 1 rank(s): 768@L20
+- **Cat Form (Passive)** — 1 rank(s): 3025@L6
+- **Challenging Roar** — 1 rank(s): 5209@L28
+- **Claw** — 5 rank(s): 1082@L20, 3029@L28, 5201@L38, 9849@L48, 9850@L58
+- **Cower** — 3 rank(s): 8998@L28, 9000@L40, 9892@L52
+- **Dash** — 2 rank(s): 1850@L0, 9821@L0
+- **Demoralizing Roar** — 5 rank(s): 99@L10, 1735@L20, 9490@L32, 9747@L42, 9898@L52
+- **Dire Bear Form** — 1 rank(s): 9634@L40
+- **Dire Bear Form (Passive)** — 1 rank(s): 9635@L40
+- **Enrage** — 1 rank(s): 5229@L12
+- **Feline Grace** — 1 rank(s): 20719@L0
+- **Feral Aggression** — 5 rank(s): 16858@L?, 16859@L?, 16860@L?, 16861@L?, 16862@L?
+- **Feral Charge** — 1 rank(s): 1238122@L20
+- **Feral Charge (Bear)** — 1 rank(s): 16979@L20
+- **Feral Instinct** — 1 rank(s): 16947@L?
+- **Feral Swiftness** — 1 rank(s): 17002@L?
+- **Ferocious Bite** — 6 rank(s): 1328618@L24, 22568@L32, 22827@L40, 22828@L48, 22829@L56, 31018@L60
+- **Ferocity** — 1 rank(s): 16934@L?
+- **Frenzied Regeneration** — 2 rank(s): 22845@L?, 22842@L36
+- **Growl** — 1 rank(s): 6795@L10
+- **Heart of the Wild** — 1 rank(s): 17003@L?
+- **Improved Shred** — 1 rank(s): 16968@L?
+- **Lacerate** — 6 rank(s): 414647@L1, 1328617@L25, 1328616@L34, 414644@L42, 1235826@L50, 1235827@L58
+- **Leader of the Pack** — 1 rank(s): 17007@L?
+- **Maul** — 7 rank(s): 6807@L10, 6808@L18, 6809@L26, 8972@L34, 9745@L42, 9880@L50, 9881@L58
+- **Poised** — 1 rank(s): 1328829@L0
+- **Pounce** — 3 rank(s): 9005@L36, 9823@L46, 9827@L56
+- **Pounce Bleed** — 3 rank(s): 9007@L0, 9824@L0, 9826@L0
+- **Predatory Strikes** — 1 rank(s): 16972@L?
+- **Primal Bite** — 3 rank(s): 407995@L40, 1238069@L50, 1238070@L60
+- **Prowl** — 3 rank(s): 5215@L20, 6783@L40, 9913@L60
+- **Rake** — 4 rank(s): 1822@L24, 1823@L34, 1824@L44, 9904@L54
+- **Ravage** — 4 rank(s): 6785@L32, 6787@L42, 9866@L50, 9867@L58
+- **Rip** — 6 rank(s): 1079@L20, 9492@L28, 9493@L36, 9752@L44, 9894@L52, 9896@L60
+- **Savage Fury** — 1 rank(s): 16998@L?
+- **Sharpened Claws** — 1 rank(s): 16942@L?
+- **Shifting Power** — 1 rank(s): 1322605@L1
+- **Shred** — 5 rank(s): 5221@L20, 6800@L30, 8992@L38, 9829@L46, 9830@L54
+- **Shredding Attacks** — 1 rank(s): 16966@L?
+- **Skull Bash** — 1 rank(s): 410176@L0
+- **Survival Instincts** — 1 rank(s): 408024@L0
+- **Swipe** — 6 rank(s): 411128@L0, 779@L16, 780@L24, 769@L34, 9754@L44, 9908@L54
+- **Thick Hide** — 1 rank(s): 16929@L1
+- **Tiger's Fury** — 2 rank(s): 417045@L1, 5217@L24
+- **Track Humanoids** — 1 rank(s): 5225@L0
+- **Travel Form** — 1 rank(s): 783@L30
+
+### Restoration
+- **16183** — 1 rank(s): 16183@L?
+- **16205** — 1 rank(s): 16205@L?
+- **16206** — 1 rank(s): 16206@L?
+- **16207** — 1 rank(s): 16207@L?
+- **16208** — 1 rank(s): 16208@L?
+- **16209** — 1 rank(s): 16209@L?
+- **16210** — 1 rank(s): 16210@L?
+- **16211** — 1 rank(s): 16211@L?
+- **16212** — 1 rank(s): 16212@L?
+- **16213** — 1 rank(s): 16213@L?
+- **16214** — 1 rank(s): 16214@L?
+- **16215** — 1 rank(s): 16215@L?
+- **16216** — 1 rank(s): 16216@L?
+- **16217** — 1 rank(s): 16217@L?
+- **16218** — 1 rank(s): 16218@L?
+- **16219** — 1 rank(s): 16219@L?
+- **16220** — 1 rank(s): 16220@L?
+- **16221** — 1 rank(s): 16221@L?
+- **16222** — 1 rank(s): 16222@L?
+- **16223** — 1 rank(s): 16223@L?
+- **16224** — 1 rank(s): 16224@L?
+- **16225** — 1 rank(s): 16225@L?
+- **16226** — 1 rank(s): 16226@L?
+- **16227** — 1 rank(s): 16227@L?
+- **16228** — 1 rank(s): 16228@L?
+- **16229** — 1 rank(s): 16229@L?
+- **16230** — 1 rank(s): 16230@L?
+- **16232** — 1 rank(s): 16232@L?
+- **16233** — 1 rank(s): 16233@L?
+- **16234** — 1 rank(s): 16234@L?
+- **17058** — 1 rank(s): 17058@L?
+- **17059** — 1 rank(s): 17059@L?
+- **17060** — 1 rank(s): 17060@L?
+- **17061** — 1 rank(s): 17061@L?
+- **17065** — 1 rank(s): 17065@L?
+- **17066** — 1 rank(s): 17066@L?
+- **17067** — 1 rank(s): 17067@L?
+- **17068** — 1 rank(s): 17068@L?
+- **17070** — 1 rank(s): 17070@L?
+- **17071** — 1 rank(s): 17071@L?
+- **17072** — 1 rank(s): 17072@L?
+- **17073** — 1 rank(s): 17073@L?
+- **17075** — 1 rank(s): 17075@L?
+- **17076** — 1 rank(s): 17076@L?
+- **17077** — 1 rank(s): 17077@L?
+- **17078** — 1 rank(s): 17078@L?
+- **17107** — 1 rank(s): 17107@L?
+- **17108** — 1 rank(s): 17108@L?
+- **17112** — 1 rank(s): 17112@L?
+- **17113** — 1 rank(s): 17113@L?
+- **17119** — 1 rank(s): 17119@L?
+- **17120** — 1 rank(s): 17120@L?
+- **17121** — 1 rank(s): 17121@L?
+- **17122** — 1 rank(s): 17122@L?
+- **17124** — 1 rank(s): 17124@L?
+- **24943** — 1 rank(s): 24943@L?
+- **24944** — 1 rank(s): 24944@L?
+- **24945** — 1 rank(s): 24945@L?
+- **24946** — 1 rank(s): 24946@L?
+- **24969** — 1 rank(s): 24969@L?
+- **24970** — 1 rank(s): 24970@L?
+- **24971** — 1 rank(s): 24971@L?
+- **24972** — 1 rank(s): 24972@L?
+- **25908** — 1 rank(s): 25908@L?
+- **414854** — 1 rank(s): 414854@L?
+- **Abolish Poison** — 1 rank(s): 2893@L26
+- **Abolish Poison Effect** — 1 rank(s): 3137@L0
+- **Cure Poison** — 1 rank(s): 8946@L14
+- **Deeper Wilds** — 1 rank(s): 436956@L?
+- **Efflorescence** — 1 rank(s): 417148@L0
+- **Enhanced Restoration** — 1 rank(s): 417123@L0
+- **Furor** — 1 rank(s): 17056@L?
+- **Gift of Nature** — 1 rank(s): 17104@L?
+- **Gift of the Wild** — 2 rank(s): 21849@L50, 21850@L60
+- **Healing Focus** — 1 rank(s): 16181@L?
+- **Healing Touch** — 11 rank(s): 5185@L1, 5186@L8, 5187@L14, 5188@L20, 5189@L26, 6778@L32, 8903@L38, 9758@L44, 9888@L50, 9889@L56, 25297@L60
+- **Improved Enrage** — 2 rank(s): 17079@L?, 17082@L?
+- **Improved Healing Wave** — 1 rank(s): 16182@L?
+- **Improved Mark of the Wild** — 5 rank(s): 17050@L?, 17051@L?, 17053@L?, 17054@L?, 17055@L?
+- **Improved Regrowth** — 1 rank(s): 17074@L?
+- **Improved Reincarnation** — 1 rank(s): 16184@L?
+- **Improved Rejuvenation** — 1 rank(s): 17111@L?
+- **Improved Tranquility** — 1 rank(s): 17123@L?
+- **Innervate** — 1 rank(s): 29166@L40
+- **Lifebloom** — 2 rank(s): 408124@L0, 408245@L0
+- **Living Seed** — 1 rank(s): 414683@L0
+- **Mark of the Wild** — 7 rank(s): 1126@L1, 5232@L10, 6756@L20, 5234@L30, 8907@L40, 9884@L50, 9885@L60
+- **Naturalist** — 1 rank(s): 17069@L?
+- **Nature's Focus** — 1 rank(s): 17063@L?
+- **Nature's Guidance** — 3 rank(s): 16180@L?, 16196@L?, 16198@L?
+- **Nature's Swiftness** — 2 rank(s): 16188@L1, 17116@L1
+- **Nourish** — 1 rank(s): 408247@L0
+- **Purification** — 1 rank(s): 16178@L?
+- **Rebirth** — 5 rank(s): 20484@L20, 20739@L30, 20742@L40, 20747@L50, 20748@L60
+- **Reflection** — 1 rank(s): 17106@L?
+- **Regrowth** — 9 rank(s): 8936@L12, 8938@L18, 8939@L24, 8940@L30, 8941@L36, 9750@L42, 9856@L48, 9857@L54, 9858@L60
+- **Rejuvenation** — 11 rank(s): 774@L4, 1058@L10, 1430@L16, 2090@L22, 2091@L28, 3627@L34, 8910@L40, 9839@L46, 9840@L52, 9841@L58, 25299@L60
+- **Remove Curse** — 1 rank(s): 2782@L24
+- **Restorative Totems** — 1 rank(s): 16187@L?
+- **Revive** — 5 rank(s): 437138@L12, 1237948@L24, 1237949@L36, 1237950@L48, 1237951@L60
+- **Subtlety** — 1 rank(s): 17118@L?
+- **Swiftmend** — 1 rank(s): 18562@L1
+- **Tidal Focus** — 1 rank(s): 16179@L?
+- **Tidal Mastery** — 1 rank(s): 16194@L?
+- **Totemic Focus** — 1 rank(s): 16173@L?
+- **Totemic Mastery** — 1 rank(s): 16189@L1
+- **Tranquil Spirit** — 1 rank(s): 24968@L?
+- **Tranquility** — 4 rank(s): 740@L30, 8918@L40, 9862@L50, 9863@L60
+- **Wild Growth** — 3 rank(s): 408120@L40, 1238214@L50, 1238215@L60
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+## Hunter
+### Beast Mastery
+- **19550** — 1 rank(s): 19550@L?
+- **19551** — 1 rank(s): 19551@L?
+- **19553** — 1 rank(s): 19553@L?
+- **19554** — 1 rank(s): 19554@L?
+- **19555** — 1 rank(s): 19555@L?
+- **19556** — 1 rank(s): 19556@L?
+- **19560** — 1 rank(s): 19560@L?
+- **19573** — 1 rank(s): 19573@L?
+- **19575** — 1 rank(s): 19575@L?
+- **19579** — 1 rank(s): 19579@L?
+- **19584** — 1 rank(s): 19584@L?
+- **19585** — 1 rank(s): 19585@L?
+- **19586** — 1 rank(s): 19586@L?
+- **19587** — 1 rank(s): 19587@L?
+- **19592** — 1 rank(s): 19592@L?
+- **19599** — 1 rank(s): 19599@L?
+- **19600** — 1 rank(s): 19600@L?
+- **19601** — 1 rank(s): 19601@L?
+- **19602** — 1 rank(s): 19602@L?
+- **19610** — 1 rank(s): 19610@L?
+- **19612** — 1 rank(s): 19612@L?
+- **19617** — 1 rank(s): 19617@L?
+- **19618** — 1 rank(s): 19618@L?
+- **19619** — 1 rank(s): 19619@L?
+- **19620** — 1 rank(s): 19620@L?
+- **19622** — 1 rank(s): 19622@L?
+- **19623** — 1 rank(s): 19623@L?
+- **19624** — 1 rank(s): 19624@L?
+- **19625** — 1 rank(s): 19625@L?
+- **20895** — 1 rank(s): 20895@L?
+- **24386** — 1 rank(s): 24386@L?
+- **24387** — 1 rank(s): 24387@L?
+- **24395** — 1 rank(s): 24395@L?
+- **24396** — 1 rank(s): 24396@L?
+- **24397** — 1 rank(s): 24397@L?
+- **Aspect of the Beast** — 4 rank(s): 13161@L0, 1299445@L0, 1299446@L0, 1299447@L0
+- **Aspect of the Cheetah** — 1 rank(s): 5118@L20
+- **Aspect of the Falcon** — 1 rank(s): 469145@L0
+- **Aspect of the Hawk** — 7 rank(s): 13165@L10, 14318@L18, 14319@L28, 14320@L38, 14321@L48, 14322@L58, 25296@L60
+- **Aspect of the Monkey** — 1 rank(s): 13163@L4
+- **Aspect of the Pack** — 1 rank(s): 13159@L40
+- **Aspect of the Viper** — 1 rank(s): 415423@L0
+- **Aspect of the Wild** — 2 rank(s): 20043@L46, 20190@L56
+- **Beast Lore** — 1 rank(s): 1462@L0
+- **Bestial Discipline** — 1 rank(s): 19590@L?
+- **Bestial Swiftness** — 1 rank(s): 19596@L?
+- **Bestial Wrath** — 1 rank(s): 19574@L40
+- **Call Pet** — 1 rank(s): 883@L0
+- **Deadly Aspects** — 1 rank(s): 19552@L?
+- **Dismiss Pet** — 1 rank(s): 2641@L0
+- **Eagle Eye** — 1 rank(s): 6197@L0
+- **Endurance Training** — 1 rank(s): 19583@L?
+- **Eyes of the Beast** — 1 rank(s): 1002@L14
+- **Feed Pet** — 1 rank(s): 6991@L0
+- **Ferocity** — 1 rank(s): 19598@L?
+- **Frenzy** — 1 rank(s): 19621@L?
+- **Improved Aspect of the Monkey** — 1 rank(s): 19549@L?
+- **Improved Eyes of the Beast** — 2 rank(s): 19557@L?, 19558@L?
+- **Improved Mend Pet** — 2 rank(s): 19572@L?, 24406@L60
+- **Improved Revive Pet** — 1 rank(s): 24443@L?
+- **Intimidation** — 1 rank(s): 19577@L30
+- **Kill Command** — 1 rank(s): 409379@L0
+- **Mend Pet** — 7 rank(s): 136@L12, 3111@L20, 3661@L28, 3662@L36, 13542@L44, 13543@L52, 13544@L60
+- **Pathfinding** — 1 rank(s): 19559@L?
+- **Revive Pet** — 1 rank(s): 982@L10
+- **Scare Beast** — 3 rank(s): 1513@L0, 14326@L0, 14327@L0
+- **Spirit Bond** — 3 rank(s): 19578@L?, 24529@L?, 1310725@L?
+- **Summon Hawk** — 4 rank(s): 1293241@L25, 1293525@L36, 1293526@L48, 1293527@L60
+- **Tame Beast** — 3 rank(s): 1515@L0, 13535@L?, 13481@L0
+- **Thick Hide** — 1 rank(s): 19609@L?
+- **Tranquilizing Shot** — 1 rank(s): 19801@L60
+- **Unleashed Fury** — 1 rank(s): 19616@L?
+
+### Beast Training
+- **Arcane Resistance** — 4 rank(s): 24495@L0, 24508@L0, 24509@L0, 24510@L0
+- **Beast Training** — 1 rank(s): 5149@L0
+- **Bite** — 8 rank(s): 17254@L0, 17262@L0, 17263@L0, 17264@L0, 17265@L0, 17266@L0, 17267@L0, 17268@L0
+- **Charge** — 6 rank(s): 7370@L0, 26184@L0, 26185@L0, 26186@L0, 26202@L0, 28343@L0
+- **Claw** — 8 rank(s): 2980@L0, 2981@L0, 2982@L0, 3667@L0, 2975@L0, 2976@L0, 2977@L0, 3666@L0
+- **Cobra Reflexes** — 1 rank(s): 25077@L0
+- **Cower** — 6 rank(s): 1748@L0, 1749@L0, 1750@L0, 1751@L0, 16698@L0, 1747@L0
+- **Dash** — 3 rank(s): 23100@L0, 23111@L0, 23112@L0
+- **Demoralizing Screech** — 4 rank(s): 24424@L0, 24580@L0, 24581@L0, 24582@L0
+- **Dismember** — 5 rank(s): 1264937@L0, 1264939@L0, 1264970@L0, 1264971@L0, 1264972@L0
+- **Dive** — 3 rank(s): 23146@L0, 23149@L0, 23150@L0
+- **Dust Cloud** — 5 rank(s): 1265907@L0, 1265908@L0, 1265909@L0, 1265913@L0, 1265911@L0
+- **Fire Resistance** — 4 rank(s): 24440@L0, 24441@L0, 24463@L0, 24464@L0
+- **Frost Resistance** — 4 rank(s): 24475@L0, 24477@L0, 24476@L0, 24478@L0
+- **Furious Howl** — 1 rank(s): 24599@L0
+- **Great Stamina** — 10 rank(s): 4195@L0, 4196@L0, 4197@L0, 4198@L0, 4199@L0, 4200@L0, 4201@L0, 4202@L0, 5048@L0, 5049@L0
+- **Growl** — 7 rank(s): 1853@L0, 14922@L0, 14923@L0, 14924@L0, 14925@L0, 14926@L0, 14927@L0
+- **Harass** — 3 rank(s): 23163@L?, 23166@L?, 23167@L?
+- **Lava Breath** — 2 rank(s): 444680@L0, 444682@L0
+- **Lightning Breath** — 6 rank(s): 24845@L0, 25013@L0, 25014@L0, 25015@L0, 25016@L0, 25017@L0
+- **Mine!** — 5 rank(s): 1265059@L0, 1265060@L0, 1265061@L0, 1265062@L0, 1265064@L0
+- **Natural Armor** — 10 rank(s): 24547@L0, 24556@L0, 24557@L0, 24558@L0, 24559@L0, 24560@L0, 24561@L0, 24562@L0, 24631@L0, 24632@L0
+- **Nature Resistance** — 4 rank(s): 24494@L0, 24511@L0, 24512@L0, 24513@L0
+- **Pinch** — 5 rank(s): 1264745@L0, 1264749@L0, 1264750@L0, 1264751@L0, 1264752@L0
+- **Prowl** — 3 rank(s): 24451@L0, 24454@L0, 24455@L0
+- **Savage Rend** — 5 rank(s): 1265831@L0, 1265833@L0, 1265834@L0, 1265835@L0, 1265836@L0
+- **Scorpid Poison** — 4 rank(s): 24584@L0, 24588@L0, 24589@L0, 24641@L0
+- **Shadow Resistance** — 4 rank(s): 24490@L0, 24514@L0, 24515@L0, 24516@L0
+- **Shell Shield** — 1 rank(s): 26065@L0
+- **Swipe** — 5 rank(s): 1264727@L0, 1264729@L0, 1264730@L0, 1264731@L0, 1264732@L0
+- **Tendon Rip** — 5 rank(s): 1265043@L0, 1265045@L0, 1265046@L0, 1265047@L0, 1265048@L0
+- **Thunderstomp** — 4 rank(s): 26094@L0, 26189@L0, 26190@L0, 1264456@L0
+- **Web** — 5 rank(s): 1265887@L0, 1265888@L0, 1265890@L0, 1265891@L0, 1265892@L0
+
+### Engraving
+- **410117** — 1 rank(s): 410117@L?
+- **410119** — 1 rank(s): 410119@L?
+- **410120** — 1 rank(s): 410120@L?
+- **410124** — 1 rank(s): 410124@L?
+- **416092** — 1 rank(s): 416092@L?
+- **Cobra Slayer** — 1 rank(s): 410115@L0
+- **Engrave Belt - Aspect of the Viper** — 1 rank(s): 416084@L0
+- **Engrave Belt - Expose Weakness** — 1 rank(s): 410114@L0
+- **Engrave Belt - Melee Specialist** — 1 rank(s): 416086@L0
+- **Engrave Belt - Steady Shot** — 1 rank(s): 410109@L0
+- **Engrave Boots - Dual Wield Specialization** — 1 rank(s): 410116@L0
+- **Engrave Boots - Trap Launcher** — 1 rank(s): 410118@L0
+- **Engrave Boots - Wyvern Strike** — 1 rank(s): 416089@L0
+- **Engrave Bracers - Focus Fire** — 1 rank(s): 431601@L0
+- **Engrave Bracers - Raptor Fury** — 1 rank(s): 416093@L0
+- **Engrave Bracers - T.N.T.** — 1 rank(s): 431611@L0
+- **Engrave Chest - Beast Mastery** — 1 rank(s): 410110@L0
+- **Engrave Chest - Cobra Strikes** — 1 rank(s): 425759@L0
+- **Engrave Chest - Lone Wolf** — 1 rank(s): 410122@L0
+- **Engrave Chest - Master Marksman** — 1 rank(s): 410113@L0
+- **Engrave Cloak - Hit and Run** — 1 rank(s): 440563@L0
+- **Engrave Cloak - Improved Volley** — 1 rank(s): 440560@L0
+- **Engrave Cloak - Resourcefulness** — 1 rank(s): 440557@L0
+- **Engrave Gloves - Carve** — 1 rank(s): 425758@L0
+- **Engrave Gloves - Chimera Shot** — 1 rank(s): 410121@L0
+- **Engrave Gloves - Explosive Shot** — 1 rank(s): 410123@L0
+- **Engrave Helm - Catlike Reflexes** — 1 rank(s): 416083@L0
+- **Engrave Helm - Lock and Load** — 1 rank(s): 416085@L0
+- **Engrave Helm - Rapid Killing** — 1 rank(s): 416090@L0
+- **Engrave Pants - Flanking Strike** — 1 rank(s): 425762@L0
+- **Engrave Pants - Kill Shot** — 1 rank(s): 410111@L0
+- **Engrave Pants - Serpent Spread** — 1 rank(s): 425760@L0
+- **Engrave Pants - Sniper Training** — 1 rank(s): 416091@L0
+- **Engrave Ring - Arcane Specialization** — 1 rank(s): 453695@L0
+- **Engrave Ring - Axe Specialization** — 1 rank(s): 453688@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Fire Specialization** — 1 rank(s): 453696@L0
+- **Engrave Ring - Fist Weapon Specialization** — 1 rank(s): 453691@L0
+- **Engrave Ring - Frost Specialization** — 1 rank(s): 453697@L0
+- **Engrave Ring - Meditation Specialization** — 1 rank(s): 468763@L0
+- **Engrave Ring - Nature Specialization** — 1 rank(s): 453698@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+- **Engrave Ring - Ranged Weapon Specialization** — 1 rank(s): 453692@L0
+- **Engrave Ring - Sword Specialization** — 1 rank(s): 453635@L0
+
+### Marksmanship
+- **14275** — 1 rank(s): 14275@L?
+- **14276** — 1 rank(s): 14276@L?
+- **14277** — 1 rank(s): 14277@L?
+- **14288** — 1 rank(s): 14288@L?
+- **14289** — 1 rank(s): 14289@L?
+- **14290** — 1 rank(s): 14290@L?
+- **19412** — 1 rank(s): 19412@L?
+- **19413** — 1 rank(s): 19413@L?
+- **19414** — 1 rank(s): 19414@L?
+- **19415** — 1 rank(s): 19415@L?
+- **19417** — 1 rank(s): 19417@L?
+- **19418** — 1 rank(s): 19418@L?
+- **19419** — 1 rank(s): 19419@L?
+- **19420** — 1 rank(s): 19420@L?
+- **19422** — 1 rank(s): 19422@L?
+- **19423** — 1 rank(s): 19423@L?
+- **19424** — 1 rank(s): 19424@L?
+- **19425** — 1 rank(s): 19425@L?
+- **19427** — 1 rank(s): 19427@L?
+- **19429** — 1 rank(s): 19429@L?
+- **19430** — 1 rank(s): 19430@L?
+- **19431** — 1 rank(s): 19431@L?
+- **19455** — 1 rank(s): 19455@L?
+- **19456** — 1 rank(s): 19456@L?
+- **19457** — 1 rank(s): 19457@L?
+- **19458** — 1 rank(s): 19458@L?
+- **19462** — 1 rank(s): 19462@L?
+- **19465** — 1 rank(s): 19465@L?
+- **19466** — 1 rank(s): 19466@L?
+- **19467** — 1 rank(s): 19467@L?
+- **19468** — 1 rank(s): 19468@L?
+- **19487** — 1 rank(s): 19487@L?
+- **19488** — 1 rank(s): 19488@L?
+- **19489** — 1 rank(s): 19489@L?
+- **19490** — 1 rank(s): 19490@L?
+- **19491** — 1 rank(s): 19491@L?
+- **19493** — 1 rank(s): 19493@L?
+- **19494** — 1 rank(s): 19494@L?
+- **19499** — 1 rank(s): 19499@L?
+- **19508** — 1 rank(s): 19508@L?
+- **19509** — 1 rank(s): 19509@L?
+- **19510** — 1 rank(s): 19510@L?
+- **19511** — 1 rank(s): 19511@L?
+- **24691** — 1 rank(s): 24691@L?
+- **25294** — 1 rank(s): 25294@L?
+- **Aimed Shot** — 6 rank(s): 19434@L20, 20900@L28, 20901@L36, 20902@L44, 20903@L52, 20904@L60
+- **Arcane Shot** — 8 rank(s): 3044@L6, 14281@L12, 14282@L20, 14283@L28, 14284@L36, 14285@L44, 14286@L52, 14287@L60
+- **Auto Shot** — 1 rank(s): 75@L1
+- **Barrage** — 1 rank(s): 19461@L?
+- **Black Arrow** — 2 rank(s): 3674@L0, 14296@L0
+- **Chimera Shot** — 1 rank(s): 409433@L0
+- **Chimera Shot - Scorpid** — 1 rank(s): 409495@L0
+- **Chimera Shot - Serpent** — 1 rank(s): 409493@L0
+- **Chimera Shot - Viper** — 1 rank(s): 409494@L0
+- **Concussive Shot** — 1 rank(s): 5116@L8
+- **Distracting Shot** — 6 rank(s): 20736@L12, 14274@L20, 15629@L30, 15630@L40, 15631@L50, 15632@L60
+- **Efficiency** — 1 rank(s): 19416@L?
+- **Enchanted Flare** — 1 rank(s): 1221404@L0
+- **Flare** — 1 rank(s): 1543@L32
+- **Hawk Eye** — 1 rank(s): 19498@L?
+- **Hunter's Mark** — 4 rank(s): 1130@L6, 14323@L22, 14324@L40, 14325@L58
+- **Improved Arcane Shot** — 1 rank(s): 19454@L?
+- **Improved Concussive Shot** — 1 rank(s): 19407@L?
+- **Improved Hunter's Mark** — 1 rank(s): 19421@L?
+- **Improved Serpent Sting** — 1 rank(s): 19464@L?
+- **Lethal Attacks** — 1 rank(s): 19426@L?
+- **Mortal Shots** — 1 rank(s): 19485@L?
+- **Multi-Shot** — 1 rank(s): 2643@L18
+- **Ranged Weapon Specialization** — 1 rank(s): 19507@L?
+- **Rapid Fire** — 1 rank(s): 3045@L26
+- **Scatter Shot** — 1 rank(s): 19503@L30
+- **Scorpid Sting** — 1 rank(s): 3043@L22
+- **Serpent Sting** — 18 rank(s): 425737@L0, 425736@L0, 425735@L0, 425734@L0, 425733@L0, 425732@L0, 425730@L0, 425729@L0, 425728@L0, 1978@L4, 13549@L10, 13550@L18, 13551@L26, 13552@L34, 13553@L42, 13554@L50, 13555@L58, 25295@L60
+- **Sniper Shot** — 3 rank(s): 1310687@L40, 1310785@L48, 1310786@L58
+- **Trueshot Aura** — 5 rank(s): 1299346@L25, 1299348@L32, 19506@L40, 20905@L50, 20906@L60
+- **Viper Sting** — 3 rank(s): 3034@L36, 14279@L46, 14280@L56
+- **Volley** — 3 rank(s): 1510@L40, 14294@L50, 14295@L58
+
+### Pet - Generic
+- **Natural Armor** — 8 rank(s): 24545@L0, 24549@L0, 24550@L0, 24551@L0, 24552@L0, 24553@L0, 24554@L0, 24555@L0
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+### Survival
+- **1242642** — 1 rank(s): 1242642@L?
+- **1242643** — 1 rank(s): 1242643@L?
+- **1242788** — 1 rank(s): 1242788@L?
+- **1242789** — 1 rank(s): 1242789@L?
+- **1242801** — 1 rank(s): 1242801@L?
+- **1242802** — 1 rank(s): 1242802@L?
+- **19160** — 1 rank(s): 19160@L?
+- **19180** — 1 rank(s): 19180@L?
+- **19181** — 1 rank(s): 19181@L?
+- **19232** — 1 rank(s): 19232@L?
+- **19233** — 1 rank(s): 19233@L?
+- **19234** — 1 rank(s): 19234@L?
+- **19235** — 1 rank(s): 19235@L?
+- **19245** — 1 rank(s): 19245@L?
+- **19256** — 1 rank(s): 19256@L?
+- **19257** — 1 rank(s): 19257@L?
+- **19258** — 1 rank(s): 19258@L?
+- **19259** — 1 rank(s): 19259@L?
+- **19294** — 1 rank(s): 19294@L?
+- **19297** — 1 rank(s): 19297@L?
+- **19298** — 1 rank(s): 19298@L?
+- **19300** — 1 rank(s): 19300@L?
+- **19301** — 1 rank(s): 19301@L?
+- **19371** — 1 rank(s): 19371@L?
+- **19373** — 1 rank(s): 19373@L?
+- **19377** — 1 rank(s): 19377@L?
+- **19386** — 1 rank(s): 19386@L?
+- **19387** — 1 rank(s): 19387@L?
+- **19388** — 1 rank(s): 19388@L?
+- **19389** — 1 rank(s): 19389@L?
+- **19390** — 1 rank(s): 19390@L?
+- **24131** — 1 rank(s): 24131@L?
+- **24132** — 1 rank(s): 24132@L?
+- **24133** — 1 rank(s): 24133@L?
+- **24134** — 1 rank(s): 24134@L?
+- **24135** — 1 rank(s): 24135@L?
+- **24283** — 1 rank(s): 24283@L?
+- **24296** — 1 rank(s): 24296@L?
+- **24297** — 1 rank(s): 24297@L?
+- **409510** — 1 rank(s): 409510@L?
+- **409512** — 1 rank(s): 409512@L?
+- **409519** — 1 rank(s): 409519@L?
+- **409520** — 1 rank(s): 409520@L?
+- **409521** — 1 rank(s): 409521@L?
+- **409524** — 1 rank(s): 409524@L?
+- **409526** — 1 rank(s): 409526@L?
+- **409528** — 1 rank(s): 409528@L?
+- **409530** — 1 rank(s): 409530@L?
+- **409532** — 1 rank(s): 409532@L?
+- **409534** — 1 rank(s): 409534@L?
+- **409535** — 1 rank(s): 409535@L?
+- **409541** — 1 rank(s): 409541@L?
+- **409552** — 1 rank(s): 409552@L?
+- **409554** — 1 rank(s): 409554@L?
+- **Carve** — 1 rank(s): 425711@L0
+- **Clever Traps** — 1 rank(s): 19239@L?
+- **Counterattack** — 4 rank(s): 19306@L30, 1242634@L30, 20909@L42, 20910@L54
+- **Deflection** — 1 rank(s): 19295@L?
+- **Deterrence** — 1 rank(s): 19263@L20
+- **Disengage** — 3 rank(s): 781@L20, 14272@L34, 14273@L48
+- **Entrapment** — 2 rank(s): 19184@L?, 19185@L?
+- **Explosive Trap** — 6 rank(s): 13813@L34, 13812@L34, 14316@L44, 14314@L44, 14317@L54, 14315@L54
+- **Feign Death** — 1 rank(s): 5384@L30
+- **Flanking Strike** — 1 rank(s): 415320@L0
+- **Freezing Trap** — 3 rank(s): 1499@L20, 14310@L40, 14311@L60
+- **Frost Trap** — 1 rank(s): 13809@L28
+- **Heart of the Lion** — 1 rank(s): 409580@L0
+- **Humanoid Slaying** — 3 rank(s): 19151@L?, 19152@L?, 19153@L?
+- **Immolation Trap** — 10 rank(s): 13795@L16, 13797@L16, 14302@L26, 14298@L26, 14303@L36, 14299@L36, 14304@L46, 14300@L46, 14305@L56, 14301@L56
+- **Improved Feign Death** — 2 rank(s): 19286@L?, 19287@L?
+- **Improved Tracking** — 1 rank(s): 24293@L?
+- **Improved Wing Clip** — 1 rank(s): 19228@L?
+- **Killer Instinct** — 1 rank(s): 19370@L?
+- **Lacerate** — 4 rank(s): 24118@L30, 24119@L40, 24120@L50, 1299332@L60
+- **Lightning Reflexes** — 1 rank(s): 19168@L?
+- **Melee Specialization** — 5 rank(s): 19381@L?, 19382@L?, 19383@L?, 19384@L?, 19385@L?
+- **Mongoose Bite** — 4 rank(s): 1495@L16, 14269@L30, 14270@L44, 14271@L58
+- **Monster Slaying** — 2 rank(s): 24294@L?, 24295@L?
+- **Raptor Strike** — 24 rank(s): 409755@L0, 409754@L0, 409752@L0, 409751@L0, 409750@L0, 409748@L0, 409693@L0, 409691@L0, 415343@L0, 415342@L0, 415341@L0, 415340@L0, 415338@L0, 415337@L0, 415336@L0, 415335@L0, 2973@L1, 14260@L8, 14261@L16, 14262@L24, 14263@L32, 14264@L40, 14265@L48, 14266@L56
+- **Readiness** — 1 rank(s): 23989@L?
+- **Savage Strikes** — 1 rank(s): 19159@L?
+- **Strider Kick** — 1 rank(s): 1317257@L30
+- **Surefooted** — 1 rank(s): 19290@L?
+- **Survival Tactics** — 1 rank(s): 19376@L?
+- **Survivalist** — 1 rank(s): 19255@L?
+- **Track Beasts** — 1 rank(s): 1494@L1
+- **Track Demons** — 1 rank(s): 19878@L32
+- **Track Dragonkin** — 1 rank(s): 19879@L50
+- **Track Elementals** — 1 rank(s): 19880@L26
+- **Track Giants** — 1 rank(s): 19882@L40
+- **Track Hidden** — 1 rank(s): 19885@L24
+- **Track Humanoids** — 1 rank(s): 19883@L10
+- **Track Undead** — 1 rank(s): 19884@L18
+- **Wing Clip** — 3 rank(s): 2974@L12, 14267@L38, 14268@L60
+
+## Mage
+### Arcane
+- **12463** — 1 rank(s): 12463@L?
+- **12464** — 1 rank(s): 12464@L?
+- **12467** — 1 rank(s): 12467@L?
+- **12469** — 1 rank(s): 12469@L?
+- **12500** — 1 rank(s): 12500@L?
+- **12501** — 1 rank(s): 12501@L?
+- **12502** — 1 rank(s): 12502@L?
+- **12503** — 1 rank(s): 12503@L?
+- **12574** — 1 rank(s): 12574@L?
+- **12575** — 1 rank(s): 12575@L?
+- **12576** — 1 rank(s): 12576@L?
+- **12577** — 1 rank(s): 12577@L?
+- **12592** — 1 rank(s): 12592@L?
+- **12598** — 1 rank(s): 12598@L?
+- **12605** — 1 rank(s): 12605@L?
+- **12839** — 1 rank(s): 12839@L?
+- **12840** — 1 rank(s): 12840@L?
+- **12841** — 1 rank(s): 12841@L?
+- **12842** — 1 rank(s): 12842@L?
+- **15059** — 1 rank(s): 15059@L?
+- **15060** — 1 rank(s): 15060@L?
+- **16769** — 1 rank(s): 16769@L?
+- **16770** — 1 rank(s): 16770@L?
+- **18463** — 1 rank(s): 18463@L?
+- **18464** — 1 rank(s): 18464@L?
+- **2855** — 1 rank(s): 2855@L?
+- **29444** — 1 rank(s): 29444@L?
+- **29445** — 1 rank(s): 29445@L?
+- **29446** — 1 rank(s): 29446@L?
+- **29447** — 1 rank(s): 29447@L?
+- **6085** — 1 rank(s): 6085@L?
+- **Amplify Magic** — 4 rank(s): 1008@L18, 8455@L30, 10169@L42, 10170@L54
+- **Arcane Barrage** — 1 rank(s): 400610@L0
+- **Arcane Blast** — 5 rank(s): 400574@L20, 1239696@L30, 1239697@L40, 1239699@L50, 1239700@L60
+- **Arcane Brilliance** — 1 rank(s): 23028@L56
+- **Arcane Concentration** — 1 rank(s): 11213@L1
+- **Arcane Explosion** — 6 rank(s): 1449@L14, 8437@L22, 8438@L30, 8439@L38, 10201@L46, 10202@L54
+- **Arcane Focus** — 1 rank(s): 11222@L1
+- **Arcane Geometry** — 1 rank(s): 11247@L1
+- **Arcane Impact** — 1 rank(s): 11242@L1
+- **Arcane Instability** — 1 rank(s): 15058@L?
+- **Arcane Intellect** — 5 rank(s): 1459@L1, 1460@L14, 1461@L28, 10156@L42, 10157@L56
+- **Arcane Meditation** — 1 rank(s): 18462@L?
+- **Arcane Mind** — 1 rank(s): 11232@L1
+- **Arcane Missiles** — 8 rank(s): 5143@L8, 5144@L16, 5145@L24, 8416@L32, 8417@L40, 10211@L48, 10212@L56, 25345@L56
+- **Arcane Power** — 1 rank(s): 12042@L1
+- **Arcane Resilience** — 1 rank(s): 28574@L?
+- **Arcane Shielding** — 1 rank(s): 11252@L1
+- **Arcane Subtlety** — 1 rank(s): 11210@L1
+- **Arcane Surge** — 1 rank(s): 425124@L0
+- **Arcane Wrath** — 4 rank(s): 1326079@L25, 1326080@L36, 1326081@L48, 1326082@L60
+- **Blink** — 1 rank(s): 1953@L20
+- **Clearcasting** — 1 rank(s): 12536@L10
+- **Conjure Food** — 7 rank(s): 587@L6, 597@L12, 990@L22, 6129@L32, 10144@L42, 10145@L52, 28612@L60
+- **Conjure Mana Agate** — 1 rank(s): 759@L28
+- **Conjure Mana Citrine** — 1 rank(s): 10053@L48
+- **Conjure Mana Jade** — 1 rank(s): 3552@L38
+- **Conjure Mana Ruby** — 1 rank(s): 10054@L58
+- **Conjure Water** — 8 rank(s): 468766@L0, 5504@L4, 5505@L10, 5506@L20, 6127@L30, 10138@L40, 10139@L50, 10140@L60
+- **Counterspell** — 1 rank(s): 2139@L24
+- **Dampen Magic** — 5 rank(s): 604@L12, 8450@L24, 8451@L36, 10173@L48, 10174@L60
+- **Evocation** — 1 rank(s): 12051@L20
+- **Expanded Intellect** — 1 rank(s): 436949@L?
+- **Improved Channeling** — 1 rank(s): 11237@L1
+- **Improved Counterspell** — 1 rank(s): 11255@L1
+- **Mage Armor** — 3 rank(s): 6117@L34, 22782@L46, 22783@L58
+- **Magic Absorption** — 2 rank(s): 29442@L?, 29441@L1
+- **Magic Attunement** — 1 rank(s): 12606@L1
+- **Mana Shield** — 6 rank(s): 1463@L20, 8494@L28, 8495@L36, 10191@L44, 10192@L52, 10193@L60
+- **Mass Regeneration** — 1 rank(s): 412510@L0
+- **Polymorph** — 6 rank(s): 118@L8, 12824@L20, 12825@L40, 12826@L60, 28271@L60, 28272@L60
+- **Polymorph: Cow** — 1 rank(s): 28270@L60
+- **Portal: Darnassus** — 1 rank(s): 11419@L50
+- **Portal: Ironforge** — 1 rank(s): 11416@L40
+- **Portal: Orgrimmar** — 1 rank(s): 11417@L40
+- **Portal: Stormwind** — 1 rank(s): 10059@L40
+- **Portal: Thunder Bluff** — 1 rank(s): 11420@L50
+- **Portal: Undercity** — 1 rank(s): 11418@L40
+- **Presence of Mind** — 1 rank(s): 12043@L1
+- **Regeneration** — 1 rank(s): 401417@L0
+- **Remove Lesser Curse** — 1 rank(s): 475@L18
+- **Rewind Time** — 1 rank(s): 401462@L0
+- **Slow Fall** — 1 rank(s): 130@L12
+- **Teleport: Dalaran** — 1 rank(s): 1297659@L50
+- **Teleport: Darnassus** — 1 rank(s): 3565@L30
+- **Teleport: Ironforge** — 1 rank(s): 3562@L20
+- **Teleport: Orgrimmar** — 1 rank(s): 3567@L20
+- **Teleport: Stormwind** — 1 rank(s): 3561@L20
+- **Teleport: Thunder Bluff** — 1 rank(s): 3566@L30
+- **Teleport: Undercity** — 1 rank(s): 3563@L20
+- **Wand Specialization** — 1 rank(s): 6057@L?
+
+### Engraving
+- **401755** — 1 rank(s): 401755@L?
+- **415938** — 1 rank(s): 415938@L?
+- **415940** — 1 rank(s): 415940@L?
+- **415943** — 1 rank(s): 415943@L?
+- **415946** — 1 rank(s): 415946@L?
+- **415947** — 1 rank(s): 415947@L?
+- **Engrave Belt - Frostfire Bolt** — 1 rank(s): 401762@L0
+- **Engrave Belt - Missile Barrage** — 1 rank(s): 401763@L0
+- **Engrave Belt - Spellfrost Bolt** — 1 rank(s): 415948@L0
+- **Engrave Boots - Brain Freeze** — 1 rank(s): 401752@L0
+- **Engrave Boots - Chronostatic Preservation** — 1 rank(s): 425189@L0
+- **Engrave Boots - Spell Power** — 1 rank(s): 415934@L0
+- **Engrave Bracers - Balefire Bolt** — 1 rank(s): 429311@L0
+- **Engrave Bracers - Displacement** — 1 rank(s): 429309@L0
+- **Engrave Bracers - Molten Armor** — 1 rank(s): 429308@L0
+- **Engrave Bracers - Rewind Time** — 1 rank(s): 401761@L0
+- **Engrave Chest - Burnout** — 1 rank(s): 401759@L0
+- **Engrave Chest - Enlightenment** — 1 rank(s): 415942@L0
+- **Engrave Chest - Fingers of Frost** — 1 rank(s): 401765@L0
+- **Engrave Chest - Regeneration** — 1 rank(s): 401767@L0
+- **Engrave Cloak - Arcane Barrage** — 1 rank(s): 401722@L0
+- **Engrave Cloak - Frozen Orb** — 1 rank(s): 440858@L0
+- **Engrave Cloak - Overheat** — 1 rank(s): 401764@L0
+- **Engrave Gloves - Arcane Blast** — 1 rank(s): 401757@L0
+- **Engrave Gloves - Ice Lance** — 1 rank(s): 401760@L0
+- **Engrave Gloves - Living Bomb** — 1 rank(s): 415936@L0
+- **Engrave Helm - Advanced Warding** — 1 rank(s): 401754@L0
+- **Engrave Helm - Deep Freeze** — 1 rank(s): 429304@L0
+- **Engrave Helm - Hot Streak** — 1 rank(s): 401749@L0
+- **Engrave Helm - Temporal Anomaly** — 1 rank(s): 429306@L0
+- **Engrave Pants - Arcane Surge** — 1 rank(s): 425171@L0
+- **Engrave Pants - Icy Veins** — 1 rank(s): 425170@L0
+- **Engrave Pants - Living Flame** — 1 rank(s): 401768@L0
+- **Engrave Pants - Mass Regeneration** — 1 rank(s): 415939@L0
+- **Engrave Ring - Arcane Specialization** — 1 rank(s): 453695@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Fire Specialization** — 1 rank(s): 453696@L0
+- **Engrave Ring - Frost Specialization** — 1 rank(s): 453697@L0
+- **Engrave Ring - Healing Specialization** — 1 rank(s): 468761@L0
+- **Engrave Ring - Meditation Specialization** — 1 rank(s): 468763@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+- **Engrave Ring - Sword Specialization** — 1 rank(s): 453635@L0
+
+### Fire
+- **11080** — 1 rank(s): 11080@L?
+- **11120** — 1 rank(s): 11120@L?
+- **11367** — 1 rank(s): 11367@L?
+- **11368** — 1 rank(s): 11368@L?
+- **12338** — 1 rank(s): 12338@L?
+- **12339** — 1 rank(s): 12339@L?
+- **12340** — 1 rank(s): 12340@L?
+- **12341** — 1 rank(s): 12341@L?
+- **12342** — 1 rank(s): 12342@L?
+- **12349** — 1 rank(s): 12349@L?
+- **12350** — 1 rank(s): 12350@L?
+- **12351** — 1 rank(s): 12351@L?
+- **12353** — 1 rank(s): 12353@L?
+- **12357** — 1 rank(s): 12357@L?
+- **12358** — 1 rank(s): 12358@L?
+- **12359** — 1 rank(s): 12359@L?
+- **12360** — 1 rank(s): 12360@L?
+- **12378** — 1 rank(s): 12378@L?
+- **12398** — 1 rank(s): 12398@L?
+- **12399** — 1 rank(s): 12399@L?
+- **12400** — 1 rank(s): 12400@L?
+- **12654** — 1 rank(s): 12654@L?
+- **12846** — 1 rank(s): 12846@L?
+- **12847** — 1 rank(s): 12847@L?
+- **12848** — 1 rank(s): 12848@L?
+- **12872** — 1 rank(s): 12872@L?
+- **12873** — 1 rank(s): 12873@L?
+- **13043** — 1 rank(s): 13043@L?
+- **18460** — 1 rank(s): 18460@L?
+- **29075** — 1 rank(s): 29075@L?
+- **29076** — 1 rank(s): 29076@L?
+- **Accelerant** — 1 rank(s): 11069@L1
+- **Balefire Bolt** — 1 rank(s): 428878@L0
+- **Blast Wave** — 5 rank(s): 11113@L30, 13018@L36, 13019@L44, 13020@L52, 13021@L60
+- **Burning Soul** — 1 rank(s): 11083@L1
+- **Combustion** — 1 rank(s): 11129@L40
+- **Critical Mass** — 1 rank(s): 11115@L1
+- **Felfire** — 1 rank(s): 24530@L0
+- **Fire Blast** — 14 rank(s): 400623@L0, 400622@L0, 400621@L0, 400620@L0, 400619@L0, 400618@L0, 400616@L0, 2136@L6, 2137@L14, 2138@L22, 8412@L30, 8413@L38, 10197@L46, 10199@L54
+- **Fire Power** — 1 rank(s): 11124@L1
+- **Fire Vulnerability** — 1 rank(s): 22959@L?
+- **Fire Ward** — 5 rank(s): 543@L20, 8457@L30, 8458@L40, 10223@L50, 10225@L60
+- **Fireball** — 12 rank(s): 133@L1, 143@L6, 145@L12, 3140@L18, 8400@L24, 8401@L30, 8402@L36, 10148@L42, 10149@L48, 10150@L54, 10151@L60, 25306@L60
+- **Flame Throwing** — 1 rank(s): 11100@L1
+- **Flamestrike** — 6 rank(s): 2120@L16, 2121@L24, 8422@L32, 8423@L40, 10215@L48, 10216@L56
+- **Frostfire Bolt** — 3 rank(s): 401502@L40, 1237312@L50, 1237313@L60
+- **Ignite** — 1 rank(s): 11119@L1
+- **Impact** — 2 rank(s): 11103@L1, 12355@L10
+- **Improved Fire Blast** — 1 rank(s): 11078@L1
+- **Improved Fire Ward** — 1 rank(s): 11094@L1
+- **Improved Flamestrike** — 1 rank(s): 11108@L1
+- **Improved Scorch** — 1 rank(s): 11095@L?
+- **Incineration** — 1 rank(s): 18459@L?
+- **Living Bomb** — 2 rank(s): 400614@L0, 400613@L0
+- **Living Flame** — 2 rank(s): 401558@L?, 401556@L0
+- **Master of Elements** — 2 rank(s): 29074@L1, 29077@L1
+- **Pyroblast** — 8 rank(s): 11366@L20, 12505@L24, 12522@L30, 12523@L36, 12524@L42, 12525@L48, 12526@L54, 18809@L60
+- **Scorch** — 7 rank(s): 2948@L22, 8444@L28, 8445@L34, 8446@L40, 10205@L46, 10206@L52, 10207@L58
+
+### Frost
+- **12473** — 1 rank(s): 12473@L?
+- **12475** — 1 rank(s): 12475@L?
+- **12485** — 1 rank(s): 12485@L?
+- **12486** — 1 rank(s): 12486@L?
+- **12487** — 1 rank(s): 12487@L?
+- **12488** — 1 rank(s): 12488@L?
+- **12489** — 1 rank(s): 12489@L?
+- **12490** — 1 rank(s): 12490@L?
+- **12496** — 1 rank(s): 12496@L?
+- **12497** — 1 rank(s): 12497@L?
+- **12518** — 1 rank(s): 12518@L?
+- **12519** — 1 rank(s): 12519@L?
+- **12569** — 1 rank(s): 12569@L?
+- **12571** — 1 rank(s): 12571@L?
+- **12672** — 1 rank(s): 12672@L?
+- **12952** — 1 rank(s): 12952@L?
+- **12953** — 1 rank(s): 12953@L?
+- **12982** — 1 rank(s): 12982@L?
+- **12983** — 1 rank(s): 12983@L?
+- **12984** — 1 rank(s): 12984@L?
+- **12985** — 1 rank(s): 12985@L?
+- **15047** — 1 rank(s): 15047@L?
+- **15052** — 1 rank(s): 15052@L?
+- **15053** — 1 rank(s): 15053@L?
+- **16758** — 1 rank(s): 16758@L?
+- **16763** — 1 rank(s): 16763@L?
+- **16765** — 1 rank(s): 16765@L?
+- **16766** — 1 rank(s): 16766@L?
+- **28332** — 1 rank(s): 28332@L?
+- **28592** — 1 rank(s): 28592@L?
+- **28593** — 1 rank(s): 28593@L?
+- **28594** — 1 rank(s): 28594@L?
+- **28595** — 1 rank(s): 28595@L?
+- **29439** — 1 rank(s): 29439@L?
+- **29440** — 1 rank(s): 29440@L?
+- **401512** — 1 rank(s): 401512@L?
+- **401517** — 1 rank(s): 401517@L?
+- **425179** — 1 rank(s): 425179@L?
+- **425183** — 1 rank(s): 425183@L?
+- **Arctic Reach** — 1 rank(s): 16757@L?
+- **Blizzard** — 6 rank(s): 10@L20, 6141@L28, 8427@L36, 10185@L44, 10186@L52, 10187@L60
+- **Chilled** — 1 rank(s): 12484@L1
+- **Cold Snap** — 1 rank(s): 12472@L1
+- **Cone of Cold** — 5 rank(s): 120@L26, 8492@L34, 10159@L42, 10160@L50, 10161@L58
+- **Frost Armor** — 3 rank(s): 168@L1, 7300@L10, 7301@L20
+- **Frost Channeling** — 1 rank(s): 11160@L1
+- **Frost Nova** — 4 rank(s): 122@L10, 865@L26, 6131@L40, 10230@L54
+- **Frost Ward** — 5 rank(s): 6143@L22, 8461@L32, 8462@L42, 10177@L52, 28609@L60
+- **Frost Warding** — 1 rank(s): 11189@L1
+- **Frostbite** — 2 rank(s): 11071@L1, 12494@L10
+- **Frostbolt** — 11 rank(s): 116@L4, 205@L8, 837@L14, 7322@L20, 8406@L26, 8407@L32, 8408@L38, 10179@L44, 10180@L50, 10181@L56, 25304@L60
+- **Frozen Orb** — 3 rank(s): 440802@L0, 440809@L0, 440802@L0
+- **Ice Armor** — 4 rank(s): 7302@L30, 7320@L40, 10219@L50, 10220@L60
+- **Ice Barrier** — 4 rank(s): 11426@L40, 13031@L46, 13032@L52, 13033@L58
+- **Ice Block** — 1 rank(s): 11958@L4
+- **Ice Lance** — 6 rank(s): 1312002@L20, 400640@L28, 1240044@L34, 1240045@L42, 1240046@L48, 1240047@L56
+- **Ice Shards** — 1 rank(s): 11207@L1
+- **Icy Veins** — 1 rank(s): 425121@L0
+- **Improved Blizzard** — 1 rank(s): 11185@L1
+- **Improved Cone of Cold** — 1 rank(s): 11190@L1
+- **Improved Frost Nova** — 1 rank(s): 11165@L1
+- **Improved Frostbolt** — 1 rank(s): 11070@L1
+- **Permafrost** — 1 rank(s): 11175@L1
+- **Piercing Ice** — 1 rank(s): 11151@L1
+- **Precision** — 1 rank(s): 29438@L1
+- **Shatter** — 1 rank(s): 11170@L1
+- **Spellfrost Bolt** — 1 rank(s): 412532@L0
+- **Winter's Chill** — 1 rank(s): 11180@L1
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+## Paladin
+### Engraving
+- **410003** — 1 rank(s): 410003@L?
+- **410004** — 1 rank(s): 410004@L?
+- **410009** — 1 rank(s): 410009@L?
+- **410012** — 1 rank(s): 410012@L?
+- **410016** — 1 rank(s): 410016@L?
+- **416029** — 1 rank(s): 416029@L?
+- **416030** — 1 rank(s): 416030@L?
+- **416032** — 1 rank(s): 416032@L?
+- **416034** — 1 rank(s): 416034@L?
+- **416039** — 1 rank(s): 416039@L?
+- **Engrave Belt - Infusion of Light** — 1 rank(s): 426180@L0
+- **Engrave Belt - Malleable Protection** — 1 rank(s): 426175@L0
+- **Engrave Belt - Sheath of Light** — 1 rank(s): 426178@L0
+- **Engrave Boots - Guarded by the Light** — 1 rank(s): 416035@L0
+- **Engrave Boots - Sacred Shield** — 1 rank(s): 416028@L0
+- **Engrave Boots - The Art of War** — 1 rank(s): 416031@L0
+- **Engrave Bracers - Hammer of the Righteous** — 1 rank(s): 410013@L0
+- **Engrave Bracers - Improved Hammer of Wrath** — 1 rank(s): 429261@L0
+- **Engrave Bracers - Light's Grace** — 1 rank(s): 429242@L0
+- **Engrave Bracers - Purifying Power** — 1 rank(s): 429255@L0
+- **Engrave Chest - Aegis** — 1 rank(s): 425619@L0
+- **Engrave Chest - Divine Storm** — 1 rank(s): 410014@L0
+- **Engrave Chest - Hallowed Ground** — 1 rank(s): 425618@L0
+- **Engrave Cloak - Divine Light** — 1 rank(s): 410015@L0
+- **Engrave Cloak - Righteous Vengeance** — 1 rank(s): 440792@L0
+- **Engrave Cloak - Shield of Righteousness** — 1 rank(s): 440788@L0
+- **Engrave Cloak - Shock and Awe** — 1 rank(s): 440790@L0
+- **Engrave Gloves - Beacon of Light** — 1 rank(s): 409999@L0
+- **Engrave Gloves - Crusader Strike** — 1 rank(s): 410002@L0
+- **Engrave Gloves - Hand of Reckoning** — 1 rank(s): 410001@L0
+- **Engrave Helm - Fanaticism** — 1 rank(s): 429251@L0
+- **Engrave Helm - Improved Sanctuary** — 1 rank(s): 429247@L0
+- **Engrave Helm - Wrath** — 1 rank(s): 429249@L0
+- **Engrave Pants - Aura Mastery** — 1 rank(s): 416037@L0
+- **Engrave Pants - Avenger's Shield** — 1 rank(s): 410008@L0
+- **Engrave Pants - Hand of Sacrifice** — 1 rank(s): 410010@L0
+- **Engrave Pants - Inspiration Exemplar** — 1 rank(s): 410011@L0
+- **Engrave Pants - Rebuke** — 1 rank(s): 425621@L0
+- **Engrave Ring - Axe Specialization** — 1 rank(s): 453688@L0
+- **Engrave Ring - Defense Specialization** — 1 rank(s): 459313@L0
+- **Engrave Ring - Healing Specialization** — 1 rank(s): 468761@L0
+- **Engrave Ring - Holy Specialization** — 1 rank(s): 453702@L0
+- **Engrave Ring - Mace Specialization** — 1 rank(s): 453689@L0
+- **Engrave Ring - Meditation Specialization** — 1 rank(s): 468763@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+- **Engrave Ring - Sword Specialization** — 1 rank(s): 453635@L0
+
+### Holy
+- **1263893** — 1 rank(s): 1263893@L?
+- **1263894** — 1 rank(s): 1263894@L?
+- **14911** — 1 rank(s): 14911@L?
+- **15008** — 1 rank(s): 15008@L?
+- **15009** — 1 rank(s): 15009@L?
+- **15010** — 1 rank(s): 15010@L?
+- **15011** — 1 rank(s): 15011@L?
+- **15012** — 1 rank(s): 15012@L?
+- **15013** — 1 rank(s): 15013@L?
+- **15014** — 1 rank(s): 15014@L?
+- **15017** — 1 rank(s): 15017@L?
+- **15018** — 1 rank(s): 15018@L?
+- **15019** — 1 rank(s): 15019@L?
+- **15020** — 1 rank(s): 15020@L?
+- **15028** — 1 rank(s): 15028@L?
+- **15029** — 1 rank(s): 15029@L?
+- **15030** — 1 rank(s): 15030@L?
+- **15031** — 1 rank(s): 15031@L?
+- **15349** — 1 rank(s): 15349@L?
+- **15354** — 1 rank(s): 15354@L?
+- **15355** — 1 rank(s): 15355@L?
+- **15356** — 1 rank(s): 15356@L?
+- **15362** — 1 rank(s): 15362@L?
+- **15363** — 1 rank(s): 15363@L?
+- **17191** — 1 rank(s): 17191@L?
+- **18531** — 1 rank(s): 18531@L?
+- **18533** — 1 rank(s): 18533@L?
+- **18534** — 1 rank(s): 18534@L?
+- **18535** — 1 rank(s): 18535@L?
+- **19977** — 1 rank(s): 19977@L?
+- **19978** — 1 rank(s): 19978@L?
+- **19979** — 1 rank(s): 19979@L?
+- **20206** — 1 rank(s): 20206@L?
+- **20207** — 1 rank(s): 20207@L?
+- **20208** — 1 rank(s): 20208@L?
+- **20209** — 1 rank(s): 20209@L?
+- **20212** — 1 rank(s): 20212@L?
+- **20213** — 1 rank(s): 20213@L?
+- **20214** — 1 rank(s): 20214@L?
+- **20215** — 1 rank(s): 20215@L?
+- **20225** — 1 rank(s): 20225@L?
+- **20234** — 1 rank(s): 20234@L?
+- **20235** — 1 rank(s): 20235@L?
+- **20238** — 1 rank(s): 20238@L?
+- **20239** — 1 rank(s): 20239@L?
+- **20258** — 1 rank(s): 20258@L?
+- **20259** — 1 rank(s): 20259@L?
+- **20260** — 1 rank(s): 20260@L?
+- **20261** — 1 rank(s): 20261@L?
+- **20263** — 1 rank(s): 20263@L?
+- **20264** — 1 rank(s): 20264@L?
+- **20265** — 1 rank(s): 20265@L?
+- **20266** — 1 rank(s): 20266@L?
+- **20330** — 1 rank(s): 20330@L?
+- **20331** — 1 rank(s): 20331@L?
+- **20332** — 1 rank(s): 20332@L?
+- **25829** — 1 rank(s): 25829@L?
+- **25836** — 1 rank(s): 25836@L?
+- **25890** — 1 rank(s): 25890@L?
+- **407615** — 1 rank(s): 407615@L?
+- **5924** — 1 rank(s): 5924@L?
+- **5925** — 1 rank(s): 5925@L?
+- **5926** — 1 rank(s): 5926@L?
+- **Blessing of Wisdom** — 6 rank(s): 19742@L14, 19850@L24, 19852@L34, 19853@L44, 19854@L54, 25290@L60
+- **Cleanse** — 1 rank(s): 4987@L42
+- **Consecration** — 9 rank(s): 26573@L20, 20116@L30, 20116@L30, 20922@L40, 20922@L40, 20923@L50, 20923@L50, 20924@L60, 20924@L60
+- **Divine Favor** — 1 rank(s): 20216@L?
+- **Divine Fury** — 1 rank(s): 18530@L?
+- **Divine Intellect** — 1 rank(s): 20257@L?
+- **Divine Light** — 1 rank(s): 458856@L0
+- **Divine Strength** — 1 rank(s): 20262@L?
+- **Enhanced Blessings** — 1 rank(s): 435984@L?
+- **Exorcism** — 6 rank(s): 879@L20, 5614@L28, 5615@L36, 10312@L44, 10313@L52, 10314@L60
+- **Flash of Light** — 13 rank(s): 412020@L0, 19750@L20, 19993@L20, 19939@L26, 1313342@L26, 19940@L34, 1313343@L34, 19941@L42, 1313344@L42, 19942@L50, 1313345@L50, 19943@L58, 1313346@L58
+- **Greater Blessing of Wisdom** — 2 rank(s): 25894@L54, 25918@L60
+- **Hammer of Wrath** — 3 rank(s): 24275@L44, 24274@L52, 24239@L60
+- **Healing Light** — 1 rank(s): 20237@L?
+- **Holy Light** — 19 rank(s): 635@L1, 19982@L1, 635@L1, 639@L6, 19981@L6, 647@L14, 19980@L14, 1026@L22, 19968@L22, 1042@L30, 1313348@L30, 3472@L38, 1313349@L38, 10328@L46, 1313350@L46, 10329@L54, 1313351@L54, 25292@L60, 1313352@L60
+- **Holy Power** — 1 rank(s): 5923@L?
+- **Holy Shock** — 10 rank(s): 1311606@L30, 20473@L40, 25912@L40, 25914@L40, 20929@L48, 25911@L48, 25913@L48, 20930@L56, 25902@L56, 25903@L56
+- **Holy Specialization** — 1 rank(s): 14889@L?
+- **Holy Wrath** — 2 rank(s): 2812@L50, 10318@L60
+- **Horn of Lordaeron** — 1 rank(s): 425600@L0
+- **Illumination** — 1 rank(s): 20210@L?
+- **Improved Blessing of Wisdom** — 2 rank(s): 20244@L?, 20245@L?
+- **Improved Flash of Light** — 3 rank(s): 20249@L?, 20250@L?, 20251@L?
+- **Improved Healing** — 1 rank(s): 14912@L?
+- **Improved Renew** — 1 rank(s): 14908@L?
+- **Improved Seals** — 1 rank(s): 20224@L?
+- **Inspiration** — 1 rank(s): 14892@L?
+- **Inspiration Exemplar** — 1 rank(s): 407880@L0
+- **Judgement of Light** — 4 rank(s): 20185@L30, 20344@L40, 20345@L50, 20346@L60
+- **Judgement of Righteousness** — 8 rank(s): 20187@L1, 20280@L10, 20281@L18, 20282@L26, 20283@L34, 20284@L42, 20285@L50, 20286@L58
+- **Judgement of Wisdom** — 3 rank(s): 20186@L38, 20354@L48, 20355@L58
+- **Lasting Judgement** — 3 rank(s): 20359@L?, 20360@L?, 20361@L?
+- **Lay on Hands** — 3 rank(s): 633@L10, 2800@L30, 10310@L50
+- **Light's Vigil** — 3 rank(s): 1310911@L40, 1311590@L50, 1311595@L60
+- **Lightwell Renew** — 2 rank(s): 27873@L0, 27874@L0
+- **Litany of Light** — 1 rank(s): 1317006@L?
+- **Oath of Light** — 1 rank(s): 1328548@L0
+- **Purify** — 1 rank(s): 1152@L8
+- **Rebuke** — 1 rank(s): 425609@L0
+- **Redemption** — 5 rank(s): 7328@L0, 10322@L0, 10324@L0, 20772@L0, 20773@L0
+- **Sacred Shield** — 1 rank(s): 412019@L0
+- **Seal of Light** — 4 rank(s): 20165@L30, 20347@L40, 20348@L50, 20349@L60
+- **Seal of Righteousness** — 9 rank(s): 20154@L1, 21084@L1, 20287@L10, 20288@L18, 20289@L26, 20290@L34, 20291@L42, 20292@L50, 20293@L58
+- **Seal of Wisdom** — 3 rank(s): 20166@L38, 20356@L48, 20357@L58
+- **Searing Light** — 1 rank(s): 14909@L?
+- **Sense Undead** — 2 rank(s): 5502@L0, 5502@L0
+- **Spirit of Redemption** — 1 rank(s): 20711@L0
+- **Spiritual Focus** — 1 rank(s): 20205@L?
+- **Spiritual Guidance** — 1 rank(s): 14901@L?
+- **Spiritual Healing** — 1 rank(s): 14898@L?
+- **Turn Undead** — 3 rank(s): 5627@L0, 2878@L0, 10326@L0
+- **Twilight Focus** — 1 rank(s): 14913@L?
+- **Unyielding Faith** — 1 rank(s): 9453@L?
+- **Voice of Truth** — 1 rank(s): 1310897@L20
+
+### Mounts
+- **Summon Charger** — 1 rank(s): 23214@L0
+- **Summon Warhorse** — 2 rank(s): 13819@L0, 1279399@L0
+
+### Protection
+- **1038** — 1 rank(s): 1038@L?
+- **12300** — 1 rank(s): 12300@L?
+- **12303** — 1 rank(s): 12303@L?
+- **1239550** — 1 rank(s): 1239550@L?
+- **1239551** — 1 rank(s): 1239551@L?
+- **1239552** — 1 rank(s): 1239552@L?
+- **1239553** — 1 rank(s): 1239553@L?
+- **12724** — 1 rank(s): 12724@L?
+- **12725** — 1 rank(s): 12725@L?
+- **12726** — 1 rank(s): 12726@L?
+- **12727** — 1 rank(s): 12727@L?
+- **12750** — 1 rank(s): 12750@L?
+- **12751** — 1 rank(s): 12751@L?
+- **12752** — 1 rank(s): 12752@L?
+- **12753** — 1 rank(s): 12753@L?
+- **12761** — 1 rank(s): 12761@L?
+- **12762** — 1 rank(s): 12762@L?
+- **12763** — 1 rank(s): 12763@L?
+- **12764** — 1 rank(s): 12764@L?
+- **12788** — 1 rank(s): 12788@L?
+- **12789** — 1 rank(s): 12789@L?
+- **12791** — 1 rank(s): 12791@L?
+- **12798** — 1 rank(s): 12798@L?
+- **12799** — 1 rank(s): 12799@L?
+- **12800** — 1 rank(s): 12800@L?
+- **12803** — 1 rank(s): 12803@L?
+- **12804** — 1 rank(s): 12804@L?
+- **12807** — 1 rank(s): 12807@L?
+- **12810** — 1 rank(s): 12810@L?
+- **12811** — 1 rank(s): 12811@L?
+- **12818** — 1 rank(s): 12818@L?
+- **12958** — 1 rank(s): 12958@L?
+- **12959** — 1 rank(s): 12959@L?
+- **12960** — 1 rank(s): 12960@L?
+- **12961** — 1 rank(s): 12961@L?
+- **1325499** — 1 rank(s): 1325499@L?
+- **16539** — 1 rank(s): 16539@L?
+- **16540** — 1 rank(s): 16540@L?
+- **16541** — 1 rank(s): 16541@L?
+- **16542** — 1 rank(s): 16542@L?
+- **20097** — 1 rank(s): 20097@L?
+- **20098** — 1 rank(s): 20098@L?
+- **20099** — 1 rank(s): 20099@L?
+- **20100** — 1 rank(s): 20100@L?
+- **20130** — 1 rank(s): 20130@L?
+- **20135** — 1 rank(s): 20135@L?
+- **20136** — 1 rank(s): 20136@L?
+- **20137** — 1 rank(s): 20137@L?
+- **20139** — 1 rank(s): 20139@L?
+- **20140** — 1 rank(s): 20140@L?
+- **20141** — 1 rank(s): 20141@L?
+- **20142** — 1 rank(s): 20142@L?
+- **20144** — 1 rank(s): 20144@L?
+- **20145** — 1 rank(s): 20145@L?
+- **20146** — 1 rank(s): 20146@L?
+- **20147** — 1 rank(s): 20147@L?
+- **20175** — 1 rank(s): 20175@L?
+- **20179** — 1 rank(s): 20179@L?
+- **20180** — 1 rank(s): 20180@L?
+- **20181** — 1 rank(s): 20181@L?
+- **20182** — 1 rank(s): 20182@L?
+- **20192** — 1 rank(s): 20192@L?
+- **20193** — 1 rank(s): 20193@L?
+- **20197** — 1 rank(s): 20197@L?
+- **20198** — 1 rank(s): 20198@L?
+- **20199** — 1 rank(s): 20199@L?
+- **20200** — 1 rank(s): 20200@L?
+- **20255** — 1 rank(s): 20255@L?
+- **20256** — 1 rank(s): 20256@L?
+- **20469** — 1 rank(s): 20469@L?
+- **20470** — 1 rank(s): 20470@L?
+- **20488** — 1 rank(s): 20488@L?
+- **20489** — 1 rank(s): 20489@L?
+- **20911** — 1 rank(s): 20911@L?
+- **20912** — 1 rank(s): 20912@L?
+- **20913** — 1 rank(s): 20913@L?
+- **20914** — 1 rank(s): 20914@L?
+- **25781** — 1 rank(s): 25781@L?
+- **25895** — 1 rank(s): 25895@L?
+- **25899** — 1 rank(s): 25899@L?
+- **407631** — 1 rank(s): 407631@L?
+- **407669** — 1 rank(s): 407669@L?
+- **Anticipation** — 2 rank(s): 20096@L0, 12297@L1
+- **Bastion** — 1 rank(s): 16538@L1
+- **Blessing of Freedom** — 1 rank(s): 1044@L18
+- **Blessing of Kings** — 1 rank(s): 20217@L20
+- **Blessing of Protection** — 3 rank(s): 1022@L10, 5599@L24, 10278@L38
+- **Blessing of Sacrifice** — 2 rank(s): 6940@L46, 20729@L54
+- **Concentration Aura** — 1 rank(s): 19746@L22
+- **Concussion Blow** — 1 rank(s): 12809@L30
+- **Defiance** — 1 rank(s): 12792@L0
+- **Devotion Aura** — 7 rank(s): 465@L1, 10290@L10, 643@L20, 10291@L30, 1032@L40, 10292@L50, 10293@L60
+- **Divine Intervention** — 1 rank(s): 19752@L30
+- **Divine Protection** — 2 rank(s): 498@L6, 5573@L18
+- **Divine Shield** — 2 rank(s): 642@L34, 1020@L50
+- **Fire Resistance Aura** — 3 rank(s): 19891@L36, 19899@L48, 19900@L60
+- **Frost Resistance Aura** — 3 rank(s): 19888@L32, 19897@L44, 19898@L56
+- **Greater Blessing of Kings** — 1 rank(s): 25898@L60
+- **Guardian's Favor** — 1 rank(s): 20174@L?
+- **Hammer of Justice** — 4 rank(s): 853@L8, 5588@L24, 5589@L40, 10308@L54
+- **Hammer of the Righteous** — 1 rank(s): 407632@L40
+- **Holy Shield** — 4 rank(s): 20925@L30, 20927@L40, 20928@L50, 1239570@L60
+- **Improved Bloodrage** — 1 rank(s): 12301@L1
+- **Improved Concentration Aura** — 1 rank(s): 20254@L?
+- **Improved Devotion Aura** — 1 rank(s): 20138@L?
+- **Improved Disarm** — 1 rank(s): 12313@L1
+- **Improved Hammer of Justice** — 1 rank(s): 20487@L?
+- **Improved Revenge** — 1 rank(s): 12797@L1
+- **Improved Righteous Fury** — 1 rank(s): 20468@L?
+- **Improved Seal of Fury** — 1 rank(s): 1314103@L0
+- **Improved Shield Bash** — 1 rank(s): 12311@L1
+- **Improved Shield Block** — 3 rank(s): 12945@L1, 12307@L1, 12944@L1
+- **Improved Shield Wall** — 1 rank(s): 12312@L1
+- **Improved Sunder Armor** — 1 rank(s): 12308@L1
+- **Improved Taunt** — 2 rank(s): 12302@L1, 12765@L1
+- **Iron Will** — 1 rank(s): 12962@L0
+- **Judgement of Fury** — 5 rank(s): 20183@L25, 20411@L34, 20412@L42, 20413@L50, 20414@L58
+- **Judgement of Justice** — 1 rank(s): 20184@L22
+- **Last Stand** — 2 rank(s): 12976@L0, 12975@L1
+- **One-Handed Weapon Specialization** — 1 rank(s): 20196@L1
+- **Precision** — 1 rank(s): 20189@L?
+- **Reckoning** — 1 rank(s): 20177@L?
+- **Redoubt** — 1 rank(s): 20127@L?
+- **Righteous Fury** — 2 rank(s): 407627@L0, 25780@L10
+- **Sanctified Judgement** — 1 rank(s): 1311074@L?
+- **Seal of Fury** — 7 rank(s): 1311649@L10, 1311656@L18, 20163@L26, 20419@L34, 20421@L42, 20422@L50, 20423@L58
+- **Seal of Justice** — 1 rank(s): 20164@L22
+- **Shadow Resistance Aura** — 3 rank(s): 19876@L28, 19895@L40, 19896@L52
+- **Shield Specialization** — 4 rank(s): 20148@L0, 20149@L0, 20150@L0, 12298@L1
+- **Shield of Righteousness** — 1 rank(s): 440658@L0
+- **Swift Judgement** — 1 rank(s): 1310994@L1
+- **Templar's Bulwark** — 1 rank(s): 1311015@L0
+- **Toughness** — 2 rank(s): 12299@L1, 20143@L1
+
+### Retribution
+- **20056** — 1 rank(s): 20056@L?
+- **20057** — 1 rank(s): 20057@L?
+- **20058** — 1 rank(s): 20058@L?
+- **20059** — 1 rank(s): 20059@L?
+- **20061** — 1 rank(s): 20061@L?
+- **20062** — 1 rank(s): 20062@L?
+- **20063** — 1 rank(s): 20063@L?
+- **20064** — 1 rank(s): 20064@L?
+- **20102** — 1 rank(s): 20102@L?
+- **20103** — 1 rank(s): 20103@L?
+- **20104** — 1 rank(s): 20104@L?
+- **20105** — 1 rank(s): 20105@L?
+- **20112** — 1 rank(s): 20112@L?
+- **20113** — 1 rank(s): 20113@L?
+- **20118** — 1 rank(s): 20118@L?
+- **20119** — 1 rank(s): 20119@L?
+- **20120** — 1 rank(s): 20120@L?
+- **20121** — 1 rank(s): 20121@L?
+- **25957** — 1 rank(s): 25957@L?
+- **25988** — 1 rank(s): 25988@L?
+- **26016** — 1 rank(s): 26016@L?
+- **26017** — 1 rank(s): 26017@L?
+- **26018** — 1 rank(s): 26018@L?
+- **26021** — 1 rank(s): 26021@L?
+- **26023** — 1 rank(s): 26023@L?
+- **407676** — 1 rank(s): 407676@L?
+- **Avenging Wrath** — 1 rank(s): 407788@L0
+- **Benediction** — 1 rank(s): 20101@L?
+- **Blessing of Might** — 7 rank(s): 19740@L4, 19834@L12, 19835@L22, 19836@L32, 19837@L42, 19838@L52, 25291@L60
+- **Conviction** — 1 rank(s): 20117@L1
+- **Deflection** — 1 rank(s): 20060@L?
+- **Divine Sacrifice** — 1 rank(s): 407804@L0
+- **Divine Storm** — 2 rank(s): 407778@L0, 407784@L0
+- **Exorcism** — 6 rank(s): 415073@L0, 415072@L0, 415071@L0, 415070@L0, 415069@L0, 415068@L0
+- **Exorcist** — 1 rank(s): 415076@L?
+- **Eye for an Eye** — 2 rank(s): 9799@L?, 25997@L1
+- **Greater Blessing of Might** — 2 rank(s): 25782@L52, 25916@L60
+- **Holy Strike** — 8 rank(s): 679@L6, 678@L12, 1866@L20, 680@L28, 2495@L36, 5569@L44, 10332@L52, 10333@L60
+- **Improved Blessing of Might** — 5 rank(s): 20042@L?, 20045@L?, 20046@L?, 20047@L?, 20048@L?
+- **Improved Judgement** — 1 rank(s): 25956@L?
+- **Improved Retribution Aura** — 2 rank(s): 20091@L?, 20092@L?
+- **Improved Seal of the Crusader** — 3 rank(s): 20335@L?, 20336@L?, 20337@L?
+- **Judgement** — 1 rank(s): 20271@L4
+- **Judgement of Command** — 10 rank(s): 20425@L20, 20467@L20, 20962@L30, 20963@L30, 20961@L40, 20964@L40, 20967@L50, 20965@L50, 20968@L60, 20966@L60
+- **Judgement of Martyrdom** — 1 rank(s): 407803@L0
+- **Judgement of the Crusader** — 5 rank(s): 20188@L12, 20300@L22, 20301@L32, 20302@L42, 20303@L52
+- **Pursuit of Justice** — 1 rank(s): 26022@L?
+- **Repentance** — 1 rank(s): 20066@L20
+- **Retribution Aura** — 5 rank(s): 7294@L16, 10298@L26, 10299@L36, 10300@L46, 10301@L56
+- **Righteous Judgement** — 1 rank(s): 440677@L1
+- **Seal of Command** — 5 rank(s): 20375@L20, 20915@L30, 20918@L40, 20919@L50, 20920@L60
+- **Seal of Martyrdom** — 2 rank(s): 407798@L0, 407799@L?
+- **Seal of the Crusader** — 6 rank(s): 21082@L6, 20162@L12, 20305@L22, 20306@L32, 20307@L42, 20308@L52
+- **Two-Handed Weapon Specialization** — 1 rank(s): 20111@L1
+- **Unsealed Wrath** — 1 rank(s): 1310735@L0
+- **Vengeance** — 1 rank(s): 20049@L?
+- **Vindication** — 2 rank(s): 9452@L?, 67@L?
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+## Priest
+### Discipline
+- **14525** — 1 rank(s): 14525@L?
+- **14526** — 1 rank(s): 14526@L?
+- **14527** — 1 rank(s): 14527@L?
+- **14528** — 1 rank(s): 14528@L?
+- **14743** — 1 rank(s): 14743@L?
+- **14768** — 1 rank(s): 14768@L?
+- **14769** — 1 rank(s): 14769@L?
+- **14770** — 1 rank(s): 14770@L?
+- **14771** — 1 rank(s): 14771@L?
+- **14772** — 1 rank(s): 14772@L?
+- **14774** — 1 rank(s): 14774@L?
+- **14776** — 1 rank(s): 14776@L?
+- **14777** — 1 rank(s): 14777@L?
+- **14780** — 1 rank(s): 14780@L?
+- **14781** — 1 rank(s): 14781@L?
+- **14782** — 1 rank(s): 14782@L?
+- **14783** — 1 rank(s): 14783@L?
+- **14784** — 1 rank(s): 14784@L?
+- **14785** — 1 rank(s): 14785@L?
+- **14786** — 1 rank(s): 14786@L?
+- **14787** — 1 rank(s): 14787@L?
+- **14788** — 1 rank(s): 14788@L?
+- **14789** — 1 rank(s): 14789@L?
+- **14790** — 1 rank(s): 14790@L?
+- **14791** — 1 rank(s): 14791@L?
+- **18552** — 1 rank(s): 18552@L?
+- **18553** — 1 rank(s): 18553@L?
+- **18554** — 1 rank(s): 18554@L?
+- **18555** — 1 rank(s): 18555@L?
+- **Confounding Flash** — 1 rank(s): 1277455@L10
+- **Contingency Plan** — 5 rank(s): 1277462@L20, 1277634@L30, 1277638@L40, 1277639@L50, 1277640@L60
+- **Dispel Magic** — 2 rank(s): 527@L18, 988@L36
+- **Divine Spirit** — 4 rank(s): 14752@L30, 14818@L40, 14819@L50, 27841@L60
+- **Elune's Grace** — 1 rank(s): 2651@L20
+- **Feedback** — 5 rank(s): 13896@L20, 19271@L30, 19273@L40, 19274@L50, 19275@L60
+- **Focused Casting** — 1 rank(s): 27828@L?
+- **Force of Will** — 5 rank(s): 18544@L?, 18547@L?, 18548@L?, 18549@L?, 18550@L?
+- **Improved Inner Fire** — 1 rank(s): 14747@L?
+- **Improved Mana Burn** — 1 rank(s): 14750@L?
+- **Improved Power Word: Fortitude** — 2 rank(s): 14749@L?, 14767@L?
+- **Improved Power Word: Shield** — 1 rank(s): 14748@L?
+- **Increased Fortitude** — 1 rank(s): 436951@L?
+- **Inner Fire** — 6 rank(s): 588@L12, 7128@L20, 602@L30, 1006@L40, 10951@L50, 10952@L60
+- **Inner Focus** — 1 rank(s): 14751@L?
+- **Levitate** — 1 rank(s): 1706@L34
+- **Mana Burn** — 5 rank(s): 8129@L24, 8131@L32, 10874@L40, 10875@L48, 10876@L56
+- **Martyrdom** — 1 rank(s): 14531@L?
+- **Meditation** — 1 rank(s): 14521@L?
+- **Mental Agility** — 1 rank(s): 14520@L?
+- **Mental Strength** — 1 rank(s): 18551@L?
+- **Pain Suppression** — 1 rank(s): 402004@L0
+- **Penance** — 12 rank(s): 402289@L30, 402284@L30, 402174@L30, 1240720@L40, 1240727@L40, 1240723@L40, 1240721@L50, 1240730@L50, 1240724@L50, 1316995@L60, 1316993@L60, 1316991@L60
+- **Power Infusion** — 1 rank(s): 10060@L40
+- **Power Word: Barrier** — 1 rank(s): 425207@L0
+- **Power Word: Fortitude** — 6 rank(s): 1243@L1, 1244@L12, 1245@L24, 2791@L36, 10937@L48, 10938@L60
+- **Power Word: Shield** — 10 rank(s): 17@L6, 592@L12, 600@L18, 3747@L24, 6065@L30, 6066@L36, 10898@L42, 10899@L48, 10900@L54, 10901@L60
+- **Prayer of Fortitude** — 2 rank(s): 21562@L48, 21564@L60
+- **Prayer of Spirit** — 1 rank(s): 27681@L60
+- **Shackle Undead** — 3 rank(s): 9484@L20, 9485@L40, 10955@L60
+- **Silent Resolve** — 1 rank(s): 14523@L?
+- **Starshards** — 7 rank(s): 10797@L10, 19296@L18, 19299@L26, 19302@L34, 19303@L42, 19304@L50, 19305@L58
+- **Unbreakable Will** — 1 rank(s): 14522@L?
+- **Wand Specialization** — 1 rank(s): 14524@L?
+
+### Engraving
+- **402851** — 1 rank(s): 402851@L?
+- **402856** — 1 rank(s): 402856@L?
+- **402863** — 1 rank(s): 402863@L?
+- **415989** — 1 rank(s): 415989@L?
+- **415992** — 1 rank(s): 415992@L?
+- **415993** — 1 rank(s): 415993@L?
+- **415994** — 1 rank(s): 415994@L?
+- **415998** — 1 rank(s): 415998@L?
+- **415999** — 1 rank(s): 415999@L?
+- **Engrave Belt - Empowered Renew** — 1 rank(s): 425309@L0
+- **Engrave Belt - Mind Spike** — 1 rank(s): 431663@L0
+- **Engrave Belt - Renewed Hope** — 1 rank(s): 425310@L0
+- **Engrave Boots - Dispersion** — 1 rank(s): 425314@L0
+- **Engrave Boots - Pain Suppression** — 1 rank(s): 402855@L0
+- **Engrave Boots - Spirit of the Redeemer** — 1 rank(s): 425312@L0
+- **Engrave Boots - Void Plague** — 1 rank(s): 425216@L0
+- **Engrave Bracers - Despair** — 1 rank(s): 431673@L0
+- **Engrave Bracers - Power Word: Barrier** — 1 rank(s): 425213@L0
+- **Engrave Bracers - Surge of Light** — 1 rank(s): 431669@L0
+- **Engrave Bracers - Void Zone** — 1 rank(s): 431705@L0
+- **Engrave Chest - Serendipity** — 1 rank(s): 415995@L0
+- **Engrave Chest - Strength of Soul** — 1 rank(s): 415997@L0
+- **Engrave Chest - Twisted Faith** — 1 rank(s): 425215@L0
+- **Engrave Cloak - Binding Heal** — 1 rank(s): 402853@L0
+- **Engrave Cloak - Soul Warding** — 1 rank(s): 402850@L0
+- **Engrave Cloak - Vampiric Touch** — 1 rank(s): 402857@L0
+- **Engrave Gloves - Circle of Healing** — 1 rank(s): 402859@L0
+- **Engrave Gloves - Mind Sear** — 1 rank(s): 415996@L0
+- **Engrave Gloves - Penance** — 1 rank(s): 402862@L0
+- **Engrave Gloves - Shadow Word: Death** — 1 rank(s): 402849@L0
+- **Engrave Helm - Divine Aegis** — 1 rank(s): 431650@L0
+- **Engrave Helm - Eye of the Void** — 1 rank(s): 402864@L0
+- **Engrave Helm - Pain and Suffering** — 1 rank(s): 415991@L0
+- **Engrave Pants - Homunculi** — 1 rank(s): 402852@L0
+- **Engrave Pants - Prayer of Mending** — 1 rank(s): 402848@L0
+- **Engrave Pants - Shadowfiend** — 1 rank(s): 402861@L0
+- **Engrave Pants - Shared Pain** — 1 rank(s): 402854@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Fire Specialization** — 1 rank(s): 453696@L0
+- **Engrave Ring - Healing Specialization** — 1 rank(s): 468761@L0
+- **Engrave Ring - Holy Specialization** — 1 rank(s): 453702@L0
+- **Engrave Ring - Mace Specialization** — 1 rank(s): 453689@L0
+- **Engrave Ring - Meditation Specialization** — 1 rank(s): 468763@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+- **Engrave Ring - Shadow Specialization** — 1 rank(s): 453700@L0
+
+### Holy
+- **14911** — 1 rank(s): 14911@L?
+- **15008** — 1 rank(s): 15008@L?
+- **15009** — 1 rank(s): 15009@L?
+- **15010** — 1 rank(s): 15010@L?
+- **15011** — 1 rank(s): 15011@L?
+- **15012** — 1 rank(s): 15012@L?
+- **15013** — 1 rank(s): 15013@L?
+- **15014** — 1 rank(s): 15014@L?
+- **15017** — 1 rank(s): 15017@L?
+- **15018** — 1 rank(s): 15018@L?
+- **15019** — 1 rank(s): 15019@L?
+- **15020** — 1 rank(s): 15020@L?
+- **15028** — 1 rank(s): 15028@L?
+- **15029** — 1 rank(s): 15029@L?
+- **15030** — 1 rank(s): 15030@L?
+- **15031** — 1 rank(s): 15031@L?
+- **15349** — 1 rank(s): 15349@L?
+- **15354** — 1 rank(s): 15354@L?
+- **15355** — 1 rank(s): 15355@L?
+- **15356** — 1 rank(s): 15356@L?
+- **15362** — 1 rank(s): 15362@L?
+- **15363** — 1 rank(s): 15363@L?
+- **17191** — 1 rank(s): 17191@L?
+- **18531** — 1 rank(s): 18531@L?
+- **18533** — 1 rank(s): 18533@L?
+- **18534** — 1 rank(s): 18534@L?
+- **18535** — 1 rank(s): 18535@L?
+- **20206** — 1 rank(s): 20206@L?
+- **20207** — 1 rank(s): 20207@L?
+- **20208** — 1 rank(s): 20208@L?
+- **20209** — 1 rank(s): 20209@L?
+- **20212** — 1 rank(s): 20212@L?
+- **20213** — 1 rank(s): 20213@L?
+- **20214** — 1 rank(s): 20214@L?
+- **20215** — 1 rank(s): 20215@L?
+- **20225** — 1 rank(s): 20225@L?
+- **20234** — 1 rank(s): 20234@L?
+- **20235** — 1 rank(s): 20235@L?
+- **20238** — 1 rank(s): 20238@L?
+- **20239** — 1 rank(s): 20239@L?
+- **20258** — 1 rank(s): 20258@L?
+- **20259** — 1 rank(s): 20259@L?
+- **20260** — 1 rank(s): 20260@L?
+- **20261** — 1 rank(s): 20261@L?
+- **20263** — 1 rank(s): 20263@L?
+- **20264** — 1 rank(s): 20264@L?
+- **20265** — 1 rank(s): 20265@L?
+- **20266** — 1 rank(s): 20266@L?
+- **20330** — 1 rank(s): 20330@L?
+- **20331** — 1 rank(s): 20331@L?
+- **20332** — 1 rank(s): 20332@L?
+- **27790** — 1 rank(s): 27790@L?
+- **27815** — 1 rank(s): 27815@L?
+- **27816** — 1 rank(s): 27816@L?
+- **27817** — 1 rank(s): 27817@L?
+- **27818** — 1 rank(s): 27818@L?
+- **27901** — 1 rank(s): 27901@L?
+- **27902** — 1 rank(s): 27902@L?
+- **27903** — 1 rank(s): 27903@L?
+- **27904** — 1 rank(s): 27904@L?
+- **Abolish Disease** — 1 rank(s): 552@L32
+- **Blessed Recovery** — 2 rank(s): 27811@L?, 27813@L?
+- **Chastise** — 5 rank(s): 1277331@L20, 1277332@L30, 1277333@L40, 1277334@L50, 1277335@L60
+- **Circle of Healing** — 1 rank(s): 401946@L0
+- **Cure Disease** — 1 rank(s): 528@L14
+- **Desperate Prayer** — 7 rank(s): 13908@L10, 19236@L18, 19238@L26, 19240@L34, 19241@L42, 19242@L50, 19243@L58
+- **Divine Favor** — 1 rank(s): 20216@L?
+- **Divine Fury** — 1 rank(s): 18530@L?
+- **Divine Grace** — 7 rank(s): 1277370@L10, 1277371@L18, 1277372@L26, 1277374@L34, 1277376@L42, 1277377@L50, 1277378@L58
+- **Divine Intellect** — 1 rank(s): 20257@L?
+- **Divine Strength** — 1 rank(s): 20262@L?
+- **Fear Ward** — 1 rank(s): 6346@L20
+- **Flash Heal** — 7 rank(s): 2061@L20, 9472@L26, 9473@L32, 9474@L38, 10915@L44, 10916@L50, 10917@L56
+- **Greater Heal** — 5 rank(s): 2060@L40, 10963@L46, 10964@L52, 10965@L58, 25314@L60
+- **Heal** — 4 rank(s): 2054@L16, 2055@L22, 6063@L28, 6064@L34
+- **Healing Light** — 1 rank(s): 20237@L?
+- **Holy Fire** — 8 rank(s): 14914@L20, 15262@L24, 15263@L30, 15264@L36, 15265@L42, 15266@L48, 15267@L54, 15261@L60
+- **Holy Light** — 1 rank(s): 1042@L30
+- **Holy Nova** — 12 rank(s): 15237@L20, 23455@L20, 15430@L28, 23458@L28, 15431@L36, 23459@L36, 27799@L44, 27803@L44, 27800@L52, 27804@L52, 27801@L60, 27805@L60
+- **Holy Reach** — 1 rank(s): 27789@L?
+- **Holy Shock** — 4 rank(s): 1311606@L30, 20473@L40, 20929@L48, 20930@L56
+- **Holy Specialization** — 1 rank(s): 14889@L?
+- **Illumination** — 1 rank(s): 20210@L?
+- **Improved Blessing of Wisdom** — 2 rank(s): 20244@L?, 20245@L?
+- **Improved Flash of Light** — 3 rank(s): 20249@L?, 20250@L?, 20251@L?
+- **Improved Healing** — 1 rank(s): 14912@L?
+- **Improved Renew** — 1 rank(s): 14908@L?
+- **Improved Seals** — 1 rank(s): 20224@L?
+- **Inspiration** — 1 rank(s): 14892@L?
+- **Lesser Heal** — 3 rank(s): 2050@L1, 2052@L4, 2053@L10
+- **Lightwell** — 3 rank(s): 724@L40, 27870@L50, 27871@L60
+- **Lightwell Renew** — 3 rank(s): 7001@L0, 27873@L0, 27874@L0
+- **Litany of Light** — 1 rank(s): 1317006@L?
+- **Oath of Light** — 1 rank(s): 1328548@L0
+- **Prayer of Healing** — 5 rank(s): 596@L30, 996@L40, 10960@L50, 10961@L60, 25316@L60
+- **Prayer of Mending** — 4 rank(s): 401863@L40, 401859@L40, 1240826@L50, 1240827@L60
+- **Renew** — 20 rank(s): 425277@L0, 425276@L0, 425275@L0, 425274@L0, 425273@L0, 425272@L0, 425271@L0, 425270@L0, 425269@L0, 425268@L0, 139@L8, 6074@L14, 6075@L20, 6076@L26, 6077@L32, 6078@L38, 10927@L44, 10928@L50, 10929@L56, 25315@L60
+- **Resurrection** — 5 rank(s): 2006@L10, 2010@L22, 10880@L34, 10881@L46, 20770@L58
+- **Searing Light** — 1 rank(s): 14909@L?
+- **Smite** — 8 rank(s): 585@L1, 591@L6, 598@L14, 984@L22, 1004@L30, 6060@L38, 10933@L46, 10934@L54
+- **Spell Warding** — 1 rank(s): 27900@L?
+- **Spirit of Redemption** — 1 rank(s): 20711@L0
+- **Spiritual Focus** — 1 rank(s): 20205@L?
+- **Spiritual Guidance** — 1 rank(s): 14901@L?
+- **Spiritual Healing** — 1 rank(s): 14898@L?
+- **Twilight Focus** — 1 rank(s): 14913@L?
+- **Voice of Truth** — 1 rank(s): 1310897@L20
+
+### Meditation
+- **Secrets of Elune** — 2 rank(s): 424036@L?, 424036@L?
+- **Secrets of Undeath** — 2 rank(s): 424041@L?, 424041@L?
+- **Secrets of the Light** — 2 rank(s): 424035@L?, 424035@L?
+- **Secrets of the Loa** — 2 rank(s): 424037@L?, 424037@L?
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **Priest Racial Ability** — 1 rank(s): 459695@L0
+- **Priest Racial Ability RAQ** — 1 rank(s): 1219274@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+### Shadow Magic
+- **15272** — 1 rank(s): 15272@L?
+- **15307** — 1 rank(s): 15307@L?
+- **15308** — 1 rank(s): 15308@L?
+- **15309** — 1 rank(s): 15309@L?
+- **15310** — 1 rank(s): 15310@L?
+- **15311** — 1 rank(s): 15311@L?
+- **15312** — 1 rank(s): 15312@L?
+- **15313** — 1 rank(s): 15313@L?
+- **15314** — 1 rank(s): 15314@L?
+- **15316** — 1 rank(s): 15316@L?
+- **15317** — 1 rank(s): 15317@L?
+- **15320** — 1 rank(s): 15320@L?
+- **15327** — 1 rank(s): 15327@L?
+- **15328** — 1 rank(s): 15328@L?
+- **15329** — 1 rank(s): 15329@L?
+- **15330** — 1 rank(s): 15330@L?
+- **15331** — 1 rank(s): 15331@L?
+- **15332** — 1 rank(s): 15332@L?
+- **15333** — 1 rank(s): 15333@L?
+- **15334** — 1 rank(s): 15334@L?
+- **15335** — 1 rank(s): 15335@L?
+- **15336** — 1 rank(s): 15336@L?
+- **15337** — 1 rank(s): 15337@L?
+- **15338** — 1 rank(s): 15338@L?
+- **15448** — 1 rank(s): 15448@L?
+- **17323** — 1 rank(s): 17323@L?
+- **17325** — 1 rank(s): 17325@L?
+- **27840** — 1 rank(s): 27840@L?
+- **Blackout** — 5 rank(s): 15268@L?, 15323@L?, 15324@L?, 15325@L?, 15326@L?
+- **Dark Sacrifice** — 5 rank(s): 1277324@L20, 1277325@L30, 1277326@L40, 1277327@L50, 1277328@L60
+- **Darkness** — 1 rank(s): 15259@L?
+- **Devouring Plague** — 6 rank(s): 2944@L20, 19276@L28, 19277@L36, 19278@L44, 19279@L52, 19280@L60
+- **Dispersion** — 1 rank(s): 425294@L0
+- **Eye of the Void** — 1 rank(s): 402789@L0
+- **Fade** — 6 rank(s): 586@L8, 9578@L20, 9579@L30, 9592@L40, 10941@L50, 10942@L60
+- **Hex of Weakness** — 6 rank(s): 9035@L10, 19281@L20, 19282@L30, 19283@L40, 19284@L50, 19285@L60
+- **Homunculi** — 1 rank(s): 402799@L0
+- **Improved Fade** — 1 rank(s): 15274@L?
+- **Improved Mind Blast** — 1 rank(s): 15273@L?
+- **Improved Psychic Scream** — 1 rank(s): 15392@L?
+- **Improved Shadow Word: Pain** — 1 rank(s): 15275@L?
+- **Improved Vampiric Embrace** — 1 rank(s): 27839@L?
+- **Mind Blast** — 9 rank(s): 8092@L10, 8102@L16, 8103@L22, 8104@L28, 8105@L34, 8106@L40, 10945@L46, 10946@L52, 10947@L58
+- **Mind Control** — 3 rank(s): 605@L30, 10911@L44, 10912@L58
+- **Mind Flay** — 6 rank(s): 15407@L20, 17311@L28, 17312@L36, 17313@L44, 17314@L52, 18807@L60
+- **Mind Sear** — 2 rank(s): 413260@L0, 413259@L0
+- **Mind Soothe** — 3 rank(s): 453@L20, 8192@L36, 10953@L52
+- **Mind Spike** — 1 rank(s): 431655@L0
+- **Mind Vision** — 2 rank(s): 2096@L22, 10909@L44
+- **Prayer of Shadow Protection** — 1 rank(s): 27683@L56
+- **Psychic Scream** — 4 rank(s): 8122@L14, 8124@L28, 10888@L42, 10890@L56
+- **Shadow Affinity** — 1 rank(s): 15318@L?
+- **Shadow Focus** — 1 rank(s): 15260@L?
+- **Shadow Protection** — 3 rank(s): 976@L30, 10957@L42, 10958@L56
+- **Shadow Reach** — 1 rank(s): 17322@L?
+- **Shadow Weaving** — 1 rank(s): 15257@L?
+- **Shadow Word: Death** — 1 rank(s): 401955@L0
+- **Shadow Word: Pain** — 8 rank(s): 589@L4, 594@L10, 970@L18, 992@L26, 2767@L34, 10892@L42, 10893@L50, 10894@L58
+- **Shadowfiend** — 1 rank(s): 401977@L0
+- **Shadowform** — 1 rank(s): 15473@L?
+- **Shadowguard** — 12 rank(s): 18137@L20, 28377@L20, 19308@L28, 28378@L28, 19309@L36, 28379@L36, 19310@L44, 28380@L44, 19311@L52, 28381@L52, 19312@L60, 28382@L60
+- **Silence** — 1 rank(s): 15487@L?
+- **Spirit Tap** — 1 rank(s): 15270@L?
+- **Touch of Weakness** — 12 rank(s): 2652@L10, 2943@L10, 19261@L20, 19249@L20, 19262@L30, 19251@L30, 19264@L40, 19252@L40, 19265@L50, 19253@L50, 19266@L60, 19254@L60
+- **Vampiric Embrace** — 1 rank(s): 15286@L30
+- **Vampiric Touch** — 1 rank(s): 402668@L0
+- **Void Plague** — 1 rank(s): 425204@L0
+
+## Rogue
+### Assassination
+- **1241505** — 1 rank(s): 1241505@L?
+- **1241507** — 1 rank(s): 1241507@L?
+- **1241508** — 1 rank(s): 1241508@L?
+- **1241509** — 1 rank(s): 1241509@L?
+- **1310705** — 1 rank(s): 1310705@L?
+- **1310706** — 1 rank(s): 1310706@L?
+- **1310707** — 1 rank(s): 1310707@L?
+- **1310709** — 1 rank(s): 1310709@L?
+- **14114** — 1 rank(s): 14114@L?
+- **14115** — 1 rank(s): 14115@L?
+- **14116** — 1 rank(s): 14116@L?
+- **14117** — 1 rank(s): 14117@L?
+- **14132** — 1 rank(s): 14132@L?
+- **14135** — 1 rank(s): 14135@L?
+- **14136** — 1 rank(s): 14136@L?
+- **14137** — 1 rank(s): 14137@L?
+- **14139** — 1 rank(s): 14139@L?
+- **14140** — 1 rank(s): 14140@L?
+- **14141** — 1 rank(s): 14141@L?
+- **14142** — 1 rank(s): 14142@L?
+- **14148** — 1 rank(s): 14148@L?
+- **14159** — 1 rank(s): 14159@L?
+- **14160** — 1 rank(s): 14160@L?
+- **14161** — 1 rank(s): 14161@L?
+- **14163** — 1 rank(s): 14163@L?
+- **14164** — 1 rank(s): 14164@L?
+- **14166** — 1 rank(s): 14166@L?
+- **14167** — 1 rank(s): 14167@L?
+- **14169** — 1 rank(s): 14169@L?
+- **14175** — 1 rank(s): 14175@L?
+- **14176** — 1 rank(s): 14176@L?
+- **14190** — 1 rank(s): 14190@L?
+- **14193** — 1 rank(s): 14193@L?
+- **14194** — 1 rank(s): 14194@L?
+- **14195** — 1 rank(s): 14195@L?
+- **16514** — 1 rank(s): 16514@L?
+- **16515** — 1 rank(s): 16515@L?
+- **16719** — 1 rank(s): 16719@L?
+- **16720** — 1 rank(s): 16720@L?
+- **Ambush** — 6 rank(s): 8676@L18, 8724@L26, 8725@L34, 11267@L42, 11268@L50, 11269@L58
+- **Cheap Shot** — 1 rank(s): 1833@L26
+- **Cold Blood** — 1 rank(s): 14177@L?
+- **Coup de Grace** — 1 rank(s): 14162@L?
+- **Eviscerate** — 9 rank(s): 2098@L1, 6760@L8, 6761@L16, 6762@L24, 8623@L32, 8624@L40, 11299@L48, 11300@L56, 31016@L60
+- **Expose Armor** — 5 rank(s): 8647@L14, 8649@L26, 8650@L36, 11197@L46, 11198@L56
+- **Garrote** — 6 rank(s): 703@L14, 8631@L22, 8632@L30, 8633@L38, 11289@L46, 11290@L54
+- **Improved Expose Armor** — 1 rank(s): 14168@L?
+- **Improved Kidney Shot** — 1 rank(s): 14174@L?
+- **Improved Poisons** — 1 rank(s): 14113@L?
+- **Improved Slice and Dice** — 1 rank(s): 14165@L?
+- **Kidney Shot** — 2 rank(s): 408@L30, 8643@L50
+- **Lethality** — 1 rank(s): 14128@L?
+- **Malice** — 1 rank(s): 14138@L?
+- **Murder** — 1 rank(s): 14158@L?
+- **Mutilate** — 9 rank(s): 399956@L40, 399960@L40, 399961@L40, 1241582@L50, 1241585@L50, 1241588@L50, 1241584@L60, 1241586@L60, 1241590@L60
+- **Relentless Strikes** — 1 rank(s): 14179@L?
+- **Remorseless Attacks** — 1 rank(s): 14144@L?
+- **Rupture** — 6 rank(s): 1943@L20, 8639@L28, 8640@L36, 11273@L44, 11274@L52, 11275@L60
+- **Ruthlessness** — 1 rank(s): 14156@L?
+- **Seal Fate** — 1 rank(s): 14186@L1
+- **Slice and Dice** — 2 rank(s): 5171@L10, 6774@L42
+- **Venom** — 1 rank(s): 1329328@L30
+- **Vigor** — 1 rank(s): 14983@L?
+- **Vile Poisons** — 1 rank(s): 16513@L?
+
+### Combat
+- **13788** — 1 rank(s): 13788@L?
+- **13789** — 1 rank(s): 13789@L?
+- **13790** — 1 rank(s): 13790@L?
+- **13791** — 1 rank(s): 13791@L?
+- **13792** — 1 rank(s): 13792@L?
+- **13793** — 1 rank(s): 13793@L?
+- **13800** — 1 rank(s): 13800@L?
+- **13801** — 1 rank(s): 13801@L?
+- **13802** — 1 rank(s): 13802@L?
+- **13803** — 1 rank(s): 13803@L?
+- **13804** — 1 rank(s): 13804@L?
+- **13805** — 1 rank(s): 13805@L?
+- **13806** — 1 rank(s): 13806@L?
+- **13807** — 1 rank(s): 13807@L?
+- **13832** — 1 rank(s): 13832@L?
+- **13843** — 1 rank(s): 13843@L?
+- **13844** — 1 rank(s): 13844@L?
+- **13845** — 1 rank(s): 13845@L?
+- **13848** — 1 rank(s): 13848@L?
+- **13849** — 1 rank(s): 13849@L?
+- **13851** — 1 rank(s): 13851@L?
+- **13852** — 1 rank(s): 13852@L?
+- **13853** — 1 rank(s): 13853@L?
+- **13854** — 1 rank(s): 13854@L?
+- **13855** — 1 rank(s): 13855@L?
+- **13856** — 1 rank(s): 13856@L?
+- **13863** — 1 rank(s): 13863@L?
+- **13865** — 1 rank(s): 13865@L?
+- **13866** — 1 rank(s): 13866@L?
+- **13867** — 1 rank(s): 13867@L?
+- **13872** — 1 rank(s): 13872@L?
+- **13875** — 1 rank(s): 13875@L?
+- **13961** — 1 rank(s): 13961@L?
+- **13962** — 1 rank(s): 13962@L?
+- **13963** — 1 rank(s): 13963@L?
+- **13964** — 1 rank(s): 13964@L?
+- **18428** — 1 rank(s): 18428@L?
+- **18429** — 1 rank(s): 18429@L?
+- **30920** — 1 rank(s): 30920@L?
+- **400010** — 1 rank(s): 400010@L?
+- **400011** — 1 rank(s): 400011@L?
+- **Adrenaline Rush** — 1 rank(s): 13750@L?
+- **Aggression** — 1 rank(s): 18427@L?
+- **Backstab** — 9 rank(s): 53@L4, 2589@L12, 2590@L20, 2591@L28, 8721@L36, 11279@L44, 11280@L52, 11281@L60, 25300@L60
+- **Between the Eyes** — 1 rank(s): 400009@L0
+- **Blade Dance** — 1 rank(s): 400012@L0
+- **Blade Flurry** — 1 rank(s): 13877@L1
+- **Deflection** — 1 rank(s): 13713@L?
+- **Dual Wield Specialization** — 1 rank(s): 13715@L?
+- **Efficient Strikes** — 1 rank(s): 13732@L?
+- **Endurance** — 1 rank(s): 13742@L?
+- **Evasion** — 1 rank(s): 5277@L8
+- **Feint** — 5 rank(s): 1966@L16, 6768@L28, 8637@L40, 11303@L52, 25302@L60
+- **Fist Weapon Specialization** — 5 rank(s): 13707@L0, 13966@L0, 13967@L0, 13968@L0, 13969@L0
+- **Flawless Execution** — 1 rank(s): 1310711@L?
+- **Gouge** — 5 rank(s): 1776@L6, 1777@L18, 8629@L32, 11285@L46, 11286@L60
+- **Hack and Slash** — 4 rank(s): 13709@L0, 13706@L1, 13706@L1, 13960@L1
+- **Improved Gouge** — 1 rank(s): 13741@L?
+- **Improved Kick** — 1 rank(s): 13754@L?
+- **Improved Sprint** — 1 rank(s): 13743@L?
+- **Kick** — 4 rank(s): 1766@L12, 1767@L26, 1768@L42, 1769@L58
+- **Lightning Reflexes** — 1 rank(s): 13712@L?
+- **Main Gauche** — 1 rank(s): 424919@L?
+- **Poisoned Knife** — 2 rank(s): 425013@L0, 425012@L0
+- **Precision** — 1 rank(s): 13705@L?
+- **Puncturing Wounds** — 1 rank(s): 1224716@L1
+- **Quick Draw** — 1 rank(s): 398196@L0
+- **Riposte** — 1 rank(s): 14251@L?
+- **Rogue Passive (DND)** — 1 rank(s): 21184@L0
+- **Saber Slash** — 1 rank(s): 424785@L0
+- **Shank** — 2 rank(s): 1329283@L0, 1329549@L0
+- **Shiv** — 1 rank(s): 424799@L0
+- **Sinister Strike** — 8 rank(s): 1752@L1, 1757@L6, 1758@L14, 1759@L22, 1760@L30, 8621@L38, 11293@L46, 11294@L54
+- **Sprint** — 3 rank(s): 2983@L10, 8696@L34, 11305@L58
+- **Weapon Expertise** — 1 rank(s): 30919@L?
+
+### Engraving
+- **400090** — 1 rank(s): 400090@L?
+- **400091** — 1 rank(s): 400091@L?
+- **400092** — 1 rank(s): 400092@L?
+- **415919** — 1 rank(s): 415919@L?
+- **415920** — 1 rank(s): 415920@L?
+- **415921** — 1 rank(s): 415921@L?
+- **415924** — 1 rank(s): 415924@L?
+- **415928** — 1 rank(s): 415928@L?
+- **415929** — 1 rank(s): 415929@L?
+- **415932** — 1 rank(s): 415932@L?
+- **Engrave Belt - Poisoned Knife** — 1 rank(s): 425102@L0
+- **Engrave Belt - Shadowstep** — 1 rank(s): 400101@L0
+- **Engrave Belt - Shuriken Toss** — 1 rank(s): 400096@L0
+- **Engrave Boots - Master of Subtlety** — 1 rank(s): 425103@L0
+- **Engrave Boots - Rolling with the Punches** — 1 rank(s): 400093@L0
+- **Engrave Boots - Waylay** — 1 rank(s): 415926@L0
+- **Engrave Bracers - Carnage** — 1 rank(s): 432299@L0
+- **Engrave Bracers - Cut to the Chase** — 1 rank(s): 432297@L0
+- **Engrave Bracers - Unfair Advantage** — 1 rank(s): 432301@L0
+- **Engrave Chest - Deadly Brew** — 1 rank(s): 400080@L0
+- **Engrave Chest - Just a Flesh Wound** — 1 rank(s): 400082@L0
+- **Engrave Chest - Quick Draw** — 1 rank(s): 400095@L0
+- **Engrave Chest - Slaughter from the Shadows** — 1 rank(s): 424992@L0
+- **Engrave Cloak - Blunderbuss** — 1 rank(s): 415922@L0
+- **Engrave Cloak - Crimson Tempest** — 1 rank(s): 415918@L0
+- **Engrave Cloak - Fan of Knives** — 1 rank(s): 436609@L0
+- **Engrave Gloves - Cutthroat** — 1 rank(s): 424988@L0
+- **Engrave Gloves - Main Gauche** — 1 rank(s): 424990@L0
+- **Engrave Gloves - Mutilate** — 1 rank(s): 400094@L0
+- **Engrave Gloves - Saber Slash** — 1 rank(s): 424984@L0
+- **Engrave Gloves - Shadowstrike** — 1 rank(s): 400105@L0
+- **Engrave Helm - Combat Potency** — 1 rank(s): 432293@L0
+- **Engrave Helm - Focused Attacks** — 1 rank(s): 432291@L0
+- **Engrave Helm - Honor Among Thieves** — 1 rank(s): 432295@L0
+- **Engrave Pants - Between the Eyes** — 1 rank(s): 400081@L0
+- **Engrave Pants - Blade Dance** — 1 rank(s): 400099@L0
+- **Engrave Pants - Envenom** — 1 rank(s): 400102@L0
+- **Engrave Pants - Shadowstep** — 1 rank(s): 400104@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Defense Specialization** — 1 rank(s): 459313@L0
+- **Engrave Ring - Fist Weapon Specialization** — 1 rank(s): 453691@L0
+- **Engrave Ring - Mace Specialization** — 1 rank(s): 453689@L0
+- **Engrave Ring - Nature Specialization** — 1 rank(s): 453698@L0
+- **Engrave Ring - Ranged Weapon Specialization** — 1 rank(s): 453692@L0
+- **Engrave Ring - Sword Specialization** — 1 rank(s): 453635@L0
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+### Subtlety
+- **13970** — 1 rank(s): 13970@L?
+- **13971** — 1 rank(s): 13971@L?
+- **13972** — 1 rank(s): 13972@L?
+- **13973** — 1 rank(s): 13973@L?
+- **13979** — 1 rank(s): 13979@L?
+- **13980** — 1 rank(s): 13980@L?
+- **14062** — 1 rank(s): 14062@L?
+- **14063** — 1 rank(s): 14063@L?
+- **14064** — 1 rank(s): 14064@L?
+- **14065** — 1 rank(s): 14065@L?
+- **14066** — 1 rank(s): 14066@L?
+- **14070** — 1 rank(s): 14070@L?
+- **14071** — 1 rank(s): 14071@L?
+- **14072** — 1 rank(s): 14072@L?
+- **14073** — 1 rank(s): 14073@L?
+- **14074** — 1 rank(s): 14074@L?
+- **14075** — 1 rank(s): 14075@L?
+- **14080** — 1 rank(s): 14080@L?
+- **14081** — 1 rank(s): 14081@L?
+- **14083** — 1 rank(s): 14083@L?
+- **14172** — 1 rank(s): 14172@L?
+- **14173** — 1 rank(s): 14173@L?
+- **30893** — 1 rank(s): 30893@L?
+- **30895** — 1 rank(s): 30895@L?
+- **30903** — 1 rank(s): 30903@L?
+- **30904** — 1 rank(s): 30904@L?
+- **30905** — 1 rank(s): 30905@L?
+- **30906** — 1 rank(s): 30906@L?
+- **Blind** — 1 rank(s): 2094@L34
+- **Camouflage** — 1 rank(s): 13975@L?
+- **Deadliness** — 1 rank(s): 30902@L?
+- **Death Mark** — 4 rank(s): 1316709@L40, 1325756@L48, 1325757@L56, 1325758@L60
+- **Detect Traps** — 1 rank(s): 2836@L0
+- **Dirty Deeds** — 1 rank(s): 14082@L?
+- **Disarm Trap** — 1 rank(s): 1842@L30
+- **Distract** — 1 rank(s): 1725@L22
+- **Elusiveness** — 1 rank(s): 13981@L?
+- **Ghostly Strike** — 1 rank(s): 14278@L?
+- **Heightened Senses** — 1 rank(s): 30894@L?
+- **Hemorrhage** — 1 rank(s): 16511@L30
+- **Improved Ambush** — 1 rank(s): 14079@L?
+- **Improved Sap** — 3 rank(s): 14076@L?, 14094@L?, 14095@L?
+- **Initiative** — 2 rank(s): 13977@L?, 13976@L?
+- **Master of Deception** — 1 rank(s): 13958@L?
+- **Opportunity** — 1 rank(s): 14057@L?
+- **Pick Pocket** — 1 rank(s): 921@L4
+- **Poised** — 1 rank(s): 1328825@L0
+- **Premeditation** — 1 rank(s): 14183@L20
+- **Preparation** — 1 rank(s): 14185@L?
+- **Redirect** — 1 rank(s): 438040@L0
+- **Safe Fall** — 1 rank(s): 1860@L0
+- **Sap** — 3 rank(s): 6770@L10, 2070@L28, 11297@L48
+- **Serrated Blades** — 1 rank(s): 14171@L?
+- **Setup** — 1 rank(s): 13983@L?
+- **Shadowstrike** — 1 rank(s): 399985@L0
+- **Shuriken Toss** — 1 rank(s): 399986@L0
+- **Sleight of Hand** — 1 rank(s): 30892@L?
+- **Stealth** — 4 rank(s): 1784@L1, 1785@L20, 1786@L40, 1787@L60
+- **Vanish** — 2 rank(s): 1856@L22, 1857@L42
+- **Vanished** — 1 rank(s): 14093@L?
+
+## Shaman
+### Elemental Combat
+- **28997** — 1 rank(s): 28997@L?
+- **28998** — 1 rank(s): 28998@L?
+- **29000** — 1 rank(s): 29000@L?
+- **29063** — 1 rank(s): 29063@L?
+- **29064** — 1 rank(s): 29064@L?
+- **29065** — 1 rank(s): 29065@L?
+- **29177** — 1 rank(s): 29177@L?
+- **29178** — 1 rank(s): 29178@L?
+- **29179** — 1 rank(s): 29179@L?
+- **29180** — 1 rank(s): 29180@L?
+- **Ancestral Guidance** — 3 rank(s): 409324@L0, 409333@L0, 409337@L0
+- **Call of the Ancestors** — 1 rank(s): 66843@L30
+- **Call of the Elements** — 1 rank(s): 66842@L20
+- **Call of the Spirits** — 1 rank(s): 66844@L40
+- **Chain Lightning** — 8 rank(s): 421@L32, 408479@L32, 930@L40, 408481@L40, 2860@L48, 408482@L48, 10605@L56, 408484@L56
+- **Earth Shock** — 7 rank(s): 8042@L4, 8044@L8, 8045@L14, 8046@L24, 10412@L36, 10413@L48, 10414@L60
+- **Earthbind Totem** — 1 rank(s): 2484@L6
+- **Elemental Devastation** — 1 rank(s): 30160@L?
+- **Elemental Reach** — 1 rank(s): 28999@L?
+- **Elemental Warding** — 1 rank(s): 28996@L?
+- **Eye of the Storm** — 1 rank(s): 29062@L?
+- **Fire Nova** — 5 rank(s): 408341@L12, 408342@L22, 408343@L32, 408344@L42, 408345@L52
+- **Flame Shock** — 6 rank(s): 8050@L10, 8052@L18, 8053@L28, 10447@L40, 10448@L52, 29228@L60
+- **Frost Shock** — 4 rank(s): 8056@L20, 8058@L34, 10472@L46, 10473@L58
+- **Lightning Bolt** — 20 rank(s): 403@L1, 408439@L1, 529@L8, 408440@L8, 548@L14, 408441@L14, 915@L20, 408442@L20, 943@L26, 408443@L26, 6041@L32, 408472@L32, 10391@L38, 408473@L38, 10392@L44, 408474@L44, 15207@L50, 408475@L50, 15208@L56, 408477@L56
+- **Magma Totem** — 4 rank(s): 8190@L26, 10585@L36, 10586@L46, 10587@L56
+- **Molten Blast** — 1 rank(s): 425339@L0
+- **Purge** — 2 rank(s): 370@L12, 8012@L32
+- **Searing Totem** — 6 rank(s): 3599@L10, 6363@L20, 6364@L30, 6365@L40, 10437@L50, 10438@L60
+- **Stoneclaw Totem** — 6 rank(s): 5730@L8, 6390@L18, 6391@L28, 6392@L38, 10427@L48, 10428@L58
+- **Totemic Recall** — 1 rank(s): 36936@L20
+
+### Engraving
+- **410102** — 1 rank(s): 410102@L?
+- **416058** — 1 rank(s): 416058@L?
+- **416063** — 1 rank(s): 416063@L?
+- **416064** — 1 rank(s): 416064@L?
+- **416065** — 1 rank(s): 416065@L?
+- **416068** — 1 rank(s): 416068@L?
+- **416082** — 1 rank(s): 416082@L?
+- **Engrave Belt - Fire Nova** — 1 rank(s): 410093@L0
+- **Engrave Belt - Maelstrom Weapon** — 1 rank(s): 410100@L0
+- **Engrave Belt - Power Surge** — 1 rank(s): 416054@L0
+- **Engrave Boots - Ancestral Awakening** — 1 rank(s): 425883@L0
+- **Engrave Boots - Decoy Totem** — 1 rank(s): 425882@L0
+- **Engrave Boots - Spirit of the Alpha** — 1 rank(s): 410103@L0
+- **Engrave Bracers - Overcharged** — 1 rank(s): 432241@L0
+- **Engrave Bracers - Riptide** — 1 rank(s): 410105@L0
+- **Engrave Bracers - Rolling Thunder** — 1 rank(s): 432236@L0
+- **Engrave Bracers - Static Shock** — 1 rank(s): 432238@L0
+- **Engrave Chest - Dual Wield Specialization** — 1 rank(s): 410096@L0
+- **Engrave Chest - Healing Rain** — 1 rank(s): 416057@L0
+- **Engrave Chest - Overload** — 1 rank(s): 410094@L0
+- **Engrave Chest - Shield Mastery** — 1 rank(s): 410098@L0
+- **Engrave Chest - Two-Handed Mastery** — 1 rank(s): 436368@L0
+- **Engrave Cloak - Coherence** — 1 rank(s): 416062@L0
+- **Engrave Cloak - Feral Spirit** — 1 rank(s): 440630@L0
+- **Engrave Cloak - Storm, Earth, and Fire** — 1 rank(s): 440634@L0
+- **Engrave Gloves - Lava Burst** — 1 rank(s): 410095@L0
+- **Engrave Gloves - Lava Lash** — 1 rank(s): 410104@L0
+- **Engrave Gloves - Molten Blast** — 1 rank(s): 425344@L0
+- **Engrave Gloves - Water Shield** — 1 rank(s): 410097@L0
+- **Engrave Helm - Burn** — 1 rank(s): 416066@L0
+- **Engrave Helm - Mental Dexterity** — 1 rank(s): 416055@L0
+- **Engrave Helm - Tidal Waves** — 1 rank(s): 432234@L0
+- **Engrave Pants - Ancestral Guidance** — 1 rank(s): 410099@L0
+- **Engrave Pants - Earth Shield** — 1 rank(s): 410101@L0
+- **Engrave Pants - Greater Ghost Wolf** — 1 rank(s): 425343@L0
+- **Engrave Pants - Way of Earth** — 1 rank(s): 410107@L0
+- **Engrave Ring - Axe Specialization** — 1 rank(s): 453688@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Defense Specialization** — 1 rank(s): 459313@L0
+- **Engrave Ring - Fire Specialization** — 1 rank(s): 453696@L0
+- **Engrave Ring - Fist Weapon Specialization** — 1 rank(s): 453691@L0
+- **Engrave Ring - Frost Specialization** — 1 rank(s): 453697@L0
+- **Engrave Ring - Healing Specialization** — 1 rank(s): 468761@L0
+- **Engrave Ring - Mace Specialization** — 1 rank(s): 453689@L0
+- **Engrave Ring - Meditation Specialization** — 1 rank(s): 468763@L0
+- **Engrave Ring - Nature Specialization** — 1 rank(s): 453698@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+
+### Enhancement
+- **16271** — 1 rank(s): 16271@L?
+- **16272** — 1 rank(s): 16272@L?
+- **16273** — 1 rank(s): 16273@L?
+- **16274** — 1 rank(s): 16274@L?
+- **16281** — 1 rank(s): 16281@L?
+- **16282** — 1 rank(s): 16282@L?
+- **16283** — 1 rank(s): 16283@L?
+- **16284** — 1 rank(s): 16284@L?
+- **16290** — 1 rank(s): 16290@L?
+- **16291** — 1 rank(s): 16291@L?
+- **16293** — 1 rank(s): 16293@L?
+- **16302** — 1 rank(s): 16302@L?
+- **16303** — 1 rank(s): 16303@L?
+- **16304** — 1 rank(s): 16304@L?
+- **16305** — 1 rank(s): 16305@L?
+- **16306** — 1 rank(s): 16306@L?
+- **16307** — 1 rank(s): 16307@L?
+- **16308** — 1 rank(s): 16308@L?
+- **16309** — 1 rank(s): 16309@L?
+- **17486** — 1 rank(s): 17486@L?
+- **17487** — 1 rank(s): 17487@L?
+- **17488** — 1 rank(s): 17488@L?
+- **17489** — 1 rank(s): 17489@L?
+- **29079** — 1 rank(s): 29079@L?
+- **29080** — 1 rank(s): 29080@L?
+- **Ancestral Knowledge** — 1 rank(s): 17485@L?
+- **Anticipation** — 1 rank(s): 16254@L1
+- **Astral Recall** — 1 rank(s): 556@L0
+- **Decoy Totem** — 1 rank(s): 425874@L0
+- **Elemental Weapons** — 1 rank(s): 16266@L?
+- **Enhancing Totems** — 2 rank(s): 16259@L?, 16295@L?
+- **Far Sight** — 1 rank(s): 6196@L0
+- **Fire Resistance Totem** — 3 rank(s): 8184@L28, 10537@L42, 10538@L58
+- **Flametongue Totem** — 4 rank(s): 8227@L28, 8249@L38, 10526@L48, 16387@L58
+- **Flametongue Weapon** — 6 rank(s): 8024@L0, 8027@L0, 8030@L0, 16339@L0, 16341@L0, 16342@L0
+- **Flurry** — 1 rank(s): 16256@L1
+- **Frost Resistance Totem** — 3 rank(s): 8181@L24, 10478@L38, 10479@L54
+- **Frostbrand Weapon** — 5 rank(s): 8033@L0, 8038@L0, 10456@L0, 16355@L0, 16356@L0
+- **Ghost Wolf** — 1 rank(s): 2645@L20
+- **Grace of Air Totem** — 3 rank(s): 8835@L42, 10627@L56, 25359@L60
+- **Grounding Totem** — 1 rank(s): 8177@L30
+- **Guardian Totems** — 1 rank(s): 16258@L?
+- **Improved Ghost Wolf** — 1 rank(s): 16262@L?
+- **Improved Lightning Shield** — 1 rank(s): 16261@L?
+- **Improved Weapon Totems** — 2 rank(s): 29192@L?, 29193@L?
+- **Lava Lash** — 1 rank(s): 408507@L0
+- **Lightning Shield** — 14 rank(s): 324@L8, 26364@L8, 325@L16, 26365@L16, 905@L24, 26366@L24, 945@L32, 26367@L32, 8134@L40, 26369@L40, 10431@L48, 26370@L48, 10432@L56, 26363@L56
+- **Molten Blast** — 1 rank(s): 425339@L0
+- **Nature Resistance Totem** — 3 rank(s): 10595@L30, 10600@L44, 10601@L60
+- **Rage of the Farseer** — 1 rank(s): 425336@L1
+- **Rockbiter Weapon** — 7 rank(s): 8017@L0, 8018@L0, 8019@L0, 10399@L0, 16314@L0, 16315@L0, 16316@L0
+- **Sentry Totem** — 1 rank(s): 6495@L34
+- **Shield Specialization** — 5 rank(s): 16253@L0, 16298@L0, 16299@L0, 16300@L0, 16301@L0
+- **Spirit Weapons** — 1 rank(s): 16268@L1
+- **Spirit of the Alpha** — 1 rank(s): 408696@L0
+- **Stoneskin Totem** — 6 rank(s): 8071@L4, 8154@L14, 8155@L24, 10406@L34, 10407@L44, 10408@L54
+- **Stormstrike** — 1 rank(s): 17364@L40
+- **Strength of Earth Totem** — 5 rank(s): 8075@L10, 8160@L24, 8161@L38, 10442@L52, 25361@L60
+- **Thundering Strikes** — 1 rank(s): 16255@L1
+- **Totemic Call** — 1 rank(s): 437009@L22
+- **Toughness** — 1 rank(s): 16252@L1
+- **Two-Handed Axes and Maces** — 1 rank(s): 16269@L?
+- **Water Breathing** — 1 rank(s): 131@L0
+- **Water Walking** — 1 rank(s): 546@L0
+- **Weapon Mastery** — 5 rank(s): 29082@L0, 29084@L0, 29086@L0, 29087@L0, 29088@L0
+- **Windfury Totem** — 3 rank(s): 8512@L32, 10613@L42, 10614@L52
+- **Windfury Weapon** — 4 rank(s): 8232@L30, 8235@L40, 10486@L50, 16362@L60
+- **Windwall Totem** — 3 rank(s): 15107@L36, 15111@L46, 15112@L56
+
+### Restoration
+- **16183** — 1 rank(s): 16183@L?
+- **16205** — 1 rank(s): 16205@L?
+- **16206** — 1 rank(s): 16206@L?
+- **16207** — 1 rank(s): 16207@L?
+- **16208** — 1 rank(s): 16208@L?
+- **16209** — 1 rank(s): 16209@L?
+- **16210** — 1 rank(s): 16210@L?
+- **16211** — 1 rank(s): 16211@L?
+- **16212** — 1 rank(s): 16212@L?
+- **16213** — 1 rank(s): 16213@L?
+- **16214** — 1 rank(s): 16214@L?
+- **16215** — 1 rank(s): 16215@L?
+- **16216** — 1 rank(s): 16216@L?
+- **16217** — 1 rank(s): 16217@L?
+- **16218** — 1 rank(s): 16218@L?
+- **16219** — 1 rank(s): 16219@L?
+- **16220** — 1 rank(s): 16220@L?
+- **16221** — 1 rank(s): 16221@L?
+- **16222** — 1 rank(s): 16222@L?
+- **16223** — 1 rank(s): 16223@L?
+- **16224** — 1 rank(s): 16224@L?
+- **16225** — 1 rank(s): 16225@L?
+- **16226** — 1 rank(s): 16226@L?
+- **16227** — 1 rank(s): 16227@L?
+- **16228** — 1 rank(s): 16228@L?
+- **16229** — 1 rank(s): 16229@L?
+- **16230** — 1 rank(s): 16230@L?
+- **16232** — 1 rank(s): 16232@L?
+- **16233** — 1 rank(s): 16233@L?
+- **16234** — 1 rank(s): 16234@L?
+- **16235** — 1 rank(s): 16235@L?
+- **16236** — 1 rank(s): 16236@L?
+- **16237** — 1 rank(s): 16237@L?
+- **16240** — 1 rank(s): 16240@L?
+- **17058** — 1 rank(s): 17058@L?
+- **17059** — 1 rank(s): 17059@L?
+- **17060** — 1 rank(s): 17060@L?
+- **17061** — 1 rank(s): 17061@L?
+- **17065** — 1 rank(s): 17065@L?
+- **17066** — 1 rank(s): 17066@L?
+- **17067** — 1 rank(s): 17067@L?
+- **17068** — 1 rank(s): 17068@L?
+- **17070** — 1 rank(s): 17070@L?
+- **17071** — 1 rank(s): 17071@L?
+- **17072** — 1 rank(s): 17072@L?
+- **17073** — 1 rank(s): 17073@L?
+- **17075** — 1 rank(s): 17075@L?
+- **17076** — 1 rank(s): 17076@L?
+- **17077** — 1 rank(s): 17077@L?
+- **17078** — 1 rank(s): 17078@L?
+- **17107** — 1 rank(s): 17107@L?
+- **17108** — 1 rank(s): 17108@L?
+- **17112** — 1 rank(s): 17112@L?
+- **17113** — 1 rank(s): 17113@L?
+- **17119** — 1 rank(s): 17119@L?
+- **17120** — 1 rank(s): 17120@L?
+- **17121** — 1 rank(s): 17121@L?
+- **17122** — 1 rank(s): 17122@L?
+- **17124** — 1 rank(s): 17124@L?
+- **25908** — 1 rank(s): 25908@L?
+- **29202** — 1 rank(s): 29202@L?
+- **29203** — 1 rank(s): 29203@L?
+- **29205** — 1 rank(s): 29205@L?
+- **416244** — 1 rank(s): 416244@L?
+- **416245** — 1 rank(s): 416245@L?
+- **416246** — 1 rank(s): 416246@L?
+- **416247** — 1 rank(s): 416247@L?
+- **416316** — 1 rank(s): 416316@L?
+- **416317** — 1 rank(s): 416317@L?
+- **416318** — 1 rank(s): 416318@L?
+- **416319** — 1 rank(s): 416319@L?
+- **416320** — 1 rank(s): 416320@L?
+- **416322** — 1 rank(s): 416322@L?
+- **416323** — 1 rank(s): 416323@L?
+- **416324** — 1 rank(s): 416324@L?
+- **416325** — 1 rank(s): 416325@L?
+- **Ancestral Fortitude** — 1 rank(s): 16177@L?
+- **Ancestral Healing** — 1 rank(s): 16176@L?
+- **Ancestral Spirit** — 5 rank(s): 2008@L12, 20609@L24, 20610@L36, 20776@L48, 20777@L60
+- **Chain Heal** — 3 rank(s): 1064@L40, 10622@L46, 10623@L54
+- **Cure Disease** — 1 rank(s): 2870@L22
+- **Cure Poison** — 1 rank(s): 526@L16
+- **Disease Cleansing Totem** — 1 rank(s): 8170@L38
+- **Earth Shield** — 2 rank(s): 408514@L0, 408519@L0
+- **Furor** — 1 rank(s): 17056@L?
+- **Healing Focus** — 1 rank(s): 16181@L?
+- **Healing Grace** — 2 rank(s): 29189@L?, 29191@L?
+- **Healing Rain** — 2 rank(s): 415236@L?, 415242@L0
+- **Healing Stream Totem** — 5 rank(s): 5394@L20, 6375@L30, 6377@L40, 10462@L50, 10463@L60
+- **Healing Wave** — 10 rank(s): 331@L1, 332@L6, 547@L12, 913@L18, 939@L24, 959@L32, 8005@L40, 10395@L48, 10396@L56, 25357@L60
+- **Healing Way** — 1 rank(s): 29206@L?
+- **Improved Enrage** — 2 rank(s): 17079@L?, 17082@L?
+- **Improved Healing Wave** — 1 rank(s): 16182@L?
+- **Improved Mark of the Wild** — 5 rank(s): 17050@L?, 17051@L?, 17053@L?, 17054@L?, 17055@L?
+- **Improved Regrowth** — 1 rank(s): 17074@L?
+- **Improved Reincarnation** — 1 rank(s): 16184@L?
+- **Improved Rejuvenation** — 1 rank(s): 17111@L?
+- **Improved Tranquility** — 1 rank(s): 17123@L?
+- **Innervate** — 1 rank(s): 29166@L40
+- **Lesser Healing Wave** — 6 rank(s): 8004@L20, 8008@L28, 8010@L36, 10466@L44, 10467@L52, 10468@L60
+- **Mana Spring Totem** — 4 rank(s): 5675@L26, 10495@L36, 10496@L46, 10497@L56
+- **Mana Tide Totem** — 4 rank(s): 16190@L1, 17354@L38, 17359@L48, 1325256@L58
+- **Natural Grace** — 1 rank(s): 29187@L?
+- **Naturalist** — 1 rank(s): 17069@L?
+- **Nature's Focus** — 1 rank(s): 17063@L?
+- **Nature's Guidance** — 3 rank(s): 16180@L?, 16196@L?, 16198@L?
+- **Nature's Swiftness** — 2 rank(s): 16188@L1, 17116@L1
+- **Poison Cleansing Totem** — 1 rank(s): 8166@L22
+- **Purification** — 1 rank(s): 16178@L?
+- **Reflection** — 1 rank(s): 17106@L?
+- **Reincarnation** — 2 rank(s): 20608@L30, 21169@L30
+- **Restorative Totems** — 1 rank(s): 16187@L?
+- **Riptide** — 3 rank(s): 408521@L40, 1239242@L50, 1239243@L60
+- **Subtlety** — 1 rank(s): 17118@L?
+- **Swiftmend** — 1 rank(s): 18562@L1
+- **Tidal Focus** — 1 rank(s): 16179@L?
+- **Tidal Mastery** — 1 rank(s): 16194@L?
+- **Totemic Focus** — 1 rank(s): 16173@L?
+- **Totemic Mastery** — 1 rank(s): 16189@L1
+- **Tremor Totem** — 1 rank(s): 8143@L18
+- **Water Shield** — 1 rank(s): 408510@L20
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+## Unknown
+### Beast Training
+- **Furious Howl** — 3 rank(s): 24609@L0, 24608@L0, 24607@L0
+- **Trickster's Dance** — 1 rank(s): 1310617@L0
+
+### Companions
+- **Blossoming Ancient** — 1 rank(s): 142880@L?
+- **Festival Lantern** — 1 rank(s): 104049@L?
+- **Galestrider Chick** — 1 rank(s): 1309423@L?
+- **Gill'el** — 1 rank(s): 464808@L?
+- **Lunar Lantern** — 1 rank(s): 104047@L?
+- **Mechanical Squirrel** — 1 rank(s): 4055@L0
+- **Pinky** — 1 rank(s): 1297823@L?
+- **Sinister Squashling** — 1 rank(s): 42609@L?
+- **Summon Albino Snake** — 1 rank(s): 10713@L?
+- **Summon Ancona** — 1 rank(s): 10685@L?
+- **Summon Arctic Hare** — 1 rank(s): 10712@L?
+- **Summon Azure Whelpling** — 1 rank(s): 10696@L?
+- **Summon Azurky** — 1 rank(s): 1318286@L?
+- **Summon Baby Crocolisk** — 1 rank(s): 1312880@L?
+- **Summon Baby Murloc (Orange)** — 1 rank(s): 24987@L?
+- **Summon Baby Murloc (White)** — 1 rank(s): 24988@L?
+- **Summon Bitter Baitling** — 1 rank(s): 1299341@L0
+- **Summon Black Furbolg Pet** — 1 rank(s): 1309436@L?
+- **Summon Black Kingsnake** — 1 rank(s): 10714@L?
+- **Summon Blue Ent Pet** — 1 rank(s): 1309504@L?
+- **Summon Bomb** — 1 rank(s): 15048@L?
+- **Summon Bombay** — 1 rank(s): 10673@L?
+- **Summon Bronze Whelpling** — 1 rank(s): 10699@L?
+- **Summon Brown Furbolg Pet** — 1 rank(s): 1309437@L?
+- **Summon Brown Ground Squirrel** — 1 rank(s): 1309730@L?
+- **Summon Brown Rabbit** — 1 rank(s): 1309752@L?
+- **Summon Brown Snake** — 1 rank(s): 10716@L?
+- **Summon Child of By'zaali** — 1 rank(s): 1290131@L?
+- **Summon Cockatiel** — 1 rank(s): 10680@L?
+- **Summon Cockatoo** — 1 rank(s): 10681@L?
+- **Summon Cockroach** — 1 rank(s): 10688@L?
+- **Summon Condor Hatchling** — 1 rank(s): 1314120@L?
+- **Summon Cornish Rex** — 1 rank(s): 10674@L?
+- **Summon Corrupted Kitten** — 1 rank(s): 15648@L?
+- **Summon Crimson Snake** — 1 rank(s): 10717@L?
+- **Summon Crimson Whelpling** — 1 rank(s): 10697@L?
+- **Summon Dark Whelpling** — 1 rank(s): 10695@L?
+- **Summon Diablo** — 2 rank(s): 17708@L?, 1310329@L?
+- **Summon Disgusting Oozeling** — 1 rank(s): 25162@L?
+- **Summon Eagle Owl** — 1 rank(s): 10705@L?
+- **Summon Elven Wisp** — 1 rank(s): 10721@L?
+- **Summon Emerald Whelpling** — 1 rank(s): 10698@L?
+- **Summon Excitable Slime** — 1 rank(s): 1297608@L?
+- **Summon Farm Chicken** — 1 rank(s): 13548@L?
+- **Summon Gray Ent Pet** — 1 rank(s): 1309505@L?
+- **Summon Gray Furbolg Pet** — 1 rank(s): 1309438@L?
+- **Summon Great Horned Owl** — 1 rank(s): 10707@L?
+- **Summon Green Water Snake** — 1 rank(s): 10718@L?
+- **Summon Green Wing Macaw** — 1 rank(s): 10683@L?
+- **Summon Gurky** — 1 rank(s): 27241@L?
+- **Summon Hawk Owl** — 1 rank(s): 10706@L?
+- **Summon Helper** — 2 rank(s): 26533@L?, 26541@L?
+- **Summon Hippogryph Hatchling** — 1 rank(s): 30156@L?
+- **Summon Hyacinth Macaw** — 1 rank(s): 10682@L?
+- **Summon Jubling** — 1 rank(s): 23811@L?
+- **Summon Jungle Boa** — 1 rank(s): 1309547@L?
+- **Summon Lashling** — 4 rank(s): 1250014@L?, 1250016@L?, 1250013@L?, 1250015@L?
+- **Summon Lifelike Toad** — 1 rank(s): 19772@L?
+- **Summon Maine Coon** — 1 rank(s): 10675@L?
+- **Summon Mechanical Chicken** — 1 rank(s): 12243@L?
+- **Summon Minfernal** — 1 rank(s): 1315451@L?
+- **Summon Minimule** — 1 rank(s): 1316778@L?
+- **Summon Mr. Wiggles** — 1 rank(s): 28739@L?
+- **Summon Murky** — 1 rank(s): 24696@L?
+- **Summon Musical Gustjumper** — 1 rank(s): 1281641@L?
+- **Summon Orange Ent Pet** — 1 rank(s): 1309506@L?
+- **Summon Orange Tabby** — 1 rank(s): 10676@L?
+- **Summon Pachimari** — 1 rank(s): 1309420@L?
+- **Summon Panda** — 2 rank(s): 17707@L?, 1310331@L?
+- **Summon Peddlefeet** — 1 rank(s): 27570@L?
+- **Summon Plagued Cockroach** — 1 rank(s): 1309545@L?
+- **Summon Poley** — 1 rank(s): 28505@L?
+- **Summon Prairie Dog** — 1 rank(s): 10709@L?
+- **Summon Prairie Wolf Pup** — 1 rank(s): 1302196@L?
+- **Summon Purple Ent Pet** — 1 rank(s): 1309501@L?
+- **Summon Red Ent Pet** — 1 rank(s): 1309503@L?
+- **Summon Red Ground Squirrel** — 1 rank(s): 1309736@L?
+- **Summon Reindeer** — 1 rank(s): 26529@L?
+- **Summon Ribbon Snake** — 1 rank(s): 10719@L?
+- **Summon Robot** — 1 rank(s): 15049@L?
+- **Summon Scarlet Snake** — 1 rank(s): 10720@L?
+- **Summon Senegal** — 1 rank(s): 10684@L?
+- **Summon Shadowgale Squirrel** — 1 rank(s): 1308283@L?
+- **Summon Shen'dorei Wisp** — 1 rank(s): 1313392@L?
+- **Summon Siamese** — 1 rank(s): 10677@L?
+- **Summon Silver Tabby** — 1 rank(s): 10678@L?
+- **Summon Smolderweb** — 1 rank(s): 16450@L?
+- **Summon Snowman** — 1 rank(s): 26469@L?
+- **Summon Snowshoe Rabbit** — 1 rank(s): 10711@L?
+- **Summon Snowy Owl** — 1 rank(s): 10708@L?
+- **Summon Snowy Wolf Pup** — 1 rank(s): 1286629@L?
+- **Summon Spawn of Grubthor** — 1 rank(s): 1320758@L?
+- **Summon Spectral Bear Cub** — 1 rank(s): 1302650@L?
+- **Summon Speedy** — 1 rank(s): 28738@L?
+- **Summon Spirit of Summer** — 1 rank(s): 28871@L?
+- **Summon Sprite Darter Hatchling** — 1 rank(s): 15067@L?
+- **Summon Tallstrider Hatchling** — 1 rank(s): 1315267@L?
+- **Summon Tan Furbolg Pet** — 1 rank(s): 1309439@L?
+- **Summon Terky** — 1 rank(s): 28487@L?
+- **Summon Tiny Green Dragon** — 1 rank(s): 23531@L?
+- **Summon Tiny Red Dragon** — 1 rank(s): 23530@L?
+- **Summon Tranquil Mechanical Yeti** — 1 rank(s): 26010@L?
+- **Summon Tree Frog** — 1 rank(s): 10704@L?
+- **Summon Uber Diablo** — 1 rank(s): 1283932@L?
+- **Summon Undercity Cockroach** — 1 rank(s): 1309546@L?
+- **Summon Weevil K. Neevil** — 1 rank(s): 1308870@L?
+- **Summon Whiskers** — 1 rank(s): 28740@L?
+- **Summon White Furbolg Pet** — 1 rank(s): 1309440@L?
+- **Summon White Kitten** — 1 rank(s): 10679@L?
+- **Summon White Tiger Cub** — 1 rank(s): 30152@L?
+- **Summon Wild Chicken** — 1 rank(s): 1295738@L?
+- **Summon Wood Frog** — 1 rank(s): 10703@L?
+- **Summon Worg Pup** — 1 rank(s): 15999@L?
+- **Summon Yellow Ent Pet** — 1 rank(s): 1309507@L?
+- **Summon Zergling** — 2 rank(s): 17709@L?, 1310330@L?
+
+### Elemental Combat
+- **16041** — 1 rank(s): 16041@L?
+- **16105** — 1 rank(s): 16105@L?
+- **16106** — 1 rank(s): 16106@L?
+- **16107** — 1 rank(s): 16107@L?
+- **16108** — 1 rank(s): 16108@L?
+- **16109** — 1 rank(s): 16109@L?
+- **16110** — 1 rank(s): 16110@L?
+- **16111** — 1 rank(s): 16111@L?
+- **16112** — 1 rank(s): 16112@L?
+- **16113** — 1 rank(s): 16113@L?
+- **16114** — 1 rank(s): 16114@L?
+- **16115** — 1 rank(s): 16115@L?
+- **16116** — 1 rank(s): 16116@L?
+- **16117** — 1 rank(s): 16117@L?
+- **16118** — 1 rank(s): 16118@L?
+- **16119** — 1 rank(s): 16119@L?
+- **16130** — 1 rank(s): 16130@L?
+- **16160** — 1 rank(s): 16160@L?
+- **16161** — 1 rank(s): 16161@L?
+- **16544** — 1 rank(s): 16544@L?
+- **Call of Flame** — 1 rank(s): 16038@L?
+- **Call of Thunder** — 1 rank(s): 16120@L?
+- **Concussion** — 1 rank(s): 16035@L?
+- **Convection** — 1 rank(s): 16039@L?
+- **Earth's Grasp** — 1 rank(s): 16043@L?
+- **Elemental Alacrity** — 1 rank(s): 16578@L?
+- **Elemental Devastation** — 1 rank(s): 30165@L?
+- **Elemental Focus** — 1 rank(s): 16164@L1
+- **Elemental Fury** — 1 rank(s): 16089@L?
+- **Lightning Mastery** — 5 rank(s): 16166@L0, 16579@L?, 16580@L?, 16581@L?, 16582@L?
+- **Reverberation** — 1 rank(s): 16040@L?
+- **Trial by Fire** — 1 rank(s): 16086@L?
+
+### Engraving
+- **Engrave Pants - Cutty's Rune** — 1 rank(s): 401488@L0
+- **Runecarving** — 1 rank(s): 398603@L?
+
+### Mounts
+- **1292482** — 1 rank(s): 1292482@L?
+- **1309246** — 1 rank(s): 1309246@L?
+- **1309248** — 1 rank(s): 1309248@L?
+- **1309250** — 1 rank(s): 1309250@L?
+- **445261** — 1 rank(s): 445261@L?
+- **462215** — 1 rank(s): 462215@L?
+- **Animated Lobster Molt** — 1 rank(s): 406634@L0
+- **Arctic Wolf** — 1 rank(s): 16081@L0
+- **Bengal Tiger** — 1 rank(s): 436327@L0
+- **Black Battlestrider** — 1 rank(s): 22719@L0
+- **Black Devilsaur Mount** — 1 rank(s): 1309346@L0
+- **Black Druid Moose Mount** — 1 rank(s): 1309377@L0
+- **Black Ram** — 2 rank(s): 6896@L0, 17461@L0
+- **Black Skeletal Horse** — 1 rank(s): 1298496@L0
+- **Black Stallion** — 1 rank(s): 470@L0
+- **Black War Kodo** — 1 rank(s): 22718@L0
+- **Black War Ram** — 1 rank(s): 22720@L0
+- **Black War Raptor** — 1 rank(s): 22721@L0
+- **Black War Steed** — 2 rank(s): 22717@L0, 22717@L0
+- **Black War Tiger** — 1 rank(s): 22723@L0
+- **Black War Wolf** — 1 rank(s): 22724@L0
+- **Black Warden Saber Mount** — 1 rank(s): 1309268@L0
+- **Black Wolf** — 1 rank(s): 578@L0
+- **Blood-Caked Raptor** — 1 rank(s): 1215380@L0
+- **Blood-Caked Tiger** — 1 rank(s): 1215378@L0
+- **Blood-crazed Spirit** — 1 rank(s): 446685@L0
+- **Blue Devilsaur Mount** — 1 rank(s): 1309347@L0
+- **Blue Mechanostrider** — 1 rank(s): 10969@L0
+- **Blue Ram** — 1 rank(s): 6897@L0
+- **Blue Skeletal Horse** — 1 rank(s): 17463@L0
+- **Brown Horse** — 1 rank(s): 458@L0
+- **Brown Kodo** — 1 rank(s): 18990@L0
+- **Brown Ram** — 1 rank(s): 6899@L0
+- **Brown Skeletal Horse** — 1 rank(s): 17464@L0
+- **Brown Warden Saber Mount** — 1 rank(s): 1309270@L0
+- **Brown Wolf** — 1 rank(s): 6654@L0
+- **Caravan Kodo** — 1 rank(s): 1303215@L0
+- **Cerulean Prideclaw** — 1 rank(s): 1309208@L0
+- **Chestnut Mare** — 1 rank(s): 6648@L0
+- **Chromatic Mount** — 1 rank(s): 24576@L0
+- **Climhazzard** — 1 rank(s): 1229305@L0
+- **Conquest** — 1 rank(s): 1220566@L0
+- **Crimson Rooster** — 1 rank(s): 1321221@L0
+- **Dark Skeletal Horse** — 1 rank(s): 1277330@L0
+- **Death** — 1 rank(s): 1220567@L0
+- **Dire Wolf** — 1 rank(s): 6653@L0
+- **Divine Steed** — 2 rank(s): 461607@L0, 1237632@L0
+- **Emerald Raptor** — 1 rank(s): 8395@L0
+- **Empyrean Galestrider** — 1 rank(s): 1286024@L0
+- **Famine** — 1 rank(s): 1220568@L0
+- **Fluorescent Green Mechanostrider** — 2 rank(s): 17458@L0, 463005@L0
+- **Frost Ram** — 1 rank(s): 17460@L0
+- **Frostsaber** — 1 rank(s): 16056@L0
+- **Frostwolf Howler** — 1 rank(s): 23509@L0
+- **Golden Sabercat** — 3 rank(s): 16060@L0, 436329@L0, 463006@L0
+- **Gray Druid Moose Mount** — 1 rank(s): 1309381@L0
+- **Gray Kodo** — 1 rank(s): 18989@L0
+- **Gray Ram** — 1 rank(s): 6777@L0
+- **Gray Warden Saber Mount** — 1 rank(s): 1309271@L0
+- **Gray Wolf** — 1 rank(s): 459@L0
+- **Great Brown Kodo** — 1 rank(s): 23249@L0
+- **Great Gray Kodo** — 1 rank(s): 23248@L0
+- **Great White Kodo** — 1 rank(s): 23247@L0
+- **Green Devilsaur Mount** — 1 rank(s): 1309348@L0
+- **Green Druid Moose Mount** — 1 rank(s): 1309380@L0
+- **Green Kodo** — 1 rank(s): 18991@L0
+- **Green Mechanostrider** — 2 rank(s): 15780@L0, 17453@L0
+- **Green Skeletal Horse** — 1 rank(s): 1277329@L0
+- **Green Skeletal Warhorse** — 1 rank(s): 17465@L0
+- **Icy Blue Mechanostrider** — 1 rank(s): 17459@L0
+- **Ivory Raptor** — 3 rank(s): 10795@L0, 17450@L0, 436289@L0
+- **Large Timber Wolf** — 1 rank(s): 580@L0
+- **Lavender Kodo** — 1 rank(s): 1303075@L0
+- **Leopard** — 1 rank(s): 10788@L0
+- **Mottled Blood Raptor** — 2 rank(s): 436288@L0, 463007@L0
+- **Mottled Red Raptor** — 1 rank(s): 16084@L0
+- **Nightsaber** — 1 rank(s): 16055@L0
+- **Obsidian Raptor** — 1 rank(s): 10798@L0
+- **Ochre Skeletal Warhorse** — 1 rank(s): 1295387@L0
+- **Pack Kodo** — 1 rank(s): 1301636@L0
+- **Palomino Stallion** — 2 rank(s): 471@L0, 16082@L0
+- **Panther** — 1 rank(s): 10787@L0
+- **Pinto Horse** — 1 rank(s): 472@L0
+- **Primal Leopard** — 1 rank(s): 16058@L0
+- **Purple Devilsaur Mount** — 1 rank(s): 1309349@L0
+- **Purple Mechanostrider** — 1 rank(s): 17455@L0
+- **Purple Skeletal Horse** — 1 rank(s): 1277336@L0
+- **Purple Skeletal Warhorse** — 1 rank(s): 23246@L0
+- **Red & Blue Mechanostrider** — 1 rank(s): 17456@L0
+- **Red Mechanostrider** — 1 rank(s): 10873@L0
+- **Red Skeletal Horse** — 1 rank(s): 17462@L0
+- **Red Skeletal Warhorse** — 1 rank(s): 22722@L0
+- **Red Wolf** — 2 rank(s): 579@L0, 16080@L0
+- **Regal Galestrider** — 1 rank(s): 1286025@L0
+- **Reindeer** — 4 rank(s): 25675@L0, 25858@L0, 25859@L0, 434508@L0
+- **Riding Kodo** — 1 rank(s): 18363@L0
+- **Riding Turtle** — 1 rank(s): 30174@L0
+- **Rivendare's Deathcharger** — 1 rank(s): 17481@L0
+- **Scarlet Steed** — 1 rank(s): 1229308@L0
+- **Skeletal Horse** — 1 rank(s): 8980@L0
+- **Skeletal Steed** — 1 rank(s): 29059@L0
+- **Spectral Bear** — 1 rank(s): 1302661@L0
+- **Spectral Wolf Pack** — 1 rank(s): 1321233@L0
+- **Spotted Frostsaber** — 1 rank(s): 10789@L0
+- **Spotted Panther** — 1 rank(s): 10792@L0
+- **Steel Mechanostrider** — 1 rank(s): 15781@L0
+- **Stormpike Battle Charger** — 1 rank(s): 23510@L0
+- **Stormy Galestrider** — 1 rank(s): 1286026@L0
+- **Striped Dawnsaber** — 1 rank(s): 1294897@L0
+- **Striped Frostsaber** — 1 rank(s): 8394@L0
+- **Striped Nightsaber** — 1 rank(s): 10793@L0
+- **Summon Black Qiraji Battle Tank** — 2 rank(s): 25863@L0, 26655@L0
+- **Summon Blue Qiraji Battle Tank** — 1 rank(s): 25953@L0
+- **Summon Dark Blue Qiraji Battle Tank** — 3 rank(s): 473858@L0, 473859@L0, 473860@L0
+- **Summon Dreadsteed** — 1 rank(s): 23161@L0
+- **Summon Felsteed** — 1 rank(s): 5784@L0
+- **Summon Flawless Blue Qiraji Battle Tank** — 3 rank(s): 1217150@L0, 1217151@L0, 1217152@L0
+- **Summon Flawless Green Qiraji Battle Tank** — 3 rank(s): 1217146@L0, 1217147@L0, 1217148@L0
+- **Summon Flawless Red Qiraji Battle Tank** — 3 rank(s): 1217154@L0, 1217155@L0, 1217156@L0
+- **Summon Flawless Yellow Qiraji Battle Tank** — 3 rank(s): 1217142@L0, 1217143@L0, 1217144@L0
+- **Summon Forsaken Charger** — 1 rank(s): 1296534@L0
+- **Summon Green Qiraji Battle Tank** — 1 rank(s): 26056@L0
+- **Summon Light Blue Qiraji Battle Tank** — 3 rank(s): 473869@L0, 473870@L0, 473871@L0
+- **Summon Light Green Qiraji Battle Tank** — 3 rank(s): 473848@L0, 473853@L0, 473855@L0
+- **Summon Mouth Tentacle** — 1 rank(s): 26332@L?
+- **Summon Orange Qiraji Battle Tank** — 3 rank(s): 473874@L0, 473875@L0, 473877@L0
+- **Summon Outrider Wolf** — 1 rank(s): 429857@L0
+- **Summon Red Qiraji Battle Tank** — 1 rank(s): 26054@L0
+- **Summon Sentinel Nightsaber** — 1 rank(s): 429856@L0
+- **Summon Skeletal Steed** — 2 rank(s): 370637@L0, 381598@L0
+- **Summon Tamed Silithid Tank** — 1 rank(s): 473900@L0
+- **Summon Twilight Qiraji Battle Tank** — 3 rank(s): 473882@L0, 473886@L0, 473887@L0
+- **Summon Yellow Qiraji Battle Tank** — 1 rank(s): 26055@L0
+- **Swift Blue Raptor** — 1 rank(s): 23241@L0
+- **Swift Brown Ram** — 1 rank(s): 23238@L0
+- **Swift Brown Steed** — 1 rank(s): 23229@L0
+- **Swift Brown Wolf** — 1 rank(s): 23250@L0
+- **Swift Dawnsaber** — 1 rank(s): 23220@L0
+- **Swift Empyrean Galestrider** — 1 rank(s): 1286011@L0
+- **Swift Frostsaber** — 1 rank(s): 23221@L0
+- **Swift Gray Ram** — 1 rank(s): 23239@L0
+- **Swift Gray Wolf** — 1 rank(s): 23252@L0
+- **Swift Green Mechanostrider** — 1 rank(s): 23225@L0
+- **Swift Mistsaber** — 1 rank(s): 23219@L0
+- **Swift Olive Raptor** — 1 rank(s): 23242@L0
+- **Swift Orange Raptor** — 1 rank(s): 23243@L0
+- **Swift Palomino** — 1 rank(s): 23227@L0
+- **Swift Razzashi Raptor** — 1 rank(s): 24242@L0
+- **Swift Regal Galestrider** — 1 rank(s): 1286021@L0
+- **Swift Spectral Tiger** — 1 rank(s): 1214283@L0
+- **Swift Stormsaber** — 1 rank(s): 23338@L0
+- **Swift Stormy Galestrider** — 1 rank(s): 1286022@L0
+- **Swift Timber Wolf** — 1 rank(s): 23251@L0
+- **Swift Umber Galestrider** — 1 rank(s): 1295683@L0
+- **Swift White Mechanostrider** — 1 rank(s): 23223@L0
+- **Swift White Ram** — 1 rank(s): 23240@L0
+- **Swift White Steed** — 1 rank(s): 23228@L0
+- **Swift Yellow Mechanostrider** — 1 rank(s): 23222@L0
+- **Swift Zulian Tiger** — 1 rank(s): 24252@L0
+- **Tawny Sabercat** — 1 rank(s): 16059@L0
+- **Teal Kodo** — 1 rank(s): 18992@L0
+- **Tiger** — 1 rank(s): 10790@L0
+- **Turquoise Raptor** — 1 rank(s): 10796@L0
+- **Umber Galestrider** — 1 rank(s): 1295678@L0
+- **Unpainted Mechanostrider** — 1 rank(s): 17454@L0
+- **Venomhide Ravasaur** — 1 rank(s): 64659@L0
+- **Verdant Sea Turtle** — 1 rank(s): 1321200@L0
+- **Veteran Adventurer's Loyal Companion** — 1 rank(s): 1309405@L0
+- **Violet Raptor** — 1 rank(s): 10799@L0
+- **War** — 1 rank(s): 1220565@L0
+- **White Devilsaur Mount** — 1 rank(s): 1309350@L0
+- **White Druid Moose Mount** — 1 rank(s): 1309379@L0
+- **White Kodo** — 1 rank(s): 1298450@L0
+- **White Mechanostrider** — 1 rank(s): 15779@L0
+- **White Ram** — 2 rank(s): 6898@L0, 6898@L0
+- **White Stallion** — 2 rank(s): 16083@L0, 468@L0
+- **White Warden Saber Mount** — 1 rank(s): 1309272@L0
+- **Winter Wolf** — 1 rank(s): 581@L0
+- **Winterspring Frostsaber** — 1 rank(s): 17229@L0
+
+### Pet - Bat
+- **Bite** — 16 rank(s): 17253@L1, 17253@L1, 17255@L8, 17255@L8, 17256@L16, 17256@L16, 17257@L24, 17257@L24, 17258@L32, 17258@L32, 17259@L40, 17259@L40, 17260@L48, 17260@L48, 17261@L56, 17261@L56
+- **Dive** — 4 rank(s): 23147@L0, 23148@L0, 23147@L0, 23148@L0
+- **Hunter Pet Scaling** — 2 rank(s): 415429@L?, 415429@L?
+- **Sonic Blast** — 5 rank(s): 1264478@L12, 1264479@L24, 1264480@L36, 1264481@L48, 1264482@L60
+- **Summoning** — 2 rank(s): 1278934@L?, 1278934@L?
+- **Tamed Pet Passive (DND)** — 20 rank(s): 8875@L?, 17206@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?, 17206@L?, 8875@L?, 20784@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 409365@L?
+
+### Pet - Bear
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Claw** — 8 rank(s): 16827@L1, 16828@L8, 16829@L16, 16830@L24, 16831@L32, 16832@L40, 3010@L48, 3009@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Swipe** — 5 rank(s): 1264494@L12, 1264497@L24, 1264498@L36, 1264501@L48, 1264502@L60
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17208@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Bird of Prey
+- **Claw** — 8 rank(s): 16827@L1, 16828@L8, 16829@L16, 16830@L24, 16831@L32, 16832@L40, 3010@L48, 3009@L56
+- **Dive** — 3 rank(s): 23145@L0, 23147@L0, 23148@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Mine!** — 5 rank(s): 1265054@L10, 1265055@L20, 1265056@L30, 1265057@L40, 1265058@L50
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17216@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Boar
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Charge** — 6 rank(s): 7371@L1, 26177@L12, 26178@L24, 26179@L36, 26201@L48, 27685@L60
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 7000@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Carrion Bird
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Claw** — 8 rank(s): 16827@L1, 16828@L8, 16829@L16, 16830@L24, 16831@L32, 16832@L40, 3010@L48, 3009@L56
+- **Demoralizing Screech** — 4 rank(s): 24423@L8, 24577@L24, 24578@L48, 24579@L56
+- **Dive** — 3 rank(s): 23145@L0, 23147@L0, 23148@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17209@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Cat
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Claw** — 8 rank(s): 16827@L1, 16828@L8, 16829@L16, 16830@L24, 16831@L32, 16832@L40, 3010@L48, 3009@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Prowl** — 3 rank(s): 24450@L0, 24452@L0, 24453@L0
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17210@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Core Hound
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Lava Breath** — 2 rank(s): 444678@L0, 444681@L0
+- **Tamed Pet Passive (DND)** — 10 rank(s): 20784@L?, 8875@L?, 19589@L?, 19591@L?, 19580@L?, 19581@L?, 19582@L?, 20782@L?, 409365@L?, 444831@L?
+
+### Pet - Crab
+- **Claw** — 8 rank(s): 16827@L1, 16828@L8, 16829@L16, 16830@L24, 16831@L32, 16832@L40, 3010@L48, 3009@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Pinch** — 5 rank(s): 1264735@L12, 1264736@L24, 1264739@L36, 1264741@L48, 1264742@L60
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17211@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Crocilisk
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Dismember** — 5 rank(s): 1264758@L12, 1264927@L24, 1264929@L36, 1264930@L48, 1264933@L60
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17212@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Doomguard
+- **Tamed Pet Passive (DND)** — 1 rank(s): 412729@L?
+- **Warlock Pet Scaling** — 1 rank(s): 416189@L?
+
+### Pet - Felguard
+- **Anguish** — 1 rank(s): 427742@L0
+- **Avoidance** — 1 rank(s): 427743@L0
+- **Cleave** — 1 rank(s): 427744@L0
+- **Intercept** — 1 rank(s): 427745@L0
+- **Intercept Stun** — 1 rank(s): 427746@L0
+- **Tamed Pet Passive (DND)** — 4 rank(s): 18727@L?, 18735@L?, 18742@L?, 412729@L?
+- **Warlock Pet Scaling** — 1 rank(s): 416189@L?
+
+### Pet - Felhunter
+- **Devour Magic** — 4 rank(s): 19505@L30, 19731@L38, 19734@L46, 19736@L54
+- **Devour Magic Effect** — 4 rank(s): 19658@L30, 19732@L38, 19733@L46, 19735@L54
+- **Paranoia** — 1 rank(s): 19480@L42
+- **Spell Lock** — 2 rank(s): 19244@L36, 19647@L52
+- **Tainted Blood** — 4 rank(s): 19478@L32, 19655@L40, 19656@L48, 19660@L56
+- **Tamed Pet Passive (DND)** — 5 rank(s): 18730@L?, 18738@L?, 18739@L?, 412729@L?, 19007@L30
+- **Warlock Pet Scaling** — 1 rank(s): 416189@L?
+
+### Pet - Fox
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 20784@L?, 17223@L?, 8875@L?, 19589@L?, 19591@L?, 19580@L?, 19581@L?, 19582@L?, 20782@L?, 409365@L?
+- **Trickster's Dance** — 1 rank(s): 1310612@L0
+
+### Pet - Generic
+- **Arcane Resistance** — 4 rank(s): 24493@L0, 24497@L0, 24500@L0, 24501@L0
+- **Cower** — 6 rank(s): 1742@L0, 1753@L0, 1754@L0, 1755@L0, 1756@L0, 16697@L0
+- **Faster Attack I** — 1 rank(s): 1263099@L0
+- **Faster Attack II** — 1 rank(s): 1263100@L0
+- **Faster Attack III** — 1 rank(s): 1263102@L0
+- **Faster Attack IV** — 1 rank(s): 1263104@L0
+- **Faster Attack V** — 1 rank(s): 1263107@L0
+- **Faster Attack VI** — 1 rank(s): 1263109@L0
+- **Faster Attack VII** — 1 rank(s): 1263110@L0
+- **Fire Resistance** — 4 rank(s): 23992@L0, 24439@L0, 24444@L0, 24445@L0
+- **Frost Resistance** — 4 rank(s): 24446@L0, 24447@L0, 24448@L0, 24449@L0
+- **Great Stamina** — 10 rank(s): 4187@L0, 4188@L0, 4189@L0, 4190@L0, 4191@L0, 4192@L0, 4193@L0, 4194@L0, 5041@L0, 5042@L0
+- **Growl** — 7 rank(s): 2649@L1, 14916@L10, 14917@L20, 14918@L30, 14919@L40, 14920@L50, 14921@L60
+- **Intimidation** — 2 rank(s): 19577@L30, 24394@L40
+- **Natural Armor** — 2 rank(s): 24629@L0, 24630@L0
+- **Nature Resistance** — 4 rank(s): 24492@L0, 24502@L0, 24503@L0, 24504@L0
+- **Pet Aggression** — 5 rank(s): 6311@L?, 6314@L?, 6315@L?, 6316@L?, 6317@L?
+- **Pet Hardiness** — 5 rank(s): 6280@L?, 6281@L0, 6282@L0, 6283@L0, 6286@L0
+- **Pet Recovery** — 5 rank(s): 6328@L?, 6331@L?, 6332@L?, 6333@L?, 6334@L?
+- **Pet Resistance** — 5 rank(s): 6443@L?, 6444@L?, 6445@L?, 6446@L?, 6447@L?
+- **Shadow Resistance** — 4 rank(s): 24488@L0, 24505@L0, 24506@L0, 24507@L0
+- **Slower Attack II** — 1 rank(s): 1263113@L0
+- **Slower Attack III** — 1 rank(s): 1263114@L0
+
+### Pet - Gorilla
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17214@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+- **Thunderstomp** — 4 rank(s): 26090@L30, 26187@L40, 26188@L50, 1264455@L60
+
+### Pet - Hyena
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17215@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+- **Tendon Rip** — 5 rank(s): 1265038@L12, 1265039@L24, 1265040@L36, 1265041@L48, 1265042@L60
+
+### Pet - Imp
+- **Blood Pact** — 5 rank(s): 6307@L4, 7804@L14, 7805@L26, 11766@L38, 11767@L50
+- **Fire Shield** — 5 rank(s): 2947@L14, 8316@L24, 8317@L34, 11770@L44, 11771@L54
+- **Firebolt** — 7 rank(s): 3110@L1, 7799@L8, 7800@L18, 7801@L28, 7802@L38, 11762@L48, 11763@L58
+- **Phase Shift** — 1 rank(s): 4511@L0
+- **Tamed Pet Passive (DND)** — 4 rank(s): 18728@L?, 18737@L?, 18740@L?, 412729@L?
+- **Warlock Pet Scaling** — 1 rank(s): 416189@L?
+
+### Pet - Infernal
+- **Tamed Pet Passive (DND)** — 1 rank(s): 412729@L?
+- **Warlock Pet Scaling** — 1 rank(s): 416189@L?
+
+### Pet - Raptor
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Claw** — 8 rank(s): 16827@L1, 16828@L8, 16829@L16, 16830@L24, 16831@L32, 16832@L40, 3010@L48, 3009@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Savage Rend** — 5 rank(s): 1265065@L12, 1265066@L24, 1265067@L36, 1265068@L48, 1265069@L60
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17217@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Scorpid
+- **Claw** — 8 rank(s): 16827@L1, 16828@L8, 16829@L16, 16830@L24, 16831@L32, 16832@L40, 3010@L48, 3009@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Scorpid Poison** — 4 rank(s): 24640@L8, 24583@L24, 24586@L40, 24587@L56
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17218@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Spider
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17219@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+- **Web** — 5 rank(s): 1265843@L12, 1265878@L24, 1265880@L36, 1265881@L48, 1265883@L60
+
+### Pet - Succubus
+- **Lash of Pain** — 6 rank(s): 7814@L20, 7815@L28, 7816@L36, 11778@L44, 11779@L52, 11780@L60
+- **Lesser Invisibility** — 1 rank(s): 7870@L32
+- **Seduction** — 1 rank(s): 6358@L26
+- **Soothing Kiss** — 4 rank(s): 6360@L22, 7813@L34, 11784@L46, 11785@L58
+- **Tamed Pet Passive (DND)** — 4 rank(s): 18729@L?, 18736@L?, 18741@L?, 412729@L?
+- **Warlock Pet Scaling** — 1 rank(s): 416189@L?
+
+### Pet - Tallstrider
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Dust Cloud** — 5 rank(s): 1265899@L12, 1265901@L24, 1265902@L36, 1265903@L48, 1265904@L60
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17220@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Turtle
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Shell Shield** — 1 rank(s): 26064@L0
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17221@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Voidwalker
+- **Consume Shadows** — 6 rank(s): 17767@L18, 17850@L26, 17851@L34, 17852@L42, 17853@L50, 17854@L58
+- **Sacrifice** — 6 rank(s): 7812@L16, 19438@L24, 19440@L32, 19441@L40, 19442@L48, 19443@L56
+- **Suffering** — 4 rank(s): 17735@L24, 17750@L36, 17751@L48, 17752@L60
+- **Tamed Pet Passive (DND)** — 4 rank(s): 18727@L?, 18735@L?, 18742@L?, 412729@L?
+- **Torment** — 6 rank(s): 3716@L10, 7809@L20, 7810@L30, 7811@L40, 11774@L50, 11775@L60
+- **Warlock Pet Scaling** — 1 rank(s): 416189@L?
+
+### Pet - Wind Serpent
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dive** — 3 rank(s): 23145@L0, 23147@L0, 23148@L0
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Lightning Breath** — 6 rank(s): 24844@L1, 25008@L12, 25009@L24, 25010@L36, 25011@L48, 25012@L60
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17222@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Pet - Wolf
+- **Bite** — 8 rank(s): 17253@L1, 17255@L8, 17256@L16, 17257@L24, 17258@L32, 17259@L40, 17260@L48, 17261@L56
+- **Dash** — 3 rank(s): 23099@L0, 23109@L0, 23110@L0
+- **Furious Howl** — 4 rank(s): 24604@L10, 24605@L24, 24603@L40, 24597@L56
+- **Hunter Pet Scaling** — 1 rank(s): 415429@L?
+- **Tamed Pet Passive (DND)** — 10 rank(s): 8875@L?, 17223@L?, 19580@L?, 19581@L?, 19582@L?, 19589@L?, 19591@L?, 20782@L?, 20784@L?, 409365@L?
+
+### Runes
+- **Bracer Rune Ability** — 1 rank(s): 417346@L0
+- **Cloak Rune Ability** — 1 rank(s): 417347@L0
+- **Feet Rune Ability** — 1 rank(s): 415450@L0
+- **Helm Rune Ability** — 1 rank(s): 417345@L0
+- **Shoulder Rune Ability** — 1 rank(s): 417348@L0
+- **Waist Rune Ability** — 1 rank(s): 415449@L0
+
+### Shadow Magic
+- **Shadow Word: Death** — 4 rank(s): 1309595@L32, 1309633@L40, 1309635@L48, 1309636@L56
+
+## Warlock
+### Affliction
+- **11721** — 1 rank(s): 11721@L?
+- **11722** — 1 rank(s): 11722@L?
+- **1490** — 1 rank(s): 1490@L?
+- **17784** — 1 rank(s): 17784@L?
+- **17785** — 1 rank(s): 17785@L?
+- **17786** — 1 rank(s): 17786@L?
+- **17787** — 1 rank(s): 17787@L?
+- **17805** — 1 rank(s): 17805@L?
+- **17806** — 1 rank(s): 17806@L?
+- **17807** — 1 rank(s): 17807@L?
+- **17808** — 1 rank(s): 17808@L?
+- **17811** — 1 rank(s): 17811@L?
+- **17812** — 1 rank(s): 17812@L?
+- **17813** — 1 rank(s): 17813@L?
+- **17814** — 1 rank(s): 17814@L?
+- **17862** — 1 rank(s): 17862@L?
+- **17864** — 1 rank(s): 17864@L?
+- **17937** — 1 rank(s): 17937@L?
+- **18095** — 1 rank(s): 18095@L?
+- **18175** — 1 rank(s): 18175@L?
+- **18176** — 1 rank(s): 18176@L?
+- **18177** — 1 rank(s): 18177@L?
+- **18178** — 1 rank(s): 18178@L?
+- **18183** — 1 rank(s): 18183@L?
+- **18213** — 1 rank(s): 18213@L?
+- **18219** — 1 rank(s): 18219@L?
+- **18220** — 1 rank(s): 18220@L?
+- **18272** — 1 rank(s): 18272@L?
+- **18273** — 1 rank(s): 18273@L?
+- **18274** — 1 rank(s): 18274@L?
+- **18275** — 1 rank(s): 18275@L?
+- **18372** — 1 rank(s): 18372@L?
+- **18393** — 1 rank(s): 18393@L?
+- **18394** — 1 rank(s): 18394@L?
+- **18829** — 1 rank(s): 18829@L?
+- **18830** — 1 rank(s): 18830@L?
+- **18937** — 1 rank(s): 18937@L?
+- **18938** — 1 rank(s): 18938@L?
+- **Amplify Curse** — 1 rank(s): 18288@L?
+- **Bane of Agony** — 6 rank(s): 980@L8, 1014@L18, 6217@L28, 11711@L38, 11712@L48, 11713@L58
+- **Bane of Doom** — 1 rank(s): 603@L60
+- **Bane of Doom Effect** — 1 rank(s): 18662@L0
+- **Corruption** — 7 rank(s): 172@L4, 6222@L14, 6223@L24, 7648@L34, 11671@L44, 11672@L54, 25311@L60
+- **Curse of Exhaustion** — 1 rank(s): 18223@L?
+- **Curse of Idiocy** — 1 rank(s): 1010@L0
+- **Curse of Recklessness** — 4 rank(s): 704@L14, 7658@L28, 7659@L42, 11717@L56
+- **Curse of Tongues** — 2 rank(s): 1714@L26, 11719@L50
+- **Curse of Weakness** — 6 rank(s): 702@L4, 1108@L12, 6205@L22, 7646@L32, 11707@L42, 11708@L52
+- **Curse of the Elements** — 4 rank(s): 440892@L20, 1311676@L30, 1311677@L40, 1311680@L50
+- **Death Coil** — 3 rank(s): 6789@L42, 17925@L50, 17926@L58
+- **Drain Life** — 6 rank(s): 689@L14, 699@L22, 709@L30, 7651@L38, 11699@L46, 11700@L54
+- **Drain Mana** — 4 rank(s): 5138@L24, 6226@L34, 11703@L44, 11704@L54
+- **Drain Soul** — 4 rank(s): 1120@L10, 8288@L24, 8289@L38, 11675@L52
+- **Fear** — 3 rank(s): 5782@L8, 6213@L32, 6215@L56
+- **Fel Concentration** — 1 rank(s): 17783@L?
+- **Grim Reach** — 1 rank(s): 18218@L?
+- **Howl of Terror** — 2 rank(s): 5484@L40, 17928@L54
+- **Improved Bane of Agony** — 1 rank(s): 18827@L?
+- **Improved Corruption** — 1 rank(s): 17810@L?
+- **Improved Curse of Exhaustion** — 4 rank(s): 18310@L?, 18312@L?, 18311@L?, 18313@L?
+- **Improved Curse of Weakness** — 3 rank(s): 18179@L?, 18180@L?, 18181@L?
+- **Improved Life Tap** — 1 rank(s): 18182@L?
+- **Invocation** — 5 rank(s): 426331@L0, 426247@L0, 426246@L0, 426245@L0, 426241@L0
+- **Life Tap** — 6 rank(s): 1454@L6, 1455@L16, 1456@L26, 11687@L36, 11688@L46, 11689@L56
+- **Nightfall** — 1 rank(s): 18094@L1
+- **Shadow Mastery** — 1 rank(s): 18271@L?
+- **Siphon Life** — 4 rank(s): 18265@L30, 18879@L38, 18880@L48, 18881@L58
+- **Soul Siphon** — 1 rank(s): 17804@L?
+- **Suppression** — 1 rank(s): 18174@L?
+- **Wrack** — 1 rank(s): 1316697@L40
+
+### Demonology
+- **18695** — 1 rank(s): 18695@L?
+- **18696** — 1 rank(s): 18696@L?
+- **18698** — 1 rank(s): 18698@L?
+- **18699** — 1 rank(s): 18699@L?
+- **18700** — 1 rank(s): 18700@L?
+- **18701** — 1 rank(s): 18701@L?
+- **18704** — 1 rank(s): 18704@L?
+- **18706** — 1 rank(s): 18706@L?
+- **18707** — 1 rank(s): 18707@L?
+- **18710** — 1 rank(s): 18710@L?
+- **18743** — 1 rank(s): 18743@L?
+- **18744** — 1 rank(s): 18744@L?
+- **18745** — 1 rank(s): 18745@L?
+- **18746** — 1 rank(s): 18746@L?
+- **18748** — 1 rank(s): 18748@L?
+- **18749** — 1 rank(s): 18749@L?
+- **18750** — 1 rank(s): 18750@L?
+- **18751** — 1 rank(s): 18751@L?
+- **18752** — 1 rank(s): 18752@L?
+- **18755** — 1 rank(s): 18755@L?
+- **18756** — 1 rank(s): 18756@L?
+- **18770** — 1 rank(s): 18770@L?
+- **18771** — 1 rank(s): 18771@L?
+- **18772** — 1 rank(s): 18772@L?
+- **18773** — 1 rank(s): 18773@L?
+- **23822** — 1 rank(s): 23822@L?
+- **23823** — 1 rank(s): 23823@L?
+- **23824** — 1 rank(s): 23824@L?
+- **23825** — 1 rank(s): 23825@L?
+- **23826** — 1 rank(s): 23826@L?
+- **23827** — 1 rank(s): 23827@L?
+- **23828** — 1 rank(s): 23828@L?
+- **23829** — 1 rank(s): 23829@L?
+- **23833** — 1 rank(s): 23833@L?
+- **23834** — 1 rank(s): 23834@L?
+- **23835** — 1 rank(s): 23835@L?
+- **23836** — 1 rank(s): 23836@L?
+- **23837** — 1 rank(s): 23837@L?
+- **23838** — 1 rank(s): 23838@L?
+- **23839** — 1 rank(s): 23839@L?
+- **23840** — 1 rank(s): 23840@L?
+- **23841** — 1 rank(s): 23841@L?
+- **23842** — 1 rank(s): 23842@L?
+- **23843** — 1 rank(s): 23843@L?
+- **23844** — 1 rank(s): 23844@L?
+- **Banish** — 2 rank(s): 710@L28, 18647@L48
+- **Create Firestone** — 4 rank(s): 6366@L28, 17951@L36, 17952@L46, 17953@L56
+- **Create Healthstone** — 5 rank(s): 6201@L10, 6202@L22, 5699@L34, 11729@L46, 11730@L58
+- **Create Soulstone** — 5 rank(s): 693@L18, 20752@L30, 20755@L40, 20756@L50, 20757@L60
+- **Create Spellstone** — 3 rank(s): 2362@L36, 17727@L48, 17728@L60
+- **Dance of the Wicked** — 1 rank(s): 412798@L?
+- **Demon Armor** — 5 rank(s): 706@L20, 1086@L30, 11733@L40, 11734@L50, 11735@L60
+- **Demon Charge** — 1 rank(s): 412788@L0
+- **Demon Skin** — 2 rank(s): 687@L1, 696@L10
+- **Demonic Embrace** — 1 rank(s): 18697@L?
+- **Demonic Grace** — 1 rank(s): 425463@L?
+- **Demonic Howl** — 1 rank(s): 412789@L0
+- **Demonic Sacrifice** — 1 rank(s): 18788@L?
+- **Detect Invisibility** — 3 rank(s): 132@L0, 2970@L0, 11743@L0
+- **Drain Life** — 6 rank(s): 403689@L0, 403688@L0, 403687@L0, 403686@L0, 403685@L0, 403677@L0
+- **Eye of Kilrogg** — 1 rank(s): 126@L0
+- **Fel Armor** — 1 rank(s): 403619@L0
+- **Fel Domination** — 1 rank(s): 18708@L?
+- **Fel Vitality** — 1 rank(s): 18731@L?
+- **Grimoire of Synergy** — 1 rank(s): 426301@L0
+- **Health Funnel** — 7 rank(s): 755@L12, 3698@L20, 3699@L28, 3700@L36, 11693@L44, 11694@L52, 11695@L60
+- **Improved Firestone** — 2 rank(s): 18768@L?, 18767@L?
+- **Improved Health Funnel** — 1 rank(s): 18703@L?
+- **Improved Healthstone** — 2 rank(s): 18693@L?, 18692@L?
+- **Improved Imp** — 1 rank(s): 18694@L?
+- **Improved Sayaad** — 1 rank(s): 18754@L?
+- **Improved Spellstone** — 2 rank(s): 18774@L?, 18775@L?
+- **Improved Subjugate Demon** — 5 rank(s): 18821@L?, 18822@L?, 18823@L?, 18825@L?, 18824@L?
+- **Improved Voidwalker** — 1 rank(s): 18705@L?
+- **Inferno** — 1 rank(s): 1122@L50
+- **Master Demonologist** — 5 rank(s): 23762@L?, 23759@L?, 23761@L?, 23760@L?, 23785@L?
+- **Master Summoner** — 1 rank(s): 18709@L?
+- **Menace** — 1 rank(s): 403828@L0
+- **Metamorphosis** — 1 rank(s): 403789@L0
+- **Metamorphosis : Demon Charge** — 1 rank(s): 412783@L0
+- **Metamorphosis : Demonic Howl** — 1 rank(s): 412784@L0
+- **Portal of Summoning** — 1 rank(s): 437169@L60
+- **Ritual of Doom** — 1 rank(s): 18540@L60
+- **Ritual of Doom Effect** — 1 rank(s): 18541@L0
+- **Ritual of Summoning** — 1 rank(s): 698@L20
+- **Sense Demons** — 1 rank(s): 5500@L0
+- **Shadow Cleave** — 10 rank(s): 403852@L0, 403851@L0, 403848@L0, 403844@L0, 403843@L0, 403842@L0, 403841@L0, 403840@L0, 403839@L0, 403835@L0
+- **Shadow Ward** — 4 rank(s): 6229@L0, 11739@L0, 11740@L0, 28610@L0
+- **Soul Harvest** — 1 rank(s): 437032@L?
+- **Soul Link** — 1 rank(s): 19028@L0
+- **Subjugate Demon** — 3 rank(s): 1098@L30, 11725@L44, 11726@L58
+- **Summon Felhunter** — 1 rank(s): 691@L30
+- **Summon Imp** — 1 rank(s): 688@L1
+- **Summon Incubus** — 1 rank(s): 713@L20
+- **Summon Succubus** — 1 rank(s): 712@L20
+- **Summon Voidwalker** — 1 rank(s): 697@L10
+- **Unending Breath** — 1 rank(s): 5697@L0
+- **Unholy Power** — 1 rank(s): 18769@L?
+- **Vengeance** — 1 rank(s): 426195@L0
+
+### Destruction
+- **17779** — 1 rank(s): 17779@L?
+- **17780** — 1 rank(s): 17780@L?
+- **17781** — 1 rank(s): 17781@L?
+- **17782** — 1 rank(s): 17782@L?
+- **17789** — 1 rank(s): 17789@L?
+- **17790** — 1 rank(s): 17790@L?
+- **17791** — 1 rank(s): 17791@L?
+- **17792** — 1 rank(s): 17792@L?
+- **17796** — 1 rank(s): 17796@L?
+- **17801** — 1 rank(s): 17801@L?
+- **17802** — 1 rank(s): 17802@L?
+- **17803** — 1 rank(s): 17803@L?
+- **17918** — 1 rank(s): 17918@L?
+- **17929** — 1 rank(s): 17929@L?
+- **17930** — 1 rank(s): 17930@L?
+- **17931** — 1 rank(s): 17931@L?
+- **17932** — 1 rank(s): 17932@L?
+- **17955** — 1 rank(s): 17955@L?
+- **17956** — 1 rank(s): 17956@L?
+- **17957** — 1 rank(s): 17957@L?
+- **17958** — 1 rank(s): 17958@L?
+- **18120** — 1 rank(s): 18120@L?
+- **18121** — 1 rank(s): 18121@L?
+- **18122** — 1 rank(s): 18122@L?
+- **18123** — 1 rank(s): 18123@L?
+- **18131** — 1 rank(s): 18131@L?
+- **18132** — 1 rank(s): 18132@L?
+- **18133** — 1 rank(s): 18133@L?
+- **18134** — 1 rank(s): 18134@L?
+- **18136** — 1 rank(s): 18136@L?
+- **Aftermath** — 1 rank(s): 18119@L?
+- **Agonizing Flames** — 1 rank(s): 17927@L?
+- **Apocalypse** — 1 rank(s): 18096@L?
+- **Bane** — 1 rank(s): 17788@L?
+- **Bane of Havoc** — 1 rank(s): 1225228@L1
+- **Cataclysm** — 1 rank(s): 17778@L?
+- **Chaos Bolt** — 1 rank(s): 403629@L0
+- **Conflagrate** — 6 rank(s): 1293817@L25, 1293818@L32, 17962@L40, 18930@L48, 18931@L54, 18932@L60
+- **Destructive Reach** — 1 rank(s): 17917@L?
+- **Devastation** — 1 rank(s): 18130@L?
+- **Emberstorm** — 1 rank(s): 17954@L?
+- **Hellfire** — 3 rank(s): 1949@L30, 11683@L42, 11684@L54
+- **Hellfire Effect** — 3 rank(s): 5857@L30, 11681@L42, 11682@L54
+- **Immolate** — 9 rank(s): 348@L1, 707@L10, 1094@L20, 2941@L30, 11665@L40, 11667@L50, 11668@L60, 11668@L60, 25309@L60
+- **Improved Firebolt** — 2 rank(s): 18126@L?, 18127@L?
+- **Improved Immolate** — 5 rank(s): 17833@L?, 17834@L?, 17815@L?, 17835@L?, 17836@L?
+- **Improved Lash of Pain** — 2 rank(s): 18128@L?, 18129@L?
+- **Improved Shadow Bolt** — 1 rank(s): 17793@L?
+- **Incinerate** — 3 rank(s): 412758@L40, 1293812@L50, 1293813@L60
+- **Intensity** — 1 rank(s): 18135@L?
+- **Pyroclasm** — 1 rank(s): 18093@L0
+- **Rain of Fire** — 4 rank(s): 5740@L20, 6219@L34, 11677@L46, 11678@L58
+- **Ruin** — 1 rank(s): 17959@L?
+- **Searing Pain** — 6 rank(s): 5676@L18, 17919@L26, 17920@L34, 17921@L42, 17922@L50, 17923@L58
+- **Shadow Bolt** — 10 rank(s): 686@L1, 695@L6, 705@L12, 1088@L20, 1106@L28, 7641@L36, 11659@L44, 11660@L52, 11661@L60, 25307@L60
+- **Shadowburn** — 6 rank(s): 17877@L20, 18867@L24, 18868@L32, 18869@L40, 18870@L48, 18871@L56
+- **Shadowflame** — 2 rank(s): 426325@L0, 426320@L0
+- **Soul Fire** — 2 rank(s): 6353@L48, 17924@L56
+
+### Engraving
+- **403921** — 1 rank(s): 403921@L?
+- **403924** — 1 rank(s): 403924@L?
+- **403926** — 1 rank(s): 403926@L?
+- **403927** — 1 rank(s): 403927@L?
+- **403929** — 1 rank(s): 403929@L?
+- **403930** — 1 rank(s): 403930@L?
+- **403933** — 1 rank(s): 403933@L?
+- **403939** — 1 rank(s): 403939@L?
+- **416010** — 1 rank(s): 416010@L?
+- **416011** — 1 rank(s): 416011@L?
+- **416012** — 1 rank(s): 416012@L?
+- **416013** — 1 rank(s): 416013@L?
+- **416020** — 1 rank(s): 416020@L?
+- **Engrave Belt - Grimoire of Synergy** — 1 rank(s): 426445@L0
+- **Engrave Belt - Invocation** — 1 rank(s): 426443@L0
+- **Engrave Belt - Shadow and Flame** — 1 rank(s): 426452@L0
+- **Engrave Boots - Dance of the Wicked** — 1 rank(s): 416017@L0
+- **Engrave Boots - Decimation** — 1 rank(s): 440922@L0
+- **Engrave Boots - Demonic Knowledge** — 1 rank(s): 416014@L0
+- **Engrave Boots - Shadowflame** — 1 rank(s): 426467@L0
+- **Engrave Bracers - Immolation Aura** — 1 rank(s): 431758@L0
+- **Engrave Bracers - Incinerate** — 1 rank(s): 416015@L0
+- **Engrave Bracers - Summon Felguard** — 1 rank(s): 431756@L0
+- **Engrave Bracers - Unstable Affliction** — 1 rank(s): 431747@L0
+- **Engrave Chest - Demonic Tactics** — 1 rank(s): 416009@L0
+- **Engrave Chest - Lake of Fire** — 1 rank(s): 403937@L0
+- **Engrave Chest - Master Channeler** — 1 rank(s): 403932@L0
+- **Engrave Cloak - Infernal Armor** — 1 rank(s): 440926@L0
+- **Engrave Cloak - Mark of Chaos** — 1 rank(s): 440924@L0
+- **Engrave Cloak - Soul Siphon** — 1 rank(s): 403920@L0
+- **Engrave Gloves - Chaos Bolt** — 1 rank(s): 403925@L0
+- **Engrave Gloves - Haunt** — 1 rank(s): 403919@L0
+- **Engrave Gloves - Metamorphosis** — 1 rank(s): 403938@L0
+- **Engrave Gloves - Shadow Bolt Volley** — 1 rank(s): 403936@L0
+- **Engrave Helm - Backdraft** — 1 rank(s): 431745@L0
+- **Engrave Helm - Pandemic** — 1 rank(s): 431743@L0
+- **Engrave Helm - Vengeance** — 1 rank(s): 426470@L0
+- **Engrave Pants - Demonic Grace** — 1 rank(s): 425477@L0
+- **Engrave Pants - Demonic Pact** — 1 rank(s): 425476@L0
+- **Engrave Pants - Everlasting Affliction** — 1 rank(s): 416008@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Defense Specialization** — 1 rank(s): 459313@L0
+- **Engrave Ring - Fire Specialization** — 1 rank(s): 453696@L0
+- **Engrave Ring - Meditation Specialization** — 1 rank(s): 468763@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+- **Engrave Ring - Shadow Specialization** — 1 rank(s): 453700@L0
+- **Engrave Ring - Sword Specialization** — 1 rank(s): 453635@L0
+
+### Explorer Imp
+- **Explorer Imp** — 1 rank(s): 445459@L0
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
+## Warrior
+### Arms
+- **12165** — 1 rank(s): 12165@L?
+- **12658** — 1 rank(s): 12658@L?
+- **12659** — 1 rank(s): 12659@L?
+- **12663** — 1 rank(s): 12663@L?
+- **12664** — 1 rank(s): 12664@L?
+- **12665** — 1 rank(s): 12665@L?
+- **12666** — 1 rank(s): 12666@L?
+- **12668** — 1 rank(s): 12668@L?
+- **12676** — 1 rank(s): 12676@L?
+- **12677** — 1 rank(s): 12677@L?
+- **12678** — 1 rank(s): 12678@L?
+- **12679** — 1 rank(s): 12679@L?
+- **12697** — 1 rank(s): 12697@L?
+- **12701** — 1 rank(s): 12701@L?
+- **12702** — 1 rank(s): 12702@L?
+- **12703** — 1 rank(s): 12703@L?
+- **12704** — 1 rank(s): 12704@L?
+- **12711** — 1 rank(s): 12711@L?
+- **12712** — 1 rank(s): 12712@L?
+- **12713** — 1 rank(s): 12713@L?
+- **12714** — 1 rank(s): 12714@L?
+- **12781** — 1 rank(s): 12781@L?
+- **12783** — 1 rank(s): 12783@L?
+- **12784** — 1 rank(s): 12784@L?
+- **12785** — 1 rank(s): 12785@L?
+- **12812** — 1 rank(s): 12812@L?
+- **12813** — 1 rank(s): 12813@L?
+- **12814** — 1 rank(s): 12814@L?
+- **12815** — 1 rank(s): 12815@L?
+- **12830** — 1 rank(s): 12830@L?
+- **12831** — 1 rank(s): 12831@L?
+- **12832** — 1 rank(s): 12832@L?
+- **12833** — 1 rank(s): 12833@L?
+- **12849** — 1 rank(s): 12849@L?
+- **12867** — 1 rank(s): 12867@L?
+- **16463** — 1 rank(s): 16463@L?
+- **16464** — 1 rank(s): 16464@L?
+- **16465** — 1 rank(s): 16465@L?
+- **16466** — 1 rank(s): 16466@L?
+- **16494** — 1 rank(s): 16494@L?
+- **23695** — 1 rank(s): 23695@L?
+- **5530** — 1 rank(s): 5530@L?
+- **Anger Management** — 1 rank(s): 12296@L1
+- **Battle Stance** — 1 rank(s): 2457@L1
+- **Battle Stance Passive** — 1 rank(s): 21156@L0
+- **Charge** — 3 rank(s): 100@L4, 6178@L26, 11578@L46
+- **Charge Rage Bonus Effect** — 2 rank(s): 12695@L0, 12696@L0
+- **Deep Wounds** — 1 rank(s): 12834@L1
+- **Deflection** — 1 rank(s): 16462@L?
+- **Hamstring** — 3 rank(s): 1715@L8, 7372@L32, 7373@L54
+- **Heroic Strike** — 9 rank(s): 78@L1, 284@L8, 285@L16, 1608@L24, 11564@L32, 11565@L40, 11566@L48, 11567@L56, 25286@L60
+- **Impale** — 1 rank(s): 16493@L?
+- **Improved Charge** — 1 rank(s): 12285@L1
+- **Improved Hamstring** — 1 rank(s): 12289@L1
+- **Improved Heroic Strike** — 1 rank(s): 12282@L1
+- **Improved Overpower** — 2 rank(s): 12290@L1, 12963@L1
+- **Improved Pummel** — 3 rank(s): 12288@L1, 12707@L1, 12708@L1
+- **Improved Rend** — 1 rank(s): 12286@L1
+- **Improved Tactical Mastery** — 1 rank(s): 12295@L1
+- **Improved Thunder Clap** — 1 rank(s): 12287@L1
+- **Long Daze** — 1 rank(s): 12705@L?
+- **Meathook** — 1 rank(s): 403228@L0
+- **Mocking Blow** — 5 rank(s): 694@L16, 7400@L26, 7402@L36, 20559@L46, 20560@L56
+- **Mortal Strike** — 4 rank(s): 12294@L40, 21551@L48, 21552@L54, 21553@L60
+- **Overpower** — 4 rank(s): 7384@L12, 7887@L28, 11584@L44, 11585@L60
+- **Quick Strike** — 1 rank(s): 429765@L0
+- **Rend** — 7 rank(s): 772@L4, 6546@L10, 6547@L20, 6548@L30, 11572@L40, 11573@L50, 11574@L60
+- **Retaliation** — 1 rank(s): 20230@L20
+- **Shockwave** — 1 rank(s): 440488@L0
+- **Spearing Strike** — 1 rank(s): 1310222@L1
+- **Sweeping Strikes** — 2 rank(s): 12723@L1, 12292@L30
+- **Tactical Mastery** — 1 rank(s): 1310185@L14
+- **Thunder Clap** — 6 rank(s): 6343@L6, 8198@L18, 8204@L28, 8205@L38, 11580@L48, 11581@L58
+- **Two-Handed Weapon Specialization** — 1 rank(s): 12163@L1
+- **Victory Rush** — 1 rank(s): 402927@L20
+- **Weaponmaster** — 3 rank(s): 12281@L1, 12284@L1, 12700@L1
+
+### Engraving
+- **403471** — 1 rank(s): 403471@L?
+- **403473** — 1 rank(s): 403473@L?
+- **403478** — 1 rank(s): 403478@L?
+- **403487** — 1 rank(s): 403487@L?
+- **403488** — 1 rank(s): 403488@L?
+- **403492** — 1 rank(s): 403492@L?
+- **409157** — 1 rank(s): 409157@L?
+- **409158** — 1 rank(s): 409158@L?
+- **409165** — 1 rank(s): 409165@L?
+- **416000** — 1 rank(s): 416000@L?
+- **416006** — 1 rank(s): 416006@L?
+- **416007** — 1 rank(s): 416007@L?
+- **Engrave Belt - Blood Surge** — 1 rank(s): 416004@L0
+- **Engrave Belt - Focused Rage** — 1 rank(s): 409163@L0
+- **Engrave Belt - Precise Timing** — 1 rank(s): 416005@L0
+- **Engrave Boots - Enraged Regeneration** — 1 rank(s): 403467@L0
+- **Engrave Boots - Gladiator Stance** — 1 rank(s): 416002@L0
+- **Engrave Boots - Intervene** — 1 rank(s): 403472@L0
+- **Engrave Boots - Rallying Cry** — 1 rank(s): 426491@L0
+- **Engrave Bracers - Rampage** — 1 rank(s): 427081@L0
+- **Engrave Bracers - Sword and Board** — 1 rank(s): 427082@L0
+- **Engrave Bracers - Wrecking Crew** — 1 rank(s): 427084@L0
+- **Engrave Chest - Blood Frenzy** — 1 rank(s): 403474@L0
+- **Engrave Chest - Flagellation** — 1 rank(s): 403480@L0
+- **Engrave Chest - Raging Blow** — 1 rank(s): 425444@L0
+- **Engrave Chest - Warbringer** — 1 rank(s): 425445@L0
+- **Engrave Cloak - Fresh Meat** — 1 rank(s): 440492@L0
+- **Engrave Cloak - Shockwave** — 1 rank(s): 440496@L0
+- **Engrave Cloak - Sudden Death** — 1 rank(s): 440494@L0
+- **Engrave Gloves - Devastate** — 1 rank(s): 403475@L0
+- **Engrave Gloves - Quick Strike** — 1 rank(s): 425443@L0
+- **Engrave Gloves - Single-Minded Fury** — 1 rank(s): 416003@L0
+- **Engrave Gloves - Victory Rush** — 1 rank(s): 403470@L0
+- **Engrave Helm - Endless Rage** — 1 rank(s): 403489@L0
+- **Engrave Helm - Shield Mastery** — 1 rank(s): 427080@L0
+- **Engrave Helm - Taste for Blood** — 1 rank(s): 427076@L0
+- **Engrave Helm - Vigilance** — 1 rank(s): 427078@L0
+- **Engrave Pants - Commanding Shout** — 1 rank(s): 403446@L0
+- **Engrave Pants - Consumed by Rage** — 1 rank(s): 425446@L0
+- **Engrave Pants - Frenzied Assault** — 1 rank(s): 425447@L0
+- **Engrave Pants - Furious Thunder** — 1 rank(s): 403476@L0
+- **Engrave Ring - Axe Specialization** — 1 rank(s): 453688@L0
+- **Engrave Ring - Dagger Specialization** — 1 rank(s): 453690@L0
+- **Engrave Ring - Defense Specialization** — 1 rank(s): 459313@L0
+- **Engrave Ring - Fist Weapon Specialization** — 1 rank(s): 453691@L0
+- **Engrave Ring - Mace Specialization** — 1 rank(s): 453689@L0
+- **Engrave Ring - Pole Weapon Specialization** — 1 rank(s): 453694@L0
+- **Engrave Ring - Ranged Weapon Specialization** — 1 rank(s): 453692@L0
+- **Engrave Ring - Sword Specialization** — 1 rank(s): 453635@L0
+
+### Fury
+- **12330** — 1 rank(s): 12330@L?
+- **12835** — 1 rank(s): 12835@L?
+- **12836** — 1 rank(s): 12836@L?
+- **12837** — 1 rank(s): 12837@L?
+- **12838** — 1 rank(s): 12838@L?
+- **12852** — 1 rank(s): 12852@L?
+- **12853** — 1 rank(s): 12853@L?
+- **12855** — 1 rank(s): 12855@L?
+- **12856** — 1 rank(s): 12856@L?
+- **12950** — 1 rank(s): 12950@L?
+- **12967** — 1 rank(s): 12967@L?
+- **12968** — 1 rank(s): 12968@L?
+- **12969** — 1 rank(s): 12969@L?
+- **12970** — 1 rank(s): 12970@L?
+- **12971** — 1 rank(s): 12971@L?
+- **12972** — 1 rank(s): 12972@L?
+- **12973** — 1 rank(s): 12973@L?
+- **12974** — 1 rank(s): 12974@L?
+- **12999** — 1 rank(s): 12999@L?
+- **13000** — 1 rank(s): 13000@L?
+- **13001** — 1 rank(s): 13001@L?
+- **13002** — 1 rank(s): 13002@L?
+- **13045** — 1 rank(s): 13045@L?
+- **13046** — 1 rank(s): 13046@L?
+- **13047** — 1 rank(s): 13047@L?
+- **13048** — 1 rank(s): 13048@L?
+- **16489** — 1 rank(s): 16489@L?
+- **16492** — 1 rank(s): 16492@L?
+- **20496** — 1 rank(s): 20496@L?
+- **20497** — 1 rank(s): 20497@L?
+- **20498** — 1 rank(s): 20498@L?
+- **20499** — 1 rank(s): 20499@L?
+- **20501** — 1 rank(s): 20501@L?
+- **20503** — 1 rank(s): 20503@L?
+- **20505** — 1 rank(s): 20505@L?
+- **23585** — 1 rank(s): 23585@L?
+- **23586** — 1 rank(s): 23586@L?
+- **23587** — 1 rank(s): 23587@L?
+- **23588** — 1 rank(s): 23588@L?
+- **23880** — 1 rank(s): 23880@L?
+- **23885** — 1 rank(s): 23885@L?
+- **23886** — 1 rank(s): 23886@L?
+- **23887** — 1 rank(s): 23887@L?
+- **23888** — 1 rank(s): 23888@L?
+- **23889** — 1 rank(s): 23889@L?
+- **23890** — 1 rank(s): 23890@L?
+- **23891** — 1 rank(s): 23891@L?
+- **Battle Shout** — 7 rank(s): 6673@L1, 5242@L12, 6192@L22, 11549@L32, 11550@L42, 11551@L52, 25289@L60
+- **Berserker Rage** — 1 rank(s): 18499@L30
+- **Berserker Stance** — 1 rank(s): 2458@L30
+- **Berserker Stance Passive** — 1 rank(s): 7381@L30
+- **Blood Craze** — 1 rank(s): 16487@L?
+- **Bloodthirst** — 4 rank(s): 23881@L40, 23892@L48, 23893@L54, 23894@L60
+- **Booming Voice** — 1 rank(s): 12321@L1
+- **Challenging Shout** — 1 rank(s): 1161@L26
+- **Cleave** — 5 rank(s): 845@L20, 7369@L30, 11608@L40, 11609@L50, 20569@L60
+- **Cruelty** — 1 rank(s): 12320@L1
+- **Death Wish** — 1 rank(s): 12328@L1
+- **Demoralizing Shout** — 5 rank(s): 1160@L14, 6190@L24, 11554@L34, 11555@L44, 11556@L54
+- **Dual Wield Specialization** — 1 rank(s): 23584@L?
+- **Enrage** — 1 rank(s): 12317@L0
+- **Enraged Regeneration** — 1 rank(s): 402913@L0
+- **Execute** — 6 rank(s): 20647@L1, 5308@L24, 20658@L32, 20660@L40, 20661@L48, 20662@L56
+- **Flurry** — 2 rank(s): 12319@L1, 12966@L1
+- **Improved Battle Shout** — 5 rank(s): 12318@L1, 12857@L1, 12858@L1, 12860@L1, 12861@L1
+- **Improved Berserker Rage** — 1 rank(s): 20500@L?
+- **Improved Challenging Shout** — 2 rank(s): 12327@L1, 12886@L1
+- **Improved Cleave** — 1 rank(s): 12329@L1
+- **Improved Demoralizing Shout** — 5 rank(s): 12324@L1, 12876@L1, 12877@L1, 12878@L1, 12879@L1
+- **Improved Execute** — 1 rank(s): 20502@L?
+- **Improved Intercept** — 1 rank(s): 20504@L?
+- **Improved Intimidating Shout** — 2 rank(s): 19870@L?, 19871@L?
+- **Improved Slam** — 1 rank(s): 12862@L1
+- **Intercept** — 3 rank(s): 20252@L30, 20616@L42, 20617@L52
+- **Intimidating Shout** — 1 rank(s): 5246@L22
+- **Piercing Howl** — 1 rank(s): 12323@L20
+- **Pummel** — 2 rank(s): 6552@L38, 6554@L58
+- **Raging Blow** — 1 rank(s): 402911@L0
+- **Reckless Swings** — 1 rank(s): 1329555@L0
+- **Recklessness** — 1 rank(s): 1719@L50
+- **Slam** — 5 rank(s): 1240193@L20, 1464@L30, 8820@L38, 11604@L46, 11605@L54
+- **Unbridled Wrath** — 2 rank(s): 12964@L1, 12322@L1
+- **Whirlwind** — 1 rank(s): 1680@L36
+
+### Protection
+- **12300** — 1 rank(s): 12300@L?
+- **12303** — 1 rank(s): 12303@L?
+- **12724** — 1 rank(s): 12724@L?
+- **12725** — 1 rank(s): 12725@L?
+- **12726** — 1 rank(s): 12726@L?
+- **12727** — 1 rank(s): 12727@L?
+- **12750** — 1 rank(s): 12750@L?
+- **12751** — 1 rank(s): 12751@L?
+- **12752** — 1 rank(s): 12752@L?
+- **12753** — 1 rank(s): 12753@L?
+- **12761** — 1 rank(s): 12761@L?
+- **12762** — 1 rank(s): 12762@L?
+- **12763** — 1 rank(s): 12763@L?
+- **12764** — 1 rank(s): 12764@L?
+- **12788** — 1 rank(s): 12788@L?
+- **12789** — 1 rank(s): 12789@L?
+- **12791** — 1 rank(s): 12791@L?
+- **12798** — 1 rank(s): 12798@L?
+- **12799** — 1 rank(s): 12799@L?
+- **12800** — 1 rank(s): 12800@L?
+- **12803** — 1 rank(s): 12803@L?
+- **12804** — 1 rank(s): 12804@L?
+- **12807** — 1 rank(s): 12807@L?
+- **12810** — 1 rank(s): 12810@L?
+- **12811** — 1 rank(s): 12811@L?
+- **12818** — 1 rank(s): 12818@L?
+- **12958** — 1 rank(s): 12958@L?
+- **12959** — 1 rank(s): 12959@L?
+- **12960** — 1 rank(s): 12960@L?
+- **12961** — 1 rank(s): 12961@L?
+- **16539** — 1 rank(s): 16539@L?
+- **16540** — 1 rank(s): 16540@L?
+- **16541** — 1 rank(s): 16541@L?
+- **16542** — 1 rank(s): 16542@L?
+- **20130** — 1 rank(s): 20130@L?
+- **20135** — 1 rank(s): 20135@L?
+- **20136** — 1 rank(s): 20136@L?
+- **20137** — 1 rank(s): 20137@L?
+- **20139** — 1 rank(s): 20139@L?
+- **20140** — 1 rank(s): 20140@L?
+- **20141** — 1 rank(s): 20141@L?
+- **20142** — 1 rank(s): 20142@L?
+- **20144** — 1 rank(s): 20144@L?
+- **20145** — 1 rank(s): 20145@L?
+- **20146** — 1 rank(s): 20146@L?
+- **20147** — 1 rank(s): 20147@L?
+- **20175** — 1 rank(s): 20175@L?
+- **20179** — 1 rank(s): 20179@L?
+- **20180** — 1 rank(s): 20180@L?
+- **20181** — 1 rank(s): 20181@L?
+- **20182** — 1 rank(s): 20182@L?
+- **20197** — 1 rank(s): 20197@L?
+- **20198** — 1 rank(s): 20198@L?
+- **20199** — 1 rank(s): 20199@L?
+- **20200** — 1 rank(s): 20200@L?
+- **20469** — 1 rank(s): 20469@L?
+- **20470** — 1 rank(s): 20470@L?
+- **20488** — 1 rank(s): 20488@L?
+- **20489** — 1 rank(s): 20489@L?
+- **20911** — 1 rank(s): 20911@L?
+- **20912** — 1 rank(s): 20912@L?
+- **20913** — 1 rank(s): 20913@L?
+- **20914** — 1 rank(s): 20914@L?
+- **403338** — 1 rank(s): 403338@L?
+- **407631** — 1 rank(s): 407631@L?
+- **Anticipation** — 1 rank(s): 12297@L1
+- **Bastion** — 1 rank(s): 16538@L1
+- **Bloodrage** — 1 rank(s): 2687@L10
+- **Commanding Shout** — 1 rank(s): 403215@L0
+- **Concussion Blow** — 1 rank(s): 12809@L30
+- **Defensive Stance** — 1 rank(s): 71@L10
+- **Defensive Stance Passive** — 1 rank(s): 7376@L10
+- **Defiance** — 1 rank(s): 12792@L0
+- **Devastate** — 1 rank(s): 403196@L0
+- **Disarm** — 1 rank(s): 676@L18
+- **Guardian's Favor** — 1 rank(s): 20174@L?
+- **Holy Shield** — 4 rank(s): 20925@L30, 20927@L40, 20928@L50, 1239570@L60
+- **Improved Bloodrage** — 1 rank(s): 12301@L1
+- **Improved Devotion Aura** — 1 rank(s): 20138@L?
+- **Improved Disarm** — 1 rank(s): 12313@L1
+- **Improved Hammer of Justice** — 1 rank(s): 20487@L?
+- **Improved Revenge** — 1 rank(s): 12797@L1
+- **Improved Righteous Fury** — 1 rank(s): 20468@L?
+- **Improved Shield Bash** — 1 rank(s): 12311@L1
+- **Improved Shield Block** — 3 rank(s): 12945@L1, 12307@L1, 12944@L1
+- **Improved Shield Wall** — 1 rank(s): 12312@L1
+- **Improved Sunder Armor** — 1 rank(s): 12308@L1
+- **Improved Taunt** — 2 rank(s): 12302@L1, 12765@L1
+- **Iron Will** — 1 rank(s): 12962@L0
+- **Last Stand** — 2 rank(s): 12976@L0, 12975@L1
+- **One-Handed Weapon Specialization** — 1 rank(s): 20196@L1
+- **Rallying Cry** — 1 rank(s): 426490@L0
+- **Reckoning** — 1 rank(s): 20177@L?
+- **Redoubt** — 1 rank(s): 20127@L?
+- **Revenge** — 6 rank(s): 6572@L14, 6574@L24, 7379@L34, 11600@L44, 11601@L54, 25288@L60
+- **Sanctified Judgement** — 1 rank(s): 1311074@L?
+- **Shield Bash** — 3 rank(s): 72@L12, 1671@L32, 1672@L52
+- **Shield Block** — 1 rank(s): 2565@L16
+- **Shield Slam** — 4 rank(s): 23922@L40, 23923@L48, 23924@L54, 23925@L60
+- **Shield Specialization** — 4 rank(s): 20148@L0, 20149@L0, 20150@L0, 12298@L1
+- **Shield Wall** — 1 rank(s): 871@L28
+- **Shield of Righteousness** — 1 rank(s): 440658@L0
+- **Sunder Armor** — 5 rank(s): 7386@L10, 7405@L22, 8380@L34, 11596@L46, 11597@L58
+- **Taunt** — 1 rank(s): 355@L10
+- **Templar's Bulwark** — 1 rank(s): 1311015@L0
+- **Toughness** — 2 rank(s): 12299@L1, 20143@L1
+- **Valor of Azeroth** — 1 rank(s): 461475@L0
+
+### Runes
+- **Chest Rune Ability** — 1 rank(s): 399954@L0
+- **Hands Rune Ability** — 1 rank(s): 399967@L0
+- **Legs Rune Ability** — 1 rank(s): 399966@L0
+- **S03 - PvP - Damage Reduction Aura** — 1 rank(s): 453593@L0
+- **Soul Engraving** — 1 rank(s): 1219955@L0
+
