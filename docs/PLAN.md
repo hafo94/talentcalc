@@ -80,19 +80,22 @@ Output: static web app (`npm run build` → `dist/`), 94 unit tests + 13 Playwri
 Output: pipeline v2 (`classes[].raceIds/weaponSubclasses/dualWield`, `Talent.effects/equipped/shapeshiftMask`), manual `buffs.json`, `racials.json`, `base-stats.json`;
 `src/engine/stats`, `src/state/{charCode,character,derived}.ts`, `src/ui/{character,stats}`. 48 pipeline tests, 147 Vitest tests, 21 Playwright tests. Open items: Q33–Q46.
 
-## Phase 4 — Damage engine (analytical) ⬜
-- [ ] Apply recorded spell mods (107/108) and damage-done (79) modifiers; glancing damage
-- [ ] Outcome tables: melee white, melee special, ranged, spell
-- [ ] Armor mitigation, partial resists, glancing
-- [ ] Spell damage (direct, DoT, channeled) with coefficients and talent mods
-- [ ] Weapon specials (Heroic Strike, Sinister Strike, Aimed Shot, Stormstrike…)
-- [ ] Special-case talent handlers (DUMMY auras: Ignite, Fire Power, Seals, Nightfall, Clearcasting, …)
-- [ ] Per-ability card: avg hit, crit, expected per cast, DPCT, hit/crit chance, and their talent sources
-- [ ] Default priority rotations for every DPS spec; analytical DPS (live on every click)
-- [ ] Golden tests per class
+## Phase 4 — Damage engine (analytical) ✅
+- [x] Apply spell mods (107/108 by family mask), aura 79 by school and weapon slot; glancing damage
+- [x] Outcome tables: melee white, melee/ranged special, spell (reuse TargetView)
+- [x] Armor, partial resists (average), glancing
+- [x] Spell damage: direct, DoT (per-tick coefficients, ticks crit), channeled, hybrid, missiles; level scaling; rank = highest learnable
+- [x] Weapon specials (effects 17/58/121/31 in index order, normalized speeds), scripted specials (Bloodthirst, finishers, Judgement, Mutilate, Shank)
+- [x] 22 special talent handlers (Ignite, Fire Power, Flurry, Deep Wounds, Unbridled Wrath, Improved Shadow Bolt, Shadow Weaving, Nightfall, Seal Fate, ...)
+- [x] Damage panel: per-ability cards (hit, crit, expected, DPCT, chances, timing, cost, sources), DPS breakdown
+- [x] Default rotations for 27 specs (tier 1/2/3) in data/manual/rotations.json; analytical DPS, live (~1-2 ms per click)
+- [x] Golden tests per class (13 cases, independent Python check)
+
+Output: pipeline v3 (`spells/<class>.json`, seal judgement closure), `src/engine/{combat,abilities,rotation,talents/special}`, `src/ui/{results,abilities}`,
+manual `rotations.json`. 50 pipeline tests, 220 Vitest tests, 24 Playwright tests. Open items: Q47-Q58 (plus Q2 answered with the data).
 
 ## Phase 5 — Rotations & simulation ⬜
-- [ ] Rotation editor: drag-and-drop priority list with conditions
+- [ ] Rotation editor: drag-and-drop priority list with conditions (URL record for rotation choice; Phase 4 picks the dominant spec)
 - [ ] Event-driven simulator in a Web Worker (GCD, casts, swings, resources, procs, DoTs, cooldowns)
 - [ ] Seeded RNG, N iterations, fight-length setting, execute phase
 - [ ] Results: DPS mean ± stdev, damage breakdown table/pie, casts per fight, resource graph

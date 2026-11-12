@@ -218,6 +218,15 @@ player level 1..60, the five presets (boss +3, elite +2, same level, low-armor b
 are not in client data. They will be hand-entered constants in `data/manual/pets.json`,
 with sources cited.
 
+## Phase 4 findings (spells, 70888)
+- **Rank chains:** a talent-granted ability's chain starts at rank 2 (rank 1 is the talent spell); rank = highest `levels.base <= level`; value = `base + perLevel x (min(L, levels.max) - levels.base)`.
+- **Fields:** `castMs` -1000000 on instant hunter shots (= instant); `gcdMs` 0 = off the GCD; category cooldowns are shared (Aimed/Multi-Shot, Arcane Shot/Summon Hawk, Holy Strike/Hammer of the Righteous, Fire Blast); rage costs are already / 10; `pct` costs are % of base mana; `defenseType` 1 magic, 2 melee, 3 ranged; `attributes[2] & 0x20000000` is CANT_CRIT; mechanic 15 is a bleed (ignores armor); `apCoef` is never set (finisher AP scaling is server-side); every physical effect has `spCoef` 1.0 (client default).
+- **Effects used:** 2 school damage; aura 3/53 periodic damage; aura 23 periodic trigger (channel missiles); aura 226 periodic dummy (not exported, not modeled: Blizzard, Volley, Consecration); 17/58 weapon damage, 121 normalized, 31 weapon percent; 30 energize (misc[0] 4 combo points, 3 energy); 64 trigger spell (Mutilate); 77 script effect (Judgement).
+- **Judgements:** a Seal stores its judgement spell in a DUMMY effect's base points (Seal of Command r5 20920 -> 20968 -> 20966, 356 Holy, coef 0.429). The pipeline follows them only into spells named "Judgement of ..." (Seal of Fury's DUMMY base 707 would otherwise pull in Immolate): +40 spells.
+- **SpellModOp** (aura 107/108 `misc[0]`) values are tabulated in `docs/CALC_MODEL.md` section 4; Arcane Instability has op 0 for all spells and op 22 for spells with a DoT part (op 0 does not touch periodic damage).
+- **Forever changes:** Shank, Holy Strike, Arcane Wrath, Sniper Shot, Summon Hawk, Bane of Agony/Doom, Incinerate, Seal of Fury, Hammer of the Righteous, Windfury Weapon (2 extra attacks, 333 AP), Lightning Overload, Mutilate (triggered 1241586/1241590). Multi-Shot has one rank. Rogue poisons are item enchants (not in the spell data). Aura 598 = attack power from a stat percent, 580 = ranged attack power from a stat percent. Fire Vulnerability (22959) and Shadow Weaving (15258) use aura 270 (3% x 5 stacks, 2% x 5).
+- **Spell values are Forever data, not Classic** (Q2): Fireball r12 483 (Classic 678 avg), Shadow Bolt r10 268 (510), Frostbolt r11 475 (535), Lightning Bolt r10 353 (452), Starfire r7 533 (588).
+
 ## Refresh procedure (when a new Forever build ships)
 
 1. Run `curl -s https://wago.tools/api/builds` and read `.wowf[0].version`.

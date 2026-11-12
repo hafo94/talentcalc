@@ -21,7 +21,7 @@ character-sheet stats for validation (see the Phase 7 stretch goal).
 | Simulation | Web Worker (Comlink) | Keeps the UI responsive during multi-iteration sims |
 | Tests | Vitest (engine and pipeline output), Playwright (UI smoke) | |
 | Data pipeline | Python 3 (stdlib csv/json) | CSVs in, compact JSON out; already used for research |
-| Data loading | `@data` alias → `data/generated/<build>` (set in `vite.config.ts` and `tsconfig.app.json`). `classes.json` and `manifest.json` are static imports, each `talents/<class>.json` is lazy-loaded per class, `spells.json` is not loaded by the talent UI | Small first load; one ~6 KB gzip chunk per class |
+| Data loading | `@data` alias → `data/generated/<build>` (set in `vite.config.ts` and `tsconfig.app.json`). `classes.json` and `manifest.json` are static imports, each `talents/<class>.json` and `spells/<class>.json` are lazy-loaded per class, `spells.json` is not loaded by the app; `spells/<class>.json` is lazy-loaded together with the talent file (Phase 4) | Small first load; one ~6 KB gzip chunk per class |
 | Icons | Spell icon file IDs → icon names via `ManifestInterfaceData`; served from the Blizzard render CDN (Zamimg fallback), not bundled | Decided in Phase 1 (Q9) |
 
 ## Repository layout (target)
@@ -66,7 +66,8 @@ Pipeline output lives in `data/generated/<build>/` (committed). The authoritativ
 | `manifest.json` | build, era build, date, options, icon URL templates, raw table hashes, output counts |
 | `classes.json` | 9 classes (id, token, name, color, spellClassSet, powerType, icon, traitTreeId, skillLineIds, 3 specs each, `raceIds` (CharBaseInfo), `weaponSubclasses`, `dualWield` (SkillLineAbility)), 8 races, talent currency sources |
 | `talents/<token>.json` | one per class: 3 specs, each with `tierGates[]` and `talents[]` sorted by (tier, col) |
-| `spells.json` | every class ability rank, talent spell and triggered spell (2,300) + `abilities[]` rank chains |
+| `spells.json` | every class ability rank, talent spell and triggered spell (2,340) + `abilities[]` rank chains (tools and tests) |
+| `spells/<token>.json` | Phase 4: the class's records of `spells.json` plus its ability chains; one lazy chunk per class (17-29 KB gzip). Seal judgements are followed through DUMMY base points ("Seal of" / "Judgement of" to "Judgement of ...") |
 | `weapons.json` | weapons (min/max/speed/dps/stats; `source` is `forever` or `classic_era`) + ammo |
 | `targets.json` | `ExpectedStat` levels 1..63, the five target presets, and `byPlayerLevel` 1..60 |
 | `pet-families.json` | `CreatureFamily` list |
@@ -111,7 +112,7 @@ Phase 3 additions: `Talent.effects[]` (`index, effect, aura, misc, mask, targets
 (`{itemClass, subclassMask, invTypeMask}` from `SpellEquippedItems`, or null) and `Talent.shapeshiftMask` (`SpellShapeshift`); the same
 `equipped`/`shapeshiftMask` fields exist on every `Spell`. The app still does not load `spells.json`.
 
-**Manual data** (`data/manual/`, alias `@manual`, static imports): `base-stats.json` (level 60 class bases, race offsets, AP/crit/health/mana
+**Manual data** (`data/manual/`, alias `@manual`, static imports): `rotations.json` (Phase 4: 27 default priority rotations, tiers 1-3), `base-stats.json` (level 60 class bases, race offsets, AP/crit/health/mana
 conversions), `buffs.json` (stable URL `code`, exclusive `group`, `effects[].src` = the `SpellEffect` column the value was read from, `presets`),
 `racials.json`. The pipeline checks every `src` against `SpellEffect` and reports mismatches in `report.manualValidation`.
 
@@ -122,6 +123,13 @@ when a link contains weapons. `targets.json` and the manual files are static imp
 `talentEffects` (generic aura mapper), `assemble` (racials + buffs + talents -> input), `character` (`computeCharacter`), `target`
 (`evaluateTarget`), `weapons` (proficiency, picker, ammo). State is two stores: `useCalc` (talents) and `useCharacter` (race, weapons, bonus
 stats, buffs, target); `src/state/derived.ts` combines them.
+
+**Damage engine (Phase 4, pure, import direction `stats` <- `combat` <- `abilities` <- `talents/special` <- `rotation`):** `src/engine/combat`
+(constants, outcome tables), `abilities` (spellbook, spell mods, `evaluateAbility`, `evaluateWhite`, `SCRIPTS`), `talents/special` (22 handlers keyed by talent
+spell id with stats / ability / rotation hooks), `rotation` (`pickRotation`, `prepareDamage`, `runRotation`, `evaluateDamage`, two passes). State: `CalcState.spells`
+is loaded with the tree; `derive` returns `damage` (null while spells load), `notModeled` (minus handled talents and rotation abilities) and fills `dps` on every
+reference target row. UI: `src/ui/results` (Damage panel, DPS breakdown), `src/ui/abilities` (ability cards). Per-click cost 1-2 ms for 5 targets x 2 passes.
+No URL change: the rotation is chosen from the spec with the most points (the editor and its URL record are Phase 5).
 
 ## Build URL format
 

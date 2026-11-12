@@ -3,7 +3,7 @@
 A Classic-style talent calculator for **WoW Forever** that also calculates hit, crit and damage
 per ability, weapon damage, pet damage and rotation DPS for your build.
 
-Status: data pipeline (Phase 1), talent calculator (Phase 2) and character, gear, buffs, target and derived stats (Phase 3) complete. See [docs/PLAN.md](docs/PLAN.md).
+Status: data pipeline (Phase 1), talent calculator (Phase 2), character, gear, buffs, target and derived stats (Phase 3) and the analytical damage engine (Phase 4: Damage panel with per-ability cards, DPS breakdown, DPS per reference target) complete. See [docs/PLAN.md](docs/PLAN.md).
 
 | Doc | Contents |
 |---|---|
@@ -25,7 +25,7 @@ Options: --include-hidden-nodes (flag-8 talents), --no-era-fallback, --date YYYY
 Hand-maintained inputs live in data/manual/ (every value tagged [VERIFY] until confirmed in game).
 Review data/generated/<build>/report.json after every new build.
 
-## Web app (Phases 2-3)
+## Web app (Phases 2-4)
 ```
 npm ci
 npm run dev                       # open http://localhost:5173/talentcalc/

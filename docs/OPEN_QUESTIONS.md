@@ -5,7 +5,7 @@ Status: ❓ open · 🔬 investigating · ✅ resolved (record the answer and so
 | # | Question | Why it matters | How to resolve | Status |
 |---|---|---|---|---|
 | Q1 | Platform: web app or in-game addon? | Shapes the whole stack | Owner decision | ✅ Website (owner, 2026-11-12) |
-| Q2 | Are high-rank spell base points retuned in Forever? Fireball r11 data gives ~397–505 (Classic 561–715) | Every damage number | Compare in-game tooltips for 3–5 spells | ❓ |
+| Q2 | Are high-rank spell base points retuned in Forever? Fireball r11 data gives ~397–505 (Classic 561–715) | Every damage number | Compare in-game tooltips for 3–5 spells | ❓ Phase 4 uses the data as is (Fireball r12 483 vs Classic 678, Shadow Bolt r10 268 vs 510, Frostbolt r11 475 vs 535, Lightning Bolt r10 353 vs 452, Starfire r7 533 vs 588); the goldens document it. |
 | Q3 | Melee/spell outcome-table constants (miss, glancing, crit suppression, spell hit cap) in Forever | Hit/crit math | Target-dummy testing, Blizzard notes, community testing | ❓ |
 | Q4 | Stat conversion ratios (AP per Str/Agi, crit per Agi/Int) at 60 | Derived stats | Character-sheet deltas while swapping gear | ❓ Phase 3: also covers the attack power formulas and Agi -> crit for casters (`base-stats.json`). |
 | Q5 | Do pets scale with owner stats in Forever? | Pet DPS | Pet tooltip/attack values at different owner AP/SP | ❓ |
@@ -26,7 +26,7 @@ Status: ❓ open · 🔬 investigating · ✅ resolved (record the answer and so
 | Q20 | Thunderfury secondary nature damage (16–30): the range is in the Era client, the school is not in any DB2 column; manual override used | Weapon picker | In-game tooltip | ❓ |
 | Q21 | Tier-gate scope anomalies: Holy Specialization (105865) and Improved Serpent Sting (105003) are not in the groups whose points count toward later gates. Do their points unlock later tiers in game? (`spec.tierGates`, `report.gateScopeAnomalies`) | Tree rules (Phase 2) | Spend 5 points only in Holy Specialization, check whether tier 2 unlocks | 🔬 Engine honors the data (Phase 2). In-game check still pending |
 | Q22 | Talent points at levels 5–9 come from the account-wide "Talented" Legacy perk. How should the UI expose this? Default rule is points = level − 9 | Tree rules (Phase 2) | Owner decision plus in-game check | ✅ Default points = level − 9; a "Talented" Legacy perk toggle adds the level 5–9 points from TraitCurrencySource (owner, 2026-11-12). Phase 2 finding: the perk does not change the points at level 60 (cap 51 either way); the toggle only lowers the required level (51 points: level 60 without, 55 with) |
-| Q23 | Aura enum names above 270 and some unknown stat IDs (37, 84–92, 96, 114, 117, 124, 127, 131, 132) are unconfirmed for Forever | Engine (Phase 3/4) | Engine work; in-game tests | ❓ Phase 3: aura 268 is armor-from-stat (Arcane Resilience) and 674 an armor aura; see Q45. |
+| Q23 | Aura enum names above 270 and some unknown stat IDs (37, 84–92, 96, 114, 117, 124, 127, 131, 132) are unconfirmed for Forever | Engine (Phase 3/4) | Engine work; in-game tests | ❓ Phase 3: aura 268 is armor-from-stat (Arcane Resilience) and 674 an armor aura; see Q45. Phase 4: aura 598/580 are attack power / ranged attack power from a stat percent (Mental Dexterity, Careful Aim), mapped. |
 | Q24 | Flag-8 meaning (Q6) remains open. Live nodes 104982 and 105865 have flag-8 twins at the correct positions, which suggests flag 8 = superseded or hidden. 23 hidden nodes are excluded by default | Tree correctness | In-game talent UI | ❓ |
 | Q25 | Base stats per race/class/level and valid race/class combos in Forever (manual table from Classic recall, `data/manual/base-stats.json`) | Derived stats | Naked character sheets | ❓ Phase 3: race/class combos resolved by `CharBaseInfo` (6 new combos, Q39); base stats still open. |
 | Q26 | Ammo DPS: data gives Thorium Headed Arrow 17.71 dps vs Classic tooltip 17.5 | Ranged DPS | In-game tooltip | ❓ |
@@ -43,10 +43,22 @@ Status: ❓ open · 🔬 investigating · ✅ resolved (record the answer and so
 | Q37 | "Savage" (20574, +1% crit) is in no racial skill line; assumed Orc | Orc crit | Orc character sheet | ❓ |
 | Q38 | Proficiencies from data differ from Classic: Rogue one-hand axes, Druid polearms. Live? | Weapon picker | Trainer / skill sheet | ❓ |
 | Q39 | New race/class combos in `CharBaseInfo` (Undead Paladin, Dwarf Shaman, Human Hunter, Gnome Priest, Orc Mage, Troll Warlock): playable? Base stats = class + race offset? | Race picker, base stats | Character creation screen | ❓ |
-| Q40 | Wands: spell or ranged hit/crit table? Phase 3 shows wand DPS only | Caster wand DPS (Phase 4) | Wand vs target dummy | ❓ |
+| Q40 | Wands: spell or ranged hit/crit table? Phase 3 shows wand DPS only | Caster wand DPS | Wand vs target dummy | ❓ Phase 4: no Shoot spell in the class data, wands are not modeled. |
 | Q41 | Equip-restricted all-crit talents (Conviction, Thundering Strikes need a melee weapon): do they also raise spell crit, and only while the weapon is equipped? | Hybrid spell crit | Character sheet with/without a weapon | ❓ |
 | Q42 | Unit of `MOD_EXPERTISE` (Weapon Expertise values 1/2 = "2%"): % dodge reduction or expertise points? | Dodge vs target | In-game tooltip / testing | ❓ |
 | Q43 | Aura 280 (Serrated Blades "ignore 9% armor") applied as % of target armor after debuffs | Physical DR | Damage logs | ❓ |
 | Q44 | World buffs say "No effect while in a raid instance". Should "Raid buffed" ever include them? (Phase 3: no) | Default buff sets | Owner decision | ❓ |
 | Q45 | Aura enum drift: 268 is armor-from-Int (Arcane Resilience), 674 is the armor aura of Sunder/FF/MotW. `tools/pipeline/constants.py` labels 268 as attack power | Coverage report labels | Pipeline follow-up: relabel 268, add 674 to IGNORED/target handling | ❓ |
 | Q46 | Shields are not modeled (Bastion, Shield Slam conditions, Holy Shield) | Protection specs | Gear v2 (off-hand shield slot) | ❓ |
+| Q47 | Do DoT/channel ticks crit in Forever (modern engine default), and with which crit chance? | Warlock/priest/druid DPS (+3-10%) | Combat log of Corruption/SW:P ticks | ❓ |
+| Q48 | Weapon effect order: is the flat bonus of 121/17/58 multiplied by a later 31 (Backstab = 1.5 W + 225, Mutilate tooltip) also for Holy Strike (tooltip shows 81-105 unhalved) and Counterattack? | Paladin, hunter melee | Holy Strike hits vs a dummy with a known weapon | ❓ |
+| Q49 | Can ranged attacks be dodged? (Phase 4: no) | Hunter DPS (~6%) | Target-dummy logs | ❓ |
+| Q50 | Average partial resist (0.75 x R / 5L, +8 per level) and binary spells in Forever | Caster DPS (6% vs boss) | Logs: resist rate vs boss | ❓ |
+| Q51 | Rage from damage dealt: Classic `7.5 x dmg / c(L)` or the modern weapon-speed formula? Do Heroic Strike swings generate rage? | Warrior DPS | Rage gained per white hit at known damage | ❓ |
+| Q52 | Do percent spell modifiers and aura 79s multiply (modern) or add (Classic)? | Stacked talents | Two-talent test (e.g. Darkness + Shadowform) | ❓ |
+| Q53 | AP scaling of Eviscerate, Ferocious Bite, Rip (not in client data; TBC values used) | Rogue/feral DPS | Tooltip at two AP values | ❓ |
+| Q54 | Seal of Command proc rate (7 PPM assumed) and Windfury Weapon (tooltip: 20%, 2 attacks, +333 AP; white hits only?) | Ret / Enhancement | Proc counts in logs | ❓ |
+| Q55 | Cat Form weapon (level x 0.85-1.25 per 1.0 s, AP + Agi) and form passives (Cat Form (Passive) has 107/108 auras, not modeled) | Feral DPS | Cat Form character sheet and Claw hits | ❓ |
+| Q56 | Forever Whirlwind with an off hand: does it really strike with both weapons, at the off-hand penalty? | Fury DPS | Whirlwind hits in logs | ❓ |
+| Q57 | Spell haste on GCD (not hasted in Phase 4), ranged haste on Aimed/Sniper Shot casts, no haste on melee casts | Haste value | In-game cast bars | ❓ |
+| Q58 | Judgement of Command halved unless the target is stunned (tooltip) and Judgement being off the GCD (gcdMs 0) | Ret DPS | Logs | ❓ |
