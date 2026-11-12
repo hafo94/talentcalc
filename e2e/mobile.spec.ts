@@ -32,3 +32,12 @@ test("mobile sections", async ({ page }) => {
   await page.getByRole("tab", { name: "Talents" }).click();
   await expect(page.getByTestId("tree-0")).toBeVisible();
 });
+
+test("mobile: Damage tab shows the damage panel", async ({ page }) => {
+  await blockRemoteImages(page);
+  await page.goto("./");
+  await page.getByRole("button", { name: "Mage", exact: true }).click();
+  await page.getByRole("tab", { name: "Damage" }).click();
+  await expect(page.getByTestId("damage-panel")).toBeVisible();
+  await expect(page.getByTestId("dps-total")).not.toHaveText("");
+});

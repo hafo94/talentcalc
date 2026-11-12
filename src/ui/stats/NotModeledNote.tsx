@@ -6,15 +6,14 @@ import styles from "./StatsPanel.module.css";
 
 const SECTIONS: { reason: NotModeledReason; title: string }[] = [
   { reason: "inactive", title: "Inactive (condition not met)" },
-  { reason: "spellMod", title: "Affect specific spells (Phase 4)" },
-  { reason: "special", title: "Special effects (Phase 4)" },
-  { reason: "ability", title: "Abilities and cooldowns (Phase 4/5)" },
+  { reason: "special", title: "Special effects not modeled yet" },
+  { reason: "ability", title: "Abilities and cooldowns outside the default rotation (Phase 5)" },
   { reason: "unsupported", title: "Not supported yet" },
 ];
 
 export function NotModeledNote({ d, race }: { d: Extract<Derived, { ok: true }>; race: string }) {
   const tree = useCalc((s) => s.tree);
-  const notes: NotModeled[] = d.mapping.notModeled;
+  const notes: NotModeled[] = d.notModeled;
   const racials = racialsFile.racials.filter((r) => r.race === race && r.kind === "active");
   const n = notes.length;
   if (n === 0 && racials.length === 0) return null;

@@ -159,7 +159,7 @@ function Groups({ d }: { d: Ok }) {
           ))}
           <tr>
             <td colSpan={2} className={styles.dim}>
-              applied by the damage engine (Phase 4)
+              applied to matching attacks in the Damage panel
             </td>
           </tr>
         </Group>

@@ -1,6 +1,6 @@
 import type { Stat } from "@/engine/stats";
 import { StatValue } from "./StatValue";
-import { fmtInt, fmtPct } from "./format";
+import { fmtDec1, fmtInt, fmtPct } from "./format";
 import { useDerived } from "./useDerived";
 import styles from "./StatStrip.module.css";
 
@@ -57,8 +57,15 @@ export function StatStrip() {
       { testId: "strip-dr", label: "Armor DR", stat: view.armorReduction, format: fmtPct },
     ];
   }
+  const dps = d.damage?.result.rotation.dps;
   return (
     <div className={styles.strip} data-testid="stat-strip" aria-label="Key stats">
+      {dps !== undefined && (
+        <span className={styles.item}>
+          <span className={styles.label}>DPS</span>
+          <span data-testid="strip-dps">{fmtDec1(dps)}</span>
+        </span>
+      )}
       {fields.map((f) => (
         <span key={f.testId} className={styles.item}>
           <span className={styles.label}>{f.label}</span>

@@ -2,14 +2,15 @@ import { useState } from "react";
 import { DATA_BUILD, manifest } from "@/data";
 import { useCalc } from "@/state/store";
 import { CharacterPanel } from "@/ui/character/CharacterPanel";
+import { DamagePanel } from "@/ui/results/DamagePanel";
 import { useMediaQuery } from "@/ui/common/useMediaQuery";
 import { StatsPanel } from "@/ui/stats/StatsPanel";
 import { ClassPicker } from "@/ui/talents/ClassPicker";
 import { TalentCalculator } from "@/ui/talents/TalentCalculator";
 import styles from "./App.module.css";
 
-type Section = "Talents" | "Gear" | "Stats";
-const SECTIONS: Section[] = ["Talents", "Gear", "Stats"];
+type Section = "Talents" | "Gear" | "Stats" | "Damage";
+const SECTIONS: Section[] = ["Talents", "Gear", "Stats", "Damage"];
 
 export function App() {
   const classToken = useCalc((s) => s.classToken);
@@ -48,13 +49,17 @@ export function App() {
       )}
       {(desktop || !classToken || section === "Talents") && <TalentCalculator />}
       {classToken && status === "ready" && desktop && (
-        <div className={styles.panels}>
-          <CharacterPanel />
-          <StatsPanel />
-        </div>
+        <>
+          <div className={styles.panels}>
+            <CharacterPanel />
+            <StatsPanel />
+          </div>
+          <DamagePanel />
+        </>
       )}
       {classToken && status === "ready" && !desktop && section === "Gear" && <CharacterPanel />}
       {classToken && status === "ready" && !desktop && section === "Stats" && <StatsPanel />}
+      {classToken && status === "ready" && !desktop && section === "Damage" && <DamagePanel />}
       <footer className={styles.footer}>
         Data: WoW Forever build {DATA_BUILD} · generated {manifest.generatedAt} · Icons and art © Blizzard
         Entertainment
