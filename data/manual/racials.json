@@ -1,0 +1,19 @@
+{
+ "_source": "Forever build 1.60.1.70888: racial spells from SkillLineAbility skill lines 754 (Human), 125 (Orc), 101 (Dwarf), 126 (Night Elf), 753 (Gnome), 124 (Tauren), 733 (Troll), 220 (Undead); values from SpellEffect (read 2026-11-12, Phase 3 plan). Forever reworked the racials: no weapon-skill racials remain. Only DPS-relevant or stat racials are listed. [VERIFY] in game.",
+ "_status": "[VERIFY]",
+ "racials": [
+  {"race": "HUMAN", "spellId": 20597, "name": "Ruthless", "kind": "passive", "effects": [{"key": "crit", "value": 1, "src": {"effectIndex": 0}}], "notes": "Aura 290. Replaces Classic Sword Specialization (same spell id).", "_status": "[VERIFY]"},
+  {"race": "HUMAN", "spellId": 20598, "name": "The Human Spirit", "kind": "passive", "effects": [{"key": "statPct", "stat": "spi", "value": 10, "src": {"effectIndex": 0}}], "notes": "Classic: +5% Spirit.", "_status": "[VERIFY]"},
+  {"race": "ORC", "spellId": 20574, "name": "Savage", "kind": "passive", "effects": [{"key": "crit", "value": 1, "src": {"effectIndex": 0}}], "notes": "Aura 290. Not listed in SkillLineAbility; the id was the Classic Orc Axe Specialization, so it is assumed to be Orc [VERIFY].", "_status": "[VERIFY]"},
+  {"race": "ORC", "spellId": 20572, "name": "Blood Fury", "kind": "active", "effects": [], "notes": "+10% AP and spell power for a duration (cooldown, Phase 5).", "_status": "[VERIFY]"},
+  {"race": "DWARF", "spellId": 1259719, "name": "Artisan's Precision", "kind": "passive", "effects": [{"key": "weaponHit", "value": 1, "src": {"effectIndex": 0}}, {"key": "spellHit", "value": 1, "src": {"effectIndex": 1}}], "notes": "Aura 54 + 55. Replaces Classic Gun Specialization.", "_status": "[VERIFY]"},
+  {"race": "DWARF", "spellId": 1259721, "name": "Big Game Hunter", "kind": "passive", "effects": [], "notes": "+5% damage vs Beasts (target type, not modeled).", "_status": "[VERIFY]"},
+  {"race": "NIGHTELF", "spellId": 1259799, "name": "Elune's Light", "kind": "active", "effects": [], "notes": "+10% crit for a duration (cooldown, Phase 5).", "_status": "[VERIFY]"},
+  {"race": "GNOME", "spellId": 20591, "name": "Expansive Mind", "kind": "passive", "classes": ["PRIEST", "MAGE", "WARLOCK"], "effects": [{"key": "manaPct", "value": 5, "src": {"effectIndex": 0}}], "notes": "Rogue (1259803, energy) and Warrior (1259802, rage) variants are not DPS stats.", "_status": "[VERIFY]"},
+  {"race": "GNOME", "spellId": 1259817, "name": "Eureka!", "kind": "active", "effects": [], "notes": "Class variants 1259812/1259813/1259817/1259821/1259823 (cooldown, Phase 5).", "_status": "[VERIFY]"},
+  {"race": "TAUREN", "spellId": 20550, "name": "Endurance", "kind": "passive", "effects": [{"key": "healthPct", "value": 5, "src": {"effectIndex": 0}}], "_status": "[VERIFY]"},
+  {"race": "TROLL", "spellId": 20554, "name": "Berserking", "kind": "active", "effects": [], "notes": "+10% attack and casting speed for a duration (cooldown, Phase 5). Classic: up to 30%.", "_status": "[VERIFY]"},
+  {"race": "TROLL", "spellId": 20557, "name": "Beast Slaying", "kind": "passive", "effects": [], "notes": "+5% damage vs Beasts (target type, not modeled).", "_status": "[VERIFY]"},
+  {"race": "SCOURGE", "spellId": 1260189, "name": "Touch of the Grave", "kind": "passive", "effects": [], "notes": "Health drain proc, not a DPS stat.", "_status": "[VERIFY]"}
+ ]
+}
