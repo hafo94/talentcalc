@@ -1,0 +1,222 @@
+{
+  "_source": "Phase 4 default priority rotations (docs/phase4-implementation-plan.md section 6). Ability names are rank-chain names in data/generated/<build>/spells/<class>.json. Entries are in priority order; an entry whose ability is not learned (talent not taken, wrong weapon) is skipped.",
+  "_status": "[VERIFY] Classic-style priorities adapted to the Forever spell list; not checked against Forever logs.",
+  "rotations": [
+    { "id": "warrior-arms", "class": "warrior", "spec": 0, "label": "Arms: Mortal Strike, Whirlwind, Heroic Strike", "role": "dps", "tier": 1,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Mortal Strike", "kind": "cooldown" },
+        { "ability": "Whirlwind", "kind": "cooldown" },
+        { "ability": "Heroic Strike", "kind": "nextSwing" }
+      ],
+      "notes": ["Slam, Overpower, Rend and Execute are not in the Phase 4 rotation (Phase 5)."] },
+    { "id": "warrior-fury", "class": "warrior", "spec": 1, "label": "Fury: Bloodthirst, Whirlwind, Heroic Strike", "role": "dps", "tier": 1,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Bloodthirst", "kind": "cooldown" },
+        { "ability": "Whirlwind", "kind": "cooldown" },
+        { "ability": "Heroic Strike", "kind": "nextSwing" }
+      ],
+      "notes": ["Execute phase, Death Wish and Recklessness are not modeled (Phase 5)."] },
+    { "id": "warrior-protection", "class": "warrior", "spec": 2, "label": "Basic: Heroic Strike", "role": "tank", "tier": 3,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [{ "ability": "Heroic Strike", "kind": "nextSwing" }],
+      "notes": ["Tank spec: basic damage only. Shield Slam and Revenge need a shield and block/dodge procs (Q46)."] },
+
+    { "id": "paladin-holy", "class": "paladin", "spec": 0, "label": "Basic: Holy Strike", "role": "healer", "tier": 3,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [{ "ability": "Holy Strike", "kind": "cooldown" }],
+      "notes": ["Healer spec: basic damage only."] },
+    { "id": "paladin-protection", "class": "paladin", "spec": 1, "label": "Basic: Holy Strike", "role": "tank", "tier": 3,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [{ "ability": "Holy Strike", "kind": "cooldown" }],
+      "notes": ["Tank spec: basic damage only."] },
+    { "id": "paladin-retribution", "class": "paladin", "spec": 2, "label": "Retribution: Seal of Command, Holy Strike, Judgement", "role": "dps", "tier": 1,
+      "selfBuffs": ["Seal of Command"], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Holy Strike", "kind": "cooldown" },
+        { "ability": "Judgement", "kind": "cooldown" }
+      ],
+      "notes": ["Seal of Righteousness, Consecration, Exorcism (Undead/Demon only) and Hammer of Wrath (execute) are not modeled."] },
+
+    { "id": "hunter-beast-mastery", "class": "hunter", "spec": 0, "label": "Ranged: Aimed, Multi, Arcane Shot, Serpent Sting", "role": "dps", "tier": 2,
+      "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
+      "entries": [
+        { "ability": "Aimed Shot", "kind": "cooldown" },
+        { "ability": "Multi-Shot", "kind": "cooldown" },
+        { "ability": "Arcane Shot", "kind": "cooldown" },
+        { "ability": "Serpent Sting", "kind": "dot" }
+      ],
+      "notes": ["Pet damage arrives in Phase 6."] },
+    { "id": "hunter-marksmanship", "class": "hunter", "spec": 1, "label": "Marksmanship: Sniper, Aimed, Multi, Arcane Shot", "role": "dps", "tier": 1,
+      "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
+      "entries": [
+        { "ability": "Sniper Shot", "kind": "cooldown" },
+        { "ability": "Aimed Shot", "kind": "cooldown" },
+        { "ability": "Multi-Shot", "kind": "cooldown" },
+        { "ability": "Arcane Shot", "kind": "cooldown" },
+        { "ability": "Serpent Sting", "kind": "dot" }
+      ],
+      "notes": ["Rapid Fire and Rapid Killing are cooldowns (Phase 5). Lone Wolf assumes no pet (pets: Phase 6)."] },
+    { "id": "hunter-survival", "class": "hunter", "spec": 2, "label": "Ranged: Aimed, Multi, Arcane Shot, Serpent Sting", "role": "dps", "tier": 2,
+      "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
+      "entries": [
+        { "ability": "Aimed Shot", "kind": "cooldown" },
+        { "ability": "Multi-Shot", "kind": "cooldown" },
+        { "ability": "Arcane Shot", "kind": "cooldown" },
+        { "ability": "Serpent Sting", "kind": "dot" }
+      ],
+      "notes": ["Survival melee procs (Mongoose Bite, Counterattack) and Lacerating Strikes are not modeled."] },
+
+    { "id": "rogue-assassination", "class": "rogue", "spec": 0, "label": "Slice and Dice, Mutilate, Eviscerate", "role": "dps", "tier": 2,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Slice and Dice", "kind": "finisher", "cp": 5, "buff": true },
+        { "ability": "Mutilate", "kind": "builder" },
+        { "ability": "Sinister Strike", "kind": "builder" },
+        { "ability": "Eviscerate", "kind": "finisher", "cp": 5 }
+      ],
+      "notes": ["Poisons are item enchants and are not in the spell data: not modeled."] },
+    { "id": "rogue-combat", "class": "rogue", "spec": 1, "label": "Combat: Slice and Dice, Shank, Sinister Strike, Eviscerate", "role": "dps", "tier": 1,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Slice and Dice", "kind": "finisher", "cp": 5, "buff": true },
+        { "ability": "Shank", "kind": "cooldown" },
+        { "ability": "Sinister Strike", "kind": "builder" },
+        { "ability": "Eviscerate", "kind": "finisher", "cp": 5 }
+      ],
+      "notes": ["Blade Flurry and Adrenaline Rush are cooldowns (Phase 5)."] },
+    { "id": "rogue-subtlety", "class": "rogue", "spec": 2, "label": "Slice and Dice, Hemorrhage, Eviscerate", "role": "dps", "tier": 2,
+      "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Slice and Dice", "kind": "finisher", "cp": 5, "buff": true },
+        { "ability": "Hemorrhage", "kind": "builder" },
+        { "ability": "Backstab", "kind": "builder" },
+        { "ability": "Sinister Strike", "kind": "builder" },
+        { "ability": "Eviscerate", "kind": "finisher", "cp": 5 }
+      ],
+      "notes": ["Opener (Ambush, Premeditation) and Death Mark are not modeled."] },
+
+    { "id": "priest-discipline", "class": "priest", "spec": 0, "label": "Basic: Shadow Word: Pain, Mind Blast, Smite", "role": "healer", "tier": 3,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Shadow Word: Pain", "kind": "dot" },
+        { "ability": "Mind Blast", "kind": "cooldown" },
+        { "ability": "Smite", "kind": "filler" }
+      ],
+      "notes": ["Healer spec: basic damage only."] },
+    { "id": "priest-holy", "class": "priest", "spec": 1, "label": "Basic: Holy Fire, Shadow Word: Pain, Smite", "role": "healer", "tier": 3,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Shadow Word: Pain", "kind": "dot" },
+        { "ability": "Holy Fire", "kind": "dot" },
+        { "ability": "Mind Blast", "kind": "cooldown" },
+        { "ability": "Smite", "kind": "filler" }
+      ],
+      "notes": ["Healer spec: basic damage only."] },
+    { "id": "priest-shadow", "class": "priest", "spec": 2, "label": "Shadow: SW:P, Devouring Plague, Mind Blast, Mind Flay", "role": "dps", "tier": 1,
+      "selfBuffs": ["Shadowform"], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Shadow Word: Pain", "kind": "dot" },
+        { "ability": "Devouring Plague", "kind": "dot" },
+        { "ability": "Mind Blast", "kind": "cooldown" },
+        { "ability": "Mind Flay", "kind": "filler" }
+      ],
+      "notes": ["Shadow Word: Death and Vampiric Embrace are not in the Phase 4 rotation."] },
+
+    { "id": "shaman-elemental", "class": "shaman", "spec": 0, "label": "Elemental: Flame Shock, Chain Lightning, Lightning Bolt", "role": "dps", "tier": 1,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Flame Shock", "kind": "dot" },
+        { "ability": "Chain Lightning", "kind": "cooldown" },
+        { "ability": "Lightning Bolt", "kind": "filler" }
+      ],
+      "notes": ["Single target. Clearcasting (Elemental Focus) only affects mana."] },
+    { "id": "shaman-enhancement", "class": "shaman", "spec": 1, "label": "Enhancement: Windfury Weapon, Stormstrike, Flame Shock", "role": "dps", "tier": 2,
+      "selfBuffs": ["Windfury Weapon"], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Stormstrike", "kind": "cooldown" },
+        { "ability": "Flame Shock", "kind": "dot" }
+      ],
+      "notes": ["Maelstrom Weapon and the Stormstrike debuff are not modeled."] },
+    { "id": "shaman-restoration", "class": "shaman", "spec": 2, "label": "Basic: Flame Shock, Lightning Bolt", "role": "healer", "tier": 3,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Flame Shock", "kind": "dot" },
+        { "ability": "Lightning Bolt", "kind": "filler" }
+      ],
+      "notes": ["Healer spec: basic damage only."] },
+
+    { "id": "mage-arcane", "class": "mage", "spec": 0, "label": "Arcane: Arcane Wrath, Arcane Missiles", "role": "dps", "tier": 2,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Arcane Wrath", "kind": "cooldown" },
+        { "ability": "Arcane Missiles", "kind": "filler" }
+      ],
+      "notes": ["Arcane Blast stacks, Missile Barrage and Arcane Power are not modeled."] },
+    { "id": "mage-fire", "class": "mage", "spec": 1, "label": "Fire: Scorch (Improved Scorch), Fire Blast, Fireball", "role": "dps", "tier": 1,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Scorch", "kind": "maintain", "everySec": 30, "requiresTalent": "Improved Scorch" },
+        { "ability": "Fire Blast", "kind": "cooldown" },
+        { "ability": "Fireball", "kind": "filler" }
+      ],
+      "notes": ["Combustion, Heating Up and Pyroblast procs are not modeled."] },
+    { "id": "mage-frost", "class": "mage", "spec": 2, "label": "Frost: Frostbolt", "role": "dps", "tier": 1,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [{ "ability": "Frostbolt", "kind": "filler" }],
+      "notes": ["Shatter, Fingers of Frost and Ice Lance need frozen targets (Phase 5)."] },
+
+    { "id": "warlock-affliction", "class": "warlock", "spec": 0, "label": "Affliction: Corruption, Bane of Agony, Siphon Life, Shadow Bolt", "role": "dps", "tier": 2,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Corruption", "kind": "dot" },
+        { "ability": "Bane of Agony", "kind": "dot" },
+        { "ability": "Siphon Life", "kind": "dot" },
+        { "ability": "Shadow Bolt", "kind": "filler" }
+      ],
+      "notes": ["Wrack, Drain Soul and Soul Siphon are not modeled."] },
+    { "id": "warlock-demonology", "class": "warlock", "spec": 1, "label": "Corruption, Bane of Agony, Shadow Bolt", "role": "dps", "tier": 2,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Corruption", "kind": "dot" },
+        { "ability": "Bane of Agony", "kind": "dot" },
+        { "ability": "Shadow Bolt", "kind": "filler" }
+      ],
+      "notes": ["Demon pets, Demonic Sacrifice and Master Demonologist arrive in Phase 6."] },
+    { "id": "warlock-destruction", "class": "warlock", "spec": 2, "label": "Destruction: Immolate, Conflagrate, Incinerate or Shadow Bolt", "role": "dps", "tier": 1,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Immolate", "kind": "dot" },
+        { "ability": "Conflagrate", "kind": "cooldown", "requires": "Immolate" },
+        { "ability": "Incinerate", "kind": "filler" },
+        { "ability": "Shadow Bolt", "kind": "filler" }
+      ],
+      "notes": ["Conflagrate is assumed not to consume Immolate (Shadow and Flame 5/5); Soul Fire is not modeled."] },
+
+    { "id": "druid-balance", "class": "druid", "spec": 0, "label": "Balance: Moonfire, Insect Swarm, Starfire", "role": "dps", "tier": 1,
+      "form": "moonkin", "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Moonfire", "kind": "dot" },
+        { "ability": "Insect Swarm", "kind": "dot" },
+        { "ability": "Starfire", "kind": "filler" }
+      ],
+      "notes": ["Moonkin Aura crit is the 'Moonkin Aura' buff in the Character panel. Eclipse and Nature's Grace are not modeled."] },
+    { "id": "druid-feral", "class": "druid", "spec": 1, "label": "Cat: Rip, Shred, Ferocious Bite", "role": "dps", "tier": 2,
+      "form": "cat", "selfBuffs": [], "melee": true, "autoShot": false,
+      "entries": [
+        { "ability": "Rip", "kind": "finisher", "cp": 5 },
+        { "ability": "Shred", "kind": "builder" },
+        { "ability": "Claw", "kind": "builder" },
+        { "ability": "Ferocious Bite", "kind": "finisher", "cp": 5 }
+      ],
+      "notes": ["Cat Form weapon damage uses the Classic formula (level x 0.85 to 1.25 per 1.0 sec swing) [VERIFY]. Bear Form is not modeled."] },
+    { "id": "druid-restoration", "class": "druid", "spec": 2, "label": "Basic: Moonfire, Wrath", "role": "healer", "tier": 3,
+      "selfBuffs": [], "melee": false, "autoShot": false,
+      "entries": [
+        { "ability": "Moonfire", "kind": "dot" },
+        { "ability": "Wrath", "kind": "filler" }
+      ],
+      "notes": ["Healer spec: basic damage only."] }
+  ]
+}
