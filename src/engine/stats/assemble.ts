@@ -14,6 +14,10 @@ export interface AssembleArgs {
   talents: readonly RankedTalent[];
   weapons: EquippedWeapons;
   bonus: BonusStats;
+  /** Phase 4: caster auras of the rotation's self-buffs (Shadowform, Aspect of the Hawk, Slice and Dice ...). */
+  extraEffects?: readonly SourcedEffect[];
+  /** Phase 4: ShapeshiftMask bit of the rotation's form (0 = no form). */
+  formMask?: number;
 }
 export interface Assembled {
   input: CharacterInput;
@@ -45,8 +49,8 @@ export function assemble(a: AssembleArgs): Assembled {
       else effects.push(strip(e, b.name, "buff"));
     }
   }
-  const mapping = mapTalents(a.talents, a.weapons);
-  effects.push(...mapping.applied, ...mapping.damageDone);
+  const mapping = mapTalents(a.talents, a.weapons, a.formMask ?? 0);
+  effects.push(...mapping.applied, ...mapping.damageDone, ...(a.extraEffects ?? []));
   return {
     input: {
       classToken: a.classToken,

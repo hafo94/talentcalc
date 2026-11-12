@@ -1,5 +1,5 @@
 import type { AttackSlot, PrimaryStat, School, StatEffect, Talent, TalentEffect } from "@/data/types";
-import { WEAPON_SKILL_LINE_SUBCLASSES } from "./constants";
+import { ITEM_CLASS_WEAPON, WEAPON_SKILL_LINE_SUBCLASSES } from "./constants";
 import { describeRequirement, matchingSlots } from "./equip";
 import { PRIMARY_STATS, SCHOOL_BITS, type EquippedWeapons, type SourcedEffect } from "./types";
 
@@ -33,6 +33,8 @@ export const AURA = {
   MOD_CRIT_PCT: 290,
   MOD_MELEE_HASTE: 319, // [VERIFY]
   MOD_MELEE_RANGED_HASTE: 342, // [VERIFY]
+  MOD_RANGED_ATTACK_POWER_OF_STAT_PERCENT: 580, // Forever: Careful Aim (with 598) "Attack Power by 100% of your Intellect" [VERIFY]
+  MOD_ATTACK_POWER_OF_STAT_PERCENT: 598, // Forever: Mental Dexterity, Careful Aim; misc[0] = stat index (3 = Int) [VERIFY]
 } as const;
 
 /** Auras with server-side behavior (Phase 4 handlers). */
@@ -132,6 +134,18 @@ export function mapAura(e: TalentEffect, v: number): Mapped {
           { key: "spellPowerFromStat", stat: statOfIndex(m1), schools: schoolsOfMask(m0 & ~1), value: v },
         ],
       };
+    case AURA.MOD_ATTACK_POWER_OF_STAT_PERCENT:
+      return {
+        kind: "stat",
+        perSlot: false,
+        effects: [{ key: "attackPowerFromStat", stat: statOfIndex(m0), value: v }],
+      };
+    case AURA.MOD_RANGED_ATTACK_POWER_OF_STAT_PERCENT:
+      return {
+        kind: "stat",
+        perSlot: false,
+        effects: [{ key: "rangedAttackPowerFromStat", stat: statOfIndex(m0), value: v }],
+      };
     case AURA.MOD_OFFHAND_DAMAGE_PCT:
       return { kind: "stat", perSlot: false, effects: [{ key: "offhandDamagePct", value: v }] };
     case AURA.MOD_EXPERTISE:
@@ -184,8 +198,17 @@ function skillSlots(skillLine: number, weapons: EquippedWeapons): AttackSlot[] {
   });
 }
 
-/** Generic talent mapper (Phase 3): stat-level auras of passive talents; everything else is listed. */
-export function mapTalents(list: readonly RankedTalent[], weapons: EquippedWeapons): TalentMapping {
+/**
+ * Generic talent mapper: stat-level auras of passive talents; everything else is listed.
+ * `formMask` (Phase 4): ShapeshiftMask bit of the rotation's form (1 << (form - 1)); form-only talents are active when
+ * `talent.shapeshiftMask & formMask` is non-zero. Spell modifiers (107/108) are returned in `spellMods` and applied by
+ * the damage engine, so they are no longer noted as "not modeled".
+ */
+export function mapTalents(
+  list: readonly RankedTalent[],
+  weapons: EquippedWeapons,
+  formMask = 0,
+): TalentMapping {
   const out: TalentMapping = { applied: [], damageDone: [], spellMods: [], notModeled: [] };
   for (const { talent: t, rank } of list) {
     const values = t.ranks[rank - 1]?.values ?? [];
@@ -198,8 +221,8 @@ export function mapTalents(list: readonly RankedTalent[], weapons: EquippedWeapo
       note("ability", "ability or cooldown (Phase 4/5)");
       continue;
     }
-    if (t.shapeshiftMask !== 0) {
-      note("inactive", "requires a shapeshift form (Phase 4)");
+    if (t.shapeshiftMask !== 0 && (t.shapeshiftMask & formMask) === 0) {
+      note("inactive", "requires a shapeshift form that the rotation does not use");
       continue;
     }
     const slots = matchingSlots(t.equipped, weapons);
@@ -226,6 +249,8 @@ export function mapTalents(list: readonly RankedTalent[], weapons: EquippedWeapo
             const sourced: SourcedEffect = { ...se, label, kind: "talent" };
             if (e.aura === AURA.MOD_SKILL) sourced.slots = skillSlots(e.misc[0], weapons);
             else if (m.kind === "stat" && m.perSlot && t.equipped) sourced.slots = slots;
+            else if (m.kind === "damageDone" && t.equipped && t.equipped.itemClass === ITEM_CLASS_WEAPON)
+              sourced.slots = slots; // Wand / Ranged Weapon / Two-Handed Weapon Specialization: weapon attacks only
             (m.kind === "damageDone" ? out.damageDone : out.applied).push(sourced);
           }
           break;
@@ -239,7 +264,6 @@ export function mapTalents(list: readonly RankedTalent[], weapons: EquippedWeapo
             pct: e.aura === AURA.ADD_PCT_MODIFIER,
             mask: e.mask,
           });
-          note("spellMod", "modifies specific spells (Phase 4)");
           break;
         case "special":
           note("special", `aura ${e.aura} needs a handler (Phase 4)`);

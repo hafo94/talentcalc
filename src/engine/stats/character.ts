@@ -51,6 +51,23 @@ const r2 = (n: number) => Math.round(n * 100) / 100;
 const hasSchool = (e: SourcedEffect, s: School) => !e.schools || e.schools.includes(s);
 const hasSlot = (e: SourcedEffect, s: AttackSlot) => !e.slots || e.slots.includes(s);
 
+/** "X% of <stat>" parts (aura 598/580: attack power from Intellect). */
+function statShare(
+  effects: readonly SourcedEffect[],
+  key: "attackPowerFromStat" | "rangedAttackPowerFromStat",
+  P: (s: PrimaryStat) => number,
+): Part[] {
+  return effects
+    .filter((e) => e.key === key && e.stat !== undefined && e.stat !== "all")
+    .map((e) =>
+      part(
+        `${e.label} (${e.value}% of ${STAT_LABEL[e.stat as PrimaryStat]})`,
+        e.kind,
+        (P(e.stat as PrimaryStat) * e.value) / 100,
+      ),
+    );
+}
+
 /** Equipped weapons in slot order, each counted once. */
 function equipped(input: CharacterInput): { slot: AttackSlot; w: Weapon }[] {
   return ATTACK_SLOTS.flatMap((slot) => (input.weapons[slot] ? [{ slot, w: input.weapons[slot]! }] : []));
@@ -136,6 +153,7 @@ export function computeCharacter(input: CharacterInput): CharacterStats {
       part("Bonus stats", "gear", bonus.attackPower),
       ...itemStat(input, ITEM_STAT.attackPower),
       ...effectParts(effects, (e) => e.key === "attackPower" || e.key === "meleeAttackPower"),
+      ...statShare(effects, "attackPowerFromStat", P),
     ]),
     effects.filter((e) => e.key === "attackPowerPct"),
   );
@@ -153,6 +171,7 @@ export function computeCharacter(input: CharacterInput): CharacterStats {
           ...itemStat(input, ITEM_STAT.attackPower),
           ...itemStat(input, ITEM_STAT.rangedAttackPower),
           ...effectParts(effects, (e) => e.key === "attackPower" || e.key === "rangedAttackPower"),
+          ...statShare(effects, "rangedAttackPowerFromStat", P),
         ]),
         effects.filter((e) => e.key === "rangedAttackPowerPct"),
       )

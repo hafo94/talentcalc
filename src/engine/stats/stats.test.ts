@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ammo, buffs, run, weapon } from "@/testkit/stats";
+import { NO_WEAPONS, ammo, buffs, ranked, run, weapon } from "@/testkit/stats";
 import { treeFor } from "@/testkit/talents";
 import type { ClassToken } from "@/data/types";
 import { baseMeleeMiss } from "./target";
@@ -192,8 +192,28 @@ describe("talent conditions", () => {
     expect(r.mapping.notModeled).toContainEqual(
       expect.objectContaining({ name: "Sharpened Claws", reason: "inactive" }),
     );
+    const cat = mapTalents(ranked("druid", { "Sharpened Claws": 2 }), NO_WEAPONS, 1); // Cat Form bit
+    expect(cat.applied).toEqual([expect.objectContaining({ key: "crit", value: 6 })]);
   });
-  it("abilities and spell modifiers are listed, not applied", () => {
+  it("Careful Aim adds attack power from Intellect (aura 598 melee, 580 ranged)", () => {
+    const r = run({ classToken: "hunter", race: "DWARF", talents: { "Careful Aim": 5 } });
+    const int = r.stats.primary.int.value;
+    const base = run({ classToken: "hunter", race: "DWARF" });
+    expect(r.stats.attackPower.value - base.stats.attackPower.value).toBeCloseTo(int, 6);
+    expect(r.stats.rangedAttackPower!.value - base.stats.rangedAttackPower!.value).toBeCloseTo(int, 6);
+  });
+  it("Wand Specialization only applies to the wand", () => {
+    const r = run({
+      classToken: "mage",
+      race: "HUMAN",
+      weapons: { ranged: weapon(19108) },
+      talents: { "Wand Specialization": 2 },
+    });
+    expect(r.stats.damageDone).toEqual([
+      expect.objectContaining({ key: "damageDonePct", value: 25, slots: ["ranged"] }),
+    ]);
+  });
+  it("abilities are listed; spell modifiers are returned for the damage engine", () => {
     const r = run({
       classToken: "warrior",
       race: "HUMAN",
@@ -201,7 +221,7 @@ describe("talent conditions", () => {
     });
     const reasons = r.mapping.notModeled.map((n) => `${n.name}:${n.reason}`);
     expect(reasons).toContain("Death Wish:ability");
-    expect(reasons).toContain("Improved Heroic Strike:spellMod");
+    expect(reasons).not.toContain("Improved Heroic Strike:spellMod");
     expect(r.mapping.spellMods[0]).toMatchObject({ name: "Improved Heroic Strike", op: expect.any(Number) });
   });
 });
@@ -210,10 +230,17 @@ describe("generic mapper over every talent (max rank, Arcanite Reaper + Rhok'del
   const APPLIED: Record<string, string[]> = {
     warrior: ["Cruelty"],
     paladin: ["Divine Intellect", "Precision", "Conviction", "Champion of the Light"],
-    hunter: ["Lethal Attacks", "Surefooted", "Lightning Reflexes"],
+    hunter: ["Lethal Attacks", "Careful Aim", "Surefooted", "Lightning Reflexes"],
     rogue: ["Malice", "Precision", "Weapon Expertise", "Serrated Blades"],
     priest: ["Mental Strength", "Spiritual Guidance"],
-    shaman: ["Thundering Strikes", "Ancestral Knowledge", "Toughness", "Mental Quickness", "Tidal Focus"],
+    shaman: [
+      "Thundering Strikes",
+      "Ancestral Knowledge",
+      "Mental Dexterity",
+      "Toughness",
+      "Mental Quickness",
+      "Tidal Focus",
+    ],
     mage: ["Arcane Subtlety", "Arcane Mind", "Arcane Instability", "Precision"],
     warlock: ["Suppression", "Demonic Embrace"],
     druid: ["Nature's Majesty", "Nature's Reach", "Heart of the Wild", "Living Spirit"],
