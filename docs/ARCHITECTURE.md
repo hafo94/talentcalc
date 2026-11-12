@@ -64,7 +64,7 @@ Pipeline output lives in `data/generated/<build>/` (committed). The authoritativ
 | File | Contents |
 |---|---|
 | `manifest.json` | build, era build, date, options, icon URL templates, raw table hashes, output counts |
-| `classes.json` | 9 classes (id, token, name, color, spellClassSet, powerType, icon, traitTreeId, skillLineIds, 3 specs each), 8 races, talent currency sources |
+| `classes.json` | 9 classes (id, token, name, color, spellClassSet, powerType, icon, traitTreeId, skillLineIds, 3 specs each, `raceIds` (CharBaseInfo), `weaponSubclasses`, `dualWield` (SkillLineAbility)), 8 races, talent currency sources |
 | `talents/<token>.json` | one per class: 3 specs, each with `tierGates[]` and `talents[]` sorted by (tier, col) |
 | `spells.json` | every class ability rank, talent spell and triggered spell (2,300) + `abilities[]` rank chains |
 | `weapons.json` | weapons (min/max/speed/dps/stats; `source` is `forever` or `classic_era`) + ammo |
@@ -107,6 +107,22 @@ scope of every tier-7 gate (and Discipline's tier-3 gate) contains the gated nod
 a gate's scope (Q21: Holy Specialization, Improved Serpent Sting) do not count. Rules live in `src/engine/talents` and the UI never
 re-implements them.
 
+Phase 3 additions: `Talent.effects[]` (`index, effect, aura, misc, mask, targets`, parallel to `ranks[].values`), `Talent.equipped`
+(`{itemClass, subclassMask, invTypeMask}` from `SpellEquippedItems`, or null) and `Talent.shapeshiftMask` (`SpellShapeshift`); the same
+`equipped`/`shapeshiftMask` fields exist on every `Spell`. The app still does not load `spells.json`.
+
+**Manual data** (`data/manual/`, alias `@manual`, static imports): `base-stats.json` (level 60 class bases, race offsets, AP/crit/health/mana
+conversions), `buffs.json` (stable URL `code`, exclusive `group`, `effects[].src` = the `SpellEffect` column the value was read from, `presets`),
+`racials.json`. The pipeline checks every `src` against `SpellEffect` and reports mismatches in `report.manualValidation`.
+
+**Data loading:** `weapons.json` (~107 KB gzip) is a lazy chunk, loaded in the background after the first class is selected and awaited only
+when a link contains weapons. `targets.json` and the manual files are static imports.
+
+**Stat engine** (`src/engine/stats`, pure): `constants`, `stat` (Stat = value + parts, so every number can explain itself), `types`, `equip`,
+`talentEffects` (generic aura mapper), `assemble` (racials + buffs + talents -> input), `character` (`computeCharacter`), `target`
+(`evaluateTarget`), `weapons` (proficiency, picker, ammo). State is two stores: `useCalc` (talents) and `useCharacter` (race, weapons, bonus
+stats, buffs, target); `src/state/derived.ts` combines them.
+
 ## Build URL format
 
 ```
@@ -118,6 +134,13 @@ re-implements them.
   node ID: `(nodeId - previousNodeId) * 8 + rank` (rank 1..7). Node IDs are stable `TraitNode.ID` keys, so links survive layout changes
   and regenerated data; unknown nodes are dropped on load (`sanitize`). Golden vector: Mage Fire 33 / Frost 18 is
   `#v1.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N`. See `src/state/buildCode.ts`.
+
+**v2** (Phase 3): `#v2.<classToken>.<level>.<talentedRank>.<talentPayload>.<charPayload>` (exactly six parts; `talentPayload` may be empty).
+The encoder writes v1 whenever the character is default, so talent-only links never change. `charPayload` is unpadded base64url of
+tag-length-value records, tags ascending, default records omitted, unknown tags skipped: 1 race, 2 weapons (MH, OH, ranged, ammo ids),
+3 bonus stats (index + zigzag value, x100 for percent fields), 4 buff codes, 5 target (preset index, plus level/armor/resists for custom).
+Golden: `#v2.warrior.60.0.nd0z.AgXwYwAAAAMJAMgBDugHENgEBA8BAgMEBQYHCAkKCww8Pj8` (Human Warrior, Cruelty 5/5, Arcanite Reaper, bonus stats, raid buffs
++ Sunder, Faerie Fire, CoR). See `src/state/charCode.ts` and `charCode.test.ts`.
 
 ## Tree backgrounds
 

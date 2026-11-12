@@ -30,3 +30,6 @@ calculator + DPS calculator. It is a static web app (Vite + React + TS web app; 
 - `data/raw/` is git-ignored.
 - Data build for the app is set in `vite.config.ts` (`DATA_BUILD`) and `tsconfig.app.json` paths.
 - Talent rules live in `src/engine/talents` (pure). The UI never re-implements a rule.
+- Stat rules live in `src/engine/stats` (pure; every number is a `Stat` with parts). Character state is `src/state/character.ts`, derived values `src/state/derived.ts`.
+- Manual data is imported through the `@manual` alias. Buff/racial values carry `effects[].src`; the pipeline validates them against `SpellEffect`. Buff `code`s are never reused.
+- URL: `#v1` talent-only, `#v2` with character payload (`src/state/charCode.ts`). Existing links must keep decoding.

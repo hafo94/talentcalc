@@ -15,8 +15,8 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 |---|---|---|---|
 | 0 | Research & planning | ✅ | Data source found, talent system decoded, docs written |
 | 1 | Data pipeline | ✅ | `data/generated/<build>/` JSON for all 9 classes, with tests and a coverage report |
-| 2 | Talent calculator (UI parity) | ⬜ | All 27 specs render; point rules exactly like Classic; URL sharing |
-| 3 | Character & gear model | ⬜ | Class/race/level, weapon picker, gear stats, buffs, target → derived stats panel |
+| 2 | Talent calculator (UI parity) | ✅ | All 27 specs render; point rules exactly like Classic; URL sharing |
+| 3 | Character & gear model | ✅ | Class/race/level, weapon picker, gear stats, buffs, target → derived stats panel |
 | 4 | Damage engine (analytical) | ⬜ | Per-ability hit/crit/avg damage; talent effects applied; live DPS for default rotations |
 | 5 | Rotations & simulation | ⬜ | Rotation editor, Web Worker sim, DPS ± stdev, damage breakdown |
 | 6 | Pets | ⬜ | Hunter + Warlock pet damage included in total DPS |
@@ -66,17 +66,22 @@ Output: `data/generated/1.60.1.70888/` (447 talents, 2,300 spells, 2,721 weapons
 
 Output: static web app (`npm run build` → `dist/`), 94 unit tests + 13 Playwright tests, deployable to GitHub Pages (workflow added; Pages must be enabled by the owner, see README). In-game checks of Q21, Q28–Q31 are still pending.
 
-## Phase 3 — Character & gear model ⬜
-- [ ] Class, race, level (60 first; Q14) → base stats (manual table)
-- [ ] Weapon picker: searchable MH / OH / ranged / wand, filtered by class proficiency
-- [ ] Gear stat input: v1 manual "bonus stats" panel (AP, SP, hit, crit, stats); v2 full item slots
-- [ ] Buffs and consumables toggles (raid buffs, world buffs, flasks, elixirs, weapon oils/stones)
-- [ ] Target picker: Boss (L+3, default), Elite (L+2), Same-level, Low-armor boss, Custom; debuffs (Sunder, FF, CoR, Curse of Elements…)
-- [ ] DPS shown against the selected target, plus a small table of the same build vs every reference mob
-- [ ] Talent stat modifiers applied (generic mapper, aura 107/108/137/52/57/54/55/79)
-- [ ] Derived stats panel: AP, RAP, SP per school, melee/ranged/spell hit and crit, haste, weapon DPS
+## Phase 3 — Character & gear model ✅
+- [x] Class, race (Forever combos from CharBaseInfo), level 60 (engine takes level) → base stats (manual table)
+- [x] Weapon picker: searchable MH / OH / ranged-wand + ammo, proficiency and dual wield from SkillLineAbility
+- [x] Gear v1: manual bonus stats panel (v2 full item slots → Phase 7 backlog)
+- [x] Buffs and consumables from Forever SpellEffect values, validated by the pipeline; Raid buffed / Raid debuffs presets (off by default)
+- [x] Target picker + debuffs, effective armor and DR (Boss L+3 default, Elite, Same-level, Low-armor boss, Custom)
+- [x] Per-target table (armor, DR, miss, dodge, glancing, crit, spell miss) vs every reference mob; DPS column is the Phase 4 hook
+- [x] Talent stat modifiers (generic mapper over aura effects; equip and form requirements from SpellEquippedItems/SpellShapeshift); spell modifiers and aura 79 recorded for Phase 4
+- [x] Derived stats panel with breakdown tooltips; stat strip under the talent bar
+- [x] URL format v2 (character state); v1 links keep working
+
+Output: pipeline v2 (`classes[].raceIds/weaponSubclasses/dualWield`, `Talent.effects/equipped/shapeshiftMask`), manual `buffs.json`, `racials.json`, `base-stats.json`;
+`src/engine/stats`, `src/state/{charCode,character,derived}.ts`, `src/ui/{character,stats}`. 48 pipeline tests, 147 Vitest tests, 21 Playwright tests. Open items: Q33–Q46.
 
 ## Phase 4 — Damage engine (analytical) ⬜
+- [ ] Apply recorded spell mods (107/108) and damage-done (79) modifiers; glancing damage
 - [ ] Outcome tables: melee white, melee special, ranged, spell
 - [ ] Armor mitigation, partial resists, glancing
 - [ ] Spell damage (direct, DoT, channeled) with coefficients and talent mods

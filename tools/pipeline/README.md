@@ -8,3 +8,6 @@
 Options: --include-hidden-nodes (flag-8 talents), --no-era-fallback, --date YYYY-MM-DD.
 Hand-maintained inputs live in data/manual/ (every value tagged [VERIFY] until confirmed in game).
 Review data/generated/<build>/report.json after every new build.
+
+Manual-value check (Phase 3): `effects[].src = {effectIndex, field?, mult?}` in `data/manual/buffs.json` and `racials.json` names the `SpellEffect` column a value
+was read from; the pipeline recomputes it and lists mismatches in `report.manualValidation` (must stay empty; a unit test enforces it).

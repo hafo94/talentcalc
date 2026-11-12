@@ -33,6 +33,14 @@ The engine is **pure TypeScript with no UI dependencies**, so it can be unit-tes
 | Crit | crit% − 1.8% boss suppression (−3% with level-based suppression), capped by the remaining table |
 | Hit | remainder |
 
+Phase 3 implements these rules (`src/engine/stats/target.ts`, all `[VERIFY]`, Q3/Q34), with `diff = 5 x targetLevel - weaponSkill`:
+base miss = `diff < 0 ? max(0, 5 + 0.04 diff) : 5 + diff x (diff > 10 ? 0.2 : 0.1)` (8% at 300 vs 315); +hit removes miss one for one, but the
+first 1% is ignored when `diff > 10` (special hit cap 9%); dual-wield white attacks add 19% miss (cap 28%); dodge = `max(0, 5 + 0.1 diff)` minus
+expertise (6.5%); parry and block 0 (from behind); glancing = `min(40, max(0, 10 + 2 (defense - min(skill, 5 L))))`, melee white only, 0 vs lower-level
+targets (40% boss, 10% same level); crit vs target = sheet crit + 0.04 (skill - defense) - (level gap >= 3 ? 1.8 : 0), floored at 0
+(sheet 5% -> 2.6% vs boss; Q34 asks 1.8% + 0.04/point versus 3%); white crit is capped by `100 - miss - dodge - glancing`.
+Spell miss = `clamp(base - spellHit, 1, 99)` with base 4/5/6/17/28% for +0..+4 levels (hit cap 16% vs boss).
+
 Yellow (special) attacks use a two-roll system: miss/dodge/parry first, then crit separately, with no glancing.
 
 ### Ranged
@@ -58,7 +66,7 @@ there are **reference mobs scaled to the selected player level L**:
 | Low-armor boss | L+3 | ExpectedStat[L+3] × 0.5 | Reference for caster/low-armor fights [tune] |
 | Custom | any | any | Level, armor and resistances editable |
 
-Until the level selector exists (Phase 7), L = 60. ExpectedStat armor is an average
+Custom accepts level 1-63, armor 0-20000 and six resistances 0-1000. Debuffs reduce armor first (floored at 0), then talent armor penetration applies. Until the level selector exists (Phase 7), L = 60. ExpectedStat armor is an average
 creature value [VERIFY against a few real mobs]. Named raid-boss presets can be added later in
 `data/manual/targets.json`.
 
@@ -71,6 +79,26 @@ creature value [VERIFY against a few real mobs]. Named raid-boss presets can be 
 | Intellect | mana 15/Int; spell crit per Int: Mage 1/59.5, Warlock 1/60.6, Priest 1/59.2, Druid 1/60, Shaman 1/59.5, Paladin 1/54 |
 | AP → DPS | 14 AP = 1 weapon DPS; normalized for instant attacks (Forever: confirm normalization exists) |
 | Armor DR | `armor / (armor + 400 + 85 × attackerLevel)`, capped at 75%; target armor from presets (below), editable, with debuff toggles (Sunder ×5, Faerie Fire, Curse of Recklessness, Expose Armor) |
+
+Attack power (Classic 1.12 formulas, `conversions` in `base-stats.json`): melee AP = `perLevel x L + perStr x Str + perAgi x Agi + flat` per class
+(Warrior/Paladin 3L + 2 Str - 20, Shaman 2L + 2 Str - 20, Rogue/Hunter 2L + Str + Agi - 20, Druid 2 Str - 20, casters Str - 10); ranged AP: Hunter 2L + 2 Agi - 10,
+Warrior/Rogue L + Agi - 10 (a naked Human Warrior has 400 AP, 130 RAP). Mage, Priest and Warlock get Agi -> crit 1/20 `[VERIFY]`. Health = base + min(Sta, 20) +
+10 x (Sta - 20); mana = base + min(Int, 20) + 15 x (Int - 20). Rating conversion at 60 (Q35): 10 hit rating = 1%, 14 crit rating = 1%, 10 haste rating = 1%,
+for melee, ranged and spells alike (Forever turned Classic "+1% hit/crit" equip effects into ratings).
+
+### 3b. Stat aggregation order (`computeCharacter`)
+```
+for each primary stat s:
+  flat[s]  = classBase[s] + raceOffset[s] + bonus[s] + sum(weapon item stat s) + sum(effects{stat})
+  final[s] = flat[s] x product(1 + pct/100) over effects{statPct}              (talents, racials, buffs; in that order)
+health   = (baseHealth + f(Sta, 10) + sum(health)) x product(1 + healthPct);  mana likewise with 15 per Int (null when baseMana = 0)
+AP       = (perLevel L + flat + perStr Str + perAgi Agi + bonus + item AP + effects) x product(1 + AP%)
+SP[sch]  = bonus + item SP + effects + stat-derived spell power (aura 174)
+crit     = baseCrit + Agi or Int / ratio + bonus + critRating/14 + effects (+ weaponCrit per slot)
+hit      = bonus + hitRating/10 + effects;   haste = (product(1 + h/100) - 1) x 100 (multiplicative)
+weapon   : perSwing = (min+max)/2 + weaponDamage + ammo dps x speed + AP/14 x speed (not wands); dps = perSwing / (speed / (1 + haste/100)); off hand x 0.5
+```
+Flat sources add, each % effect multiplies the running total. Every number is a `Stat {value, parts[]}`; the UI tooltips list the parts.
 
 Base stats per race, class and level come from a manual table (`data/manual/base-stats.json`),
 because client DB2 no longer ships the `gtChanceTo*` tables used in Classic.
@@ -109,7 +137,17 @@ Checked in build 70888 (aura IDs follow the modern enum):
 | 54 / 55 | Melee / spell hit chance | Precision: aura 55, rank values 2/4/6 from a `TraitDefinitionEffectPoints` curve; the base points (6) hold the max-rank value |
 | 42 PROC_TRIGGER_SPELL | Proc → triggered spell | — |
 | 137 MOD_TOTAL_STAT_PERCENTAGE | % of a stat | Arcane Mind: +10% (plus a 108 effect) |
+| 290 MOD_CRIT_PCT | Crit for melee, ranged **and** spells (Forever: Leader of the Pack, Moonkin Aura, Mongoose, Ruthless, Savage) | Phase 3 |
+| 137 misc | `misc[1]` is a stat **bitmask** (8 = Int; Kings uses -1/31), fall back to `misc[0]` (0 Str .. 4 Spi, -1 all) | Phase 3 |
+| 174 / 280 / 240 / 123 / 122 | Spell power from a stat % / armor penetration % (Serrated Blades) / expertise (unit unconfirmed, Q42) / spell penetration / off-hand damage % | Phase 3 |
+| 13 / 319 / 342 / 65 / 30 | School spell power (misc[0] school mask) / melee haste / melee+ranged haste / spell haste / weapon skill | Phase 3 |
+| 268 | Armor from a stat in Forever (Arcane Resilience), **not** attack power as labelled in `constants.py` (Q45) | ignored |
 | **4 DUMMY** | Server-scripted, no data meaning | **Ignite, Fire Power**: these need hand-written handlers |
+
+**Requirements (Phase 3):** a talent with `equipped` is active only while a matching weapon is equipped (weapon-specific auras 52/54/30 apply only to the
+matching slots: Cruelty main/off hand, Furious Precision off hand only); shields are not modeled (Bastion always inactive, Q46); a non-zero `shapeshiftMask`
+(cat/bear forms) is inactive until Phase 4. Abilities, DUMMY/proc auras and inactive talents are listed under "Talents not modeled yet".
+Aura 79 and 107/108 effects are recorded for Phase 4 but not applied.
 
 Forever changed many talent values (Precision 2/4/6% over its 3 ranks, Arcane Mind changed from Classic). So
 **never hard-code Classic talent values**; read them from the generated data and only hand-code DUMMY behavior.

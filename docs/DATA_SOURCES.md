@@ -171,6 +171,20 @@ resistances come from Era and the weapon is marked `source: "classic_era"`. Fore
 present in both builds, so fallback stats are unverified (Q19). Filters: monster/test/placeholder names, misc and fishing-pole
 subclasses, item level <= 1, required level > 60, zero delay, zero damage (counts in `report.weaponFilters`).
 
+## Phase 3 findings (character and gear)
+- **New tables:** `SpellEquippedItems` (28 talent spells need a weapon; masks 173555 melee, 136546 two-handed, 41105 + invType bit 22 off hand, 262156 ranged,
+  524288 wand, item class 4 subclass 64 shield) and `CharBaseInfo` (race/class combos). `SpellShapeshift` marks form-only talents (mask 145 cat/bear).
+- **Combos:** 6 differ from Classic: Undead Paladin, Dwarf Shaman, Human Hunter, Gnome Priest, Orc Mage, Troll Warlock (Q39).
+- **Proficiencies** come from `SkillLineAbility` weapon skill lines (identical to `SkillRaceClassInfo`); differences from Classic: Rogues get one-hand axes, Druids get
+  polearms (Q38). Dual wield is skill line 118: Warrior, Hunter, Rogue.
+- **Buff values** are read from Forever `SpellEffect` and mostly differ from Classic (Battle Shout 139 AP, Blessing of Might 133, Mark of the Wild +16, Fortitude +70, Strength of
+  Earth 53, Grace of Air 89, Curse of Recklessness 505, Expose Armor 2250 at 5 cp; Leader of the Pack, Moonkin, Mongoose and Slip'kik are all-crit aura 290; Warchief's Blessing
+  haste includes spells; Juju Might, Rallying Cry and Fengus also give ranged AP / spell power). The full table is in `phase3-implementation-plan.md` 1.4; the pipeline
+  re-checks every manual value (`effects[].src`).
+- **World buffs** say "No effect while in a raid instance." in their aura descriptions (Q44).
+- **Racials** were reworked (no weapon-skill racials remain); see `data/manual/racials.json` and Q37.
+- **Rating evidence (Q35):** Core Marksman Rifle hit 10, Heartseeker/Rhok'delar crit 14, Fist of Cenarius crit 28 (Classic +2% spell crit) -> 10 hit rating = 1%, 14 crit rating = 1%.
+
 ## Icons
 
 `ManifestInterfaceData` (`ID` = file data ID, `FileName`) maps `SpellIconFileDataID` / `IconFileDataID` to the icon file name:
@@ -209,6 +223,7 @@ with sources cited.
 1. Run `curl -s https://wago.tools/api/builds` and read `.wowf[0].version`.
 2. Run `tools/research/fetch_db2.sh <build>`.
 3. Run `python3 tools/research/extract_research.py data/raw/<build> docs/research`, then check `git diff docs/research` to see what changed.
+3b. `fetch_db2.sh` also fetches `SpellEquippedItems` and `CharBaseInfo` (Phase 3).
 4. Optionally run `tools/pipeline/fetch_era_items.sh` (Classic Era `ItemSparse`, weapon fallback).
 5. Run `python3 tools/pipeline/build_data.py --build <build>` and the tests
    (`python3 -m unittest discover -s tools/pipeline/tests -t tools -v`); review `data/generated/<build>/report.json`.
