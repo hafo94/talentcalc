@@ -39,14 +39,34 @@ def build_classes(db, icons, build):
         r = rr[str(rid)]
         races.append({"id": rid, "token": r["ClientFileString"].lower(), "name": r["Name_lang"],
                       "faction": "horde" if I(r["Alliance"]) == 1 else "alliance"})
+    currency = db.by_id("TraitCurrency")[str(C.TALENT_CURRENCY_ID)]
+    assert I(currency["SourcedMax"]) == C.TALENT_CURRENCY_MAX, \
+        "TraitCurrency %d SourcedMax %s != %d" % (C.TALENT_CURRENCY_ID, currency["SourcedMax"], C.TALENT_CURRENCY_MAX)
+    entry_node = {}       # TraitNodeEntryID -> (TraitNodeID, _Index)
+    for r in db.rows("TraitNodeXTraitNodeEntry"):
+        entry_node[I(r["TraitNodeEntryID"])] = (I(r["TraitNodeID"]), I(r["_Index"]))
+    node_entries = collections.defaultdict(list)
+    for eid, (nid, idx) in entry_node.items():
+        node_entries[nid].append((idx, eid))
+    entries = db.by_id("TraitNodeEntry")
+    defs = db.by_id("TraitDefinition")
+    spell_names = db.by_id("SpellName")
     sources = []
     for r in db.rows("TraitCurrencySource"):
-        if I(r["TraitCurrencyID"]) == C.TALENT_CURRENCY_ID:
-            sources.append({"level": I(r["PlayerLevel"]), "amount": I(r["Amount"]),
-                            "requirement": r["Requirement_lang"]})
+        if I(r["TraitCurrencyID"]) != C.TALENT_CURRENCY_ID:
+            continue
+        src = {"level": I(r["PlayerLevel"]), "amount": I(r["Amount"]), "requirement": r["Requirement_lang"]}
+        eid = I(r["TraitNodeEntryID"])
+        if eid:
+            nid, _ = entry_node[eid]
+            rank = [e for _, e in sorted(node_entries[nid])].index(eid) + 1
+            spell_id = I(defs[entries[str(eid)]["TraitDefinitionID"]]["SpellID"])
+            src["perk"] = {"nodeId": nid, "entryId": eid, "rank": rank, "spellId": spell_id,
+                           "name": spell_names[str(spell_id)]["Name_lang"]}
+        sources.append(src)
     sources.sort(key=lambda s: (s["level"], s["requirement"]))
     return {"build": build,
-            "talentCurrency": {"id": C.TALENT_CURRENCY_ID, "max": C.TALENT_CURRENCY_MAX, "sources": sources},
+            "talentCurrency": {"id": C.TALENT_CURRENCY_ID, "max": I(currency["SourcedMax"]), "sources": sources},
             "classes": classes, "races": races}
 
 

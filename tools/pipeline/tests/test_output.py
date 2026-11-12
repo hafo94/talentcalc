@@ -64,6 +64,14 @@ class TestOutput(unittest.TestCase):
         self.assertEqual(len(c["races"]), 8)
         self.assertEqual(c["talentCurrency"]["max"], 51)
         self.assertEqual(len(c["talentCurrency"]["sources"]), 56)
+        perk = [s for s in c["talentCurrency"]["sources"] if "perk" in s]
+        self.assertEqual(sorted(s["perk"]["rank"] for s in perk), [1, 2, 3, 4, 5])
+        for s in perk:
+            self.assertEqual(s["level"], 10 - s["perk"]["rank"])
+            self.assertEqual(s["perk"]["name"], "Talented")
+            self.assertEqual(s["perk"]["nodeId"], 110298)
+        self.assertEqual(sum(s["amount"] for s in c["talentCurrency"]["sources"] if "perk" not in s), 51)
+        self.assertTrue(all(s["level"] >= 10 for s in c["talentCurrency"]["sources"] if "perk" not in s))
         for k in c["classes"]:
             self.assertEqual(len(k["specs"]), 3)
             self.assertTrue(k["color"].startswith("#") and len(k["color"]) == 7)

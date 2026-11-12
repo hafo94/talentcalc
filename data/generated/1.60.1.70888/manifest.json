@@ -176,6 +176,11 @@
    "sha256": "a31a62336d785cc8a5b4bf98a5bc27c62917ecbdcdc26a1a8e87188f70cc894a"
   },
   {
+   "name": "TraitCurrency",
+   "rows": 2,
+   "sha256": "b2d6ef2dd53501743263af16368e3b2808f917a2356fd9ada6d0870b15c90ef5"
+  },
+  {
    "name": "TraitCurrencySource",
    "rows": 187,
    "sha256": "0c32187176b04241f487a175503208f19731ca006dcbd0d6010ad821776417e4"
