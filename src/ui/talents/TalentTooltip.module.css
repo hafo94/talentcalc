@@ -1,0 +1,45 @@
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: 320px;
+  padding: 8px 10px;
+  background: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--white);
+}
+
+.white {
+  color: var(--white);
+}
+
+.gold {
+  color: var(--gold);
+  white-space: pre-wrap;
+}
+
+.red {
+  color: var(--red);
+}
+
+.green {
+  color: var(--green);
+}
+
+.grey {
+  color: var(--grey);
+}
+
+.gap {
+  height: 0.8em;
+}

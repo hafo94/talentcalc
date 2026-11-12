@@ -1,0 +1,13 @@
+.icon {
+  display: block;
+  object-fit: cover;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(#3a3a3a, #111);
+  color: var(--text-dim);
+  font-weight: bold;
+}
