@@ -70,3 +70,21 @@ def build_dir(include_hidden=False, date="2000-01-01", era=True):
 def load(out_dir, name):
     with open(os.path.join(out_dir, name), encoding="utf-8") as f:
         return json.load(f)
+
+
+def spells():
+    """(spell records by id, ability chains, seeds, report) built directly from raw tables."""
+    k = ("spells",)
+    if k not in _cache:
+        from pipeline.db2 import RawDB
+        from pipeline.icons import IconResolver
+        from pipeline.spells import build_ability_chains, build_spell, collect_spells
+        out, report = talents()
+        db = RawDB(RAW)
+        icons = IconResolver(db)
+        tsc = {t["spellId"]: f["classId"] for f in out.values() for s in f["specs"] for t in s["talents"]}
+        seeds = collect_spells(db, tsc, report)
+        recs = {sid: build_spell(db, sid, seed, icons) for sid, seed in sorted(seeds.items())}
+        chains = build_ability_chains(db, seeds)
+        _cache[k] = (recs, chains, seeds, report)
+    return _cache[k]
