@@ -2,7 +2,7 @@
  "build": "1.60.1.70888",
  "eraBuild": "1.15.9.70576",
  "generatedAt": "2026-11-12",
- "pipelineVersion": 1,
+ "pipelineVersion": 2,
  "options": {
   "includeHiddenNodes": false,
   "eraFallback": true
@@ -10,6 +10,11 @@
  "iconUrlTemplate": "https://render.worldofwarcraft.com/us/icons/56/{icon}.jpg",
  "iconUrlFallback": "https://wow.zamimg.com/images/wow/icons/large/{icon}.jpg",
  "rawTables": [
+  {
+   "name": "CharBaseInfo",
+   "rows": 56,
+   "sha256": "6894b5d04495e875c3f08085630b951abeda6b798b5ed47de4f3405dd346cbc2"
+  },
   {
    "name": "ChrClasses",
    "rows": 9,
@@ -136,6 +141,11 @@
    "sha256": "da2fb074eedb51bd1246ef53666044c0b757bdb67340c3969b712caa8481ac2b"
   },
   {
+   "name": "SpellEquippedItems",
+   "rows": 1901,
+   "sha256": "12e0278ed8efe205c7f4d043025de98bf1a42039bbc46d18ae1dd266dd51e899"
+  },
+  {
    "name": "SpellLevels",
    "rows": 13072,
    "sha256": "c9ef7708478aaff1b5e488c58356df443ee7d6c08a53017819f9af37cd5bef5a"
@@ -164,6 +174,11 @@
    "name": "SpellRange",
    "rows": 61,
    "sha256": "30734ead3acfb44c57737ed7c9f8ff2feafda2fbffa291711d4c4afef989b1b3"
+  },
+  {
+   "name": "SpellShapeshift",
+   "rows": 3470,
+   "sha256": "563fce3bf8cfdff32c0df7cb55687dd7354f57d45b5ce9b207ce5d8b969cadd9"
   },
   {
    "name": "TalentTab",

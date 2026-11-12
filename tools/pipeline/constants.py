@@ -3,7 +3,7 @@ import re
 
 BUILD_DEFAULT = "1.60.1.70888"
 ERA_BUILD_DEFAULT = "1.15.9.70576"
-PIPELINE_VERSION = 1
+PIPELINE_VERSION = 2
 
 # (ChrClasses.ID, token, TraitTreeID, ClassMask). Verified against SkillLineXTraitTree + SkillLineAbility.
 CLASS_TREES = [
@@ -46,6 +46,14 @@ NODE_FLAG_HIDDEN = 8
 SPEC_SKILL_LINE_CATEGORY = 7
 SPEC_SKILL_LINE_FLAGS = {1040, 66576}
 ACQUIRE_RUNE = 3  # SoD rune-granted spells
+# ---- Weapon proficiencies (Phase 3) ----
+# Weapon skill lines (SkillLine.CategoryID 6) -> Item.SubclassID of class-2 weapons. Which classes can learn a
+# line comes from SkillLineAbility.ClassMask (AcquireMethod != 3); it agrees with SkillRaceClassInfo for 70888.
+WEAPON_SKILL_SUBCLASSES = {
+    44: [0], 172: [1], 45: [2], 46: [3], 54: [4], 160: [5], 229: [6], 43: [7], 55: [8],
+    136: [10], 473: [13], 173: [15], 176: [16], 226: [18], 228: [19],
+}
+DUAL_WIELD_SKILL_LINE = 118
 
 POWER_RAGE = 1
 ATTR0_PASSIVE = 0x40

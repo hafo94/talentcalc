@@ -18,7 +18,7 @@ from pipeline.icons import IconResolver  # noqa: E402
 from pipeline.items import build_weapons  # noqa: E402
 from pipeline.manual import validate_manual  # noqa: E402
 from pipeline.spells import build_ability_chains, build_spell, collect_spells  # noqa: E402
-from pipeline.talents import BuildError, build_talent_trees  # noqa: E402
+from pipeline.talents import BuildError, attach_effects, build_talent_trees  # noqa: E402
 from pipeline.targets import build_targets  # noqa: E402
 from pipeline.writer import write_json, write_records  # noqa: E402
 
@@ -87,6 +87,7 @@ def run(a):
     seeds = collect_spells(db, tsc, report)
     spells = [build_spell(db, sid, seeds[sid], icons) for sid in sorted(seeds)]
     spells_by_id = {s["id"]: s for s in spells}
+    attach_effects(talent_files, spells_by_id)
     chains = build_ability_chains(db, seeds)
     unresolved = report.pop("_unresolved")
     for s in spells:

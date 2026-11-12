@@ -361,3 +361,22 @@ def build_talent_trees(db, opts, icons, report):
         out[class_id] = {"build": None, "classId": class_id, "token": token.lower(), "traitTreeId": tree_id,
                          "maxPoints": C.TALENT_CURRENCY_MAX, "specs": specs}
     return out
+
+
+EFFECT_KEYS = ("index", "effect", "aura", "misc", "mask", "targets")
+
+
+def attach_effects(talent_files, spells_by_id):
+    """Copies the stat-relevant part of each talent spell's effects (parallel to ranks[].values) and its
+    equipped-item requirement onto the talent records (Phase 3: the app does not load spells.json)."""
+    def attach(t):
+        sp = spells_by_id[t["spellId"]]
+        t["effects"] = [{k: e[k] for k in EFFECT_KEYS if k in e} for e in sp["effects"]]
+        t["equipped"] = sp["equipped"]
+        t["shapeshiftMask"] = sp["shapeshiftMask"]
+    for f in talent_files.values():
+        for s in f["specs"]:
+            for t in s["talents"]:
+                attach(t)
+                for c in t.get("choices", []):
+                    attach(c)

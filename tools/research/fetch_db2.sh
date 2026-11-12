@@ -32,6 +32,8 @@ TABLES=(
   # icon file-data-id -> file name, tooltip variables
   ItemDamageRanged ItemDamageThrown ItemDamageWand RandPropPoints SpellRadius ManifestInterfaceData
   SpellDescriptionVariables SpellXDescriptionVariables
+  # Phase 3: talent weapon requirements, race/class combos
+  SpellEquippedItems CharBaseInfo
 )
 for t in "${TABLES[@]}"; do
   code=$(curl -s --max-time 300 -o "$OUT/$t.csv" -w '%{http_code}' \

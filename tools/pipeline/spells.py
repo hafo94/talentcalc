@@ -218,6 +218,12 @@ def build_spell(db, sid, seed, icons, report=None):
     if unresolved:
         rec["unresolved"] = unresolved
     rec["effects"] = _effects(db, sid)
+    eq = db.by_spell("SpellEquippedItems").get(s)
+    rec["equipped"] = ({"itemClass": I(eq["EquippedItemClass"]), "subclassMask": u32(I(eq["EquippedItemSubclass"])),
+                        "invTypeMask": u32(I(eq["EquippedItemInvTypes"]))}
+                       if eq and I(eq["EquippedItemClass"]) >= 0 else None)
+    ss = db.by_spell("SpellShapeshift").get(s)
+    rec["shapeshiftMask"] = u32(I(ss["ShapeshiftMask_0"])) if ss else 0
     return rec
 
 

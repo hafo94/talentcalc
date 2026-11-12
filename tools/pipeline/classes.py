@@ -15,6 +15,23 @@ def build_classes(db, icons, build):
     for r in db.rows("TalentTab"):
         tabs[I(r["ClassMask"])].append(r)
     chr_classes = db.by_id("ChrClasses")
+    prof = collections.defaultdict(set)   # class mask bit -> weapon subclasses
+    dual = set()
+    for r in db.rows("SkillLineAbility"):
+        if I(r["AcquireMethod"]) == C.ACQUIRE_RUNE:
+            continue
+        sl, cm = I(r["SkillLine"]), I(r["ClassMask"])
+        if sl in C.WEAPON_SKILL_SUBCLASSES:
+            for _, _, _, mask in C.CLASS_TREES:
+                if cm & mask:
+                    prof[mask].update(C.WEAPON_SKILL_SUBCLASSES[sl])
+        elif sl == C.DUAL_WIELD_SKILL_LINE:
+            for _, _, _, mask in C.CLASS_TREES:
+                if cm & mask:
+                    dual.add(mask)
+    combos = collections.defaultdict(set)
+    for r in db.rows("CharBaseInfo"):
+        combos[I(r["ClassID"])].add(I(r["RaceID"]))
     classes = []
     for cid, token, tree, mask in C.CLASS_TREES:
         r = chr_classes[str(cid)]
@@ -32,6 +49,8 @@ def build_classes(db, icons, build):
             "spellClassSet": I(r["SpellClassSet"]), "powerType": I(r["DisplayPower"]),
             "icon": icons.resolve(fid, "class", cid), "iconFileId": fid, "traitTreeId": tree,
             "skillLineIds": sorted(lines_of[cid]), "specs": specs,
+            "raceIds": [rid for rid in C.RACES_V1 if rid in combos[cid]],
+            "weaponSubclasses": sorted(prof[mask]), "dualWield": mask in dual,
         })
     races = []
     rr = db.by_id("ChrRaces")
