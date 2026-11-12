@@ -3,6 +3,7 @@
 import argparse
 import collections
 import datetime
+import json
 import os
 import sys
 
@@ -117,6 +118,9 @@ def run(a):
     for k in ("build", "hiddenNodes", "positionFixes", "posYInconsistent", "gateScopeAnomalies", "edges",
               "curveBaseMismatch", "multiRankWithoutCurve", "excludedRuneSpells"):
         final[k] = report.get(k, [])
+    # Deterministic order for clean diffs (sources iterate sets).
+    final["curveBaseMismatch"] = sorted(final["curveBaseMismatch"], key=lambda r: (r["nodeId"], r["effectIndex"]))
+    final["multiRankWithoutCurve"] = sorted(final["multiRankWithoutCurve"], key=lambda r: json.dumps(r, sort_keys=True))
     final["missingIcons"] = missing
     final["unresolvedTokens"] = dict(sorted(unresolved.items()))
     final["weaponFilters"] = dict(sorted(report.get("weaponFilters", {}).items()))
