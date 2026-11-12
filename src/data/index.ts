@@ -1,6 +1,22 @@
+import targetsJson from "@data/targets.json";
+import baseStatsJson from "@manual/base-stats.json";
+import buffsJson from "@manual/buffs.json";
+import racialsJson from "@manual/racials.json";
+import type {
+  BaseStatsFile,
+  BuffsFile,
+  ClassesFile,
+  ClassInfo,
+  ClassToken,
+  Manifest,
+  RaceInfo,
+  RacialsFile,
+  TalentFile,
+  TargetsFile,
+  WeaponsFile,
+} from "./types";
 import classesJson from "@data/classes.json";
 import manifestJson from "@data/manifest.json";
-import type { ClassesFile, ClassInfo, ClassToken, Manifest, TalentFile } from "./types";
 
 export const classesFile = classesJson as unknown as ClassesFile;
 export const manifest = manifestJson as unknown as Manifest;
@@ -30,4 +46,23 @@ export function loadTalentFile(token: ClassToken): Promise<TalentFile> {
   p.catch(() => cache.delete(token));
   cache.set(token, p);
   return p;
+}
+
+export const targetsFile = targetsJson as unknown as TargetsFile;
+export const baseStatsFile = baseStatsJson as unknown as BaseStatsFile;
+export const buffsFile = buffsJson as unknown as BuffsFile;
+export const racialsFile = racialsJson as unknown as RacialsFile;
+
+export function getRace(id: number): RaceInfo {
+  const r = classesFile.races.find((x) => x.id === id);
+  if (!r) throw new Error(`unknown race ${id}`);
+  return r;
+}
+
+let weaponsPromise: Promise<WeaponsFile> | null = null;
+/** weapons.json (~110 KB gzip) is a lazy chunk, loaded once. */
+export function loadWeapons(): Promise<WeaponsFile> {
+  weaponsPromise ??= import("@data/weapons.json").then((m) => m.default as unknown as WeaponsFile);
+  weaponsPromise.catch(() => (weaponsPromise = null));
+  return weaponsPromise;
 }

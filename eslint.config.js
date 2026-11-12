@@ -35,6 +35,7 @@ export default tseslint.config(
             "@/ui/*",
             "@/state/*",
             "@data/*",
+            "@manual/*",
             "@/data/index",
             "@/data/load*",
           ],

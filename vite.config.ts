@@ -12,10 +12,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@data": fileURLToPath(new URL(`./data/generated/${DATA_BUILD}`, import.meta.url)),
+      "@manual": fileURLToPath(new URL("./data/manual", import.meta.url)),
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-  build: { target: "es2022", sourcemap: false },
+  build: { target: "es2022", sourcemap: false, chunkSizeWarningLimit: 1100 },
   test: {
     include: ["src/**/*.test.ts"],
     environment: "node",

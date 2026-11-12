@@ -31,6 +31,9 @@ describe("generated talent data invariants", () => {
           expect(t.ranks).toHaveLength(t.maxRank);
           expect(t.maxRank).toBeGreaterThanOrEqual(1);
           expect(t.maxRank).toBeLessThanOrEqual(7);
+          expect(t.effects).toHaveLength(t.ranks[0]!.values.length);
+          expect(t).toHaveProperty("equipped");
+          expect(typeof t.shapeshiftMask).toBe("number");
         }
     expect(n).toBe(447);
   });

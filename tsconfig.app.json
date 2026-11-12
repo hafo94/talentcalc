@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "types": ["vite/client"],
     "baseUrl": ".",
-    "paths": { "@data/*": ["data/generated/1.60.1.70888/*"], "@/*": ["src/*"] }
+    "paths": { "@data/*": ["data/generated/1.60.1.70888/*"], "@manual/*": ["data/manual/*"], "@/*": ["src/*"] }
   },
   "include": ["src"]
 }
