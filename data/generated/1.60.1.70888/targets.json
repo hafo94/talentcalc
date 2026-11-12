@@ -1,0 +1,2471 @@
+{
+ "build": "1.60.1.70888",
+ "armorFormula": {
+  "base": 400,
+  "perLevel": 85,
+  "cap": 0.75
+ },
+ "levels": [
+  {
+   "level": 1,
+   "armor": 20,
+   "health": 42,
+   "armorConstant": 485,
+   "autoAttackDps": 0.770372,
+   "spellDamage": 36
+  },
+  {
+   "level": 2,
+   "armor": 21,
+   "health": 55,
+   "armorConstant": 570,
+   "autoAttackDps": 1.157464,
+   "spellDamage": 53
+  },
+  {
+   "level": 3,
+   "armor": 46,
+   "health": 71,
+   "armorConstant": 655,
+   "autoAttackDps": 1.629084,
+   "spellDamage": 70
+  },
+  {
+   "level": 4,
+   "armor": 82,
+   "health": 86,
+   "armorConstant": 740,
+   "autoAttackDps": 2.250775,
+   "spellDamage": 87
+  },
+  {
+   "level": 5,
+   "armor": 126,
+   "health": 102,
+   "armorConstant": 825,
+   "autoAttackDps": 3.00635,
+   "spellDamage": 104
+  },
+  {
+   "level": 6,
+   "armor": 180,
+   "health": 120,
+   "armorConstant": 910,
+   "autoAttackDps": 4.004024,
+   "spellDamage": 121
+  },
+  {
+   "level": 7,
+   "armor": 245,
+   "health": 137,
+   "armorConstant": 995,
+   "autoAttackDps": 5.183572,
+   "spellDamage": 138
+  },
+  {
+   "level": 8,
+   "armor": 322,
+   "health": 156,
+   "armorConstant": 1080,
+   "autoAttackDps": 6.024061,
+   "spellDamage": 155
+  },
+  {
+   "level": 9,
+   "armor": 412,
+   "health": 180,
+   "armorConstant": 1165,
+   "autoAttackDps": 6.905671,
+   "spellDamage": 172
+  },
+  {
+   "level": 10,
+   "armor": 518,
+   "health": 208,
+   "armorConstant": 1250,
+   "autoAttackDps": 7.619572,
+   "spellDamage": 190
+  },
+  {
+   "level": 11,
+   "armor": 545,
+   "health": 239,
+   "armorConstant": 1335,
+   "autoAttackDps": 8.599532,
+   "spellDamage": 216
+  },
+  {
+   "level": 12,
+   "armor": 580,
+   "health": 272,
+   "armorConstant": 1420,
+   "autoAttackDps": 9.835855,
+   "spellDamage": 254
+  },
+  {
+   "level": 13,
+   "armor": 615,
+   "health": 307,
+   "armorConstant": 1505,
+   "autoAttackDps": 10.712736,
+   "spellDamage": 288
+  },
+  {
+   "level": 14,
+   "armor": 650,
+   "health": 345,
+   "armorConstant": 1590,
+   "autoAttackDps": 11.808291,
+   "spellDamage": 315
+  },
+  {
+   "level": 15,
+   "armor": 685,
+   "health": 385,
+   "armorConstant": 1675,
+   "autoAttackDps": 12.854805,
+   "spellDamage": 342
+  },
+  {
+   "level": 16,
+   "armor": 721,
+   "health": 427,
+   "armorConstant": 1760,
+   "autoAttackDps": 13.587111,
+   "spellDamage": 367
+  },
+  {
+   "level": 17,
+   "armor": 756,
+   "health": 473,
+   "armorConstant": 1845,
+   "autoAttackDps": 14.563859,
+   "spellDamage": 396
+  },
+  {
+   "level": 18,
+   "armor": 791,
+   "health": 521,
+   "armorConstant": 1930,
+   "autoAttackDps": 15.25296,
+   "spellDamage": 424
+  },
+  {
+   "level": 19,
+   "armor": 826,
+   "health": 572,
+   "armorConstant": 2015,
+   "autoAttackDps": 16.182199,
+   "spellDamage": 453
+  },
+  {
+   "level": 20,
+   "armor": 861,
+   "health": 629,
+   "armorConstant": 2100,
+   "autoAttackDps": 17.102863,
+   "spellDamage": 503
+  },
+  {
+   "level": 21,
+   "armor": 897,
+   "health": 677,
+   "armorConstant": 2185,
+   "autoAttackDps": 17.745413,
+   "spellDamage": 534
+  },
+  {
+   "level": 22,
+   "armor": 932,
+   "health": 731,
+   "armorConstant": 2270,
+   "autoAttackDps": 18.59865,
+   "spellDamage": 566
+  },
+  {
+   "level": 23,
+   "armor": 967,
+   "health": 787,
+   "armorConstant": 2355,
+   "autoAttackDps": 19.226643,
+   "spellDamage": 599
+  },
+  {
+   "level": 24,
+   "armor": 1002,
+   "health": 846,
+   "armorConstant": 2440,
+   "autoAttackDps": 20.052448,
+   "spellDamage": 653
+  },
+  {
+   "level": 25,
+   "armor": 1037,
+   "health": 909,
+   "armorConstant": 2525,
+   "autoAttackDps": 20.828466,
+   "spellDamage": 692
+  },
+  {
+   "level": 26,
+   "armor": 1072,
+   "health": 975,
+   "armorConstant": 2610,
+   "autoAttackDps": 21.485151,
+   "spellDamage": 712
+  },
+  {
+   "level": 27,
+   "armor": 1108,
+   "health": 1040,
+   "armorConstant": 2695,
+   "autoAttackDps": 22.34799,
+   "spellDamage": 743
+  },
+  {
+   "level": 28,
+   "armor": 1142,
+   "health": 1109,
+   "armorConstant": 2780,
+   "autoAttackDps": 22.996151,
+   "spellDamage": 779
+  },
+  {
+   "level": 29,
+   "armor": 1177,
+   "health": 1177,
+   "armorConstant": 2865,
+   "autoAttackDps": 23.821842,
+   "spellDamage": 818
+  },
+  {
+   "level": 30,
+   "armor": 1212,
+   "health": 1242,
+   "armorConstant": 2950,
+   "autoAttackDps": 24.693754,
+   "spellDamage": 878
+  },
+  {
+   "level": 31,
+   "armor": 1247,
+   "health": 1308,
+   "armorConstant": 3035,
+   "autoAttackDps": 25.315638,
+   "spellDamage": 919
+  },
+  {
+   "level": 32,
+   "armor": 1283,
+   "health": 1374,
+   "armorConstant": 3120,
+   "autoAttackDps": 26.084276,
+   "spellDamage": 961
+  },
+  {
+   "level": 33,
+   "armor": 1317,
+   "health": 1443,
+   "armorConstant": 3205,
+   "autoAttackDps": 26.739229,
+   "spellDamage": 1004
+  },
+  {
+   "level": 34,
+   "armor": 1353,
+   "health": 1512,
+   "armorConstant": 3290,
+   "autoAttackDps": 27.510864,
+   "spellDamage": 1048
+  },
+  {
+   "level": 35,
+   "armor": 1387,
+   "health": 1586,
+   "armorConstant": 3375,
+   "autoAttackDps": 28.255644,
+   "spellDamage": 1093
+  },
+  {
+   "level": 36,
+   "armor": 1494,
+   "health": 1660,
+   "armorConstant": 3460,
+   "autoAttackDps": 28.944372,
+   "spellDamage": 1147
+  },
+  {
+   "level": 37,
+   "armor": 1607,
+   "health": 1737,
+   "armorConstant": 3545,
+   "autoAttackDps": 29.852362,
+   "spellDamage": 1188
+  },
+  {
+   "level": 38,
+   "armor": 1724,
+   "health": 1814,
+   "armorConstant": 3630,
+   "autoAttackDps": 30.62602,
+   "spellDamage": 1234
+  },
+  {
+   "level": 39,
+   "armor": 1849,
+   "health": 1897,
+   "armorConstant": 3715,
+   "autoAttackDps": 31.589342,
+   "spellDamage": 1283
+  },
+  {
+   "level": 40,
+   "armor": 1980,
+   "health": 1981,
+   "armorConstant": 3800,
+   "autoAttackDps": 32.585583,
+   "spellDamage": 1353
+  },
+  {
+   "level": 41,
+   "armor": 2117,
+   "health": 2061,
+   "armorConstant": 3885,
+   "autoAttackDps": 34.142548,
+   "spellDamage": 1404
+  },
+  {
+   "level": 42,
+   "armor": 2262,
+   "health": 2146,
+   "armorConstant": 3970,
+   "autoAttackDps": 36.28595,
+   "spellDamage": 1456
+  },
+  {
+   "level": 43,
+   "armor": 2414,
+   "health": 2231,
+   "armorConstant": 4055,
+   "autoAttackDps": 38.707474,
+   "spellDamage": 1509
+  },
+  {
+   "level": 44,
+   "armor": 2574,
+   "health": 2317,
+   "armorConstant": 4140,
+   "autoAttackDps": 41.913738,
+   "spellDamage": 1563
+  },
+  {
+   "level": 45,
+   "armor": 2742,
+   "health": 2402,
+   "armorConstant": 4225,
+   "autoAttackDps": 43.992508,
+   "spellDamage": 1618
+  },
+  {
+   "level": 46,
+   "armor": 2798,
+   "health": 2495,
+   "armorConstant": 4310,
+   "autoAttackDps": 44.89542,
+   "spellDamage": 1674
+  },
+  {
+   "level": 47,
+   "armor": 2853,
+   "health": 2587,
+   "armorConstant": 4395,
+   "autoAttackDps": 46.021351,
+   "spellDamage": 1731
+  },
+  {
+   "level": 48,
+   "armor": 2907,
+   "health": 2681,
+   "armorConstant": 4480,
+   "autoAttackDps": 46.929184,
+   "spellDamage": 1789
+  },
+  {
+   "level": 49,
+   "armor": 2963,
+   "health": 2779,
+   "armorConstant": 4565,
+   "autoAttackDps": 48.029686,
+   "spellDamage": 1848
+  },
+  {
+   "level": 50,
+   "armor": 3018,
+   "health": 2909,
+   "armorConstant": 4650,
+   "autoAttackDps": 49.201706,
+   "spellDamage": 1928
+  },
+  {
+   "level": 51,
+   "armor": 3072,
+   "health": 3040,
+   "armorConstant": 4735,
+   "autoAttackDps": 50.159973,
+   "spellDamage": 1989
+  },
+  {
+   "level": 52,
+   "armor": 3128,
+   "health": 3174,
+   "armorConstant": 4820,
+   "autoAttackDps": 51.385139,
+   "spellDamage": 2051
+  },
+  {
+   "level": 53,
+   "armor": 3183,
+   "health": 3317,
+   "armorConstant": 4905,
+   "autoAttackDps": 52.369083,
+   "spellDamage": 2114
+  },
+  {
+   "level": 54,
+   "armor": 3237,
+   "health": 3458,
+   "armorConstant": 4990,
+   "autoAttackDps": 53.562607,
+   "spellDamage": 2178
+  },
+  {
+   "level": 55,
+   "armor": 3292,
+   "health": 3602,
+   "armorConstant": 5075,
+   "autoAttackDps": 54.682869,
+   "spellDamage": 2243
+  },
+  {
+   "level": 56,
+   "armor": 3348,
+   "health": 3755,
+   "armorConstant": 5160,
+   "autoAttackDps": 55.762817,
+   "spellDamage": 2309
+  },
+  {
+   "level": 57,
+   "armor": 3402,
+   "health": 3909,
+   "armorConstant": 5245,
+   "autoAttackDps": 56.939732,
+   "spellDamage": 2376
+  },
+  {
+   "level": 58,
+   "armor": 3457,
+   "health": 4105,
+   "armorConstant": 5330,
+   "autoAttackDps": 58.031605,
+   "spellDamage": 2444
+  },
+  {
+   "level": 59,
+   "armor": 3512,
+   "health": 4234,
+   "armorConstant": 5415,
+   "autoAttackDps": 59.215183,
+   "spellDamage": 2513
+  },
+  {
+   "level": 60,
+   "armor": 3566,
+   "health": 4365,
+   "armorConstant": 5500,
+   "autoAttackDps": 60.452915,
+   "spellDamage": 2603
+  },
+  {
+   "level": 61,
+   "armor": 3622,
+   "health": 4496,
+   "armorConstant": 5585,
+   "autoAttackDps": 61.530331,
+   "spellDamage": 2674
+  },
+  {
+   "level": 62,
+   "armor": 3677,
+   "health": 4629,
+   "armorConstant": 5670,
+   "autoAttackDps": 62.75211,
+   "spellDamage": 2746
+  },
+  {
+   "level": 63,
+   "armor": 3731,
+   "health": 4763,
+   "armorConstant": 5755,
+   "autoAttackDps": 63.861443,
+   "spellDamage": 2819
+  }
+ ],
+ "presets": [
+  {
+   "id": "boss",
+   "label": "Boss",
+   "levelOffset": 3,
+   "armorMultiplier": 1.0,
+   "default": true
+  },
+  {
+   "id": "elite",
+   "label": "Elite",
+   "levelOffset": 2,
+   "armorMultiplier": 1.0
+  },
+  {
+   "id": "same",
+   "label": "Same-level mob",
+   "levelOffset": 0,
+   "armorMultiplier": 1.0
+  },
+  {
+   "id": "lowArmorBoss",
+   "label": "Low-armor boss",
+   "levelOffset": 3,
+   "armorMultiplier": 0.5,
+   "note": "[tune] armor halved"
+  },
+  {
+   "id": "custom",
+   "label": "Custom",
+   "levelOffset": 3,
+   "armorMultiplier": 1.0,
+   "editable": true
+  }
+ ],
+ "byPlayerLevel": {
+  "1": [
+   {
+    "preset": "boss",
+    "level": 4,
+    "armor": 82,
+    "health": 86
+   },
+   {
+    "preset": "elite",
+    "level": 3,
+    "armor": 46,
+    "health": 71
+   },
+   {
+    "preset": "same",
+    "level": 1,
+    "armor": 20,
+    "health": 42
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 4,
+    "armor": 41,
+    "health": 86
+   },
+   {
+    "preset": "custom",
+    "level": 4,
+    "armor": 82,
+    "health": 86
+   }
+  ],
+  "2": [
+   {
+    "preset": "boss",
+    "level": 5,
+    "armor": 126,
+    "health": 102
+   },
+   {
+    "preset": "elite",
+    "level": 4,
+    "armor": 82,
+    "health": 86
+   },
+   {
+    "preset": "same",
+    "level": 2,
+    "armor": 21,
+    "health": 55
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 5,
+    "armor": 63,
+    "health": 102
+   },
+   {
+    "preset": "custom",
+    "level": 5,
+    "armor": 126,
+    "health": 102
+   }
+  ],
+  "3": [
+   {
+    "preset": "boss",
+    "level": 6,
+    "armor": 180,
+    "health": 120
+   },
+   {
+    "preset": "elite",
+    "level": 5,
+    "armor": 126,
+    "health": 102
+   },
+   {
+    "preset": "same",
+    "level": 3,
+    "armor": 46,
+    "health": 71
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 6,
+    "armor": 90,
+    "health": 120
+   },
+   {
+    "preset": "custom",
+    "level": 6,
+    "armor": 180,
+    "health": 120
+   }
+  ],
+  "4": [
+   {
+    "preset": "boss",
+    "level": 7,
+    "armor": 245,
+    "health": 137
+   },
+   {
+    "preset": "elite",
+    "level": 6,
+    "armor": 180,
+    "health": 120
+   },
+   {
+    "preset": "same",
+    "level": 4,
+    "armor": 82,
+    "health": 86
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 7,
+    "armor": 123,
+    "health": 137
+   },
+   {
+    "preset": "custom",
+    "level": 7,
+    "armor": 245,
+    "health": 137
+   }
+  ],
+  "5": [
+   {
+    "preset": "boss",
+    "level": 8,
+    "armor": 322,
+    "health": 156
+   },
+   {
+    "preset": "elite",
+    "level": 7,
+    "armor": 245,
+    "health": 137
+   },
+   {
+    "preset": "same",
+    "level": 5,
+    "armor": 126,
+    "health": 102
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 8,
+    "armor": 161,
+    "health": 156
+   },
+   {
+    "preset": "custom",
+    "level": 8,
+    "armor": 322,
+    "health": 156
+   }
+  ],
+  "6": [
+   {
+    "preset": "boss",
+    "level": 9,
+    "armor": 412,
+    "health": 180
+   },
+   {
+    "preset": "elite",
+    "level": 8,
+    "armor": 322,
+    "health": 156
+   },
+   {
+    "preset": "same",
+    "level": 6,
+    "armor": 180,
+    "health": 120
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 9,
+    "armor": 206,
+    "health": 180
+   },
+   {
+    "preset": "custom",
+    "level": 9,
+    "armor": 412,
+    "health": 180
+   }
+  ],
+  "7": [
+   {
+    "preset": "boss",
+    "level": 10,
+    "armor": 518,
+    "health": 208
+   },
+   {
+    "preset": "elite",
+    "level": 9,
+    "armor": 412,
+    "health": 180
+   },
+   {
+    "preset": "same",
+    "level": 7,
+    "armor": 245,
+    "health": 137
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 10,
+    "armor": 259,
+    "health": 208
+   },
+   {
+    "preset": "custom",
+    "level": 10,
+    "armor": 518,
+    "health": 208
+   }
+  ],
+  "8": [
+   {
+    "preset": "boss",
+    "level": 11,
+    "armor": 545,
+    "health": 239
+   },
+   {
+    "preset": "elite",
+    "level": 10,
+    "armor": 518,
+    "health": 208
+   },
+   {
+    "preset": "same",
+    "level": 8,
+    "armor": 322,
+    "health": 156
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 11,
+    "armor": 273,
+    "health": 239
+   },
+   {
+    "preset": "custom",
+    "level": 11,
+    "armor": 545,
+    "health": 239
+   }
+  ],
+  "9": [
+   {
+    "preset": "boss",
+    "level": 12,
+    "armor": 580,
+    "health": 272
+   },
+   {
+    "preset": "elite",
+    "level": 11,
+    "armor": 545,
+    "health": 239
+   },
+   {
+    "preset": "same",
+    "level": 9,
+    "armor": 412,
+    "health": 180
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 12,
+    "armor": 290,
+    "health": 272
+   },
+   {
+    "preset": "custom",
+    "level": 12,
+    "armor": 580,
+    "health": 272
+   }
+  ],
+  "10": [
+   {
+    "preset": "boss",
+    "level": 13,
+    "armor": 615,
+    "health": 307
+   },
+   {
+    "preset": "elite",
+    "level": 12,
+    "armor": 580,
+    "health": 272
+   },
+   {
+    "preset": "same",
+    "level": 10,
+    "armor": 518,
+    "health": 208
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 13,
+    "armor": 308,
+    "health": 307
+   },
+   {
+    "preset": "custom",
+    "level": 13,
+    "armor": 615,
+    "health": 307
+   }
+  ],
+  "11": [
+   {
+    "preset": "boss",
+    "level": 14,
+    "armor": 650,
+    "health": 345
+   },
+   {
+    "preset": "elite",
+    "level": 13,
+    "armor": 615,
+    "health": 307
+   },
+   {
+    "preset": "same",
+    "level": 11,
+    "armor": 545,
+    "health": 239
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 14,
+    "armor": 325,
+    "health": 345
+   },
+   {
+    "preset": "custom",
+    "level": 14,
+    "armor": 650,
+    "health": 345
+   }
+  ],
+  "12": [
+   {
+    "preset": "boss",
+    "level": 15,
+    "armor": 685,
+    "health": 385
+   },
+   {
+    "preset": "elite",
+    "level": 14,
+    "armor": 650,
+    "health": 345
+   },
+   {
+    "preset": "same",
+    "level": 12,
+    "armor": 580,
+    "health": 272
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 15,
+    "armor": 343,
+    "health": 385
+   },
+   {
+    "preset": "custom",
+    "level": 15,
+    "armor": 685,
+    "health": 385
+   }
+  ],
+  "13": [
+   {
+    "preset": "boss",
+    "level": 16,
+    "armor": 721,
+    "health": 427
+   },
+   {
+    "preset": "elite",
+    "level": 15,
+    "armor": 685,
+    "health": 385
+   },
+   {
+    "preset": "same",
+    "level": 13,
+    "armor": 615,
+    "health": 307
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 16,
+    "armor": 361,
+    "health": 427
+   },
+   {
+    "preset": "custom",
+    "level": 16,
+    "armor": 721,
+    "health": 427
+   }
+  ],
+  "14": [
+   {
+    "preset": "boss",
+    "level": 17,
+    "armor": 756,
+    "health": 473
+   },
+   {
+    "preset": "elite",
+    "level": 16,
+    "armor": 721,
+    "health": 427
+   },
+   {
+    "preset": "same",
+    "level": 14,
+    "armor": 650,
+    "health": 345
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 17,
+    "armor": 378,
+    "health": 473
+   },
+   {
+    "preset": "custom",
+    "level": 17,
+    "armor": 756,
+    "health": 473
+   }
+  ],
+  "15": [
+   {
+    "preset": "boss",
+    "level": 18,
+    "armor": 791,
+    "health": 521
+   },
+   {
+    "preset": "elite",
+    "level": 17,
+    "armor": 756,
+    "health": 473
+   },
+   {
+    "preset": "same",
+    "level": 15,
+    "armor": 685,
+    "health": 385
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 18,
+    "armor": 396,
+    "health": 521
+   },
+   {
+    "preset": "custom",
+    "level": 18,
+    "armor": 791,
+    "health": 521
+   }
+  ],
+  "16": [
+   {
+    "preset": "boss",
+    "level": 19,
+    "armor": 826,
+    "health": 572
+   },
+   {
+    "preset": "elite",
+    "level": 18,
+    "armor": 791,
+    "health": 521
+   },
+   {
+    "preset": "same",
+    "level": 16,
+    "armor": 721,
+    "health": 427
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 19,
+    "armor": 413,
+    "health": 572
+   },
+   {
+    "preset": "custom",
+    "level": 19,
+    "armor": 826,
+    "health": 572
+   }
+  ],
+  "17": [
+   {
+    "preset": "boss",
+    "level": 20,
+    "armor": 861,
+    "health": 629
+   },
+   {
+    "preset": "elite",
+    "level": 19,
+    "armor": 826,
+    "health": 572
+   },
+   {
+    "preset": "same",
+    "level": 17,
+    "armor": 756,
+    "health": 473
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 20,
+    "armor": 431,
+    "health": 629
+   },
+   {
+    "preset": "custom",
+    "level": 20,
+    "armor": 861,
+    "health": 629
+   }
+  ],
+  "18": [
+   {
+    "preset": "boss",
+    "level": 21,
+    "armor": 897,
+    "health": 677
+   },
+   {
+    "preset": "elite",
+    "level": 20,
+    "armor": 861,
+    "health": 629
+   },
+   {
+    "preset": "same",
+    "level": 18,
+    "armor": 791,
+    "health": 521
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 21,
+    "armor": 449,
+    "health": 677
+   },
+   {
+    "preset": "custom",
+    "level": 21,
+    "armor": 897,
+    "health": 677
+   }
+  ],
+  "19": [
+   {
+    "preset": "boss",
+    "level": 22,
+    "armor": 932,
+    "health": 731
+   },
+   {
+    "preset": "elite",
+    "level": 21,
+    "armor": 897,
+    "health": 677
+   },
+   {
+    "preset": "same",
+    "level": 19,
+    "armor": 826,
+    "health": 572
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 22,
+    "armor": 466,
+    "health": 731
+   },
+   {
+    "preset": "custom",
+    "level": 22,
+    "armor": 932,
+    "health": 731
+   }
+  ],
+  "20": [
+   {
+    "preset": "boss",
+    "level": 23,
+    "armor": 967,
+    "health": 787
+   },
+   {
+    "preset": "elite",
+    "level": 22,
+    "armor": 932,
+    "health": 731
+   },
+   {
+    "preset": "same",
+    "level": 20,
+    "armor": 861,
+    "health": 629
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 23,
+    "armor": 484,
+    "health": 787
+   },
+   {
+    "preset": "custom",
+    "level": 23,
+    "armor": 967,
+    "health": 787
+   }
+  ],
+  "21": [
+   {
+    "preset": "boss",
+    "level": 24,
+    "armor": 1002,
+    "health": 846
+   },
+   {
+    "preset": "elite",
+    "level": 23,
+    "armor": 967,
+    "health": 787
+   },
+   {
+    "preset": "same",
+    "level": 21,
+    "armor": 897,
+    "health": 677
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 24,
+    "armor": 501,
+    "health": 846
+   },
+   {
+    "preset": "custom",
+    "level": 24,
+    "armor": 1002,
+    "health": 846
+   }
+  ],
+  "22": [
+   {
+    "preset": "boss",
+    "level": 25,
+    "armor": 1037,
+    "health": 909
+   },
+   {
+    "preset": "elite",
+    "level": 24,
+    "armor": 1002,
+    "health": 846
+   },
+   {
+    "preset": "same",
+    "level": 22,
+    "armor": 932,
+    "health": 731
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 25,
+    "armor": 519,
+    "health": 909
+   },
+   {
+    "preset": "custom",
+    "level": 25,
+    "armor": 1037,
+    "health": 909
+   }
+  ],
+  "23": [
+   {
+    "preset": "boss",
+    "level": 26,
+    "armor": 1072,
+    "health": 975
+   },
+   {
+    "preset": "elite",
+    "level": 25,
+    "armor": 1037,
+    "health": 909
+   },
+   {
+    "preset": "same",
+    "level": 23,
+    "armor": 967,
+    "health": 787
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 26,
+    "armor": 536,
+    "health": 975
+   },
+   {
+    "preset": "custom",
+    "level": 26,
+    "armor": 1072,
+    "health": 975
+   }
+  ],
+  "24": [
+   {
+    "preset": "boss",
+    "level": 27,
+    "armor": 1108,
+    "health": 1040
+   },
+   {
+    "preset": "elite",
+    "level": 26,
+    "armor": 1072,
+    "health": 975
+   },
+   {
+    "preset": "same",
+    "level": 24,
+    "armor": 1002,
+    "health": 846
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 27,
+    "armor": 554,
+    "health": 1040
+   },
+   {
+    "preset": "custom",
+    "level": 27,
+    "armor": 1108,
+    "health": 1040
+   }
+  ],
+  "25": [
+   {
+    "preset": "boss",
+    "level": 28,
+    "armor": 1142,
+    "health": 1109
+   },
+   {
+    "preset": "elite",
+    "level": 27,
+    "armor": 1108,
+    "health": 1040
+   },
+   {
+    "preset": "same",
+    "level": 25,
+    "armor": 1037,
+    "health": 909
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 28,
+    "armor": 571,
+    "health": 1109
+   },
+   {
+    "preset": "custom",
+    "level": 28,
+    "armor": 1142,
+    "health": 1109
+   }
+  ],
+  "26": [
+   {
+    "preset": "boss",
+    "level": 29,
+    "armor": 1177,
+    "health": 1177
+   },
+   {
+    "preset": "elite",
+    "level": 28,
+    "armor": 1142,
+    "health": 1109
+   },
+   {
+    "preset": "same",
+    "level": 26,
+    "armor": 1072,
+    "health": 975
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 29,
+    "armor": 589,
+    "health": 1177
+   },
+   {
+    "preset": "custom",
+    "level": 29,
+    "armor": 1177,
+    "health": 1177
+   }
+  ],
+  "27": [
+   {
+    "preset": "boss",
+    "level": 30,
+    "armor": 1212,
+    "health": 1242
+   },
+   {
+    "preset": "elite",
+    "level": 29,
+    "armor": 1177,
+    "health": 1177
+   },
+   {
+    "preset": "same",
+    "level": 27,
+    "armor": 1108,
+    "health": 1040
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 30,
+    "armor": 606,
+    "health": 1242
+   },
+   {
+    "preset": "custom",
+    "level": 30,
+    "armor": 1212,
+    "health": 1242
+   }
+  ],
+  "28": [
+   {
+    "preset": "boss",
+    "level": 31,
+    "armor": 1247,
+    "health": 1308
+   },
+   {
+    "preset": "elite",
+    "level": 30,
+    "armor": 1212,
+    "health": 1242
+   },
+   {
+    "preset": "same",
+    "level": 28,
+    "armor": 1142,
+    "health": 1109
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 31,
+    "armor": 624,
+    "health": 1308
+   },
+   {
+    "preset": "custom",
+    "level": 31,
+    "armor": 1247,
+    "health": 1308
+   }
+  ],
+  "29": [
+   {
+    "preset": "boss",
+    "level": 32,
+    "armor": 1283,
+    "health": 1374
+   },
+   {
+    "preset": "elite",
+    "level": 31,
+    "armor": 1247,
+    "health": 1308
+   },
+   {
+    "preset": "same",
+    "level": 29,
+    "armor": 1177,
+    "health": 1177
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 32,
+    "armor": 642,
+    "health": 1374
+   },
+   {
+    "preset": "custom",
+    "level": 32,
+    "armor": 1283,
+    "health": 1374
+   }
+  ],
+  "30": [
+   {
+    "preset": "boss",
+    "level": 33,
+    "armor": 1317,
+    "health": 1443
+   },
+   {
+    "preset": "elite",
+    "level": 32,
+    "armor": 1283,
+    "health": 1374
+   },
+   {
+    "preset": "same",
+    "level": 30,
+    "armor": 1212,
+    "health": 1242
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 33,
+    "armor": 659,
+    "health": 1443
+   },
+   {
+    "preset": "custom",
+    "level": 33,
+    "armor": 1317,
+    "health": 1443
+   }
+  ],
+  "31": [
+   {
+    "preset": "boss",
+    "level": 34,
+    "armor": 1353,
+    "health": 1512
+   },
+   {
+    "preset": "elite",
+    "level": 33,
+    "armor": 1317,
+    "health": 1443
+   },
+   {
+    "preset": "same",
+    "level": 31,
+    "armor": 1247,
+    "health": 1308
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 34,
+    "armor": 677,
+    "health": 1512
+   },
+   {
+    "preset": "custom",
+    "level": 34,
+    "armor": 1353,
+    "health": 1512
+   }
+  ],
+  "32": [
+   {
+    "preset": "boss",
+    "level": 35,
+    "armor": 1387,
+    "health": 1586
+   },
+   {
+    "preset": "elite",
+    "level": 34,
+    "armor": 1353,
+    "health": 1512
+   },
+   {
+    "preset": "same",
+    "level": 32,
+    "armor": 1283,
+    "health": 1374
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 35,
+    "armor": 694,
+    "health": 1586
+   },
+   {
+    "preset": "custom",
+    "level": 35,
+    "armor": 1387,
+    "health": 1586
+   }
+  ],
+  "33": [
+   {
+    "preset": "boss",
+    "level": 36,
+    "armor": 1494,
+    "health": 1660
+   },
+   {
+    "preset": "elite",
+    "level": 35,
+    "armor": 1387,
+    "health": 1586
+   },
+   {
+    "preset": "same",
+    "level": 33,
+    "armor": 1317,
+    "health": 1443
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 36,
+    "armor": 747,
+    "health": 1660
+   },
+   {
+    "preset": "custom",
+    "level": 36,
+    "armor": 1494,
+    "health": 1660
+   }
+  ],
+  "34": [
+   {
+    "preset": "boss",
+    "level": 37,
+    "armor": 1607,
+    "health": 1737
+   },
+   {
+    "preset": "elite",
+    "level": 36,
+    "armor": 1494,
+    "health": 1660
+   },
+   {
+    "preset": "same",
+    "level": 34,
+    "armor": 1353,
+    "health": 1512
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 37,
+    "armor": 804,
+    "health": 1737
+   },
+   {
+    "preset": "custom",
+    "level": 37,
+    "armor": 1607,
+    "health": 1737
+   }
+  ],
+  "35": [
+   {
+    "preset": "boss",
+    "level": 38,
+    "armor": 1724,
+    "health": 1814
+   },
+   {
+    "preset": "elite",
+    "level": 37,
+    "armor": 1607,
+    "health": 1737
+   },
+   {
+    "preset": "same",
+    "level": 35,
+    "armor": 1387,
+    "health": 1586
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 38,
+    "armor": 862,
+    "health": 1814
+   },
+   {
+    "preset": "custom",
+    "level": 38,
+    "armor": 1724,
+    "health": 1814
+   }
+  ],
+  "36": [
+   {
+    "preset": "boss",
+    "level": 39,
+    "armor": 1849,
+    "health": 1897
+   },
+   {
+    "preset": "elite",
+    "level": 38,
+    "armor": 1724,
+    "health": 1814
+   },
+   {
+    "preset": "same",
+    "level": 36,
+    "armor": 1494,
+    "health": 1660
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 39,
+    "armor": 925,
+    "health": 1897
+   },
+   {
+    "preset": "custom",
+    "level": 39,
+    "armor": 1849,
+    "health": 1897
+   }
+  ],
+  "37": [
+   {
+    "preset": "boss",
+    "level": 40,
+    "armor": 1980,
+    "health": 1981
+   },
+   {
+    "preset": "elite",
+    "level": 39,
+    "armor": 1849,
+    "health": 1897
+   },
+   {
+    "preset": "same",
+    "level": 37,
+    "armor": 1607,
+    "health": 1737
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 40,
+    "armor": 990,
+    "health": 1981
+   },
+   {
+    "preset": "custom",
+    "level": 40,
+    "armor": 1980,
+    "health": 1981
+   }
+  ],
+  "38": [
+   {
+    "preset": "boss",
+    "level": 41,
+    "armor": 2117,
+    "health": 2061
+   },
+   {
+    "preset": "elite",
+    "level": 40,
+    "armor": 1980,
+    "health": 1981
+   },
+   {
+    "preset": "same",
+    "level": 38,
+    "armor": 1724,
+    "health": 1814
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 41,
+    "armor": 1059,
+    "health": 2061
+   },
+   {
+    "preset": "custom",
+    "level": 41,
+    "armor": 2117,
+    "health": 2061
+   }
+  ],
+  "39": [
+   {
+    "preset": "boss",
+    "level": 42,
+    "armor": 2262,
+    "health": 2146
+   },
+   {
+    "preset": "elite",
+    "level": 41,
+    "armor": 2117,
+    "health": 2061
+   },
+   {
+    "preset": "same",
+    "level": 39,
+    "armor": 1849,
+    "health": 1897
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 42,
+    "armor": 1131,
+    "health": 2146
+   },
+   {
+    "preset": "custom",
+    "level": 42,
+    "armor": 2262,
+    "health": 2146
+   }
+  ],
+  "40": [
+   {
+    "preset": "boss",
+    "level": 43,
+    "armor": 2414,
+    "health": 2231
+   },
+   {
+    "preset": "elite",
+    "level": 42,
+    "armor": 2262,
+    "health": 2146
+   },
+   {
+    "preset": "same",
+    "level": 40,
+    "armor": 1980,
+    "health": 1981
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 43,
+    "armor": 1207,
+    "health": 2231
+   },
+   {
+    "preset": "custom",
+    "level": 43,
+    "armor": 2414,
+    "health": 2231
+   }
+  ],
+  "41": [
+   {
+    "preset": "boss",
+    "level": 44,
+    "armor": 2574,
+    "health": 2317
+   },
+   {
+    "preset": "elite",
+    "level": 43,
+    "armor": 2414,
+    "health": 2231
+   },
+   {
+    "preset": "same",
+    "level": 41,
+    "armor": 2117,
+    "health": 2061
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 44,
+    "armor": 1287,
+    "health": 2317
+   },
+   {
+    "preset": "custom",
+    "level": 44,
+    "armor": 2574,
+    "health": 2317
+   }
+  ],
+  "42": [
+   {
+    "preset": "boss",
+    "level": 45,
+    "armor": 2742,
+    "health": 2402
+   },
+   {
+    "preset": "elite",
+    "level": 44,
+    "armor": 2574,
+    "health": 2317
+   },
+   {
+    "preset": "same",
+    "level": 42,
+    "armor": 2262,
+    "health": 2146
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 45,
+    "armor": 1371,
+    "health": 2402
+   },
+   {
+    "preset": "custom",
+    "level": 45,
+    "armor": 2742,
+    "health": 2402
+   }
+  ],
+  "43": [
+   {
+    "preset": "boss",
+    "level": 46,
+    "armor": 2798,
+    "health": 2495
+   },
+   {
+    "preset": "elite",
+    "level": 45,
+    "armor": 2742,
+    "health": 2402
+   },
+   {
+    "preset": "same",
+    "level": 43,
+    "armor": 2414,
+    "health": 2231
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 46,
+    "armor": 1399,
+    "health": 2495
+   },
+   {
+    "preset": "custom",
+    "level": 46,
+    "armor": 2798,
+    "health": 2495
+   }
+  ],
+  "44": [
+   {
+    "preset": "boss",
+    "level": 47,
+    "armor": 2853,
+    "health": 2587
+   },
+   {
+    "preset": "elite",
+    "level": 46,
+    "armor": 2798,
+    "health": 2495
+   },
+   {
+    "preset": "same",
+    "level": 44,
+    "armor": 2574,
+    "health": 2317
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 47,
+    "armor": 1427,
+    "health": 2587
+   },
+   {
+    "preset": "custom",
+    "level": 47,
+    "armor": 2853,
+    "health": 2587
+   }
+  ],
+  "45": [
+   {
+    "preset": "boss",
+    "level": 48,
+    "armor": 2907,
+    "health": 2681
+   },
+   {
+    "preset": "elite",
+    "level": 47,
+    "armor": 2853,
+    "health": 2587
+   },
+   {
+    "preset": "same",
+    "level": 45,
+    "armor": 2742,
+    "health": 2402
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 48,
+    "armor": 1454,
+    "health": 2681
+   },
+   {
+    "preset": "custom",
+    "level": 48,
+    "armor": 2907,
+    "health": 2681
+   }
+  ],
+  "46": [
+   {
+    "preset": "boss",
+    "level": 49,
+    "armor": 2963,
+    "health": 2779
+   },
+   {
+    "preset": "elite",
+    "level": 48,
+    "armor": 2907,
+    "health": 2681
+   },
+   {
+    "preset": "same",
+    "level": 46,
+    "armor": 2798,
+    "health": 2495
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 49,
+    "armor": 1482,
+    "health": 2779
+   },
+   {
+    "preset": "custom",
+    "level": 49,
+    "armor": 2963,
+    "health": 2779
+   }
+  ],
+  "47": [
+   {
+    "preset": "boss",
+    "level": 50,
+    "armor": 3018,
+    "health": 2909
+   },
+   {
+    "preset": "elite",
+    "level": 49,
+    "armor": 2963,
+    "health": 2779
+   },
+   {
+    "preset": "same",
+    "level": 47,
+    "armor": 2853,
+    "health": 2587
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 50,
+    "armor": 1509,
+    "health": 2909
+   },
+   {
+    "preset": "custom",
+    "level": 50,
+    "armor": 3018,
+    "health": 2909
+   }
+  ],
+  "48": [
+   {
+    "preset": "boss",
+    "level": 51,
+    "armor": 3072,
+    "health": 3040
+   },
+   {
+    "preset": "elite",
+    "level": 50,
+    "armor": 3018,
+    "health": 2909
+   },
+   {
+    "preset": "same",
+    "level": 48,
+    "armor": 2907,
+    "health": 2681
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 51,
+    "armor": 1536,
+    "health": 3040
+   },
+   {
+    "preset": "custom",
+    "level": 51,
+    "armor": 3072,
+    "health": 3040
+   }
+  ],
+  "49": [
+   {
+    "preset": "boss",
+    "level": 52,
+    "armor": 3128,
+    "health": 3174
+   },
+   {
+    "preset": "elite",
+    "level": 51,
+    "armor": 3072,
+    "health": 3040
+   },
+   {
+    "preset": "same",
+    "level": 49,
+    "armor": 2963,
+    "health": 2779
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 52,
+    "armor": 1564,
+    "health": 3174
+   },
+   {
+    "preset": "custom",
+    "level": 52,
+    "armor": 3128,
+    "health": 3174
+   }
+  ],
+  "50": [
+   {
+    "preset": "boss",
+    "level": 53,
+    "armor": 3183,
+    "health": 3317
+   },
+   {
+    "preset": "elite",
+    "level": 52,
+    "armor": 3128,
+    "health": 3174
+   },
+   {
+    "preset": "same",
+    "level": 50,
+    "armor": 3018,
+    "health": 2909
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 53,
+    "armor": 1592,
+    "health": 3317
+   },
+   {
+    "preset": "custom",
+    "level": 53,
+    "armor": 3183,
+    "health": 3317
+   }
+  ],
+  "51": [
+   {
+    "preset": "boss",
+    "level": 54,
+    "armor": 3237,
+    "health": 3458
+   },
+   {
+    "preset": "elite",
+    "level": 53,
+    "armor": 3183,
+    "health": 3317
+   },
+   {
+    "preset": "same",
+    "level": 51,
+    "armor": 3072,
+    "health": 3040
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 54,
+    "armor": 1619,
+    "health": 3458
+   },
+   {
+    "preset": "custom",
+    "level": 54,
+    "armor": 3237,
+    "health": 3458
+   }
+  ],
+  "52": [
+   {
+    "preset": "boss",
+    "level": 55,
+    "armor": 3292,
+    "health": 3602
+   },
+   {
+    "preset": "elite",
+    "level": 54,
+    "armor": 3237,
+    "health": 3458
+   },
+   {
+    "preset": "same",
+    "level": 52,
+    "armor": 3128,
+    "health": 3174
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 55,
+    "armor": 1646,
+    "health": 3602
+   },
+   {
+    "preset": "custom",
+    "level": 55,
+    "armor": 3292,
+    "health": 3602
+   }
+  ],
+  "53": [
+   {
+    "preset": "boss",
+    "level": 56,
+    "armor": 3348,
+    "health": 3755
+   },
+   {
+    "preset": "elite",
+    "level": 55,
+    "armor": 3292,
+    "health": 3602
+   },
+   {
+    "preset": "same",
+    "level": 53,
+    "armor": 3183,
+    "health": 3317
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 56,
+    "armor": 1674,
+    "health": 3755
+   },
+   {
+    "preset": "custom",
+    "level": 56,
+    "armor": 3348,
+    "health": 3755
+   }
+  ],
+  "54": [
+   {
+    "preset": "boss",
+    "level": 57,
+    "armor": 3402,
+    "health": 3909
+   },
+   {
+    "preset": "elite",
+    "level": 56,
+    "armor": 3348,
+    "health": 3755
+   },
+   {
+    "preset": "same",
+    "level": 54,
+    "armor": 3237,
+    "health": 3458
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 57,
+    "armor": 1701,
+    "health": 3909
+   },
+   {
+    "preset": "custom",
+    "level": 57,
+    "armor": 3402,
+    "health": 3909
+   }
+  ],
+  "55": [
+   {
+    "preset": "boss",
+    "level": 58,
+    "armor": 3457,
+    "health": 4105
+   },
+   {
+    "preset": "elite",
+    "level": 57,
+    "armor": 3402,
+    "health": 3909
+   },
+   {
+    "preset": "same",
+    "level": 55,
+    "armor": 3292,
+    "health": 3602
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 58,
+    "armor": 1729,
+    "health": 4105
+   },
+   {
+    "preset": "custom",
+    "level": 58,
+    "armor": 3457,
+    "health": 4105
+   }
+  ],
+  "56": [
+   {
+    "preset": "boss",
+    "level": 59,
+    "armor": 3512,
+    "health": 4234
+   },
+   {
+    "preset": "elite",
+    "level": 58,
+    "armor": 3457,
+    "health": 4105
+   },
+   {
+    "preset": "same",
+    "level": 56,
+    "armor": 3348,
+    "health": 3755
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 59,
+    "armor": 1756,
+    "health": 4234
+   },
+   {
+    "preset": "custom",
+    "level": 59,
+    "armor": 3512,
+    "health": 4234
+   }
+  ],
+  "57": [
+   {
+    "preset": "boss",
+    "level": 60,
+    "armor": 3566,
+    "health": 4365
+   },
+   {
+    "preset": "elite",
+    "level": 59,
+    "armor": 3512,
+    "health": 4234
+   },
+   {
+    "preset": "same",
+    "level": 57,
+    "armor": 3402,
+    "health": 3909
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 60,
+    "armor": 1783,
+    "health": 4365
+   },
+   {
+    "preset": "custom",
+    "level": 60,
+    "armor": 3566,
+    "health": 4365
+   }
+  ],
+  "58": [
+   {
+    "preset": "boss",
+    "level": 61,
+    "armor": 3622,
+    "health": 4496
+   },
+   {
+    "preset": "elite",
+    "level": 60,
+    "armor": 3566,
+    "health": 4365
+   },
+   {
+    "preset": "same",
+    "level": 58,
+    "armor": 3457,
+    "health": 4105
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 61,
+    "armor": 1811,
+    "health": 4496
+   },
+   {
+    "preset": "custom",
+    "level": 61,
+    "armor": 3622,
+    "health": 4496
+   }
+  ],
+  "59": [
+   {
+    "preset": "boss",
+    "level": 62,
+    "armor": 3677,
+    "health": 4629
+   },
+   {
+    "preset": "elite",
+    "level": 61,
+    "armor": 3622,
+    "health": 4496
+   },
+   {
+    "preset": "same",
+    "level": 59,
+    "armor": 3512,
+    "health": 4234
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 62,
+    "armor": 1839,
+    "health": 4629
+   },
+   {
+    "preset": "custom",
+    "level": 62,
+    "armor": 3677,
+    "health": 4629
+   }
+  ],
+  "60": [
+   {
+    "preset": "boss",
+    "level": 63,
+    "armor": 3731,
+    "health": 4763
+   },
+   {
+    "preset": "elite",
+    "level": 62,
+    "armor": 3677,
+    "health": 4629
+   },
+   {
+    "preset": "same",
+    "level": 60,
+    "armor": 3566,
+    "health": 4365
+   },
+   {
+    "preset": "lowArmorBoss",
+    "level": 63,
+    "armor": 1866,
+    "health": 4763
+   },
+   {
+    "preset": "custom",
+    "level": 63,
+    "armor": 3731,
+    "health": 4763
+   }
+  ]
+ }
+}

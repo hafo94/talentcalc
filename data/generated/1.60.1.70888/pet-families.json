@@ -1,0 +1,194 @@
+{
+ "build": "1.60.1.70888",
+ "families": [
+  {
+   "id": 1,
+   "name": "Wolf",
+   "icon": "ability_hunter_pet_wolf",
+   "skillLine": 208,
+   "petTalentType": 0
+  },
+  {
+   "id": 2,
+   "name": "Cat",
+   "icon": "ability_hunter_pet_cat",
+   "skillLine": 209,
+   "petTalentType": 0
+  },
+  {
+   "id": 3,
+   "name": "Spider",
+   "icon": "ability_hunter_pet_spider",
+   "skillLine": 203,
+   "petTalentType": 0
+  },
+  {
+   "id": 4,
+   "name": "Bear",
+   "icon": "ability_hunter_pet_bear",
+   "skillLine": 210,
+   "petTalentType": 0
+  },
+  {
+   "id": 5,
+   "name": "Boar",
+   "icon": "ability_hunter_pet_boar",
+   "skillLine": 211,
+   "petTalentType": 0
+  },
+  {
+   "id": 6,
+   "name": "Crocolisk",
+   "icon": "ability_hunter_pet_crocolisk",
+   "skillLine": 212,
+   "petTalentType": 0
+  },
+  {
+   "id": 7,
+   "name": "Carrion Bird",
+   "icon": "ability_hunter_pet_vulture",
+   "skillLine": 213,
+   "petTalentType": 0
+  },
+  {
+   "id": 8,
+   "name": "Crab",
+   "icon": "ability_hunter_pet_crab",
+   "skillLine": 214,
+   "petTalentType": 0
+  },
+  {
+   "id": 9,
+   "name": "Gorilla",
+   "icon": "ability_hunter_pet_gorilla",
+   "skillLine": 215,
+   "petTalentType": 0
+  },
+  {
+   "id": 11,
+   "name": "Raptor",
+   "icon": "ability_hunter_pet_raptor",
+   "skillLine": 217,
+   "petTalentType": 0
+  },
+  {
+   "id": 12,
+   "name": "Tallstrider",
+   "icon": "ability_hunter_pet_tallstrider",
+   "skillLine": 218,
+   "petTalentType": 0
+  },
+  {
+   "id": 15,
+   "name": "Felhunter",
+   "icon": "spell_shadow_summonfelhunter",
+   "skillLine": 189,
+   "petTalentType": 0
+  },
+  {
+   "id": 16,
+   "name": "Voidwalker",
+   "icon": "spell_shadow_summonvoidwalker",
+   "skillLine": 204,
+   "petTalentType": 0
+  },
+  {
+   "id": 17,
+   "name": "Succubus",
+   "icon": "spell_shadow_summonsuccubus",
+   "skillLine": 205,
+   "petTalentType": 0
+  },
+  {
+   "id": 19,
+   "name": "Doomguard",
+   "icon": "ability_druid_catform",
+   "skillLine": 207,
+   "petTalentType": 0
+  },
+  {
+   "id": 20,
+   "name": "Scorpid",
+   "icon": "ability_hunter_pet_scorpid",
+   "skillLine": 236,
+   "petTalentType": 0
+  },
+  {
+   "id": 21,
+   "name": "Turtle",
+   "icon": "ability_hunter_pet_turtle",
+   "skillLine": 251,
+   "petTalentType": 0
+  },
+  {
+   "id": 23,
+   "name": "Imp",
+   "icon": "spell_shadow_summonimp",
+   "skillLine": 188,
+   "petTalentType": 0
+  },
+  {
+   "id": 24,
+   "name": "Bat",
+   "icon": "ability_hunter_pet_bat",
+   "skillLine": 653,
+   "petTalentType": 0
+  },
+  {
+   "id": 25,
+   "name": "Hyena",
+   "icon": "ability_hunter_pet_hyena",
+   "skillLine": 654,
+   "petTalentType": 0
+  },
+  {
+   "id": 26,
+   "name": "Bird of Prey",
+   "icon": "ability_hunter_pet_owl",
+   "skillLine": 655,
+   "petTalentType": 0
+  },
+  {
+   "id": 27,
+   "name": "Wind Serpent",
+   "icon": "ability_hunter_pet_windserpent",
+   "skillLine": 656,
+   "petTalentType": 0
+  },
+  {
+   "id": 28,
+   "name": "Remote Control",
+   "icon": null,
+   "skillLine": 758,
+   "petTalentType": 0
+  },
+  {
+   "id": 302,
+   "name": "Incubus",
+   "icon": "ability_warlock_incubus",
+   "skillLine": 205,
+   "petTalentType": 0
+  },
+  {
+   "id": 310,
+   "name": "Felguard",
+   "icon": null,
+   "skillLine": 2887,
+   "petTalentType": 0
+  },
+  {
+   "id": 312,
+   "name": "Core Hound",
+   "icon": "ability_hunter_pet_corehound",
+   "skillLine": 2897,
+   "petTalentType": 1
+  },
+  {
+   "id": 319,
+   "name": "Fox",
+   "icon": "ability_hunter_aspectofthefox",
+   "skillLine": 3016,
+   "petTalentType": 0
+  }
+ ]
+}

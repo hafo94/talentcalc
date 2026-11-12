@@ -1,0 +1,719 @@
+{
+ "build": "1.60.1.70888",
+ "talentCurrency": {
+  "id": 3820,
+  "max": 51,
+  "sources": [
+   {
+    "level": 5,
+    "amount": 1,
+    "requirement": "Talented Rank 5 (Level 5)"
+   },
+   {
+    "level": 6,
+    "amount": 1,
+    "requirement": "Talented Rank 4 (Level 6)"
+   },
+   {
+    "level": 7,
+    "amount": 1,
+    "requirement": "Talented Rank 3 (Level 7)"
+   },
+   {
+    "level": 8,
+    "amount": 1,
+    "requirement": "Talented Rank 2 (Level 8)"
+   },
+   {
+    "level": 9,
+    "amount": 1,
+    "requirement": "Talented Rank 1 (Level 9)"
+   },
+   {
+    "level": 10,
+    "amount": 1,
+    "requirement": "Level 10"
+   },
+   {
+    "level": 11,
+    "amount": 1,
+    "requirement": "Level 11"
+   },
+   {
+    "level": 12,
+    "amount": 1,
+    "requirement": "Level 12"
+   },
+   {
+    "level": 13,
+    "amount": 1,
+    "requirement": "Level 13"
+   },
+   {
+    "level": 14,
+    "amount": 1,
+    "requirement": "Level 14"
+   },
+   {
+    "level": 15,
+    "amount": 1,
+    "requirement": "Level 15"
+   },
+   {
+    "level": 16,
+    "amount": 1,
+    "requirement": "Level 16"
+   },
+   {
+    "level": 17,
+    "amount": 1,
+    "requirement": "Level 17"
+   },
+   {
+    "level": 18,
+    "amount": 1,
+    "requirement": "Level 18"
+   },
+   {
+    "level": 19,
+    "amount": 1,
+    "requirement": "Level 19"
+   },
+   {
+    "level": 20,
+    "amount": 1,
+    "requirement": "Level 20"
+   },
+   {
+    "level": 21,
+    "amount": 1,
+    "requirement": "Level 21"
+   },
+   {
+    "level": 22,
+    "amount": 1,
+    "requirement": "Level 22"
+   },
+   {
+    "level": 23,
+    "amount": 1,
+    "requirement": "Level 23"
+   },
+   {
+    "level": 24,
+    "amount": 1,
+    "requirement": "Level 24"
+   },
+   {
+    "level": 25,
+    "amount": 1,
+    "requirement": "Level 25"
+   },
+   {
+    "level": 26,
+    "amount": 1,
+    "requirement": "Level 26"
+   },
+   {
+    "level": 27,
+    "amount": 1,
+    "requirement": "Level 27"
+   },
+   {
+    "level": 28,
+    "amount": 1,
+    "requirement": "Level 28"
+   },
+   {
+    "level": 29,
+    "amount": 1,
+    "requirement": "Level 29"
+   },
+   {
+    "level": 30,
+    "amount": 1,
+    "requirement": "Level 30"
+   },
+   {
+    "level": 31,
+    "amount": 1,
+    "requirement": "Level 31"
+   },
+   {
+    "level": 32,
+    "amount": 1,
+    "requirement": "Level 32"
+   },
+   {
+    "level": 33,
+    "amount": 1,
+    "requirement": "Level 33"
+   },
+   {
+    "level": 34,
+    "amount": 1,
+    "requirement": "Level 34"
+   },
+   {
+    "level": 35,
+    "amount": 1,
+    "requirement": "Level 35"
+   },
+   {
+    "level": 36,
+    "amount": 1,
+    "requirement": "Level 36"
+   },
+   {
+    "level": 37,
+    "amount": 1,
+    "requirement": "Level 37"
+   },
+   {
+    "level": 38,
+    "amount": 1,
+    "requirement": "Level 38"
+   },
+   {
+    "level": 39,
+    "amount": 1,
+    "requirement": "Level 39"
+   },
+   {
+    "level": 40,
+    "amount": 1,
+    "requirement": "Level 40"
+   },
+   {
+    "level": 41,
+    "amount": 1,
+    "requirement": "Level 41"
+   },
+   {
+    "level": 42,
+    "amount": 1,
+    "requirement": "Level 42"
+   },
+   {
+    "level": 43,
+    "amount": 1,
+    "requirement": "Level 43"
+   },
+   {
+    "level": 44,
+    "amount": 1,
+    "requirement": "Level 44"
+   },
+   {
+    "level": 45,
+    "amount": 1,
+    "requirement": "Level 45"
+   },
+   {
+    "level": 46,
+    "amount": 1,
+    "requirement": "Level 46"
+   },
+   {
+    "level": 47,
+    "amount": 1,
+    "requirement": "Level 47"
+   },
+   {
+    "level": 48,
+    "amount": 1,
+    "requirement": "Level 48"
+   },
+   {
+    "level": 49,
+    "amount": 1,
+    "requirement": "Level 49"
+   },
+   {
+    "level": 50,
+    "amount": 1,
+    "requirement": "Level 50"
+   },
+   {
+    "level": 51,
+    "amount": 1,
+    "requirement": "Level 51"
+   },
+   {
+    "level": 52,
+    "amount": 1,
+    "requirement": "Level 52"
+   },
+   {
+    "level": 53,
+    "amount": 1,
+    "requirement": "Level 53"
+   },
+   {
+    "level": 54,
+    "amount": 1,
+    "requirement": "Level 54"
+   },
+   {
+    "level": 55,
+    "amount": 1,
+    "requirement": "Level 55"
+   },
+   {
+    "level": 56,
+    "amount": 1,
+    "requirement": "Level 56"
+   },
+   {
+    "level": 57,
+    "amount": 1,
+    "requirement": "Level 57"
+   },
+   {
+    "level": 58,
+    "amount": 1,
+    "requirement": "Level 58"
+   },
+   {
+    "level": 59,
+    "amount": 1,
+    "requirement": "Level 59"
+   },
+   {
+    "level": 60,
+    "amount": 1,
+    "requirement": "Level 60"
+   }
+  ]
+ },
+ "classes": [
+  {
+   "id": 1,
+   "token": "warrior",
+   "name": "Warrior",
+   "color": "#c69b6d",
+   "spellClassSet": 4,
+   "powerType": 1,
+   "icon": "classicon_warrior",
+   "iconFileId": 626008,
+   "traitTreeId": 1117,
+   "skillLineIds": [
+    26,
+    256,
+    257
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Arms",
+     "talentTabId": 161,
+     "background": "WarriorArms",
+     "icon": "ability_rogue_eviscerate",
+     "iconFileId": 132292
+    },
+    {
+     "index": 1,
+     "name": "Fury",
+     "talentTabId": 164,
+     "background": "WarriorFury",
+     "icon": "ability_warrior_innerrage",
+     "iconFileId": 132347
+    },
+    {
+     "index": 2,
+     "name": "Protection",
+     "talentTabId": 163,
+     "background": "WarriorProtection",
+     "icon": "inv_shield_06",
+     "iconFileId": 134952
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "token": "paladin",
+   "name": "Paladin",
+   "color": "#f48cba",
+   "spellClassSet": 10,
+   "powerType": 0,
+   "icon": "classicon_paladin",
+   "iconFileId": 626003,
+   "traitTreeId": 1100,
+   "skillLineIds": [
+    184,
+    267,
+    594
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Holy",
+     "talentTabId": 382,
+     "background": "PaladinHoly",
+     "icon": "spell_holy_holybolt",
+     "iconFileId": 135920
+    },
+    {
+     "index": 1,
+     "name": "Protection",
+     "talentTabId": 383,
+     "background": "PaladinProtection",
+     "icon": "spell_holy_devotionaura",
+     "iconFileId": 135893
+    },
+    {
+     "index": 2,
+     "name": "Retribution",
+     "talentTabId": 381,
+     "background": "PaladinCombat",
+     "icon": "spell_holy_auraoflight",
+     "iconFileId": 135873
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "token": "hunter",
+   "name": "Hunter",
+   "color": "#aad372",
+   "spellClassSet": 9,
+   "powerType": 0,
+   "icon": "classicon_hunter",
+   "iconFileId": 626000,
+   "traitTreeId": 1091,
+   "skillLineIds": [
+    50,
+    51,
+    163
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Beast Mastery",
+     "talentTabId": 361,
+     "background": "HunterBeastMastery",
+     "icon": "ability_hunter_beasttaming",
+     "iconFileId": 132164
+    },
+    {
+     "index": 1,
+     "name": "Marksmanship",
+     "talentTabId": 363,
+     "background": "HunterMarksmanship",
+     "icon": "ability_marksmanship",
+     "iconFileId": 132222
+    },
+    {
+     "index": 2,
+     "name": "Survival",
+     "talentTabId": 362,
+     "background": "HunterSurvival",
+     "icon": "ability_hunter_swiftstrike",
+     "iconFileId": 132215
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "token": "rogue",
+   "name": "Rogue",
+   "color": "#fff468",
+   "spellClassSet": 8,
+   "powerType": 3,
+   "icon": "classicon_rogue",
+   "iconFileId": 626005,
+   "traitTreeId": 1111,
+   "skillLineIds": [
+    38,
+    39,
+    253
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Assassination",
+     "talentTabId": 182,
+     "background": "RogueAssassination",
+     "icon": "ability_rogue_eviscerate",
+     "iconFileId": 132292
+    },
+    {
+     "index": 1,
+     "name": "Combat",
+     "talentTabId": 181,
+     "background": "RogueCombat",
+     "icon": "ability_backstab",
+     "iconFileId": 132090
+    },
+    {
+     "index": 2,
+     "name": "Subtlety",
+     "talentTabId": 183,
+     "background": "RogueSubtlety",
+     "icon": "ability_stealth",
+     "iconFileId": 132320
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "token": "priest",
+   "name": "Priest",
+   "color": "#ffffff",
+   "spellClassSet": 6,
+   "powerType": 0,
+   "icon": "classicon_priest",
+   "iconFileId": 626004,
+   "traitTreeId": 1114,
+   "skillLineIds": [
+    56,
+    78,
+    613
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Discipline",
+     "talentTabId": 201,
+     "background": "PriestDiscipline",
+     "icon": "spell_holy_wordfortitude",
+     "iconFileId": 135987
+    },
+    {
+     "index": 1,
+     "name": "Holy",
+     "talentTabId": 202,
+     "background": "PriestHoly",
+     "icon": "spell_holy_guardianspirit",
+     "iconFileId": 237542
+    },
+    {
+     "index": 2,
+     "name": "Shadow",
+     "talentTabId": 203,
+     "background": "PriestShadow",
+     "icon": "spell_shadow_shadowwordpain",
+     "iconFileId": 136207
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "token": "shaman",
+   "name": "Shaman",
+   "color": "#0070dd",
+   "spellClassSet": 11,
+   "powerType": 0,
+   "icon": "classicon_shaman",
+   "iconFileId": 626006,
+   "traitTreeId": 1082,
+   "skillLineIds": [
+    373,
+    374,
+    375
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Elemental",
+     "talentTabId": 261,
+     "background": "ShamanElementalCombat",
+     "icon": "spell_nature_lightning",
+     "iconFileId": 136048
+    },
+    {
+     "index": 1,
+     "name": "Enhancement",
+     "talentTabId": 263,
+     "background": "ShamanEnhancement",
+     "icon": "spell_nature_lightningshield",
+     "iconFileId": 136051
+    },
+    {
+     "index": 2,
+     "name": "Restoration",
+     "talentTabId": 262,
+     "background": "ShamanRestoration",
+     "icon": "spell_nature_magicimmunity",
+     "iconFileId": 136052
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "token": "mage",
+   "name": "Mage",
+   "color": "#3fc7eb",
+   "spellClassSet": 3,
+   "powerType": 0,
+   "icon": "classicon_mage",
+   "iconFileId": 626001,
+   "traitTreeId": 1112,
+   "skillLineIds": [
+    6,
+    8,
+    237
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Arcane",
+     "talentTabId": 81,
+     "background": "MageArcane",
+     "icon": "spell_holy_magicalsentry",
+     "iconFileId": 135932
+    },
+    {
+     "index": 1,
+     "name": "Fire",
+     "talentTabId": 41,
+     "background": "MageFire",
+     "icon": "spell_fire_firebolt02",
+     "iconFileId": 135810
+    },
+    {
+     "index": 2,
+     "name": "Frost",
+     "talentTabId": 61,
+     "background": "MageFrost",
+     "icon": "spell_frost_frostbolt02",
+     "iconFileId": 135846
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "token": "warlock",
+   "name": "Warlock",
+   "color": "#8788ee",
+   "spellClassSet": 5,
+   "powerType": 0,
+   "icon": "classicon_warlock",
+   "iconFileId": 626007,
+   "traitTreeId": 1116,
+   "skillLineIds": [
+    354,
+    355,
+    593
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Affliction",
+     "talentTabId": 302,
+     "background": "WarlockCurses",
+     "icon": "spell_shadow_deathcoil",
+     "iconFileId": 136145
+    },
+    {
+     "index": 1,
+     "name": "Demonology",
+     "talentTabId": 303,
+     "background": "WarlockSummoning",
+     "icon": "spell_shadow_metamorphosis",
+     "iconFileId": 136172
+    },
+    {
+     "index": 2,
+     "name": "Destruction",
+     "talentTabId": 301,
+     "background": "WarlockDestruction",
+     "icon": "spell_shadow_rainoffire",
+     "iconFileId": 136186
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "token": "druid",
+   "name": "Druid",
+   "color": "#ff7c0a",
+   "spellClassSet": 7,
+   "powerType": 0,
+   "icon": "classicon_druid",
+   "iconFileId": 625999,
+   "traitTreeId": 1089,
+   "skillLineIds": [
+    134,
+    573,
+    574
+   ],
+   "specs": [
+    {
+     "index": 0,
+     "name": "Balance",
+     "talentTabId": 283,
+     "background": "DruidBalance",
+     "icon": "spell_nature_starfall",
+     "iconFileId": 136096
+    },
+    {
+     "index": 1,
+     "name": "Feral Combat",
+     "talentTabId": 281,
+     "background": "DruidFeralCombat",
+     "icon": "ability_racial_bearform",
+     "iconFileId": 132276
+    },
+    {
+     "index": 2,
+     "name": "Restoration",
+     "talentTabId": 282,
+     "background": "DruidRestoration",
+     "icon": "spell_nature_healingtouch",
+     "iconFileId": 136041
+    }
+   ]
+  }
+ ],
+ "races": [
+  {
+   "id": 1,
+   "token": "human",
+   "name": "Human",
+   "faction": "alliance"
+  },
+  {
+   "id": 2,
+   "token": "orc",
+   "name": "Orc",
+   "faction": "horde"
+  },
+  {
+   "id": 3,
+   "token": "dwarf",
+   "name": "Dwarf",
+   "faction": "alliance"
+  },
+  {
+   "id": 4,
+   "token": "nightelf",
+   "name": "Night Elf",
+   "faction": "alliance"
+  },
+  {
+   "id": 5,
+   "token": "scourge",
+   "name": "Undead",
+   "faction": "horde"
+  },
+  {
+   "id": 6,
+   "token": "tauren",
+   "name": "Tauren",
+   "faction": "horde"
+  },
+  {
+   "id": 7,
+   "token": "gnome",
+   "name": "Gnome",
+   "faction": "alliance"
+  },
+  {
+   "id": 8,
+   "token": "troll",
+   "name": "Troll",
+   "faction": "horde"
+  }
+ ]
+}

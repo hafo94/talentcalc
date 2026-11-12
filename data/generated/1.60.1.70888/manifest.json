@@ -1,0 +1,244 @@
+{
+ "build": "1.60.1.70888",
+ "eraBuild": "1.15.9.70576",
+ "generatedAt": "2026-11-12",
+ "pipelineVersion": 1,
+ "options": {
+  "includeHiddenNodes": false,
+  "eraFallback": true
+ },
+ "iconUrlTemplate": "https://render.worldofwarcraft.com/us/icons/56/{icon}.jpg",
+ "iconUrlFallback": "https://wow.zamimg.com/images/wow/icons/large/{icon}.jpg",
+ "rawTables": [
+  {
+   "name": "ChrClasses",
+   "rows": 9,
+   "sha256": "e08c2f00e1652ff6857734915d649a80d8a2a86419986f59dbe82ba3a6975597"
+  },
+  {
+   "name": "ChrRaces",
+   "rows": 58,
+   "sha256": "8d61c45ec7d23535c3916642ae4b3a8341e38ac0cdca817144536b954488bd23"
+  },
+  {
+   "name": "CreatureFamily",
+   "rows": 27,
+   "sha256": "7ba620ec805373038287cce591422996d963b85868c2e1f41a4b89d4e0713a6c"
+  },
+  {
+   "name": "CurvePoint",
+   "rows": 42672,
+   "sha256": "914ea504c1e1cb83c38ff6920bb672a02a561ef98041c208849a0a29de202c81"
+  },
+  {
+   "name": "ExpectedStat",
+   "rows": 133,
+   "sha256": "f8e8918417d6f852bd4e443d80c534db89b489915d7127de6d48d4c3d5d92848"
+  },
+  {
+   "name": "Item",
+   "rows": 32008,
+   "sha256": "037ac6248ce1fceaad391fb0ec717cdb7ae1e8999e8c976c11b086a05deb5c57"
+  },
+  {
+   "name": "ItemDamageAmmo",
+   "rows": 1000,
+   "sha256": "c966f96b2238ccfd4c37b62ce9503d783fbbdbd40bb07e42e88f5b806f92d565"
+  },
+  {
+   "name": "ItemDamageOneHand",
+   "rows": 100,
+   "sha256": "591fd04d419f2cf878e614bec4c37aed120f00291c82b0c54799a24afbce6f7f"
+  },
+  {
+   "name": "ItemDamageRanged",
+   "rows": 100,
+   "sha256": "8b1516f55d59eaa4e7c42f6ce1d7554dd263224cc7c54e482f6cb84f94a84095"
+  },
+  {
+   "name": "ItemDamageThrown",
+   "rows": 100,
+   "sha256": "8e22434b5099a25f5bf07807088373d86d3486ecee79168a0c25ebf0e1384626"
+  },
+  {
+   "name": "ItemDamageTwoHand",
+   "rows": 100,
+   "sha256": "36061d34a6a15fc594be9a69afa0e5f29d1e4892fe88e593e2fac67539ff3f44"
+  },
+  {
+   "name": "ItemDamageWand",
+   "rows": 100,
+   "sha256": "652c2f8ea55caec49be8eff4a19249ef9b50a378482beb09fc907ccf3b684365"
+  },
+  {
+   "name": "ItemSparse",
+   "rows": 19325,
+   "sha256": "ced52fc6e5ca345805cfe3c015c05426c138aebd23ff1ad8a26cff5f1fe08be9"
+  },
+  {
+   "name": "ManifestInterfaceData",
+   "rows": 134284,
+   "sha256": "71b82f75741b87ad38c82bb73cba99b3e3bdeb6c0c00e09dde1298dafce31441"
+  },
+  {
+   "name": "RandPropPoints",
+   "rows": 300,
+   "sha256": "e4a41af2ea8dc344c0c1ce36b26cba741b7f393cb74197e52d9893e6cb223db5"
+  },
+  {
+   "name": "SkillLine",
+   "rows": 154,
+   "sha256": "f3867d43ab42d1f5278e6e5028d0151bc06e4ef8e5cbd790a20df6ee57aa654d"
+  },
+  {
+   "name": "SkillLineAbility",
+   "rows": 7853,
+   "sha256": "13ef58a08253125e3e9dca642a39bc480187987e90cfbe5c8be30e1ab3c8be0a"
+  },
+  {
+   "name": "Spell",
+   "rows": 32482,
+   "sha256": "3f4c3e7ca6f6c58b32c3865b8ceb6eec9bcff8e8d9facea62880f22def927bce"
+  },
+  {
+   "name": "SpellAuraOptions",
+   "rows": 12826,
+   "sha256": "03a5d023510ebb6e97c60c3d64dbd3879fb9f32ae59d8a21d676e17e29475b56"
+  },
+  {
+   "name": "SpellCastTimes",
+   "rows": 72,
+   "sha256": "f94e1e3a3495d11af875fd7b007124fdd660a19ba626bc1de00a609da81f25d8"
+  },
+  {
+   "name": "SpellCategories",
+   "rows": 10819,
+   "sha256": "86a4b4624b3335277e832a16813705231ad8840aadc1ede2844213522dfe7620"
+  },
+  {
+   "name": "SpellClassOptions",
+   "rows": 6121,
+   "sha256": "e91c48005fae22c0904144655623d33662db3b50afede67ae69c1931420b1c92"
+  },
+  {
+   "name": "SpellCooldowns",
+   "rows": 4543,
+   "sha256": "f5b361c78849f57e8905ad168b7d770f44ab71f81cf19cc206130a4155afdf24"
+  },
+  {
+   "name": "SpellDuration",
+   "rows": 134,
+   "sha256": "4787f303fe8487cd67e5f9e8574fdc6fa2a03516dcfaabba23d9944f937223f5"
+  },
+  {
+   "name": "SpellEffect",
+   "rows": 43508,
+   "sha256": "da2fb074eedb51bd1246ef53666044c0b757bdb67340c3969b712caa8481ac2b"
+  },
+  {
+   "name": "SpellLevels",
+   "rows": 13072,
+   "sha256": "c9ef7708478aaff1b5e488c58356df443ee7d6c08a53017819f9af37cd5bef5a"
+  },
+  {
+   "name": "SpellMisc",
+   "rows": 32461,
+   "sha256": "4b3d573dae575c2051e71d524dc73ac3590c56aa102b69770675c0eb10508f85"
+  },
+  {
+   "name": "SpellName",
+   "rows": 32482,
+   "sha256": "4358b3d1a2a859284b2f46cf614e6a1f85320be342acc1c4b68b625f30cf47a5"
+  },
+  {
+   "name": "SpellPower",
+   "rows": 3501,
+   "sha256": "bdbd6ba6b4d5236d23c9348fcb383c2e81bbc724279b22b3e2cbd0a8c5954a65"
+  },
+  {
+   "name": "SpellRadius",
+   "rows": 54,
+   "sha256": "0012d7de3a0c45f2a290790c5a3aff332623c3b38ed71749a6157c300f13805b"
+  },
+  {
+   "name": "SpellRange",
+   "rows": 61,
+   "sha256": "30734ead3acfb44c57737ed7c9f8ff2feafda2fbffa291711d4c4afef989b1b3"
+  },
+  {
+   "name": "TalentTab",
+   "rows": 27,
+   "sha256": "9539a388c0e697381f7574247488da528f2647099db4c39096bdb2a8695139b9"
+  },
+  {
+   "name": "TraitCond",
+   "rows": 171,
+   "sha256": "a31a62336d785cc8a5b4bf98a5bc27c62917ecbdcdc26a1a8e87188f70cc894a"
+  },
+  {
+   "name": "TraitCurrencySource",
+   "rows": 187,
+   "sha256": "0c32187176b04241f487a175503208f19731ca006dcbd0d6010ad821776417e4"
+  },
+  {
+   "name": "TraitDefinition",
+   "rows": 665,
+   "sha256": "4c29bf0710067d94d87051dfa216ac1dbc96b7651043ce171d787012d92daea7"
+  },
+  {
+   "name": "TraitDefinitionEffectPoints",
+   "rows": 663,
+   "sha256": "82ff4026089957611a31e82af8a7a257de4679c3d0637d13e37a381196cd4157"
+  },
+  {
+   "name": "TraitEdge",
+   "rows": 99,
+   "sha256": "f9ca4c42cfa671c7e8b7bb80f12854a1a62a8a78d86e18b4205b3015219c2d85"
+  },
+  {
+   "name": "TraitNode",
+   "rows": 559,
+   "sha256": "f7f37eead7e7641cdbecdb1c548276ae1e5c1776eb5ad0539b88770a78979d44"
+  },
+  {
+   "name": "TraitNodeEntry",
+   "rows": 666,
+   "sha256": "dccff303039c45dc3355d8d525a664db2a87de9a17bbec133f5859755e9152b0"
+  },
+  {
+   "name": "TraitNodeGroupXTraitCond",
+   "rows": 171,
+   "sha256": "14e3713a9108330a52cb03c2780a465cc4fa4f1c5787dc8299a3f2804c46b9c9"
+  },
+  {
+   "name": "TraitNodeGroupXTraitNode",
+   "rows": 2159,
+   "sha256": "4919292c550a0d90c5fcf86772144b98125fea51063bcdc7ac6858ed151be90d"
+  },
+  {
+   "name": "TraitNodeXTraitNodeEntry",
+   "rows": 562,
+   "sha256": "7e9fb84e1256434748b1763365ea7498e0d6dd4871f789ad2a1c39925c071492"
+  }
+ ],
+ "eraRawTables": [
+  {
+   "name": "ItemSparse",
+   "rows": 24442,
+   "sha256": "eef48b88d1af6ea23872155819dc59342204b2f34c0b613df0405ef06f7a5145"
+  }
+ ],
+ "counts": {
+  "classes": 9,
+  "specs": 27,
+  "talents": 447,
+  "hiddenTalents": 0,
+  "spells": 2300,
+  "abilityChains": 547,
+  "weapons": 2721,
+  "weaponsEraFallback": 1612,
+  "ammo": 27,
+  "targetLevels": 63,
+  "petFamilies": 27
+ }
+}
