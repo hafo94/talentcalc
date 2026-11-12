@@ -111,7 +111,7 @@ _TOKEN_RE = re.compile(
 )
 _SAFE = re.compile(r"^[0-9+\-*/(). ]*$")
 _BINOPS = {ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul, ast.Div: operator.truediv}
-_KNOWN = set("swmMotaxbqedhnur")
+_KNOWN = set("swmMotaxbqedhnurS")   # S treated as s (deviation from plan: `$/1000;S1` is common, unresolved otherwise)
 
 
 class _Unresolved(Exception):
@@ -155,6 +155,8 @@ def _numeric(letter, spell, idx, ctx, signed):
     c = _target_ctx(ctx, spell)
     if c is None:
         return None
+    if letter == "S":
+        letter = "s"
     if letter in "swmMota xbqe".replace(" ", ""):
         e = _eff(c, idx)
         if e is None:
@@ -218,6 +220,8 @@ def _simple(letter, spell, idx, ctx):
     """-> (text, number or None); raises _Unresolved."""
     if letter not in _KNOWN:
         raise _Unresolved
+    if letter == "S":
+        letter = "s"
     if letter == "d":
         c = _target_ctx(ctx, spell)
         if c is None or c.duration_ms is None:
@@ -377,11 +381,14 @@ def render(text, ctx):
                 else:
                     emit(m.group("a"))
             elif m.group("let") is not None:
-                if m.group("let") not in _KNOWN and m.group("idx") is None:
+                if (m.group("let") not in _KNOWN or m.group("let") == "S") and m.group("idx") is None:
                     ext = re.match(r"[A-Z]+", text[pos:])
-                    if ext:
+                    if ext:       # e.g. $SPI, $AP, $PL: one unresolved token
                         raw += ext.group(0)
                         pos += len(ext.group(0))
+                        unresolved.add(raw)
+                        emit(raw)
+                        continue
                 s, v = _simple(m.group("let"), m.group("sp"), m.group("idx"), ctx)
                 if v is not None:
                     last["num"] = v
