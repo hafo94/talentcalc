@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { classesFile, getClassInfo, loadTalentFile } from "@/data";
-import type { ClassToken } from "@/data/types";
+import { classesFile, getClassInfo, loadClassSpells, loadTalentFile } from "@/data";
+import type { ClassSpellFile, ClassToken } from "@/data/types";
 import {
   addPoint as addPointRule,
   buildClassTree,
@@ -18,6 +18,7 @@ import { useCharacter } from "./character";
 export interface CalcState {
   classToken: ClassToken | null;
   tree: ClassTree | null;
+  spells: ClassSpellFile | null; // spells/<class>.json, loaded with the talent file (Phase 4)
   status: "idle" | "loading" | "ready" | "error";
   error: string | null;
   notice: string | null;
@@ -45,14 +46,15 @@ export const pointsContext = (s: Pick<CalcState, "level" | "talentedRank">): Poi
 
 let requestId = 0;
 
-async function loadTree(token: ClassToken): Promise<ClassTree> {
-  const file = await loadTalentFile(token);
-  return buildClassTree(file, getClassInfo(token));
+async function loadTree(token: ClassToken): Promise<{ tree: ClassTree; spells: ClassSpellFile }> {
+  const [file, spells] = await Promise.all([loadTalentFile(token), loadClassSpells(token)]);
+  return { tree: buildClassTree(file, getClassInfo(token)), spells };
 }
 
 export const useCalc = create<CalcState>()((set, get) => ({
   classToken: null,
   tree: null,
+  spells: null,
   status: "idle",
   error: null,
   notice: null,
@@ -65,13 +67,14 @@ export const useCalc = create<CalcState>()((set, get) => ({
     const id = ++requestId;
     set({ classToken: token, status: "loading", error: null });
     try {
-      const [tree, charOk] = await Promise.all([
+      const [{ tree, spells }, charOk] = await Promise.all([
         loadTree(token),
         useCharacter.getState().fitToClass(token, get().level),
       ]);
       if (id !== requestId) return;
       set({
         tree,
+        spells,
         status: "ready",
         ranks: {},
         activeSpec: 0,
@@ -79,14 +82,14 @@ export const useCalc = create<CalcState>()((set, get) => ({
       });
     } catch (e) {
       if (id !== requestId) return;
-      set({ tree: null, status: "error", error: e instanceof Error ? e.message : String(e) });
+      set({ tree: null, spells: null, status: "error", error: e instanceof Error ? e.message : String(e) });
     }
   },
   async applyBuildCode(code) {
     const id = ++requestId;
     set({ classToken: code.classToken, status: "loading", error: null });
     try {
-      const [tree, charOk] = await Promise.all([
+      const [{ tree, spells }, charOk] = await Promise.all([
         loadTree(code.classToken),
         useCharacter.getState().applyCode(code.character, code.classToken, code.level),
       ]);
@@ -95,6 +98,7 @@ export const useCalc = create<CalcState>()((set, get) => ({
       const { ranks, dropped } = sanitize(tree, code.ranks, ctx);
       set({
         tree,
+        spells,
         status: "ready",
         level: code.level,
         talentedRank: code.talentedRank,
@@ -110,12 +114,20 @@ export const useCalc = create<CalcState>()((set, get) => ({
       });
     } catch (e) {
       if (id !== requestId) return;
-      set({ tree: null, status: "error", error: e instanceof Error ? e.message : String(e) });
+      set({ tree: null, spells: null, status: "error", error: e instanceof Error ? e.message : String(e) });
     }
   },
   clearClass() {
     requestId++;
-    set({ classToken: null, tree: null, status: "idle", error: null, ranks: {}, activeSpec: 0 });
+    set({
+      classToken: null,
+      tree: null,
+      spells: null,
+      status: "idle",
+      error: null,
+      ranks: {},
+      activeSpec: 0,
+    });
   },
   addPoint(nodeId) {
     const s = get();

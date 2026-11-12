@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { classesFile } from "@/data";
 import { treeFor } from "@/testkit/talents";
 import { weaponsFile } from "@/testkit/stats";
+import { spellFile } from "@/testkit/damage";
 import { EMPTY_BONUS } from "@/engine/stats";
 import { DEFAULT_CUSTOM, NO_WEAPON_IDS, sanitizeWeapons } from "./character";
 import { derive } from "./derived";
@@ -17,24 +18,44 @@ const ch = {
 };
 describe("derive", () => {
   it("naked human warrior", () => {
-    const d = derive({ tree: treeFor("warrior"), ranks: {}, level: 60 }, ch);
+    const d = derive({ tree: treeFor("warrior"), ranks: {}, level: 60, spells: null }, ch);
     if (!d.ok) throw new Error(d.reason);
     expect(d.stats.attackPower.value).toBe(400);
+    expect(d.damage).toBeNull();
+    expect(d.reference.every((v) => v.dps === undefined)).toBe(true);
     expect(d.reference.map((v) => v.level)).toEqual([63, 62, 60, 63]);
     expect(d.reference.map((v) => v.armor.value)).toEqual([3731, 3677, 3566, 1866]);
   });
   it("works for every class and playable race", () => {
     for (const c of classesFile.classes)
       for (const raceId of c.raceIds) {
-        const d = derive({ tree: treeFor(c.token), ranks: {}, level: 60 }, { ...ch, raceId });
-        expect(d.ok, `${c.token} ${raceId}`).toBe(true);
+        const d = derive(
+          { tree: treeFor(c.token), ranks: {}, level: 60, spells: spellFile(c.token) },
+          { ...ch, raceId },
+        );
+        if (!d.ok) throw new Error(`${c.token} ${raceId}`);
+        expect(d.damage, c.token).not.toBeNull();
+        for (const v of d.reference) expect(Number.isFinite(v.dps), `${c.token} ${v.presetId}`).toBe(true);
       }
   });
   it("level below 60 has no stats", () => {
-    expect(derive({ tree: treeFor("warrior"), ranks: {}, level: 40 }, ch)).toEqual({
+    expect(
+      derive({ tree: treeFor("warrior"), ranks: {}, level: 40, spells: spellFile("warrior") }, ch),
+    ).toEqual({
       ok: false,
       reason: "level",
     });
+  });
+  it("damage of the default rotation: dps per reference target, selected target reused", () => {
+    const d = derive(
+      { tree: treeFor("warrior"), ranks: {}, level: 60, spells: spellFile("warrior") },
+      { ...ch, weaponIds: { ...NO_WEAPON_IDS, mainHand: 12784 } },
+    );
+    if (!d.ok || !d.damage) throw new Error("no damage");
+    expect(d.damage.rotation.id).toBe("warrior-arms"); // no points: first dps spec
+    expect(d.reference[0]!.dps).toBe(d.damage.result.rotation.dps);
+    // same-level mob: less armor, no crit suppression -> more damage than the boss
+    expect(d.reference[2]!.dps!).toBeGreaterThan(d.reference[0]!.dps!);
   });
   it("sanitizeWeapons drops what the class cannot use", () => {
     // mage cannot use Arcanite Reaper (2H axe) nor dual wield
