@@ -1,0 +1,60 @@
+.value {
+  padding: 0 2px;
+  background: none;
+  border: 0;
+  border-bottom: 1px dotted var(--text-dim);
+  color: var(--text);
+  font-weight: bold;
+  cursor: help;
+}
+
+.value:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: 300px;
+  padding: 8px 10px;
+  background: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--white);
+}
+
+.base,
+.race {
+  color: var(--white);
+}
+
+.gear,
+.weapon {
+  color: var(--green);
+}
+
+.buff,
+.debuff {
+  color: var(--focus);
+}
+
+.talent,
+.racial {
+  color: var(--gold);
+}
+
+.rule,
+.conversion {
+  color: var(--grey);
+}

@@ -37,3 +37,39 @@
   color: var(--text-dim);
   font-size: 11px;
 }
+
+.sections {
+  display: flex;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.section {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 4px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.section[aria-selected="true"] {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.section:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+  margin-top: 16px;
+}

@@ -1,0 +1,183 @@
+.panel {
+  min-width: 0;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+}
+
+.title {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.section {
+  margin: 0 0 14px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 15px;
+}
+
+.hint {
+  margin: 0 0 8px;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select,
+.number {
+  padding: 4px 6px;
+  background: var(--field-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  color: var(--text);
+  font: inherit;
+}
+
+.number {
+  width: 72px;
+}
+
+.select:focus-visible,
+.number:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.btn {
+  padding: 3px 10px;
+  background: var(--field-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  color: var(--gold);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn[aria-pressed="true"] {
+  border-color: var(--gold);
+  background: #2a2412;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.dim {
+  color: var(--text-dim);
+}
+
+.fieldset {
+  margin: 0 0 8px;
+  padding: 6px 8px 8px;
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+}
+
+.fieldset legend {
+  padding: 0 4px;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 6px 12px;
+}
+
+.bonus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.buffGroup {
+  margin: 0 0 8px;
+}
+
+.buffTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 4px;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.buffList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 2px 12px;
+}
+
+.buff {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.buff input {
+  flex: none;
+  margin: 0;
+  accent-color: var(--gold);
+}
+
+.radios {
+  display: grid;
+  gap: 2px;
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin: 4px 0 8px 22px;
+  font-size: 12px;
+}
+
+.custom label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.result {
+  margin-top: 8px;
+}

@@ -13,6 +13,15 @@
   --tooltip-border: #8c8c8c;
   --badge-bg: #000000;
   --focus: #4fc3ff;
+  --q0: #9d9d9d; /* item quality colors (Classic) */
+  --q1: #ffffff;
+  --q2: #1eff00;
+  --q3: #0070dd;
+  --q4: #a335ee;
+  --q5: #ff8000;
+  --q6: #e6cc80;
+  --warn: #ff9933;
+  --field-bg: #1d1b16;
   --font-serif: "Friz Quadrata TT", "Friz Quadrata Std", Georgia, "Times New Roman", serif;
   --font-sans: Verdana, "Segoe UI", Tahoma, Arial, sans-serif;
 }

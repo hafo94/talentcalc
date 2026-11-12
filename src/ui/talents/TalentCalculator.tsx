@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useCalc } from "@/state/store";
 import { WowIcon } from "@/ui/common/WowIcon";
 import { useMediaQuery } from "@/ui/common/useMediaQuery";
+import { StatStrip } from "@/ui/stats/StatStrip";
 import { PointsSummary } from "./PointsSummary";
 import { TalentTooltip } from "./TalentTooltip";
 import { TalentTree } from "./TalentTree";
@@ -41,6 +42,7 @@ export function TalentCalculator() {
   return (
     <div>
       <PointsSummary />
+      <StatStrip />
       {!desktop && (
         <div className={styles.tabs} role="tablist" aria-label="Talent trees">
           {specs.map((s, i) => (
