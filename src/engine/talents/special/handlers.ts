@@ -237,7 +237,11 @@ const HANDLERS: SpecialHandler[] = [
     modeled: "Whirlwind deals x% more to the closest enemy (the cooldown part is a spell modifier).",
     ability: (h) => (d) => {
       if (d.key !== "Whirlwind") return;
-      for (const p of d.parts) p.perHit *= 1 + v(h, 1) / 100;
+      for (const p of d.parts) {
+        const f = 1 + v(h, 1) / 100;
+        p.perHit *= f;
+        if (p.range) p.range = [p.range[0] * f, p.range[1] * f]; // keep the card's hit range consistent
+      }
       d.sources.push({ label: h.label, kind: "talent", text: `+${v(h, 1)}% damage (closest enemy)` });
     },
   },
