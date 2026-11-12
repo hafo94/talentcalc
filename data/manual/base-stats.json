@@ -1,0 +1,268 @@
+{
+ "_source": "[VERIFY] Classic 1.12 level-60 base stats, best-effort reconstruction of vmangos player_levelstats/player_classlevelstats (from memory, not copied). Confirm each value with a naked level-60 character sheet in Forever (OPEN_QUESTIONS Q4/Q25).",
+ "_status": "[VERIFY]",
+ "level": 60,
+ "baseCritUnit": "percent",
+ "classes": {
+  "WARRIOR": {
+   "str": 120,
+   "agi": 80,
+   "sta": 110,
+   "int": 30,
+   "spi": 47,
+   "health": 1689,
+   "mana": 0,
+   "baseMeleeCrit": 0,
+   "baseSpellCrit": 0
+  },
+  "PALADIN": {
+   "str": 105,
+   "agi": 65,
+   "sta": 100,
+   "int": 70,
+   "spi": 75,
+   "health": 1381,
+   "mana": 1512,
+   "baseMeleeCrit": 0.7,
+   "baseSpellCrit": 0
+  },
+  "HUNTER": {
+   "str": 55,
+   "agi": 125,
+   "sta": 85,
+   "int": 65,
+   "spi": 70,
+   "health": 1467,
+   "mana": 1720,
+   "baseMeleeCrit": 0,
+   "baseSpellCrit": 0
+  },
+  "ROGUE": {
+   "str": 80,
+   "agi": 130,
+   "sta": 75,
+   "int": 35,
+   "spi": 52,
+   "health": 1523,
+   "mana": 0,
+   "baseMeleeCrit": 0,
+   "baseSpellCrit": 0
+  },
+  "PRIEST": {
+   "str": 35,
+   "agi": 40,
+   "sta": 50,
+   "int": 120,
+   "spi": 125,
+   "health": 1397,
+   "mana": 1376,
+   "baseMeleeCrit": 3,
+   "baseSpellCrit": 0.8
+  },
+  "SHAMAN": {
+   "str": 85,
+   "agi": 55,
+   "sta": 95,
+   "int": 90,
+   "spi": 105,
+   "health": 1423,
+   "mana": 1520,
+   "baseMeleeCrit": 1.7,
+   "baseSpellCrit": 2.3
+  },
+  "MAGE": {
+   "str": 35,
+   "agi": 40,
+   "sta": 45,
+   "int": 125,
+   "spi": 120,
+   "health": 1360,
+   "mana": 1273,
+   "baseMeleeCrit": 3.2,
+   "baseSpellCrit": 0.2
+  },
+  "WARLOCK": {
+   "str": 50,
+   "agi": 55,
+   "sta": 70,
+   "int": 105,
+   "spi": 110,
+   "health": 1414,
+   "mana": 1373,
+   "baseMeleeCrit": 2,
+   "baseSpellCrit": 1.7
+  },
+  "DRUID": {
+   "str": 65,
+   "agi": 55,
+   "sta": 65,
+   "int": 100,
+   "spi": 110,
+   "health": 1483,
+   "mana": 1244,
+   "baseMeleeCrit": 0.9,
+   "baseSpellCrit": 1.85
+  }
+ },
+ "raceOffsets": {
+  "HUMAN": {
+   "str": 0,
+   "agi": 0,
+   "sta": 0,
+   "int": 0,
+   "spi": 0
+  },
+  "ORC": {
+   "str": 3,
+   "agi": -3,
+   "sta": 2,
+   "int": -3,
+   "spi": 2
+  },
+  "DWARF": {
+   "str": 2,
+   "agi": -4,
+   "sta": 3,
+   "int": -1,
+   "spi": -2
+  },
+  "NIGHTELF": {
+   "str": -3,
+   "agi": 5,
+   "sta": -1,
+   "int": 0,
+   "spi": -1
+  },
+  "SCOURGE": {
+   "str": -1,
+   "agi": -2,
+   "sta": 1,
+   "int": -2,
+   "spi": 4
+  },
+  "TAUREN": {
+   "str": 5,
+   "agi": -5,
+   "sta": 2,
+   "int": -5,
+   "spi": 1
+  },
+  "GNOME": {
+   "str": -5,
+   "agi": 3,
+   "sta": -1,
+   "int": 3,
+   "spi": -1
+  },
+  "TROLL": {
+   "str": 1,
+   "agi": 2,
+   "sta": 1,
+   "int": -4,
+   "spi": 0
+  }
+ },
+ "validCombos": {
+  "WARRIOR": [
+   "HUMAN",
+   "DWARF",
+   "NIGHTELF",
+   "GNOME",
+   "ORC",
+   "SCOURGE",
+   "TAUREN",
+   "TROLL"
+  ],
+  "PALADIN": [
+   "HUMAN",
+   "DWARF"
+  ],
+  "HUNTER": [
+   "DWARF",
+   "NIGHTELF",
+   "ORC",
+   "TAUREN",
+   "TROLL"
+  ],
+  "ROGUE": [
+   "HUMAN",
+   "DWARF",
+   "NIGHTELF",
+   "GNOME",
+   "ORC",
+   "SCOURGE",
+   "TROLL"
+  ],
+  "PRIEST": [
+   "HUMAN",
+   "DWARF",
+   "NIGHTELF",
+   "SCOURGE",
+   "TROLL"
+  ],
+  "SHAMAN": [
+   "ORC",
+   "TAUREN",
+   "TROLL"
+  ],
+  "MAGE": [
+   "HUMAN",
+   "GNOME",
+   "SCOURGE",
+   "TROLL"
+  ],
+  "WARLOCK": [
+   "HUMAN",
+   "GNOME",
+   "ORC",
+   "SCOURGE"
+  ],
+  "DRUID": [
+   "NIGHTELF",
+   "TAUREN"
+  ]
+ },
+ "conversions": {
+  "_source": "[VERIFY] CALC_MODEL section 3 (Classic 1.12 values); confirm in game (Q4).",
+  "_status": "[VERIFY]",
+  "apPerStrength": {
+   "WARRIOR": 2,
+   "PALADIN": 2,
+   "SHAMAN": 2,
+   "DRUID": 2,
+   "ROGUE": 1,
+   "HUNTER": 1,
+   "_status": "[VERIFY]"
+  },
+  "apPerAgility": {
+   "ROGUE": 1,
+   "HUNTER": 1,
+   "DRUID_CAT": 1,
+   "_status": "[VERIFY]"
+  },
+  "rapPerAgility": {
+   "HUNTER": 2,
+   "_status": "[VERIFY]"
+  },
+  "meleeCritPerAgility": {
+   "WARRIOR": "1/20",
+   "PALADIN": "1/20",
+   "SHAMAN": "1/20",
+   "DRUID": "1/20",
+   "ROGUE": "1/29",
+   "HUNTER": "1/53",
+   "_status": "[VERIFY]"
+  },
+  "spellCritPerIntellect": {
+   "MAGE": "1/59.5",
+   "WARLOCK": "1/60.6",
+   "PRIEST": "1/59.2",
+   "DRUID": "1/60",
+   "SHAMAN": "1/59.5",
+   "PALADIN": "1/54",
+   "_status": "[VERIFY]"
+  },
+  "armorPerAgility": 2,
+  "manaPerIntellect": 15
+ }
+}

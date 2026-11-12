@@ -1,0 +1,157 @@
+{
+ "_source": "[VERIFY] Classic 1.12 hunter family damage modifiers (from memory); demon list from CreatureFamily. Numbers are filled in Phase 6.",
+ "_status": "[VERIFY]",
+ "hunterFamilies": {
+  "1": {
+   "name": "Wolf",
+   "damageModifier": 1.0,
+   "attackSpeed": 2.0
+  },
+  "2": {
+   "name": "Cat",
+   "damageModifier": 1.1,
+   "attackSpeed": 2.0
+  },
+  "3": {
+   "name": "Spider",
+   "damageModifier": 1.07,
+   "attackSpeed": 2.0
+  },
+  "4": {
+   "name": "Bear",
+   "damageModifier": 0.91,
+   "attackSpeed": 2.0
+  },
+  "5": {
+   "name": "Boar",
+   "damageModifier": 0.9,
+   "attackSpeed": 2.0
+  },
+  "6": {
+   "name": "Crocolisk",
+   "damageModifier": 1.0,
+   "attackSpeed": 2.0
+  },
+  "7": {
+   "name": "Carrion Bird",
+   "damageModifier": 1.07,
+   "attackSpeed": 2.0
+  },
+  "8": {
+   "name": "Crab",
+   "damageModifier": 0.95,
+   "attackSpeed": 2.0
+  },
+  "9": {
+   "name": "Gorilla",
+   "damageModifier": 1.02,
+   "attackSpeed": 2.0
+  },
+  "11": {
+   "name": "Raptor",
+   "damageModifier": 1.1,
+   "attackSpeed": 2.0
+  },
+  "12": {
+   "name": "Tallstrider",
+   "damageModifier": 1.0,
+   "attackSpeed": 2.0
+  },
+  "20": {
+   "name": "Scorpid",
+   "damageModifier": 0.94,
+   "attackSpeed": 2.0
+  },
+  "21": {
+   "name": "Turtle",
+   "damageModifier": 0.9,
+   "attackSpeed": 2.0
+  },
+  "24": {
+   "name": "Bat",
+   "damageModifier": 1.07,
+   "attackSpeed": 2.0
+  },
+  "25": {
+   "name": "Hyena",
+   "damageModifier": 1.0,
+   "attackSpeed": 2.0
+  },
+  "26": {
+   "name": "Bird of Prey",
+   "damageModifier": 1.07,
+   "attackSpeed": 2.0
+  },
+  "27": {
+   "name": "Wind Serpent",
+   "damageModifier": 1.07,
+   "attackSpeed": 2.0
+  },
+  "312": {
+   "name": "Core Hound",
+   "damageModifier": null,
+   "attackSpeed": 2.0
+  },
+  "319": {
+   "name": "Fox",
+   "damageModifier": null,
+   "attackSpeed": 2.0
+  }
+ },
+ "warlockDemons": {
+  "23": {
+   "name": "Imp",
+   "model": "spell",
+   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
+   "damage": null,
+   "attackSpeed": null
+  },
+  "16": {
+   "name": "Voidwalker",
+   "model": "melee",
+   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
+   "damage": null,
+   "attackSpeed": null
+  },
+  "17": {
+   "name": "Succubus",
+   "model": "melee",
+   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
+   "damage": null,
+   "attackSpeed": null
+  },
+  "302": {
+   "name": "Incubus",
+   "model": "melee",
+   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
+   "damage": null,
+   "attackSpeed": null
+  },
+  "15": {
+   "name": "Felhunter",
+   "model": "melee",
+   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
+   "damage": null,
+   "attackSpeed": null
+  },
+  "310": {
+   "name": "Felguard",
+   "model": "melee",
+   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
+   "damage": null,
+   "attackSpeed": null
+  },
+  "19": {
+   "name": "Doomguard",
+   "model": "melee",
+   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
+   "damage": null,
+   "attackSpeed": null
+  }
+ },
+ "ownerScaling": {
+  "hunter": null,
+  "warlock": null,
+  "_note": "Q5: do pets scale with owner stats in Forever?"
+ }
+}

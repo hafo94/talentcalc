@@ -1,0 +1,718 @@
+{
+ "_source": "[VERIFY] Classic 1.12 raid/world buffs and consumables from memory; spell IDs checked to exist with these names in build 1.60.1.70888 by the pipeline. Values to be re-read from SpellEffect in Phase 3.",
+ "_status": "[VERIFY]",
+ "buffs": [
+  {
+   "id": "battle_shout",
+   "name": "Battle Shout",
+   "category": "raid",
+   "spellId": 25289,
+   "effects": [
+    {
+     "stat": "attackPower",
+     "value": 232,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "blessing_of_might",
+   "name": "Blessing of Might",
+   "category": "raid",
+   "spellId": 25291,
+   "effects": [
+    {
+     "stat": "attackPower",
+     "value": 185,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "blessing_of_kings",
+   "name": "Blessing of Kings",
+   "category": "raid",
+   "spellId": 20217,
+   "effects": [
+    {
+     "stat": "allStats",
+     "value": 10,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "blessing_of_wisdom",
+   "name": "Blessing of Wisdom",
+   "category": "raid",
+   "spellId": null,
+   "effects": [],
+   "notes": "spell id to be resolved in Phase 3",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "mark_of_the_wild",
+   "name": "Mark of the Wild",
+   "category": "raid",
+   "spellId": 9885,
+   "effects": [
+    {
+     "stat": "allStats",
+     "value": 12,
+     "unit": "flat"
+    },
+    {
+     "stat": "armor",
+     "value": 285,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "gift_of_the_wild",
+   "name": "Gift of the Wild",
+   "category": "raid",
+   "spellId": 21850,
+   "effects": [],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "arcane_intellect",
+   "name": "Arcane Intellect",
+   "category": "raid",
+   "spellId": 10157,
+   "effects": [
+    {
+     "stat": "intellect",
+     "value": 31,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "arcane_brilliance",
+   "name": "Arcane Brilliance",
+   "category": "raid",
+   "spellId": 23028,
+   "effects": [],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "power_word_fortitude",
+   "name": "Power Word: Fortitude",
+   "category": "raid",
+   "spellId": 10938,
+   "effects": [
+    {
+     "stat": "stamina",
+     "value": 54,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "prayer_of_fortitude",
+   "name": "Prayer of Fortitude",
+   "category": "raid",
+   "spellId": 21564,
+   "effects": [],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "divine_spirit",
+   "name": "Divine Spirit",
+   "category": "raid",
+   "spellId": 27841,
+   "effects": [
+    {
+     "stat": "spirit",
+     "value": 40,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "prayer_of_spirit",
+   "name": "Prayer of Spirit",
+   "category": "raid",
+   "spellId": 27681,
+   "effects": [],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "leader_of_the_pack",
+   "name": "Leader of the Pack",
+   "category": "raid",
+   "spellId": 24932,
+   "effects": [
+    {
+     "stat": "meleeRangedCrit",
+     "value": 3,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "moonkin_aura",
+   "name": "Moonkin Aura",
+   "category": "raid",
+   "spellId": 24907,
+   "effects": [
+    {
+     "stat": "spellCrit",
+     "value": 3,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "windfury_totem",
+   "name": "Windfury Totem",
+   "category": "raid",
+   "spellId": 10614,
+   "effects": [
+    {
+     "stat": "attackPower",
+     "value": 315,
+     "unit": "flat"
+    }
+   ],
+   "notes": "20% proc",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "grace_of_air_totem",
+   "name": "Grace of Air Totem",
+   "category": "raid",
+   "spellId": 25359,
+   "effects": [
+    {
+     "stat": "agility",
+     "value": 77,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "strength_of_earth_totem",
+   "name": "Strength of Earth Totem",
+   "category": "raid",
+   "spellId": 25361,
+   "effects": [
+    {
+     "stat": "strength",
+     "value": 77,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "trueshot_aura",
+   "name": "Trueshot Aura",
+   "category": "raid",
+   "spellId": 1299346,
+   "effects": [],
+   "notes": "Forever talent version; value from data in Phase 3",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "rallying_cry",
+   "name": "Rallying Cry of the Dragonslayer",
+   "category": "world",
+   "spellId": 22888,
+   "effects": [
+    {
+     "stat": "attackPower",
+     "value": 140,
+     "unit": "flat"
+    },
+    {
+     "stat": "meleeCrit",
+     "value": 5,
+     "unit": "percent"
+    },
+    {
+     "stat": "spellCrit",
+     "value": 10,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "songflower",
+   "name": "Songflower Serenade",
+   "category": "world",
+   "spellId": 15366,
+   "effects": [
+    {
+     "stat": "crit",
+     "value": 5,
+     "unit": "percent"
+    },
+    {
+     "stat": "allStats",
+     "value": 15,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "spirit_of_zandalar",
+   "name": "Spirit of Zandalar",
+   "category": "world",
+   "spellId": 24425,
+   "effects": [
+    {
+     "stat": "allStats",
+     "value": 15,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "warchiefs_blessing",
+   "name": "Warchief's Blessing",
+   "category": "world",
+   "spellId": 16609,
+   "effects": [
+    {
+     "stat": "meleeHaste",
+     "value": 15,
+     "unit": "percent"
+    },
+    {
+     "stat": "health",
+     "value": 300,
+     "unit": "flat"
+    },
+    {
+     "stat": "mp5",
+     "value": 10,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "fengus_ferocity",
+   "name": "Fengus' Ferocity",
+   "category": "world",
+   "spellId": 22817,
+   "effects": [
+    {
+     "stat": "attackPower",
+     "value": 200,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "moldars_moxie",
+   "name": "Mol'dar's Moxie",
+   "category": "world",
+   "spellId": 22818,
+   "effects": [
+    {
+     "stat": "stamina",
+     "value": 15,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "slipkiks_savvy",
+   "name": "Slip'kik's Savvy",
+   "category": "world",
+   "spellId": 22820,
+   "effects": [
+    {
+     "stat": "spellCrit",
+     "value": 3,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "elixir_of_the_mongoose",
+   "name": "Elixir of the Mongoose",
+   "category": "consumable",
+   "spellId": 17538,
+   "effects": [
+    {
+     "stat": "agility",
+     "value": 25,
+     "unit": "flat"
+    },
+    {
+     "stat": "crit",
+     "value": 2,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "juju_power",
+   "name": "Juju Power",
+   "category": "consumable",
+   "spellId": 16323,
+   "effects": [
+    {
+     "stat": "strength",
+     "value": 30,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "juju_might",
+   "name": "Juju Might",
+   "category": "consumable",
+   "spellId": 16329,
+   "effects": [
+    {
+     "stat": "attackPower",
+     "value": 40,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "flask_of_supreme_power",
+   "name": "Supreme Power",
+   "category": "consumable",
+   "spellId": 17628,
+   "effects": [
+    {
+     "stat": "spellPower",
+     "value": 150,
+     "unit": "flat"
+    }
+   ],
+   "notes": "Flask of Supreme Power (the aura spell is named Supreme Power)",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "flask_of_the_titans",
+   "name": "Flask of the Titans",
+   "category": "consumable",
+   "spellId": 17626,
+   "effects": [
+    {
+     "stat": "health",
+     "value": 400,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "greater_arcane_elixir",
+   "name": "Greater Arcane Elixir",
+   "category": "consumable",
+   "spellId": 17539,
+   "effects": [
+    {
+     "stat": "spellPower",
+     "value": 35,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "elixir_of_shadow_power",
+   "name": "Elixir of Shadow Power",
+   "category": "consumable",
+   "spellId": 11476,
+   "effects": [
+    {
+     "stat": "shadowSpellPower",
+     "value": 40,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "greater_firepower",
+   "name": "Greater Firepower",
+   "category": "consumable",
+   "spellId": 26276,
+   "effects": [
+    {
+     "stat": "fireSpellPower",
+     "value": 40,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "brilliant_wizard_oil",
+   "name": "Brilliant Wizard Oil",
+   "category": "weaponEnhancement",
+   "spellId": 25122,
+   "effects": [
+    {
+     "stat": "spellPower",
+     "value": 36,
+     "unit": "flat"
+    },
+    {
+     "stat": "spellCrit",
+     "value": 1,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "elemental_sharpening_stone",
+   "name": "Elemental Sharpening Stone",
+   "category": "weaponEnhancement",
+   "spellId": 22757,
+   "effects": [
+    {
+     "stat": "crit",
+     "value": 2,
+     "unit": "percent"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "dense_sharpening_stone",
+   "name": "Dense Sharpening Stone",
+   "category": "weaponEnhancement",
+   "spellId": 16641,
+   "effects": [
+    {
+     "stat": "weaponDamage",
+     "value": 8,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "grilled_squid",
+   "name": "Grilled Squid",
+   "category": "food",
+   "spellId": null,
+   "effects": [
+    {
+     "stat": "agility",
+     "value": 10,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "smoked_desert_dumplings",
+   "name": "Smoked Desert Dumplings",
+   "category": "food",
+   "spellId": null,
+   "effects": [
+    {
+     "stat": "strength",
+     "value": 20,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "nightfin_soup",
+   "name": "Nightfin Soup",
+   "category": "food",
+   "spellId": null,
+   "effects": [
+    {
+     "stat": "mp5",
+     "value": 8,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "sunder_armor",
+   "name": "Sunder Armor",
+   "category": "debuff",
+   "spellId": 11597,
+   "effects": [
+    {
+     "stat": "armor",
+     "value": -450,
+     "unit": "flat"
+    }
+   ],
+   "notes": "per stack, 5 stacks",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "faerie_fire",
+   "name": "Faerie Fire",
+   "category": "debuff",
+   "spellId": 9907,
+   "effects": [
+    {
+     "stat": "armor",
+     "value": -505,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "curse_of_recklessness",
+   "name": "Curse of Recklessness",
+   "category": "debuff",
+   "spellId": 11717,
+   "effects": [
+    {
+     "stat": "armor",
+     "value": -640,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "expose_armor",
+   "name": "Expose Armor",
+   "category": "debuff",
+   "spellId": 11198,
+   "effects": [
+    {
+     "stat": "armor",
+     "value": -1700,
+     "unit": "flat"
+    }
+   ],
+   "notes": "",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "curse_of_the_elements",
+   "name": "Curse of the Elements",
+   "category": "debuff",
+   "spellId": null,
+   "effects": [],
+   "notes": "Forever ranks 1311676+, resolve in Phase 3",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "curse_of_shadow",
+   "name": "Curse of Shadow",
+   "category": "debuff",
+   "spellId": null,
+   "effects": [],
+   "notes": "402791 candidate",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "shadow_weaving",
+   "name": "Shadow Weaving",
+   "category": "debuff",
+   "spellId": 15258,
+   "effects": [
+    {
+     "stat": "shadowDamageTaken",
+     "value": 15,
+     "unit": "percent"
+    }
+   ],
+   "notes": "at 5 stacks",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "fire_vulnerability",
+   "name": "Fire Vulnerability",
+   "category": "debuff",
+   "spellId": 22959,
+   "effects": [
+    {
+     "stat": "fireDamageTaken",
+     "value": 15,
+     "unit": "percent"
+    }
+   ],
+   "notes": "at 5 stacks",
+   "_status": "[VERIFY]"
+  },
+  {
+   "id": "winters_chill",
+   "name": "Winter's Chill",
+   "category": "debuff",
+   "spellId": 12579,
+   "effects": [
+    {
+     "stat": "frostCritTaken",
+     "value": 10,
+     "unit": "percent"
+    }
+   ],
+   "notes": "at 5 stacks",
+   "_status": "[VERIFY]"
+  }
+ ]
+}
