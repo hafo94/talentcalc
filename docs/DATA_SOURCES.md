@@ -84,6 +84,10 @@ Layout facts we found:
   pipeline would export `choices[]` and a warning (Q10).
 - **Talent points.** Currency 3820 (max 51): levels 10..60 plus levels 5..9 granted by the account-wide Legacy "Talented" perk (Q22).
   Totals: 447 included nodes, 23 hidden (flag 8).
+  The Talented perk is Legacy tree 1188, node 110298 (Type 1, 5 entries), spell 1225474 "Talented" ("You gain talent points every
+  level starting at level $s1 instead of starting at level 10, but you still may not have more than 51 total talent points"). The
+  five `TraitCurrencySource` rows for levels 5..9 point at its entries (entry order = rank 1..5, level = 10 - rank). The cap of 51
+  is `TraitCurrency.SourcedMax`. Pipeline: `perk` object on those sources in `classes.json`.
 
 ### Spells (Phase 1)
 

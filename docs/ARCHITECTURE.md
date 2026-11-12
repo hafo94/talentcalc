@@ -16,11 +16,12 @@ character-sheet stats for validation (see the Phase 7 stretch goal).
 | Language | TypeScript (strict) | One language for engine and UI; types for game data |
 | UI | React 18 + Vite | Fast dev loop, static build |
 | Styling | CSS modules + CSS variables | Classic tree look without a heavy UI kit |
-| State | Zustand | Small; the build/character state is one store |
+| State | Zustand 5 | Small; the build/character state is one store |
 | Engine | Plain TS modules, no React imports | Unit-testable, runs in a Web Worker |
 | Simulation | Web Worker (Comlink) | Keeps the UI responsive during multi-iteration sims |
 | Tests | Vitest (engine and pipeline output), Playwright (UI smoke) | |
 | Data pipeline | Python 3 (stdlib csv/json) | CSVs in, compact JSON out; already used for research |
+| Data loading | `@data` alias → `data/generated/<build>` (set in `vite.config.ts` and `tsconfig.app.json`). `classes.json` and `manifest.json` are static imports, each `talents/<class>.json` is lazy-loaded per class, `spells.json` is not loaded by the talent UI | Small first load; one ~6 KB gzip chunk per class |
 | Icons | Spell icon file IDs → icon names via `ManifestInterfaceData`; served from the Blizzard render CDN (Zamimg fallback), not bundled | Decided in Phase 1 (Q9) |
 
 ## Repository layout (target)
@@ -97,6 +98,32 @@ interface Spell {
 
 `family.mask` plus talents' `EffectSpellClassMask` lets a talent find the spells it modifies with
 no hand-written mapping. `coverage.json` shows which talents are generic, special or unsupported.
+
+`classes.json` talent-currency sources may carry `perk {nodeId, entryId, rank, spellId, name}` (the account-wide
+"Talented" Legacy perk, ranks 1..5 grant the points of levels 9..5).
+
+**Gate counting (Q28):** a tier gate counts `countedNodeIds` filtered to nodes in a lower tier than the gate, because the raw
+scope of every tier-7 gate (and Discipline's tier-3 gate) contains the gated node itself. Nodes of lower tiers that are missing from
+a gate's scope (Q21: Holy Specialization, Improved Serpent Sting) do not count. Rules live in `src/engine/talents` and the UI never
+re-implements them.
+
+## Build URL format
+
+```
+#v1.<classToken>.<level>.<talentedRank>[.<payload>]
+```
+- `v1`: format version. Any other prefix is a decode error.
+- `classToken`: lowercase class token (`mage`). `level`: 1..60 (v1 writes 60). `talentedRank`: one digit 0..5 (UI writes 0 or 5).
+- `payload`: omitted when no points are spent. Otherwise unpadded base64url of unsigned LEB128 varints, one per invested node sorted by
+  node ID: `(nodeId - previousNodeId) * 8 + rank` (rank 1..7). Node IDs are stable `TraitNode.ID` keys, so links survive layout changes
+  and regenerated data; unknown nodes are dropped on load (`sanitize`). Golden vector: Mage Fire 33 / Frost 18 is
+  `#v1.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N`. See `src/state/buildCode.ts`.
+
+## Tree backgrounds
+
+Classic background art is hotlinked from `https://wow.zamimg.com/images/wow/talents/backgrounds/classic/{talentTabId}.jpg` and drawn over
+a per-spec CSS gradient with a spec-icon watermark. If the image fails only the gradient shows. `REMOTE_BACKGROUNDS` in
+`src/data/assets.ts` switches the remote art off in one place (Q30).
 
 **Icons (decision, Q9):** data carries icon *names* (file data ID resolved through `ManifestInterfaceData`). The app loads
 `https://render.worldofwarcraft.com/us/icons/56/{icon}.jpg` with `https://wow.zamimg.com/images/wow/icons/large/{icon}.jpg` as

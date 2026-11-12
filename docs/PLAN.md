@@ -51,16 +51,20 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 
 Output: `data/generated/1.60.1.70888/` (447 talents, 2,300 spells, 2,721 weapons). Remaining work is data verification in game (OPEN_QUESTIONS Q16–Q27), not pipeline code.
 
-## Phase 2 — Talent calculator (Classic UI parity) ⬜
-- [ ] Vite + React + TS scaffold, lint, Vitest, Playwright, GitHub Pages deploy workflow
-- [ ] Class picker (9 class icons) → three trees side by side with Classic backgrounds
-- [ ] Talent node: icon, rank badge `x/y`, grey/green/yellow states, prerequisite arrows
-- [ ] Rules: 51 points (level-based: points = level − 9), 5 points per tier per spec, prereqs maxed,
+## Phase 2 — Talent calculator (Classic UI parity) ✅
+- [x] Vite + React + TS scaffold, lint, Vitest, Playwright, GitHub Pages deploy workflow
+- [x] Class picker (9 class icons) → three trees side by side with Classic backgrounds
+- [x] Talent node: icon, rank badge `x/y`, grey/green/yellow states, prerequisite arrows
+- [x] Rules: 51 points (level-based: points = level − 9), 5 points per tier per spec, prereqs maxed,
       can't remove a point that would invalidate a dependent talent or a higher tier
-- [ ] Left-click add / right-click remove; per-tree reset; reset all; points spent per tree, e.g. "31/20/0"
-- [ ] Tooltips identical in style to Classic: name, rank, next rank, requirements, description
-- [ ] URL hash encoding of build and level; copy-link button
-- [ ] Engine unit tests for every point rule
+- [x] Left-click add / right-click remove; per-tree reset; reset all; points spent per tree, e.g. "31/20/0"
+- [x] Tooltips identical in style to Classic: name, rank, next rank, requirements, description
+- [x] URL hash encoding of build and level; copy-link button
+- [x] Engine unit tests for every point rule
+- [x] Talented Legacy perk toggle (sources from TraitCurrencySource; affects required level at 60)
+- [x] Pipeline: perk metadata on talent currency sources
+
+Output: static web app (`npm run build` → `dist/`), 94 unit tests + 13 Playwright tests, deployable to GitHub Pages (workflow added; Pages must be enabled by the owner, see README). In-game checks of Q21, Q28–Q31 are still pending.
 
 ## Phase 3 — Character & gear model ⬜
 - [ ] Class, race, level (60 first; Q14) → base stats (manual table)

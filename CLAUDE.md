@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 WoW **Forever** (Classic Plus, product `wowf`, client 1.60.x on the modern engine) talent
-calculator + DPS calculator. It is a static web app (planned stack: Vite + React + TS; Python data pipeline).
+calculator + DPS calculator. It is a static web app (Vite + React + TS web app; Python data pipeline).
 
 ## Read first
 - `docs/PLAN.md`: phase tracker. Update it in the same commit as the work.
@@ -21,7 +21,12 @@ calculator + DPS calculator. It is a static web app (planned stack: Vite + React
 - Test pipeline: `python3 -m unittest discover -s tools/pipeline/tests -t tools -v`
 - Research dumps: `python3 tools/research/extract_research.py data/raw/<build> docs/research`
 
+- Web app: `npm ci`, `npm run dev`, `npm test`, `npm run lint`, `npm run typecheck`, `npm run e2e`, `npm run build`
+  (`npm run e2e:install` once for Playwright browsers; run e2e with `--trace off`)
+
 ## Conventions
 - The engine (`src/engine/`) is pure TS: no React, no DOM, seeded RNG only.
 - Generated data is never hand-edited. Hand-maintained data lives in `data/manual/` with sources cited.
 - `data/raw/` is git-ignored.
+- Data build for the app is set in `vite.config.ts` (`DATA_BUILD`) and `tsconfig.app.json` paths.
+- Talent rules live in `src/engine/talents` (pure). The UI never re-implements a rule.
