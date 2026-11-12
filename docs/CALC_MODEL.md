@@ -45,6 +45,23 @@ Same as melee, but no glancing and no parry from behind. Hunter crit from Agi.
 | Crit | base + Int / ratio + gear crit; crit = 150% damage (200% with talents such as Ice Shards) |
 | Resistance | binary spells: full resist only; non-binary: average partial resist from target resistance (bosses 0 + level 24 → ~6%) |
 
+## 2b. Targets
+
+Owner decision: the default target is a **boss at player level + 3** (at 60, that's level 63 with 3731 armor). Next to it,
+there are **reference mobs scaled to the selected player level L**:
+
+| Preset | Level | Armor | Notes |
+|---|---|---|---|
+| Boss (default) | L+3 | ExpectedStat[L+3] | Crit suppression, glancing, 8–9% miss |
+| Elite | L+2 | ExpectedStat[L+2] | |
+| Same-level mob | L | ExpectedStat[L] | No glancing penalty; 5% miss |
+| Low-armor boss | L+3 | ExpectedStat[L+3] × 0.5 | Reference for caster/low-armor fights [tune] |
+| Custom | any | any | Level, armor and resistances editable |
+
+Until the level selector exists (Phase 7), L = 60. ExpectedStat armor is an average
+creature value [VERIFY against a few real mobs]. Named raid-boss presets can be added later in
+`data/manual/targets.json`.
+
 ## 3. Stat conversions (level 60) [VERIFY all]
 
 | Stat | Effect |
@@ -53,7 +70,7 @@ Same as melee, but no glancing and no parry from behind. Hunter crit from Agi.
 | Agility | 1 AP (Rogue, Hunter, cat Druid); 2 RAP (Hunter); crit per Agi: Warrior/Paladin/Shaman/Druid 1/20, Rogue 1/29, Hunter 1/53; 2 armor |
 | Intellect | mana 15/Int; spell crit per Int: Mage 1/59.5, Warlock 1/60.6, Priest 1/59.2, Druid 1/60, Shaman 1/59.5, Paladin 1/54 |
 | AP → DPS | 14 AP = 1 weapon DPS; normalized for instant attacks (Forever: confirm normalization exists) |
-| Armor DR | `armor / (armor + 400 + 85 × attackerLevel)`, capped at 75%; boss armor 3731 by default, editable, with debuff toggles (Sunder ×5, Faerie Fire, Curse of Recklessness, Expose Armor) |
+| Armor DR | `armor / (armor + 400 + 85 × attackerLevel)`, capped at 75%; target armor from presets (below), editable, with debuff toggles (Sunder ×5, Faerie Fire, Curse of Recklessness, Expose Armor) |
 
 Base stats per race, class and level come from a manual table (`data/manual/base-stats.json`),
 because client DB2 no longer ships the `gtChanceTo*` tables used in Classic.

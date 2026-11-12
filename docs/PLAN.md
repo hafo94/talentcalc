@@ -20,7 +20,7 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 | 4 | Damage engine (analytical) | ⬜ | Per-ability hit/crit/avg damage; talent effects applied; live DPS for default rotations |
 | 5 | Rotations & simulation | ⬜ | Rotation editor, Web Worker sim, DPS ± stdev, damage breakdown |
 | 6 | Pets | ⬜ | Hunter + Warlock pet damage included in total DPS |
-| 7 | Insight & polish | ⬜ | Talent-impact tooltips, stat weights, compare builds, mobile, deploy |
+| 7 | Insight, levels & polish | ⬜ | Talent-impact tooltips, stat weights, level selector with level-based targets, compare builds, mobile, deploy |
 
 ---
 
@@ -33,7 +33,7 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 - [x] Confirm spell base points and coefficients exist in client data
 - [x] Confirm weapon damage reconstruction (ItemDamage tables)
 - [x] Write PLAN, ARCHITECTURE, CALC_MODEL, DATA_SOURCES, OPEN_QUESTIONS, CLAUDE.md
-- [ ] Owner answers Q1, Q13, Q14 (platform, default target, level scope)
+- [x] Owner decisions: website; default boss target + level-based reference mobs; level 60 first
 
 ## Phase 1 — Data pipeline ⬜
 - [ ] `tools/pipeline/build_data.py`: raw CSV → `data/generated/<build>/`
@@ -44,7 +44,8 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 - [ ] Spell family masks for talent → spell matching
 - [ ] Weapons: min/max/speed/type/stats from ItemSparse + ItemDamage tables — Q8
 - [ ] Icons: resolve the icon source — Q9
-- [ ] Manual data scaffolding: `data/manual/` (base stats, pet families, boss presets, raid buffs)
+- [ ] Target presets from `ExpectedStat` (armor/HP per level) → `targets.json`
+- [ ] Manual data scaffolding: `data/manual/` (base stats, pet families, named targets, raid buffs)
 - [ ] Pipeline tests (node counts per spec, known talents present, Fireball r1 = 14–22, Sulfuras = 223–372)
 - [ ] `coverage.json`: each talent marked generic / special / unsupported
 
@@ -64,7 +65,8 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 - [ ] Weapon picker: searchable MH / OH / ranged / wand, filtered by class proficiency
 - [ ] Gear stat input: v1 manual "bonus stats" panel (AP, SP, hit, crit, stats); v2 full item slots
 - [ ] Buffs and consumables toggles (raid buffs, world buffs, flasks, elixirs, weapon oils/stones)
-- [ ] Target config: level, armor, resistances, debuffs (Sunder, FF, CoR, Curse of Elements…)
+- [ ] Target picker: Boss (L+3, default), Elite (L+2), Same-level, Low-armor boss, Custom; debuffs (Sunder, FF, CoR, Curse of Elements…)
+- [ ] DPS shown against the selected target, plus a small table of the same build vs every reference mob
 - [ ] Talent stat modifiers applied (generic mapper, aura 107/108/137/52/57/54/55/79)
 - [ ] Derived stats panel: AP, RAP, SP per school, melee/ranged/spell hit and crit, haste, weapon DPS
 
@@ -95,6 +97,7 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 - [ ] Talent impact: hover shows ΔDPS, Δhit and Δcrit of the next and previous point
 - [ ] Stat weights (EP values)
 - [ ] Compare two builds side by side
+- [ ] Level selector (1–60): talent points = level − 9, spell ranks by level, reference mobs rescale to the chosen level
 - [ ] Mobile layout; accessibility pass
 - [ ] Data refresh doc + script for new Forever builds; build version shown in the footer
 - [ ] Stretch: companion addon that exports character-sheet stats for validation

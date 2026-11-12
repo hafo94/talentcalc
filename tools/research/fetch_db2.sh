@@ -24,6 +24,8 @@ TABLES=(
   ItemDamageTwoHandCaster ItemDamageAmmo ItemArmorQuality ItemArmorShield ItemArmorTotal
   # Pets
   CreatureFamily
+  # Creature stats by level (armor, health, armor constant) for target presets
+  ExpectedStat
   # Scaling curves referenced by TraitDefinitionEffectPoints
   Curve CurvePoint
 )

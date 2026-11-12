@@ -91,6 +91,24 @@ extra modifiers. Thunderfury (19019) computes as 82–153, but Classic shows 44�
 Check `QualityModifier` and the caster tables (`ItemDamageOneHandCaster`) before trusting every weapon.
 Stats come from `StatModifier_bonusStat_N` + `StatPercentEditor_N`.
 
+## Targets (creature stats by level)
+
+`ExpectedStat` (ExpansionID −2, one row per level 1–63+) has per-level `CreatureArmor`,
+`CreatureHealth`, `CreatureAutoAttackDps` and `ArmorConstant`:
+
+| Level | Armor | ArmorConstant |
+|---|---|---|
+| 10 | 518 | 1250 |
+| 20 | 861 | 2100 |
+| 30 | 1212 | 2950 |
+| 40 | 1980 | 3800 |
+| 50 | 3018 | 4650 |
+| 60 | 3566 | 5500 |
+| 63 | 3731 | 5755 |
+
+The level-63 armor matches the Classic boss value of 3731. `ArmorConstant` matches `400 + 85 × level`, so the
+armor formula is confirmed by data. The pipeline builds target presets from this table.
+
 ## Pets
 
 `CreatureFamily` (27 rows) has the families. Hunter pet damage modifiers and pet stat formulas
