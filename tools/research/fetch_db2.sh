@@ -28,6 +28,10 @@ TABLES=(
   ExpectedStat
   # Scaling curves referenced by TraitDefinitionEffectPoints
   Curve CurvePoint
+  # Phase 1 pipeline additions: ranged/thrown/wand damage, item stat budget, spell radii,
+  # icon file-data-id -> file name, tooltip variables
+  ItemDamageRanged ItemDamageThrown ItemDamageWand RandPropPoints SpellRadius ManifestInterfaceData
+  SpellDescriptionVariables SpellXDescriptionVariables
 )
 for t in "${TABLES[@]}"; do
   code=$(curl -s --max-time 300 -o "$OUT/$t.csv" -w '%{http_code}' \
