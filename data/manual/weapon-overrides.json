@@ -1,0 +1,10 @@
+{
+ "_source": "Thunderfury (19019): the secondary 16-30 nature damage is in the Classic Era client ItemSparse (MinDamage_1/MaxDamage_1) but its school is not in any DB2 column. Nature per the Classic Era item tooltip (recalled, not copied).",
+ "_status": "[VERIFY]",
+ "weapons": {
+  "19019": {
+   "name": "Thunderfury, Blessed Blade of the Windseeker",
+   "bonusDamage": {"min": 16, "max": 30, "school": "nature"}
+  }
+ }
+}

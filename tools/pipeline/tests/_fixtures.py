@@ -88,3 +88,20 @@ def spells():
         chains = build_ability_chains(db, seeds)
         _cache[k] = (recs, chains, seeds, report)
     return _cache[k]
+
+
+def weapons():
+    """(weapons list, ammo list, report) built directly from raw tables (+ era if present)."""
+    k = ("weapons",)
+    if k not in _cache:
+        from pipeline.db2 import RawDB
+        from pipeline.icons import IconResolver
+        from pipeline.items import build_weapons
+        db = RawDB(RAW)
+        era = RawDB(ERA_RAW) if os.path.isfile(os.path.join(ERA_RAW, "ItemSparse.csv")) else None
+        with open(os.path.join(MANUAL, "weapon-overrides.json"), encoding="utf-8") as f:
+            ov = json.load(f)
+        report = {"manualValidation": []}
+        w, a = build_weapons(db, era, ov, IconResolver(db), report)
+        _cache[k] = (w, a, report)
+    return _cache[k]
