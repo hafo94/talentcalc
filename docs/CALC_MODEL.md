@@ -106,13 +106,16 @@ Checked in build 70888 (aura IDs follow the modern enum):
 | 108 ADD_PCT_MODIFIER | Percent mod, same masks and ops | Convection: −2% cost/rank (op 14) |
 | 79 MOD_DAMAGE_PERCENT_DONE | % damage by school mask | — |
 | 52 / 57 | Melee / spell crit chance | — |
-| 54 / 55 | Melee / spell hit chance | Precision: aura 55, 6 per rank (!) |
+| 54 / 55 | Melee / spell hit chance | Precision: aura 55, rank values 2/4/6 from a `TraitDefinitionEffectPoints` curve; the base points (6) hold the max-rank value |
 | 42 PROC_TRIGGER_SPELL | Proc → triggered spell | — |
 | 137 MOD_TOTAL_STAT_PERCENTAGE | % of a stat | Arcane Mind: +10% (plus a 108 effect) |
 | **4 DUMMY** | Server-scripted, no data meaning | **Ignite, Fire Power**: these need hand-written handlers |
 
-Forever changed many talent values (Precision 6%/rank, Arcane Mind changed from Classic). So
-**never hard-code Classic talent values**; read them from SpellEffect and only hand-code DUMMY behavior.
+Forever changed many talent values (Precision 2/4/6% over its 3 ranks, Arcane Mind changed from Classic). So
+**never hard-code Classic talent values**; read them from the generated data and only hand-code DUMMY behavior.
+Rank values come from `TraitDefinitionEffectPoints` curves (`ranks[r].values` in `talents/<class>.json`);
+`EffectBasePointsF` holds the **max-rank** value, so it is not a per-rank value (Mage Precision: base 6, curve 2/4/6).
+Effects with no curve keep the base value for every rank (flagged in `report.multiRankWithoutCurve`, Q17).
 
 Talents the generic mapper can't express (Ignite rolling, Seal twisting, Nightfall procs…)
 get **hand-written effect handlers** keyed by talent spell ID in `src/engine/talents/special/`.

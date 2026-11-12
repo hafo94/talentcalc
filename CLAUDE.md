@@ -10,12 +10,15 @@ calculator + DPS calculator. It is a static web app (planned stack: Vite + React
 
 ## Critical facts
 - Forever talents live in the **Trait*** DB2 tables. The legacy `Talent`/`TalentTab` tables are stale
-  Classic Era data. Do not use them for trees (only as a rank-spell lookup where rank counts match).
+  Classic Era data. Do not use them at all (per-rank values come from `TraitDefinitionEffectPoints` curves).
 - Talents and spells changed a lot from Classic. Never hard-code Classic talent values; read SpellEffect.
 - Constants not confirmed in game are tagged `[VERIFY]` with a source comment.
 
 ## Commands
 - Fetch data: `tools/research/fetch_db2.sh <build> data/raw/<build>` (latest build: wago.tools `/api/builds` → `wowf`)
+- Fetch Classic Era items (weapon fallback): `tools/pipeline/fetch_era_items.sh 1.15.9.70576`
+- Build data: `python3 tools/pipeline/build_data.py --build 1.60.1.70888` → `data/generated/<build>/` (commit it; never hand-edit)
+- Test pipeline: `python3 -m unittest discover -s tools/pipeline/tests -t tools -v`
 - Research dumps: `python3 tools/research/extract_research.py data/raw/<build> docs/research`
 
 ## Conventions

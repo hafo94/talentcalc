@@ -21,7 +21,7 @@ character-sheet stats for validation (see the Phase 7 stretch goal).
 | Simulation | Web Worker (Comlink) | Keeps the UI responsive during multi-iteration sims |
 | Tests | Vitest (engine and pipeline output), Playwright (UI smoke) | |
 | Data pipeline | Python 3 (stdlib csv/json) | CSVs in, compact JSON out; already used for research |
-| Icons | Spell icon file IDs → icon names via a listfile; served from a public icon CDN or bundled | Decided in Phase 1 (OPEN_QUESTIONS Q9) |
+| Icons | Spell icon file IDs → icon names via `ManifestInterfaceData`; served from the Blizzard render CDN (Zamimg fallback), not bundled | Decided in Phase 1 (Q9) |
 
 ## Repository layout (target)
 
@@ -55,28 +55,53 @@ talentcalc/
 └─ tests/
 ```
 
-## Generated data contracts (summary)
+## Generated data contracts
+
+Pipeline output lives in `data/generated/<build>/` (committed). The authoritative schemas are in
+[phase1-implementation-plan.md](phase1-implementation-plan.md) section 2.1; summary:
+
+| File | Contents |
+|---|---|
+| `manifest.json` | build, era build, date, options, icon URL templates, raw table hashes, output counts |
+| `classes.json` | 9 classes (id, token, name, color, spellClassSet, powerType, icon, traitTreeId, skillLineIds, 3 specs each), 8 races, talent currency sources |
+| `talents/<token>.json` | one per class: 3 specs, each with `tierGates[]` and `talents[]` sorted by (tier, col) |
+| `spells.json` | every class ability rank, talent spell and triggered spell (2,300) + `abilities[]` rank chains |
+| `weapons.json` | weapons (min/max/speed/dps/stats; `source` is `forever` or `classic_era`) + ammo |
+| `targets.json` | `ExpectedStat` levels 1..63, the five target presets, and `byPlayerLevel` 1..60 |
+| `pet-families.json` | `CreatureFamily` list |
+| `coverage.json` | per-talent `generic` / `special` / `unsupported` classification + summary |
+| `report.json` | pipeline decisions and warnings (hidden nodes, position fixes, curve/base mismatches, filters, unresolved tokens) |
 
 ```ts
-// talents.json (per class)
-interface ClassTree { classId: number; specs: Spec[] }
-interface Spec { name: string; icon: string; talents: Talent[] }
 interface Talent {
-  nodeId: number; tier: number; col: number; maxRank: number;
-  requiredPoints: number;            // in this spec
+  nodeId: number; entryId: number; definitionId: number; spellId: number;
+  name: string; icon: string | null; iconFileId: number;
+  tier: number; col: number; maxRank: number; requiredPoints: number;   // in this spec
   prereqNodeId?: number;             // must be maxed
-  ranks: { spellId: number; description: string }[];
-  effects: EffectRef[][];            // per rank, decoded SpellEffect rows
-  choice?: Talent[];                 // Type 1 nodes
+  kind: "passive" | "ability"; hidden?: true;
+  valueSources: ("curve" | "base")[];                 // parallel to spells[spellId].effects
+  ranks: { rank: number; values: number[]; description: string; unresolved?: string[] }[];   // length maxRank
+  choices?: Omit<Talent, "tier" | "col" | "requiredPoints" | "prereqNodeId">[];   // never present in v1 class trees
 }
-// spells.json (only spells reachable from class abilities + talents + procs)
-interface Spell { id; name; rank?; school; castMs; gcdMs; cooldownMs; cost: {type; amount|pct};
-  rangeYd; durationMs; family: { set: number; mask: [n,n,n,n] }; effects: SpellEffect[] }
-// items.json: weapons (+ later armor), already resolved to min/max/speed/stats
+interface Spell {
+  id: number; name: string; subtext: string | null; rank: number | null; classIds: number[];
+  sources: ("ability" | "talent" | "triggered")[]; icon: string | null; school: number;
+  passive: boolean; castMs: number; gcdMs: number; cooldownMs: number;
+  costs: { powerType: number; amount: number; pct: number; perLevel: number; perSecond: number; optional: number }[];
+  range: { min: number; max: number } | null; duration: { ms: number; perLevel: number; maxMs: number } | null;
+  family: { set: number; mask: [number, number, number, number] } | null;   // talent masks match this
+  effects: SpellEffect[];            // Difficulty 0, sorted by index; talent ranks[].values is parallel to this
+  /* ... see the plan for the full list */
+}
 ```
 
 `family.mask` plus talents' `EffectSpellClassMask` lets a talent find the spells it modifies with
-no hand-written mapping. The pipeline also writes `coverage.json` (which talents are generic, special or unsupported).
+no hand-written mapping. `coverage.json` shows which talents are generic, special or unsupported.
+
+**Icons (decision, Q9):** data carries icon *names* (file data ID resolved through `ManifestInterfaceData`). The app loads
+`https://render.worldofwarcraft.com/us/icons/56/{icon}.jpg` with `https://wow.zamimg.com/images/wow/icons/large/{icon}.jpg` as
+fallback (`manifest.json` holds both templates). Icons are not bundled in v1; `tools/pipeline/check_icons.py` reports
+names missing on both CDNs.
 
 ## Key design rules
 

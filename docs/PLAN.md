@@ -14,7 +14,7 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 | Phase | Name | Status | Exit criteria |
 |---|---|---|---|
 | 0 | Research & planning | ✅ | Data source found, talent system decoded, docs written |
-| 1 | Data pipeline | ⬜ | `data/generated/<build>/` JSON for all 9 classes, with tests and a coverage report |
+| 1 | Data pipeline | ✅ | `data/generated/<build>/` JSON for all 9 classes, with tests and a coverage report |
 | 2 | Talent calculator (UI parity) | ⬜ | All 27 specs render; point rules exactly like Classic; URL sharing |
 | 3 | Character & gear model | ⬜ | Class/race/level, weapon picker, gear stats, buffs, target → derived stats panel |
 | 4 | Damage engine (analytical) | ⬜ | Per-ability hit/crit/avg damage; talent effects applied; live DPS for default rotations |
@@ -35,19 +35,21 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 - [x] Write PLAN, ARCHITECTURE, CALC_MODEL, DATA_SOURCES, OPEN_QUESTIONS, CLAUDE.md
 - [x] Owner decisions: website; default boss target + level-based reference mobs; level 60 first
 
-## Phase 1 — Data pipeline ⬜
-- [ ] `tools/pipeline/build_data.py`: raw CSV → `data/generated/<build>/`
-- [ ] Talent trees: specs, tiers, cols, gates, prereqs, choice nodes; exclude flag-8 nodes (configurable)
-- [ ] Per-rank talent values (legacy rank spells where counts match; `TraitDefinitionEffectPoints` curves otherwise) — Q7
-- [ ] Spells: every class ability rank + talent-granted spells + triggered/proc spells (follow `EffectTriggerSpell`)
-- [ ] Spell descriptions with `$s1`/`$d`/`$o1` tokens resolved per rank (tooltips)
-- [ ] Spell family masks for talent → spell matching
-- [ ] Weapons: min/max/speed/type/stats from ItemSparse + ItemDamage tables — Q8
-- [ ] Icons: resolve the icon source — Q9
-- [ ] Target presets from `ExpectedStat` (armor/HP per level) → `targets.json`
-- [ ] Manual data scaffolding: `data/manual/` (base stats, pet families, named targets, raid buffs)
-- [ ] Pipeline tests (node counts per spec, known talents present, Fireball r1 = 14–22, Sulfuras = 223–372)
-- [ ] `coverage.json`: each talent marked generic / special / unsupported
+## Phase 1 — Data pipeline ✅
+- [x] `tools/pipeline/build_data.py`: raw CSV → `data/generated/<build>/`
+- [x] Talent trees: specs, tiers, cols, gates, prereqs, choice nodes; exclude flag-8 nodes (configurable)
+- [x] Per-rank talent values from `TraitDefinitionEffectPoints` curves (one spell for all ranks; base points = max rank) — Q7 resolved
+- [x] Spells: every class ability rank + talent-granted spells + triggered/proc spells (follow `EffectTriggerSpell`)
+- [x] Spell descriptions with `$s1`/`$d`/`$o1` tokens resolved per rank (tooltips)
+- [x] Spell family masks for talent → spell matching
+- [x] Weapons: min/max/speed/type/stats from ItemSparse + ItemDamage tables, Classic Era fallback for missing items — Q8 resolved
+- [x] Icons: `ManifestInterfaceData` + Blizzard render CDN — Q9 resolved
+- [x] Target presets from `ExpectedStat` (armor/HP per level) → `targets.json`
+- [x] Manual data scaffolding: `data/manual/` (base stats, pet families, named targets, raid buffs)
+- [x] Pipeline tests (node counts per spec, known talents present, Fireball r1 = 14–22, Sulfuras = 223–372)
+- [x] `coverage.json`: each talent marked generic / special / unsupported
+
+Output: `data/generated/1.60.1.70888/` (447 talents, 2,300 spells, 2,721 weapons). Remaining work is data verification in game (OPEN_QUESTIONS Q16–Q27), not pipeline code.
 
 ## Phase 2 — Talent calculator (Classic UI parity) ⬜
 - [ ] Vite + React + TS scaffold, lint, Vitest, Playwright, GitHub Pages deploy workflow
