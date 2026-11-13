@@ -11,6 +11,7 @@ Status: data pipeline (Phase 1), talent calculator (Phase 2), character, gear, b
 | [ARCHITECTURE](docs/ARCHITECTURE.md) | Stack, layout, data contracts |
 | [CALC_MODEL](docs/CALC_MODEL.md) | Damage, hit and crit formulas |
 | [DATA_SOURCES](docs/DATA_SOURCES.md) | Where game data comes from; research findings |
+| [KNOWN_LIMITS](docs/KNOWN_LIMITS.md) | Missing features and simplifications, with fix ideas |
 | [OPEN_QUESTIONS](docs/OPEN_QUESTIONS.md) | Assumptions to verify in game |
 | [research/](docs/research/) | Generated dumps of every Forever talent tree and class spell |
 

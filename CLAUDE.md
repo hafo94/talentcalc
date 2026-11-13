@@ -6,6 +6,7 @@ calculator + DPS calculator. It is a static web app (Vite + React + TS web app; 
 ## Read first
 - `docs/PLAN.md`: phase tracker. Update it in the same commit as the work.
 - `docs/DATA_SOURCES.md`: where the data comes from and how the Forever talent system is encoded.
+- `docs/KNOWN_LIMITS.md`: missing features/simplifications (update when you fix or add one).
 - `docs/CALC_MODEL.md`: formulas. `docs/OPEN_QUESTIONS.md`: unverified assumptions.
 
 ## Critical facts
