@@ -5,7 +5,8 @@ import { weaponsFile } from "@/testkit/stats";
 import { spellFile } from "@/testkit/damage";
 import { EMPTY_BONUS } from "@/engine/stats";
 import { DEFAULT_CUSTOM, NO_WEAPON_IDS, sanitizeWeapons } from "./character";
-import { derive } from "./derived";
+import { derive, simInputFor } from "./derived";
+import { specRotation } from "./rotation";
 
 const ch = {
   raceId: 1,
@@ -80,5 +81,21 @@ describe("derive", () => {
       ranged: 0,
       ammo: 0,
     });
+  });
+  it("Phase 5: the editor's rotation drives the analytical DPS; simInputFor uses the same rotation", () => {
+    const calc = { tree: treeFor("mage"), ranks: {}, level: 60, spells: spellFile("mage") };
+    const frost = specRotation("mage", 2)!;
+    const d = derive(calc, ch, frost);
+    if (!d.ok || !d.damage) throw new Error("no damage");
+    expect(d.damage.rotation.id).toBe("mage-frost"); // no points: the default would be Arcane
+    const off = { ...frost, entries: frost.entries.map((e) => ({ ...e, off: true as const })) };
+    const none = derive(calc, ch, off);
+    expect(none.ok && none.damage?.result.rotation.dps).toBe(0);
+    const input = simInputFor(calc, ch, frost)!;
+    expect(input.rotation).toBe(frost);
+    expect(input.target).toMatchObject({ presetId: "boss", level: 63, armor: 3731 });
+    expect(simInputFor({ ...calc, spells: null }, ch, frost)).toBeNull();
+    const other = derive(calc, ch, specRotation("warrior", 1)!); // another class: ignored
+    expect(other.ok && other.damage?.rotation.class).toBe("mage");
   });
 });

@@ -1,6 +1,6 @@
 // TEST-ONLY helpers for the damage engine. Never import from app code.
 import rotationsJson from "@manual/rotations.json";
-import type { ClassSpellFile, ClassToken, RotationsFile, TargetPresetId } from "@/data/types";
+import type { ClassSpellFile, ClassToken, RotationEntry, RotationsFile, TargetPresetId } from "@/data/types";
 import { classesFile } from "@/data";
 import { evaluateDamage, pickRotation, prepareDamage } from "@/engine/rotation";
 import { EMPTY_BONUS, evaluateTarget, presetTarget } from "@/engine/stats";
@@ -19,6 +19,7 @@ export const spellFile = (token: ClassToken): ClassSpellFile => {
 
 export interface DamageScenario extends Scenario {
   rotation?: string; // rotation id; default: pickRotation by spent points
+  entries?: RotationEntry[]; // Phase 5: replaces the rotation's entries
 }
 
 /** Full damage evaluation of a scenario against one target preset (default boss). */
@@ -28,9 +29,10 @@ export function runDamage(s: DamageScenario, preset: TargetPresetId = s.target ?
   const points = [0, 1, 2].map((i) =>
     talents.filter((t) => tree.nodes.get(t.talent.nodeId)!.specIndex === i).reduce((a, t) => a + t.rank, 0),
   );
-  const rotation = s.rotation
+  const base = s.rotation
     ? rotations.rotations.find((r) => r.id === s.rotation)!
     : pickRotation(rotations, s.classToken, points);
+  const rotation = s.entries ? { ...base, entries: s.entries } : base;
   const info = classesFile.classes.find((c) => c.token === s.classToken)!;
   const p = prepareDamage({
     classToken: s.classToken,

@@ -41,3 +41,15 @@ test("mobile: Damage tab shows the damage panel", async ({ page }) => {
   await expect(page.getByTestId("damage-panel")).toBeVisible();
   await expect(page.getByTestId("dps-total")).not.toHaveText("");
 });
+
+test("mobile: Sim tab shows the rotation editor and runs the simulation", async ({ page }) => {
+  await blockRemoteImages(page);
+  await page.goto("./");
+  await page.getByRole("button", { name: "Mage", exact: true }).click();
+  await page.getByRole("tab", { name: "Sim" }).click();
+  await expect(page.getByTestId("rotation-editor")).toBeVisible();
+  await page.getByTestId("sim-iterations").fill("100");
+  await page.getByTestId("sim-run").click();
+  await expect(page.getByTestId("sim-dps")).not.toHaveText("");
+  expect(await page.evaluate<number>("document.documentElement.scrollWidth")).toBeLessThanOrEqual(393);
+});
