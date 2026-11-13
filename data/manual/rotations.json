@@ -41,10 +41,11 @@
     { "id": "paladin-retribution", "class": "paladin", "spec": 2, "label": "Retribution: Seal of Command, Holy Strike, Judgement", "role": "dps", "tier": 1,
       "selfBuffs": ["Seal of Command"], "melee": true, "autoShot": false,
       "entries": [
+        { "ability": "Hammer of Wrath", "kind": "cooldown" },
         { "ability": "Holy Strike", "kind": "cooldown" },
         { "ability": "Judgement", "kind": "cooldown" }
       ],
-      "notes": ["Seal of Righteousness, Consecration, Exorcism (Undead/Demon only) and Hammer of Wrath (ranged attack table in the data, Q66) are not modeled."] },
+      "notes": ["Hammer of Wrath is an execute-phase (simulation only) entry; it needs no ranged weapon (Q66). Seal of Righteousness, Consecration and Exorcism (Undead/Demon only) are not modeled."] },
 
     { "id": "hunter-beast-mastery", "class": "hunter", "spec": 0, "label": "Ranged: Aimed, Multi, Arcane Shot, Serpent Sting", "role": "dps", "tier": 2,
       "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
@@ -131,12 +132,13 @@
     { "id": "priest-shadow", "class": "priest", "spec": 2, "label": "Shadow: SW:P, Devouring Plague, Mind Blast, Mind Flay", "role": "dps", "tier": 1,
       "selfBuffs": ["Shadowform"], "melee": false, "autoShot": false,
       "entries": [
+        { "ability": "Power Infusion", "kind": "burst" },
         { "ability": "Shadow Word: Pain", "kind": "dot" },
         { "ability": "Devouring Plague", "kind": "dot" },
         { "ability": "Mind Blast", "kind": "cooldown" },
         { "ability": "Mind Flay", "kind": "filler" }
       ],
-      "notes": ["Shadow Word: Death and Vampiric Embrace are not in the Phase 4 rotation."] },
+      "notes": ["Power Infusion (Discipline talent) is a simulation-only cooldown, cast on yourself (Q67). Shadow Word: Death and Vampiric Embrace are not in the rotation."] },
 
     { "id": "shaman-elemental", "class": "shaman", "spec": 0, "label": "Elemental: Flame Shock, Chain Lightning, Lightning Bolt", "role": "dps", "tier": 1,
       "selfBuffs": [], "melee": false, "autoShot": false,

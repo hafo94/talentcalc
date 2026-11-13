@@ -71,6 +71,19 @@ function kindOf(spell: Spell): AttackKind {
   return spell.defenseType === 2 ? "melee" : spell.defenseType === 3 ? "ranged" : "spell";
 }
 
+/**
+ * L9: a ranged-type spell (DefenseType 3) needs a ranged weapon only when it deals weapon damage or has a
+ * SpellEquippedItems requirement. Hammer of Wrath and Summon Hawk have neither: they roll on the ranged table when a
+ * ranged weapon is equipped, else on the main-hand table, and cannot be dodged. [VERIFY Q66]
+ */
+export function weaponlessRanged(spell: Spell): boolean {
+  return (
+    kindOf(spell) === "ranged" &&
+    spell.equipped === null &&
+    !spell.effects.some((e) => WEAPON_EFFECTS.has(e.effect))
+  );
+}
+
 /** Weapon numbers of a slot; Cat Form replaces the main hand with the form's claws (CAT_FORM). */
 interface WeaponInfo {
   name: string;
@@ -298,7 +311,11 @@ function chancesFor(
   let c: RollChances;
   if (kind === "spell") c = spellChances(ctx.view, hitMod, critMod);
   else {
-    const o = ctx.view[slot ?? (kind === "ranged" ? "ranged" : "mainHand")];
+    const o = slot
+      ? ctx.view[slot]
+      : kind === "ranged"
+        ? (ctx.view.ranged ?? ctx.view.mainHand)
+        : ctx.view.mainHand;
     if (!o)
       return kind === "ranged" ? "requires a bow, gun, crossbow or thrown weapon" : "requires a melee weapon";
     c = specialChances(o, kind === "ranged", hitMod, critMod);
@@ -471,7 +488,9 @@ export function evaluateAbility(
   const kind = kindOf(spell);
   const script = SCRIPTS[key];
   const slot: AttackSlot | null =
-    kind === "spell" ? null : (script?.slot ?? (kind === "ranged" ? "ranged" : "mainHand"));
+    kind === "spell" || weaponlessRanged(spell)
+      ? null
+      : (script?.slot ?? (kind === "ranged" ? "ranged" : "mainHand"));
   if (slot && ctx.form !== "cat") {
     if (!weaponInfo(ctx, slot))
       return {

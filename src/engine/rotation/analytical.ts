@@ -90,7 +90,12 @@ export function runRotation(input: RotationInput): RotationResult {
   const generates = (e: RotationInput["evals"][number]) =>
     limited && e.ability.available && e.ability.power === power && e.ability.cost - e.ability.energize < 0;
   const ordered = [...input.evals.filter(generates), ...input.evals.filter((e) => !generates(e))];
-  for (const { entry, ability } of ordered) {
+  // Finishers that can spend combo points (L8: a buff/DoT finisher above one of them is refreshed late).
+  const spenders = input.evals.flatMap((e, i) =>
+    e.entry.kind === "finisher" && e.ability.available && !simOnlyReason(e.entry) ? [i] : [],
+  );
+  for (const ev of ordered) {
+    const { entry, ability } = ev;
     if (entry.kind === "nextSwing") continue;
     const simOnly = simOnlyReason(entry);
     if (simOnly) {
@@ -140,7 +145,12 @@ export function runRotation(input: RotationInput): RotationResult {
       t += k * builder.timeCost;
       cost += k * (builder.power === power && limited ? builder.cost - builder.energize : 0);
       if (entry.buff || a.expectedPeriodic > 0) {
-        cap = a.durationSec > 0 ? MINUTE / a.durationSec : Infinity;
+        // L8: while the aura is up a lower-priority finisher spends the combo points, so the aura is refreshed at
+        // the first finisher point after it has fallen off: half a finisher cycle later on average.
+        const cycle = Math.max(t, cost > 0 && resource > 0 ? (MINUTE * cost) / resource : 0);
+        const index = input.evals.indexOf(ev);
+        const late = spenders.some((j) => j > index) && cycle < a.durationSec ? cycle / 2 : 0;
+        cap = a.durationSec > 0 ? MINUTE / (a.durationSec + late) : Infinity;
         limit = "duration";
       } else cap = Infinity;
     }

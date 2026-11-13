@@ -11,7 +11,7 @@ import {
   type WhiteResult,
 } from "@/engine/abilities";
 import { WINDFURY } from "@/engine/combat";
-import { evaluateDamage, prepareDamage, type Prepared } from "@/engine/rotation";
+import { evaluateDamage, prepareDamage, selfApplied, type Prepared } from "@/engine/rotation";
 import { evaluateTarget, mapAura, type RankedTalent } from "@/engine/stats";
 import { SPIRIT_REGEN, REGEN_TICK_SEC } from "./constants";
 import { activeProcs, SIM_PROC_TALENTS, type ActiveProcs } from "./procs";
@@ -23,7 +23,6 @@ const TRIGGER_SPELL = 64;
 const AURA_PERIODIC_ENERGIZE = 24;
 const AURA_POWER_REGEN_PCT = 110;
 const AURA_REGEN_WHILE_CASTING = 134;
-const TARGET_CASTER = 1;
 const POWER: Readonly<Record<number, PowerKind>> = { 0: "mana", 1: "rage", 2: "focus", 3: "energy" };
 
 /** A player buff the simulator tracks: a burst cooldown, a buff finisher (Slice and Dice) or a proc (Clearcasting). */
@@ -93,7 +92,7 @@ export interface SimModel {
 /** Caster auras of a buff spell that change ability evaluation (same mapper as the Phase 4 self-buffs). */
 function isStateful(spell: Spell): boolean {
   return spell.effects.some((e) => {
-    if (e.effect !== APPLY_AURA || (e.targets && e.targets[0] !== TARGET_CASTER)) return false;
+    if (e.effect !== APPLY_AURA || !selfApplied(e)) return false;
     if (e.aura === 107 || e.aura === 108) return true;
     const m = mapAura(e, e.base);
     return m.kind === "stat" || m.kind === "damageDone";

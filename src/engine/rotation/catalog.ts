@@ -7,6 +7,7 @@ import type {
   Spell,
   Talent,
 } from "@/data/types";
+import { selfApplied } from "./selfBuffs";
 
 /** One ability the rotation editor offers. `id` is its stable URL key (section 5.2). */
 export interface CatalogAbility {
@@ -24,7 +25,6 @@ const PERIODIC_TRIGGER = 23;
 /** Caster auras of a cooldown that change damage or resources (same set the simulator applies, section 4.3). */
 const BUFF_AURAS = new Set([65, 79, 107, 108, 110, 134, 140, 290, 319, 342]);
 const COMBO_POINTS = 4;
-const TARGET_CASTER = 1;
 
 const directDamage = (s: Spell) => s.effects.some((e) => WEAPON_OR_SCHOOL_DAMAGE.has(e.effect));
 /** Deals damage itself, over time, or through a triggered spell (Mutilate strikes, Arcane Missiles). */
@@ -42,7 +42,7 @@ function burst(s: Spell): boolean {
   if (s.cooldownMs <= 0) return false;
   return s.effects.some(
     (e) =>
-      (e.effect === 6 && BUFF_AURAS.has(e.aura) && (!e.targets || e.targets[0] === TARGET_CASTER)) ||
+      (e.effect === 6 && BUFF_AURAS.has(e.aura) && selfApplied(e)) ||
       (e.effect === 30 && (e.misc[0] === 1 || e.misc[0] === 3)),
   );
 }

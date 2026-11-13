@@ -3,6 +3,12 @@ import { learn, type Spellbook } from "@/engine/abilities";
 import { mapAura, type RankedTalent, type SourcedEffect } from "@/engine/stats";
 
 const TARGET_CASTER = 1;
+/** ImplicitTarget 21 TARGET_UNIT_TARGET_ALLY: a single-target ally buff (Power Infusion) can be cast on yourself (L10). */
+const TARGET_ALLY = 21;
+/** The caster gets this aura when it casts the spell on itself: caster auras, and ally-target auras (self-cast). */
+export function selfApplied(e: { targets?: [number, number] }): boolean {
+  return !e.targets || e.targets[0] === TARGET_CASTER || e.targets[0] === TARGET_ALLY;
+}
 /** Hunter's Mark: "increasing the Ranged Attack Power of all attackers against that target" (target aura). [VERIFY] */
 const AURA_RANGED_AP_ATTACKER_BONUS = 127;
 
@@ -48,7 +54,7 @@ export function selfBuffEffects(spells: readonly Spell[]): SourcedEffect[] {
         out.push({ key: "rangedAttackPower", value: e.base, label: s.name, kind: "buff" });
         continue;
       }
-      if (e.targets && e.targets[0] !== TARGET_CASTER) continue;
+      if (!selfApplied(e)) continue;
       const m = mapAura(e, e.base);
       if (m.kind === "stat" || m.kind === "damageDone")
         for (const se of m.effects) out.push({ ...se, label: s.name, kind: "buff" });

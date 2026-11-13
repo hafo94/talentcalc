@@ -231,8 +231,7 @@ abilities (Death Wish, Arcane Power, Combustion, Rapid Fire, Blade Flurry, Adren
 - Constants in `src/engine/sim/constants.ts` are tagged `[VERIFY]` (Q59-Q65).
 
 Divergences simulation vs analytical (1000 x 180 s, max talents, boss): within about 3% for filler casters, DoT rotations, Subtlety/Assassination, feral, Retribution and
-basic warrior; simulation higher for burst cooldowns and the execute phase (warriors +27% / +59%, arcane +4%) and Combat rogue (+15%: the analytical energy model buys no
-Eviscerate); simulation lower for hunters (-8% to -9%: Aimed Shot restarts Auto Shot), cooldowns drifting behind long casts (Mind Blast, Fire Blast) and the unfinished last
+basic warrior; simulation higher for burst cooldowns and the execute phase (warriors +27% / +59%, arcane +4%) and Hammer of Wrath in the Retribution execute phase (the Combat rogue gap of +15% was fixed by the L8 quick fix: now +0.4%); simulation lower for hunters (-8% to -9%: Aimed Shot restarts Auto Shot), cooldowns drifting behind long casts (Mind Blast, Fire Blast) and the unfinished last
 cast. Cross-check builds C1-C8 (Frostbolt, SW:P/Mind Blast/Smite, Heroic Strike, Retribution, Destruction, Balance, feral cat, Subtlety) agree within 3%.
 With mana modeled every caster without gear mana goes out of mana (gear v2 is Phase 7).
 

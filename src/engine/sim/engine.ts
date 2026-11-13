@@ -405,7 +405,7 @@ export class Fight implements ConditionState {
     return a.castTime;
   }
   /** Usability of entry i now, ignoring the GCD (section 4.4 "implicit rules"). */
-  private usable(i: number, st: StateEval): AbilityResult | null {
+  private usable(i: number, st: StateEval, ignoreCost = false): AbilityResult | null {
     const se = this.model.entries[i]!;
     const e = se.entry;
     if (!se.talentOk || se.skip) return null;
@@ -437,7 +437,7 @@ export class Fight implements ConditionState {
       default:
         break;
     }
-    if (!this.affordable(a)) return null;
+    if (!ignoreCost && !this.affordable(a)) return null;
     if (!conditionsHold(e, this, i)) return null;
     return a;
   }
@@ -451,13 +451,19 @@ export class Fight implements ConditionState {
       let picked = -1;
       let pickedA: AbilityResult | null = null;
       manaBlocked = false;
+      let pooling = false;
       for (let i = 0; i < this.n; i++) {
         const raw = this.evalFor(i, st);
-        const onGcd = raw.available && raw.gcd > 0 && this.model.entries[i]!.entry.kind !== "nextSwing";
+        const kind = this.model.entries[i]!.entry.kind;
+        const onGcd = raw.available && raw.gcd > 0 && kind !== "nextSwing";
         if (onGcd && this.gcdUntil > this.t + EPS) continue;
+        // L8: a finisher that waits for its resource keeps the combo points (no cheaper finisher steals them)
+        const pools = kind === "finisher";
+        if (pooling && pools) continue;
         const a = this.usable(i, st);
         if (!a) {
           if (raw.available && this.model.power === "mana" && !this.affordable(raw)) manaBlocked = true;
+          if (pools && this.usable(i, st, true)) pooling = true;
           continue;
         }
         picked = i;

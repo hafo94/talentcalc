@@ -167,6 +167,27 @@ describe("golden: weapon attacks (special table: 8% miss, 6.5% dodge, crit -2.4%
     near(r.ability("Holy Strike").hit, 242.56428571428572);
     near(r.ability("Holy Strike").expected, 212.680972125);
   });
+  it("G15 Hammer of Wrath r3 (Phase 6, L9): 498 + 0.429 x 200 holy, main-hand table without dodge, no ranged weapon", () => {
+    const r = runDamage({
+      classToken: "paladin",
+      race: "HUMAN",
+      weapons: REAPER,
+      bonus: { holySpellPower: 200 },
+      rotation: "paladin-retribution",
+    });
+    const a = r.ability("Hammer of Wrath");
+    expect(a.spell.id).toBe(24239);
+    expect(a.slot).toBeNull();
+    near(a.hit, 583.8);
+    near(a.crit, 1167.6);
+    near(a.hitChance, 92);
+    near(a.critChance, 2.55);
+    near(a.expected, 550.791948);
+    expect(r.result.rotation.skipped).toContainEqual({
+      ability: "Hammer of Wrath",
+      reason: "execute phase: simulation only",
+    });
+  });
 });
 
 describe("golden: rotations", () => {
