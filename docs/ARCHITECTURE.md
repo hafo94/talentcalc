@@ -44,7 +44,7 @@ talentcalc/
 │  │  ├─ talents/            tree rules (points, tiers, prereqs) + effect mapping; special/ handlers
 │  │  ├─ combat/             outcome tables, armor, resist, damage formulas
 │  │  ├─ abilities/          per-ability evaluators (generic + class overrides)
-│  │  ├─ pets/
+│  │  ├─ pets/               Phase 6: resolvePet, pet stats, rotation, analytical evaluation
 │  │  ├─ rotation/           priority lists, analytical model
 │  │  └─ sim/                event-driven simulator (worker entry)
 │  ├─ state/                 Zustand store, URL (de)serialization
@@ -71,6 +71,7 @@ Pipeline output lives in `data/generated/<build>/` (committed). The authoritativ
 | `weapons.json` | weapons (min/max/speed/dps/stats; `source` is `forever` or `classic_era`) + ammo |
 | `targets.json` | `ExpectedStat` levels 1..63, the five target presets, and `byPlayerLevel` 1..60 |
 | `pet-families.json` | `CreatureFamily` list |
+| `pets/<owner>.json` | Phase 6 (pipeline v4), `hunter` and `warlock`: `pets[]` (`id` = CreatureFamily.ID, name, icon, skillLine, exotic, `abilities[]` rank chains, `passives[]` spell ids) and `spells[]` (every ability rank, passive, trigger closure and the manual spell ids, `Spell` records like `spells/<class>.json`). Lazy chunk per owner. `manifest.counts.pets` 24, `petSpells` 229; `report.petsSkipped` |
 | `coverage.json` | per-talent `generic` / `special` / `unsupported` classification + summary |
 | `report.json` | pipeline decisions and warnings (hidden nodes, position fixes, curve/base mismatches, filters, unresolved tokens) |
 
@@ -114,7 +115,7 @@ Phase 3 additions: `Talent.effects[]` (`index, effect, aura, misc, mask, targets
 
 **Manual data** (`data/manual/`, alias `@manual`, static imports): `rotations.json` (Phase 4: 27 default priority rotations, tiers 1-3), `base-stats.json` (level 60 class bases, race offsets, AP/crit/health/mana
 conversions), `buffs.json` (stable URL `code`, exclusive `group`, `effects[].src` = the `SpellEffect` column the value was read from, `presets`),
-`racials.json`. The pipeline checks every `src` against `SpellEffect` and reports mismatches in `report.manualValidation`.
+`racials.json`, `pets.json` (Phase 6: `level`, `owners.{hunter,warlock}` = `{ base, scaling { from, attackPowerPct, spellPowerPct, inheritHit }, focus, noMelee }`, `sacrifice[]`, `masterDemonologist[]`, `soulLink`; all `[VERIFY]`). The pipeline checks every `src` against `SpellEffect` and reports mismatches in `report.manualValidation`.
 
 **Data loading:** `weapons.json` (~107 KB gzip) is a lazy chunk, loaded in the background after the first class is selected and awaited only
 when a link contains weapons. `targets.json` and the manual files are static imports.
@@ -166,6 +167,8 @@ tag-length-value records, tags ascending, default records omitted, unknown tags 
 Golden: `#v2.warrior.60.0.nd0z.AgXwYwAAAAMJAMgBDugHENgEBA8BAgMEBQYHCAkKCww8Pj8` (Human Warrior, Cruelty 5/5, Arcanite Reaper, bonus stats, raid buffs
 + Sunder, Faerie Fire, CoR). See `src/state/charCode.ts` and `charCode.test.ts`.
 
+**Pet record (Phase 6, tag 8, still v2):** `[family, sacrifice, scaling ? 0 : 1]` (CreatureFamily ids, 0 = none), omitted when it is the default (no pet, scaling on). Goldens (independent Python encoder): `#v2.hunter.60.0..CAMCAAA` (Cat), `#v2.warlock.60.0..CAMRFwE` (Succubus, Imp sacrificed, scaling off), `#v2.hunter.60.0..BwasAtAPKgAIAxsAAA` (tag 7 + Wind Serpent).
+
 **Phase 5 records (still v2, no v3):** tag 6 rotation (`spec [abilityId, head, [cp], [everySec x 10], [n, (type x 2 + flag, operand)...]]...`, written only after an edit
 or a "Based on" choice; abilities are the first spell id of their rank chain or the talent spell id) and tag 7 simulation (`fightSec, iterations, seed, unlimitedMana`,
 omitted when 180, 1000, 1, 1). Older decoders skip unknown tags; v1/v2 links decode unchanged. Goldens (independent Python encoder):
@@ -191,3 +194,17 @@ names missing on both CDNs.
 3. **Every constant is cited and tagged** `[VERIFY]` until it is confirmed in Forever.
 4. **The build is the URL.** Class, talent ranks, gear, buffs, rotation (Phase 5: tag 6/7) and target are serialized compactly.
 5. **Build pinning.** The app shows which Forever build its data came from.
+
+## Phase 6: pets
+
+```
+tools/pipeline/pets.py               build_pets: pets/<owner>.json
+data/manual/pets.json                base stats, owner scaling, focus, noMelee, sacrifice / Master Demonologist refs ([VERIFY])
+src/engine/pets/{constants,types,setup,stats,rotation,evaluate}.ts   resolvePet, petAuras/computePetStats, petRotation, evaluatePet
+src/engine/sim/petModel.ts           buildPetModel: the pet as a FightModel (same Fight class, own RNG stream)
+src/state/{character,charCode,store,derived}.ts   pet choice, URL tag 8, pets file loading, owner + pet DPS
+src/ui/character/PetPanel.tsx, results/DamagePanel.tsx, sim/SimPanel.tsx
+```
+
+Import direction: `stats` <- `combat` <- `abilities` <- `talents/special` <- `rotation` <- `pets` <- `sim`. `prepareDamage` receives the owner effects as plain
+data (`petOwnerEffects`, `petActive`) computed by the caller with `resolvePet`, so `rotation` never imports `pets`. `PET_STREAM` must stay fixed.

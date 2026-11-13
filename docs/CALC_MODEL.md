@@ -180,14 +180,24 @@ A coverage report lists every talent as `generic`, `special` or `unsupported`, s
 
 ## 5. Pets
 
-| Pet | Model [VERIFY Forever scaling] |
-|---|---|
-| Hunter pets | Level-60 base AP and damage by family; family damage modifier (manual table); talents (Unleashed Fury, Ferocity, Bestial Discipline…); pet crit/hit vs boss; Focus-limited specials (Claw/Bite) |
-| Warlock demons | Imp (Firebolt spell model), Succubus (melee + Lash), Felhunter, Felguard if present; Demonic Sacrifice/Master Demonologist modifiers |
-| Shaman totems, Mage Water Elemental (if present in Forever) | spell model, fixed duration |
+Data: `pets/<owner>.json` (pipeline v4: abilities, family passives, passives modified by owner talents) and `data/manual/pets.json`
+(`[VERIFY]`: base stats, owner scaling, focus, sacrifice / Master Demonologist / Soul Link spell references).
 
-Classic pets do not scale with owner stats, but Season of Discovery and later systems do. Whether Forever's do is
-an **open question**, so the scaling factor is a single configurable constant per pet type.
+- **Stats** (`src/engine/pets/stats.ts`): the Phase 3 `computeCharacter` with a pet base-stat table (class key = the owner, race `PET`): Str 136, Agi 102 ...,
+  AP = 2 Str - 20 = 252, melee 45-75 per 2.0 s, crit 5% melee and spell, weapon skill 300; the Imp has no melee (`noMelee`). Every number is a `Stat` with parts.
+- **Owner scaling (Q5, toggle, on by default)**: hunter pets get 22% of the hunter's ranged attack power as AP and 12.8% as spell power; demons 57% / 15% of the
+  warlock's max(fire, shadow) spell power; pets inherit the owner's hit (hunter: ranged hit, warlock: spell hit). Crit and haste are not inherited
+  (TBC rule, Q70). Off = base stats only. All `[VERIFY]` (Q69-Q71).
+- **Auras**: the family passive (aura 79, e.g. Cat +10%), the passives that owner talents modify through spell masks (Unleashed Fury, Ferocity, Bestial
+  Discipline, Unholy Power, Improved Imp, Improved Sayaad) and active pet buffs, valued with the owner's talent mods.
+- **Outcome tables**: the pet is evaluated with the Phase 4 engine on its own tables (8% miss, 6.5% dodge, 40% glancing at 65%, 2.6% crit vs a level-63 boss;
+  spells 17% miss, 6% resist).
+- **Rotation** (`petRotation`): from the data, cooldown and DoT abilities longest cooldown first, then the filler (Bite > Claw, Lightning Breath, Firebolt,
+  Lash of Pain). Focus 6/s (+20% Bestial Discipline), max 100. Frenzy is an analytical uptime in pass 2 (`30 x (1 - exp(-crits x chance x 8 / 60))` melee haste).
+- **Owner effects** (`resolvePet`): Focused Fire (+2% both), Master Demonologist (the active demon's aura at the talent rank value, both), Soul Link (+3% both),
+  Demonic Knowledge (spell power from the level, both). Demonic Sacrifice (owner only) needs the talent and is cancelled by a summoned demon unless Demonic Pact
+  is taken and the demon differs. Lone Wolf turns off with a pet. Bestial Wrath (+50% pet damage, 18 s) is a pet burst: simulation only.
+- Not modeled: other summons (L22), pet raid buffs (L24), Doomguard, Felguard.
 
 ## 6. Rotation and DPS
 
@@ -205,7 +215,7 @@ debuff missing, target HP < 20%…). Each class/spec ships default rotations.
 **Analytical model (`src/engine/rotation`, Phase 4):** one rotation per spec (`data/manual/rotations.json`), the spec with the most points (ties: the first
 dps spec). Per minute, entries in priority order take `n = min(cooldown/duration cap, time left / time per cast, resource left / cost)` casts; finishers
 are bought as cycles with their builder casts; on-next-swing attacks (Heroic Strike) use the leftover resource and replace main-hand swings. Rage comes from
-white damage (`7.5 x dmg / c(L)`, Q51), energy is 10/s, mana never limits (mana/s and time to OOM are reported). A DoT recast before it expires is clipped
+white damage (`7.5 x dmg / c(L)`, Q51), energy is 10/s, mana never limits (mana/s and time to OOM are reported). A buff or DoT finisher with a lower-priority finisher below it (Slice and Dice above Eviscerate) is refreshed every `duration + cycle/2` instead of `duration` (L8: the lower finisher spends the combo points while the aura is up). A DoT recast before it expires is clipped
 (`min(casts, 60 / duration) x full DoT`). Procs: Seal of Command 7 PPM, Windfury Weapon (Q54). Two passes: pass 1 gives casts and crits per minute, the talent
 handlers turn them into uptimes (Flurry, Improved Shadow Bolt, Deep Wounds, extra rage), pass 2 recomputes. Self-buffs (Shadowform, Aspect of the Hawk,
 Hunter's Mark, Seal of Command, Slice and Dice) have 100% uptime. Tiers: 1 fully modeled, 2 generic model (some spec mechanics missing), 3 basic rotation for
@@ -226,14 +236,20 @@ abilities (Death Wish, Arcane Power, Combustion, Rapid Fire, Blade Flurry, Adren
 - *Procs sampled* (15 talents: Ignite rolling, Flurry, Improved Shadow Bolt, Nightfall, Deep Wounds, Unbridled Wrath, Anger Management, Seal Fate, Ruthlessness,
   Weaponmaster/Hack and Slash, Arcane Concentration, Elemental Focus, Combustion) plus Seal of Command (7 PPM) and Windfury Weapon. Other handlers stay analytical
   averages and are listed as such in the results.
+- *Finisher pooling (L8)*: a finisher blocked only by its resource keeps the combo points; lower finishers are skipped until it is affordable.
+- *Pets*: the pet is its own actor (a `FightModel` run by the same `Fight` class with its own seeded RNG stream `petIterationSeed`), focus like energy, strict priority (it waits for a ready higher focus entry), Frenzy and Bestial Wrath sampled.
 - *Execute phase*: target health falls linearly 100% to 0%; Execute/Hammer of Wrath usable below 20%; Execute adds 15 damage per extra rage and spends all rage (Q60).
 - *Auto Shot*: waits for casts; a ranged cast (Aimed Shot) restarts its timer (Q63).
 - Constants in `src/engine/sim/constants.ts` are tagged `[VERIFY]` (Q59-Q65).
 
-Divergences simulation vs analytical (1000 x 180 s, max talents, boss): within about 3% for filler casters, DoT rotations, Subtlety/Assassination, feral, Retribution and
-basic warrior; simulation higher for burst cooldowns and the execute phase (warriors +27% / +59%, arcane +4%) and Hammer of Wrath in the Retribution execute phase (the Combat rogue gap of +15% was fixed by the L8 quick fix: now +0.4%); simulation lower for hunters (-8% to -9%: Aimed Shot restarts Auto Shot), cooldowns drifting behind long casts (Mind Blast, Fire Blast) and the unfinished last
-cast. Cross-check builds C1-C8 (Frostbolt, SW:P/Mind Blast/Smite, Heroic Strike, Retribution, Destruction, Balance, feral cat, Subtlety) agree within 3%.
-With mana modeled every caster without gear mana goes out of mana (gear v2 is Phase 7).
+Divergences simulation vs analytical (1000 x 180 s, max talents, +300 spell power, boss; "total" includes the pet): within about 3% for filler casters, DoT rotations,
+Subtlety/Assassination (-2.3%), Combat rogue (+0.4% after the L8 fix), feral, basic warrior and Demonology/Destruction/Affliction warlocks with a pet (-1.3% to +0.5%);
+simulation higher for burst cooldowns and the execute phase (warriors +27% / +59%, arcane +4%, Retribution +17.8% from Hammer of Wrath); simulation lower for hunters
+(-3% Beast Mastery, -6.7% Survival, -8.1% Marksmanship whose Lone Wolf turns off with a pet; Aimed Shot restarts Auto Shot, Q63), cooldowns drifting behind long casts
+and the unfinished last cast. Pet DPS agrees within about 1% except Bestial Wrath (simulation only, +10-12% pet DPS in 180 s). Demonology without a pet is 191.9, with
+Demonic Sacrifice of the Imp 220.7, with an active Imp 288.0. Cross-check builds C1-C10 and pet builds P-C1..P-C3 agree within 3%.
+With mana modeled every caster without gear mana goes out of mana (gear v2 is Phase 7). The finding that Slice and Dice (+30% haste) is worth less than the Eviscerates its
+energy buys (148.6 vs 134.4 DPS) is real with Forever's numbers; the default keeps the Classic-style priority.
 
 **Stat weights:** rerun with +X of each stat. DPS per stat point shows the "crit/hit increase" value of talents and gear.
 

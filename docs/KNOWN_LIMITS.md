@@ -40,11 +40,20 @@ Status: ⬜ open · 🟨 planned (phase noted) · ✅ fixed (note the commit or 
 | L17 | Mana-regen model (spirit, five-second rule) and Execute rage scaling unverified (Q59–Q68) | Caster and Warrior sim drift | In-game checks | ⬜ |
 | L18 | No movement, no multi-target, single boss only | Raid-like fights not modeled | Out of scope for v1 | ⬜ |
 
-## Pets (before Phase 6)
+## Pets (Phase 6)
 
 | # | Limit | Effect | Fix idea | Status |
 |---|---|---|---|---|
-| L19 | Pet damage is not included in DPS | Hunter/Warlock DPS too low | Phase 6 | 🟨 Phase 6 |
+| L19 | Pet damage is not included in DPS | Hunter/Warlock DPS too low | Phase 6 | ✅ Phase 6 |
+| L22 | Other summons are not modeled: Searing/Magma Totem, Shadowfiend, Summon Hawk's 18 s assault, Inferno, Doomguard; Felguard has no summon spell in Forever | Totem, Shadowfiend and Infernal damage missing | Model summons as timed pet actors | ⬜ |
+| L23 | Pet base stats, focus regeneration and owner scaling are Classic/TBC values (Q5, Q69-Q71) | Pet DPS may be off by up to about 30% | Pet character sheet checks in game | ⬜ |
+| L24 | Pets get no raid buffs or consumables; pet mana is unlimited; pet buffs to the owner (Furious Howl, Blood Pact) and Intimidation are not applied; pet abilities have no attack power scaling (Q72) | Pet DPS slightly low | Pet buff list, AP coefficient test | ⬜ |
+
+## Damage engine, later findings
+
+| # | Limit | Effect | Fix idea | Status |
+|---|---|---|---|---|
+| L25 | Analytical buff finishers keep 100% aura uptime although their casts include the refresh gap (Combat Slice and Dice has about 70% uptime) | Within 3% of the simulation | Model uptime from the refresh gap | ⬜ |
 
 ## UI
 

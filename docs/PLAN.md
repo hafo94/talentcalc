@@ -19,7 +19,7 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 | 3 | Character & gear model | ✅ | Class/race/level, weapon picker, gear stats, buffs, target → derived stats panel |
 | 4 | Damage engine (analytical) | ✅ | Per-ability hit/crit/avg damage; talent effects applied; live DPS for default rotations |
 | 5 | Rotations & simulation | ✅ | Rotation editor, Web Worker sim, DPS ± stdev, damage breakdown |
-| 6 | Pets | ⬜ | Hunter + Warlock pet damage included in total DPS |
+| 6 | Pets | ✅ | Hunter + Warlock pet damage included in total DPS |
 | 7 | Insight, levels & polish | ⬜ | Talent-impact tooltips, stat weights, level selector with level-based targets, compare builds, mobile, deploy |
 
 ---
@@ -103,11 +103,14 @@ manual `rotations.json`. 50 pipeline tests, 220 Vitest tests, 24 Playwright test
 
 Output: `src/engine/sim`, `src/engine/rotation/{conditions,catalog}`, `src/state/{rotation,sim}`, `src/ui/{rotation,sim}`, migrated `rotations.json`. 50 pipeline tests, 261 Vitest tests, 28 Playwright tests. Open items: Q59-Q68.
 
-## Phase 6 — Pets ⬜
-- [ ] Hunter pets: family picker, family modifiers, BM talents, pet abilities, focus model
-- [ ] Warlock demons: Imp, Succubus, Felhunter (+ others found in data); Demonology talents; Demonic Sacrifice
-- [ ] Other summons in Forever (totems, Water Elemental, Feral Spirit-like if present)
-- [ ] Pet damage included in total DPS and the breakdown — Q5 scaling
+## Phase 6 — Pets ✅
+- [x] Quick fixes L8–L10 (energy finishers, Hammer of Wrath, Power Infusion)
+- [x] Hunter pets: 19 families from the data (family passives, BM talents through pet passives: Unleashed Fury, Ferocity, Frenzy, Bestial Discipline, Focused Fire, Bestial Wrath), focus model
+- [x] Warlock demons: Imp, Voidwalker, Succubus, Incubus, Felhunter; Master Demonologist, Soul Link, Demonic Knowledge, Demonic Sacrifice + Demonic Pact; Felguard/Doomguard not summonable
+- [x] Other summons listed as not modeled (KNOWN_LIMITS L22)
+- [x] Pet damage in the total DPS, breakdown, reference table and simulator (pet as its own actor); owner scaling toggle (Q5); URL tag 8
+
+Output: pipeline v4 (`pets/<owner>.json`), `src/engine/pets`, `src/engine/sim/petModel.ts`, Pet panel, URL tag 8. 53 pipeline tests, 287 Vitest tests, 31 Playwright tests. Open items: Q69–Q75.
 
 ## Phase 7 — Insight & polish ⬜
 - [ ] Talent impact: hover shows ΔDPS, Δhit and Δcrit of the next and previous point

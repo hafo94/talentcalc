@@ -214,9 +214,14 @@ player level 1..60, the five presets (boss +3, elite +2, same level, low-armor b
 
 ## Pets
 
-`CreatureFamily` (27 rows) has the families. Hunter pet damage modifiers and pet stat formulas
-are not in client data. They will be hand-entered constants in `data/manual/pets.json`,
-with sources cited.
+Forever's client data holds most of a pet. Verified on build 70888 (details in `docs/phase6-implementation-plan.md` section 1):
+- Each `CreatureFamily` (27 rows) has a skill line (`SkillLine_0`) that lists the pet's abilities and passives. `PetTalentType` 1 = exotic (Core Hound).
+- The **owner** is the class whose scaling aura is in the skill line: "Hunter Pet Scaling" 415429 or "Warlock Pet Scaling" 416189 (aura base points are 0, so the numbers are server-side). A demon also needs a `Summon <name>` warlock ability. Result: 19 hunter families and 5 demons (Imp, Voidwalker, Succubus, Incubus, Felhunter). Felguard (no summon spell), Doomguard (ritual) and Remote Control are skipped (`report.petsSkipped`).
+- The **family passive** ("Tamed Pet Passive (DND)", aura 79 misc 1) holds the damage modifier (Cat +10, Raptor +10, Bear -9, Boar -10 ...).
+- **Owner talents modify pet passives through spell masks**: Unleashed Fury (op 3) -> 8875 aura 79; Ferocity -> 19591 aura 290 crit; Bestial Discipline -> 19589 aura 110 focus; Frenzy (op 18) -> 20784 proc -> 19615 +30% melee haste 8 s; Unholy Power -> 18727-18730; Improved Imp on Firebolt; Improved Sayaad on Lash of Pain.
+- Pet abilities (Claw, Bite, Lightning Breath, Firebolt, Lash of Pain ...) are ordinary spells with no attack power coefficient.
+- Demonic Sacrifice, Master Demonologist and Soul Link auras are chosen by server script, so which spell belongs to which demon is hand-entered in `data/manual/pets.json` (validated against `SpellEffect`).
+- Base stats, focus regeneration and the owner scaling coefficients are not in the data: `data/manual/pets.json`, tagged `[VERIFY]` (Q5, Q69-Q74).
 
 ## Phase 4 findings (spells, 70888)
 - **Rank chains:** a talent-granted ability's chain starts at rank 2 (rank 1 is the talent spell); rank = highest `levels.base <= level`; value = `base + perLevel x (min(L, levels.max) - levels.base)`.

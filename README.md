@@ -3,7 +3,7 @@
 A Classic-style talent calculator for **WoW Forever** that also calculates hit, crit and damage
 per ability, weapon damage, pet damage and rotation DPS for your build.
 
-Status: data pipeline (Phase 1), talent calculator (Phase 2), character, gear, buffs, target and derived stats (Phase 3) and the analytical damage engine (Phase 4: Damage panel with per-ability cards, DPS breakdown, DPS per reference target) and rotations and simulation (Phase 5: Rotation editor, Simulation panel with seeded Monte Carlo runs in a Web Worker) complete. See [docs/PLAN.md](docs/PLAN.md).
+Status: data pipeline (Phase 1), talent calculator (Phase 2), character, gear, buffs, target and derived stats (Phase 3) and the analytical damage engine (Phase 4: Damage panel with per-ability cards, DPS breakdown, DPS per reference target) and rotations and simulation (Phase 5: Rotation editor, Simulation panel with seeded Monte Carlo runs in a Web Worker) and pets (Phase 6: Pet panel for hunters and warlocks) complete. See [docs/PLAN.md](docs/PLAN.md).
 
 | Doc | Contents |
 |---|---|
@@ -34,7 +34,7 @@ npm test                          # Vitest: data invariants, rules engine, URL c
 npm run e2e:install && npm run e2e   # Playwright smoke tests (desktop + mobile)
 npm run build && npm run preview  # production build, served at http://localhost:4173/talentcalc/
 ```
-Builds are shareable by URL hash (`#v1.mage.60.0.<payload>` for talents only, `#v2...` when the character has race, weapons, bonus stats, buffs or a target set; see ARCHITECTURE). The **Rotation editor** (reorder, conditions, on/off, Based on / Reset) and the **Simulation panel** (Run simulation: DPS ± stdev, breakdown, resource graph, combat log) are below the Damage panel (Sim tab on mobile); an edited rotation and the sim settings are part of the shareable link. Screenshots: `docs/screenshots/`.
+Builds are shareable by URL hash (`#v1.mage.60.0.<payload>` for talents only, `#v2...` when the character has race, weapons, bonus stats, buffs or a target set; see ARCHITECTURE). The **Rotation editor** (reorder, conditions, on/off, Based on / Reset) and the **Simulation panel** (Run simulation: DPS ± stdev, breakdown, resource graph, combat log) are below the Damage panel (Sim tab on mobile); an edited rotation and the sim settings are part of the shareable link. The **Pet panel** (hunters and warlocks: pet or demon, Demonic Sacrifice, "Pet scales with your stats" toggle) adds pet damage to the Damage and Simulation panels, and the pet is part of the shareable link. Screenshots: `docs/screenshots/`.
 
 Deploy: `.github/workflows/deploy.yml` runs only on pushes to `main` (or manually). The repository currently has only the
 `claude/...` branch, so create `main` / merge into it. Enable Pages once: *Settings -> Pages -> Build and deployment -> Source:
