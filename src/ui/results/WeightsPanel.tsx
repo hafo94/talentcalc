@@ -98,7 +98,7 @@ export function WeightsPanel() {
   return (
     <section className={styles.panel} data-testid="weights-panel" aria-labelledby="weights-title">
       <details onToggle={(e) => setOpen(e.currentTarget.open)}>
-        <summary className={styles.summaryToggle}>
+        <summary className={styles.summaryToggle} data-testid="weights-toggle">
           <h2 id="weights-title" className={styles.titleInline}>
             Stat weights
           </h2>

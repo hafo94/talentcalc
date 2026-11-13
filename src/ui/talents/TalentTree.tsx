@@ -14,9 +14,10 @@ interface Props {
   hidden?: boolean;
   contribution?: number | null; // Phase 7: DPS of this tree's points (null while computing)
   heatmap?: ReadonlyMap<number, number> | null; // Phase 7: next-point DPS per node
+  tabbed?: boolean; // Phase 7: narrow layout, the tree is the panel of tab `tab-<specIndex>`
 }
 
-export function TalentTree({ specIndex, hidden, contribution, heatmap }: Props) {
+export function TalentTree({ specIndex, hidden, contribution, heatmap, tabbed }: Props) {
   const tree = useCalc((s) => s.tree);
   const ranks = useCalc((s) => s.ranks);
   const level = useCalc((s) => s.level);
@@ -45,9 +46,11 @@ export function TalentTree({ specIndex, hidden, contribution, heatmap }: Props) 
   return (
     <section
       className={`${styles.tree} ${hidden ? styles.hidden : ""}`}
+      id={`tree-panel-${specIndex}`}
       data-testid={`tree-${specIndex}`}
       data-tree
       aria-label={`${spec.name} talents, ${points} points`}
+      {...(tabbed ? { role: "tabpanel" } : {})}
     >
       <header className={styles.header}>
         <WowIcon name={info?.icon ?? null} size={20} />

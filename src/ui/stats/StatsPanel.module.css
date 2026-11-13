@@ -107,6 +107,57 @@
   font-weight: normal;
 }
 
+/* Phase 7 (KNOWN_LIMITS L20): on narrow screens every reference target is a card, no sideways scrolling. */
+@media (max-width: 600px) {
+  .scroll {
+    overflow-x: visible;
+  }
+
+  .ref thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .ref,
+  .ref tbody {
+    display: block;
+  }
+
+  .ref tr {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px 8px;
+    margin-bottom: 6px;
+    padding: 4px 6px;
+    border: 1px solid var(--panel-border);
+    border-radius: 4px;
+  }
+
+  .ref td {
+    padding: 0;
+    border: 0;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .ref td::before {
+    content: attr(data-label) " ";
+    color: var(--text-dim);
+  }
+
+  .ref td:first-child {
+    grid-column: 1 / -1;
+    color: var(--gold);
+  }
+
+  .ref td:first-child::before {
+    content: none;
+  }
+}
+
 .details {
   margin-top: 14px;
   font-size: 12px;

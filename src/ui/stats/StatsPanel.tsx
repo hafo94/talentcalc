@@ -256,6 +256,19 @@ function VsTarget({ d }: { d: Ok }) {
   );
 }
 
+const REF_COLUMNS = [
+  "Target",
+  "Level",
+  "Armor",
+  "DR",
+  "Miss",
+  "Dodge",
+  "Glancing",
+  "Crit",
+  "Spell miss",
+  "DPS",
+] as const;
+
 function ReferenceTable({ d }: { d: Ok }) {
   const s = d.stats;
   const rangedOnly = s.classToken === "hunter" && !s.weapons.mainHand && !!s.weapons.ranged;
@@ -263,37 +276,40 @@ function ReferenceTable({ d }: { d: Ok }) {
   return (
     <section className={styles.block}>
       <div className={styles.scroll}>
-        <table className={styles.ref} data-testid="reference-table">
+        {/* Phase 7: explicit roles keep the table semantics when narrow screens show each row as a card */}
+        <table className={styles.ref} data-testid="reference-table" role="table">
           <caption>Same build vs reference targets for level {s.level} (debuffs applied)</caption>
-          <thead>
-            <tr>
-              <th>Target</th>
-              <th>Level</th>
-              <th>Armor</th>
-              <th>DR</th>
-              <th>Miss</th>
-              <th>Dodge</th>
-              <th>Glancing</th>
-              <th>Crit</th>
-              <th>Spell miss</th>
-              {showDps && <th>DPS</th>}
+          <thead role="rowgroup">
+            <tr role="row">
+              {REF_COLUMNS.filter((c) => showDps || c !== "DPS").map((c) => (
+                <th key={c} role="columnheader" scope="col">
+                  {c}
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody role="rowgroup">
             {d.reference.map((r) => {
               const o = rangedOnly ? r.ranged : r.mainHand;
+              const cells: [string, string][] = [
+                ["Target", targetsFile.presets.find((p) => p.id === r.presetId)?.label ?? r.presetId],
+                ["Level", String(r.level)],
+                ["Armor", fmtInt(r.armor.value)],
+                ["DR", fmtPct(r.armorReduction.value)],
+                ["Miss", o ? fmtPct(o.miss.value) : "–"],
+                ["Dodge", o ? fmtPct(o.dodge.value) : "–"],
+                ["Glancing", o ? fmtPct(o.glancing) : "–"],
+                ["Crit", o ? fmtPct(o.crit.value) : "–"],
+                ["Spell miss", fmtPct(r.spell.miss.value)],
+                ...(showDps ? [["DPS", r.dps === undefined ? "–" : fmtDec1(r.dps)] as [string, string]] : []),
+              ];
               return (
-                <tr key={r.presetId}>
-                  <td>{targetsFile.presets.find((p) => p.id === r.presetId)?.label ?? r.presetId}</td>
-                  <td>{r.level}</td>
-                  <td>{fmtInt(r.armor.value)}</td>
-                  <td>{fmtPct(r.armorReduction.value)}</td>
-                  <td>{o ? fmtPct(o.miss.value) : "–"}</td>
-                  <td>{o ? fmtPct(o.dodge.value) : "–"}</td>
-                  <td>{o ? fmtPct(o.glancing) : "–"}</td>
-                  <td>{o ? fmtPct(o.crit.value) : "–"}</td>
-                  <td>{fmtPct(r.spell.miss.value)}</td>
-                  {showDps && <td>{r.dps === undefined ? "–" : fmtDec1(r.dps)}</td>}
+                <tr key={r.presetId} role="row" data-testid={`ref-row-${r.presetId}`}>
+                  {cells.map(([label, value]) => (
+                    <td key={label} role="cell" data-label={label}>
+                      {value}
+                    </td>
+                  ))}
                 </tr>
               );
             })}

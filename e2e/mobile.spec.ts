@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { blockRemoteImages, node } from "./helpers";
+import { expectNoSeriousA11yIssues } from "./a11y";
+import { GOLDEN, blockRemoteImages, node } from "./helpers";
 
 test("mobile tabs and long press", async ({ page }) => {
   await blockRemoteImages(page);
@@ -52,4 +53,25 @@ test("mobile: Sim tab shows the rotation editor and runs the simulation", async 
   await page.getByTestId("sim-run").click();
   await expect(page.getByTestId("sim-dps")).not.toHaveText("");
   expect(await page.evaluate<number>("document.documentElement.scrollWidth")).toBeLessThanOrEqual(393);
+});
+
+test("mobile: reference targets are cards (no sideways scroll); no serious accessibility issues", async ({
+  page,
+}) => {
+  await blockRemoteImages(page);
+  await page.goto(`./${GOLDEN}`);
+  await expectNoSeriousA11yIssues(page, "mobile talents");
+  await page.getByRole("tab", { name: "Stats" }).click();
+  const boss = page.getByTestId("ref-row-boss");
+  await expect(boss).toBeVisible();
+  await expect(boss.locator('[data-label="DPS"]')).toBeVisible();
+  const head = await page.getByTestId("reference-table").locator("thead").boundingBox();
+  expect(head!.height).toBeLessThanOrEqual(1); // visually hidden, still read by screen readers
+  const box = await page.getByTestId("reference-table").boundingBox();
+  expect(box!.x + box!.width).toBeLessThanOrEqual(393);
+  expect(await page.evaluate<number>("document.documentElement.scrollWidth")).toBeLessThanOrEqual(393);
+  await expectNoSeriousA11yIssues(page, "mobile stats");
+  await page.getByRole("tab", { name: "Damage" }).click();
+  await expect(page.getByTestId("compare-panel")).toBeVisible();
+  await expectNoSeriousA11yIssues(page, "mobile damage");
 });

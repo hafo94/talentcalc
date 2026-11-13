@@ -84,6 +84,7 @@ export function TalentCalculator() {
             specIndex={i}
             hidden={!desktop && activeSpec !== i}
             contribution={contribution?.[i] ?? null}
+            tabbed={!desktop}
             heatmap={heatmap}
           />
         ))}
