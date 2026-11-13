@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useCalc } from "@/state/store";
 import { useCharacter } from "@/state/character";
+import { useRotation } from "@/state/rotation";
 import { derive, type Derived } from "@/state/derived";
 
 /** Derived stats for the current talents and character (pure computation, well under 1 ms). */
@@ -16,9 +17,14 @@ export function useDerived(): Derived {
   const target = useCharacter((s) => s.target);
   const custom = useCharacter((s) => s.custom);
   const weapons = useCharacter((s) => s.weapons);
+  const rotation = useRotation((s) => s.custom);
   return useMemo(
     () =>
-      derive({ tree, ranks, level, spells }, { raceId, weaponIds, bonus, buffIds, target, custom, weapons }),
-    [tree, ranks, level, spells, raceId, weaponIds, bonus, buffIds, target, custom, weapons],
+      derive(
+        { tree, ranks, level, spells },
+        { raceId, weaponIds, bonus, buffIds, target, custom, weapons },
+        rotation,
+      ),
+    [tree, ranks, level, spells, raceId, weaponIds, bonus, buffIds, target, custom, weapons, rotation],
   );
 }

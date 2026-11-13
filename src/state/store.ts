@@ -14,6 +14,7 @@ import {
 } from "@/engine/talents";
 import type { BuildCode } from "./buildCode";
 import { useCharacter } from "./character";
+import { catalogFor, useRotation } from "./rotation";
 
 export interface CalcState {
   classToken: ClassToken | null;
@@ -72,6 +73,7 @@ export const useCalc = create<CalcState>()((set, get) => ({
         useCharacter.getState().fitToClass(token, get().level),
       ]);
       if (id !== requestId) return;
+      useRotation.getState().clear();
       set({
         tree,
         spells,
@@ -96,6 +98,9 @@ export const useCalc = create<CalcState>()((set, get) => ({
       if (id !== requestId) return;
       const ctx = pointsContext({ level: code.level, talentedRank: code.talentedRank });
       const { ranks, dropped } = sanitize(tree, code.ranks, ctx);
+      const rotationOk = useRotation
+        .getState()
+        .applyCode(code.character, code.classToken, catalogFor(spells, tree));
       set({
         tree,
         spells,
@@ -108,6 +113,7 @@ export const useCalc = create<CalcState>()((set, get) => ({
           [
             dropped ? "Some talents in this link were not valid and were removed." : "",
             charOk ? "" : "Some character settings in this link were not valid and were removed.",
+            rotationOk ? "" : "Some rotation settings in this link were not valid and were removed.",
           ]
             .filter(Boolean)
             .join(" ") || null,
@@ -119,6 +125,7 @@ export const useCalc = create<CalcState>()((set, get) => ({
   },
   clearClass() {
     requestId++;
+    useRotation.getState().clear();
     set({
       classToken: null,
       tree: null,

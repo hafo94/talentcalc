@@ -2,7 +2,14 @@ import { baseStatsFile, buffsFile, getRace, racialsFile, rotationsFile, targetsF
 import type { ClassSpellFile, MagicSchool, SpecRotation, TargetPresetId } from "@/data/types";
 import { pointsBySpec, type ClassTree, type Ranks } from "@/engine/talents";
 import { SPECIAL_HANDLERS, type ActiveHandler } from "@/engine/talents/special";
-import { evaluateDamage, pickRotation, prepareDamage, type DamageResult } from "@/engine/rotation";
+import {
+  enabledRotation,
+  evaluateDamage,
+  pickRotation,
+  prepareDamage,
+  type DamageResult,
+} from "@/engine/rotation";
+import type { SimInput } from "@/engine/sim/types";
 import {
   UnsupportedLevelError,
   assemble,
@@ -40,13 +47,15 @@ export type Derived =
     }
   | { ok: false; reason: "noClass" | "level" };
 
-/** Pure: everything the stats and damage UI shows, from the two stores. */
-export function derive(
-  calc: { tree: ClassTree | null; ranks: Ranks; level: number; spells: ClassSpellFile | null },
-  ch: Pick<CharacterState, "raceId" | "weaponIds" | "bonus" | "buffIds" | "target" | "custom" | "weapons">,
-): Derived {
+type CalcInput = { tree: ClassTree | null; ranks: Ranks; level: number; spells: ClassSpellFile | null };
+type CharInput = Pick<
+  CharacterState,
+  "raceId" | "weaponIds" | "bonus" | "buffIds" | "target" | "custom" | "weapons"
+>;
+
+/** Phase 5: the inputs derive and simInputFor share (weapons, talents, assemble arguments, rotation, custom target). */
+function inputsOf(calc: CalcInput & { tree: ClassTree }, ch: CharInput, custom: SpecRotation | null) {
   const tree = calc.tree;
-  if (!tree || ch.raceId === 0) return { ok: false, reason: "noClass" };
   const byId = (id: number) =>
     id && ch.weapons ? (ch.weapons.weapons.find((w) => w.id === id) ?? null) : null;
   const weapons: EquippedWeapons = {
@@ -74,7 +83,28 @@ export function derive(
     weapons,
     bonus: ch.bonus,
   };
-  const rotation = pickRotation(rotationsFile, tree.token, pointsBySpec(tree, calc.ranks));
+  // The editor's rotation (Phase 5) when it belongs to this class, else the spec with the most points.
+  const chosen =
+    custom && custom.class === tree.token
+      ? custom
+      : pickRotation(rotationsFile, tree.token, pointsBySpec(tree, calc.ranks));
+  const resist = Object.fromEntries(RESIST_ORDER.map((s, i) => [s, ch.custom.resist[i]!])) as Record<
+    MagicSchool,
+    number
+  >;
+  const customTarget = { level: ch.custom.level, armor: ch.custom.armor, resist };
+  return { weapons, talents, classTalents, args, rotation: enabledRotation(chosen), customTarget };
+}
+
+/** Pure: everything the stats and damage UI shows, from the stores (`custom`: the rotation editor's rotation). */
+export function derive(calc: CalcInput, ch: CharInput, custom: SpecRotation | null = null): Derived {
+  const tree = calc.tree;
+  if (!tree || ch.raceId === 0) return { ok: false, reason: "noClass" };
+  const { weapons, talents, classTalents, args, rotation, customTarget } = inputsOf(
+    { ...calc, tree },
+    ch,
+    custom,
+  );
   let a: Assembled;
   let stats: CharacterStats;
   let prepared: ReturnType<typeof prepareDamage> | null = null;
@@ -98,15 +128,10 @@ export function derive(
     throw e;
   }
   const dw = weapons.offHand !== null;
-  const resist = Object.fromEntries(RESIST_ORDER.map((s, i) => [s, ch.custom.resist[i]!])) as Record<
-    MagicSchool,
-    number
-  >;
-  const custom = { level: ch.custom.level, armor: ch.custom.armor, resist };
   const at = (p: TargetPresetId) =>
     evaluateTarget(
       stats,
-      presetTarget(targetsFile, p, calc.level, a.debuffs, custom),
+      presetTarget(targetsFile, p, calc.level, a.debuffs, customTarget),
       targetsFile.armorFormula,
       dw,
     );
@@ -146,6 +171,30 @@ export function derive(
     damage,
     weaponsLoading: ch.weapons === null,
   };
+}
+
+/** Phase 5: the simulator's input for the current state (null until the class spells are loaded). */
+export function simInputFor(calc: CalcInput, ch: CharInput, custom: SpecRotation | null): SimInput | null {
+  const tree = calc.tree;
+  if (!tree || !calc.spells || ch.raceId === 0) return null;
+  const x = inputsOf({ ...calc, tree }, ch, custom);
+  try {
+    const debuffs = assemble(x.args).debuffs;
+    return {
+      prepare: {
+        ...x.args,
+        spells: calc.spells,
+        spellClassSet: tree.info.spellClassSet,
+        classTalents: x.classTalents,
+      },
+      rotation: x.rotation,
+      target: presetTarget(targetsFile, ch.target, calc.level, debuffs, x.customTarget),
+      armorFormula: targetsFile.armorFormula,
+    };
+  } catch (e) {
+    if (e instanceof UnsupportedLevelError) return null;
+    throw e;
+  }
 }
 
 /** Talents the damage engine now models are dropped from the "not modeled" list. */

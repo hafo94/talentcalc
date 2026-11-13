@@ -1,6 +1,7 @@
 import { isClassToken } from "@/data";
 import { decodeBuild, encodeBuild } from "./buildCode";
 import { useCharacter } from "./character";
+import { catalogFor, useRotation } from "./rotation";
 import { useCalc } from "./store";
 
 /** Keeps location.hash and the store in sync. Call once before the first render. */
@@ -31,7 +32,10 @@ export function initUrlSync(): void {
           level: s.level,
           talentedRank: s.talentedRank,
           ranks: s.ranks,
-          character: useCharacter.getState().toCode(s.classToken),
+          character: {
+            ...useCharacter.getState().toCode(s.classToken),
+            ...(s.spells && s.tree ? useRotation.getState().toCode(catalogFor(s.spells, s.tree)) : {}),
+          },
         })
       : "";
     if (next === lastHash) return;
@@ -40,4 +44,5 @@ export function initUrlSync(): void {
   };
   useCalc.subscribe(write);
   useCharacter.subscribe(write);
+  useRotation.subscribe(write);
 }

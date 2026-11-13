@@ -1,4 +1,10 @@
 import type { TargetPresetId } from "@/data/types";
+import { CONDITION_TYPES } from "@/engine/rotation/conditions";
+
+/** Condition type indices whose operand is a number (stored in tenths); the others carry a ref key. */
+const VALUE_CONDITION_TYPES: ReadonlySet<number> = new Set(
+  CONDITION_TYPES.flatMap((c, i) => (c.operand === "value" ? [i] : [])),
+);
 
 /** Bonus-stat fields in URL order. APPEND ONLY: the index is part of the URL format. */
 export const BONUS_KEYS = [
@@ -40,15 +46,49 @@ export interface CustomTarget {
   armor: number;
   resist: [number, number, number, number, number, number]; // holy, fire, nature, frost, shadow, arcane
 }
+/** Phase 5 condition record: `flag` is cmp "gte" (value types) or active/ready (ref types). */
+export interface ConditionCode {
+  type: number; // CONDITION_TYPES index (src/engine/rotation/conditions.ts, append only)
+  flag: boolean;
+  value: number; // value types: display units, one decimal; ref types: ref key (section 5.2)
+}
+export interface EntryCode {
+  ability: number; // CatalogAbility.id
+  kind: number; // ENTRY_KINDS index (src/state/rotation.ts, append only)
+  off: boolean;
+  cp: number; // 0 = absent
+  everySec: number; // 0 = absent; one decimal
+  conditions: ConditionCode[];
+}
+/** Phase 5: the rotation record (tag 6). `entries` null = the spec's default entries. */
+export interface RotationCode {
+  spec: number; // base rotation: talent tab 0..2
+  entries: EntryCode[] | null;
+}
+/** Phase 5: simulation settings (tag 7), omitted when they are the defaults. */
+export interface SimCode {
+  fightSec: number;
+  iterations: number;
+  seed: number;
+  unlimitedMana: boolean;
+}
 export interface CharacterCode {
   raceId: number | null; // null = the class's default race
   weapons: { mainHand: number; offHand: number; ranged: number; ammo: number }; // item ids, 0 = empty
   bonus: Partial<Record<BonusKey, number>>; // display units (percent points for % fields); zeros omitted
   buffCodes: number[]; // buffs.json codes, ascending
   target: { preset: TargetPresetId; custom?: CustomTarget }; // custom only with preset "custom"
+  rotation?: RotationCode; // Phase 5; absent = default rotation (spec with the most points)
+  sim?: SimCode; // Phase 5; absent = DEFAULT_SIM_CODE
 }
 
-export const TAG = { race: 1, weapons: 2, bonus: 3, buffs: 4, target: 5 } as const;
+export const TAG = { race: 1, weapons: 2, bonus: 3, buffs: 4, target: 5, rotation: 6, sim: 7 } as const;
+export const DEFAULT_SIM_CODE: SimCode = { fightSec: 180, iterations: 1000, seed: 1, unlimitedMana: true };
+/** Entry head bits above the kind (kind < 16). */
+const ENTRY_OFF = 16;
+const ENTRY_CP = 32;
+const ENTRY_EVERY = 64;
+const ENTRY_CONDITIONS = 128;
 
 export const DEFAULT_CHARACTER: CharacterCode = {
   raceId: null,
@@ -131,7 +171,84 @@ export function encodeCharacterBytes(c: CharacterCode): number[] {
     }
   }
   record(TAG.target, target);
+  if (c.rotation) record(TAG.rotation, encodeRotation(c.rotation));
+  const s = c.sim;
+  if (s && JSON.stringify(s) !== JSON.stringify(DEFAULT_SIM_CODE))
+    record(TAG.sim, [s.fightSec, s.iterations, s.seed, s.unlimitedMana ? 1 : 0].flatMap(varint));
   return out;
+}
+
+const varint = (v: number) => {
+  const b: number[] = [];
+  writeVarint(b, v);
+  return b;
+};
+const tenths = (v: number) => Math.max(0, Math.round(v * 10));
+
+function encodeRotation(r: RotationCode): number[] {
+  const out: number[] = [];
+  writeVarint(out, r.spec);
+  for (const e of r.entries ?? []) {
+    writeVarint(out, e.ability);
+    const head =
+      e.kind +
+      (e.off ? ENTRY_OFF : 0) +
+      (e.cp ? ENTRY_CP : 0) +
+      (e.everySec ? ENTRY_EVERY : 0) +
+      (e.conditions.length ? ENTRY_CONDITIONS : 0);
+    writeVarint(out, head);
+    if (e.cp) writeVarint(out, e.cp);
+    if (e.everySec) writeVarint(out, tenths(e.everySec));
+    if (e.conditions.length) {
+      writeVarint(out, e.conditions.length);
+      for (const c of e.conditions) {
+        writeVarint(out, c.type * 2 + (c.flag ? 1 : 0));
+        writeVarint(out, VALUE_CONDITION_TYPES.has(c.type) ? tenths(c.value) : c.value);
+      }
+    }
+  }
+  if (r.entries && r.entries.length === 0) writeVarint(out, 0); // an explicit empty list: ability id 0
+  return out;
+}
+
+/** `v` = the record's varints; null when malformed. Value-type condition values are stored in tenths. */
+function decodeRotation(v: number[], valueType: (type: number) => boolean): RotationCode | null {
+  const spec = v[0];
+  if (spec === undefined || spec > 2) return null;
+  if (v.length === 1) return { spec, entries: null };
+  if (v.length === 2 && v[1] === 0) return { spec, entries: [] };
+  const entries: EntryCode[] = [];
+  let i = 1;
+  const next = () => (i < v.length ? v[i++]! : null);
+  while (i < v.length) {
+    const ability = next();
+    const head = next();
+    if (ability === null || head === null || ability === 0) return null;
+    const e: EntryCode = {
+      ability,
+      kind: head % ENTRY_OFF,
+      off: (head & ENTRY_OFF) !== 0,
+      cp: 0,
+      everySec: 0,
+      conditions: [],
+    };
+    if (head & ENTRY_CP) e.cp = next() ?? -1;
+    if (head & ENTRY_EVERY) e.everySec = (next() ?? -1) / 10;
+    if (head & ENTRY_CONDITIONS) {
+      const n = next() ?? 0;
+      for (let k = 0; k < n; k++) {
+        const t = next();
+        const value = next();
+        if (t === null || value === null) return null;
+        const type = Math.floor(t / 2);
+        e.conditions.push({ type, flag: t % 2 === 1, value: valueType(type) ? value / 10 : value });
+      }
+      if (n === 0) return null;
+    }
+    if (e.cp < 0 || e.everySec < 0) return null;
+    entries.push(e);
+  }
+  return { spec, entries };
 }
 
 /** null when the payload is malformed. Unknown tags are skipped (forward compatibility). */
@@ -186,6 +303,16 @@ export function decodeCharacterBytes(bytes: Uint8Array): CharacterCode | null {
         }
         break;
       }
+      case TAG.rotation: {
+        const r = decodeRotation(v, (type) => VALUE_CONDITION_TYPES.has(type));
+        if (!r) return null;
+        c.rotation = r;
+        break;
+      }
+      case TAG.sim:
+        if (v.length !== 4 || v[3]! > 1) return null;
+        c.sim = { fightSec: v[0]!, iterations: v[1]!, seed: v[2]!, unlimitedMana: v[3] === 1 };
+        break;
       default:
         break; // unknown tag from a newer version: ignore
     }
