@@ -5,6 +5,7 @@ import { CharacterPanel } from "@/ui/character/CharacterPanel";
 import { DamagePanel } from "@/ui/results/DamagePanel";
 import { ComparePanel } from "@/ui/results/ComparePanel";
 import { WeightsPanel } from "@/ui/results/WeightsPanel";
+import { OUTDATED_AFTER_DAYS, dataAgeDays } from "@/ui/common/dataAge";
 import { useMediaQuery } from "@/ui/common/useMediaQuery";
 import { RotationEditor } from "@/ui/rotation/RotationEditor";
 import { SimPanel } from "@/ui/sim/SimPanel";
@@ -15,6 +16,8 @@ import styles from "./App.module.css";
 
 type Section = "Talents" | "Gear" | "Stats" | "Damage" | "Sim";
 const SECTIONS: Section[] = ["Talents", "Gear", "Stats", "Damage", "Sim"];
+
+const DATA_AGE = dataAgeDays(manifest.generatedAt, Date.now());
 
 export function App() {
   const classToken = useCalc((s) => s.classToken);
@@ -83,8 +86,16 @@ export function App() {
         </>
       )}
       <footer className={styles.footer}>
-        Data: WoW Forever build {DATA_BUILD} · generated {manifest.generatedAt} · Icons and art © Blizzard
-        Entertainment
+        <span data-testid="data-build">
+          Data: WoW Forever build {DATA_BUILD} · generated {manifest.generatedAt}
+        </span>
+        {DATA_AGE > OUTDATED_AFTER_DAYS && (
+          <span className={styles.outdated} data-testid="data-outdated">
+            {" "}
+            · The data is {DATA_AGE} days old: a newer Forever build may change some numbers
+          </span>
+        )}{" "}
+        · Icons and art © Blizzard Entertainment
       </footer>
     </div>
   );

@@ -1,7 +1,8 @@
 import { expect, type Locator, type Page } from "@playwright/test";
 import { readFileSync, readdirSync } from "node:fs";
 
-const TALENTS_DIR = "data/generated/1.60.1.70888/talents";
+const DATA_DIR = "data/generated/1.60.1.70888"; // tools/refresh_build.py --switch rewrites this
+const TALENTS_DIR = `${DATA_DIR}/talents`;
 
 export const GOLDEN = "#v1.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N";
 
@@ -23,7 +24,7 @@ export interface ClassCounts {
 
 /** Expected node counts per class/spec, read from the generated data. */
 export function expectedCounts(): ClassCounts[] {
-  const classes = JSON.parse(readFileSync("data/generated/1.60.1.70888/classes.json", "utf8")).classes as {
+  const classes = JSON.parse(readFileSync(`${DATA_DIR}/classes.json`, "utf8")).classes as {
     token: string;
     name: string;
   }[];

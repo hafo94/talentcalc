@@ -5,7 +5,7 @@ import tempfile
 import unittest
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-BUILD = "1.60.1.70888"
+BUILD = os.environ.get("TALENTCALC_BUILD", "1.60.1.70888")  # tools/refresh_build.py tests a new build
 ERA_BUILD = "1.15.9.70576"
 RAW = os.path.join(ROOT, "data", "raw", BUILD)
 ERA_RAW = os.path.join(ROOT, "data", "raw", ERA_BUILD)

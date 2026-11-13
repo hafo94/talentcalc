@@ -73,3 +73,7 @@
   gap: 16px;
   margin-top: 16px;
 }
+
+.outdated {
+  color: var(--warn);
+}

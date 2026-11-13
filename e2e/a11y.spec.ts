@@ -10,6 +10,9 @@ test("accessibility: start page, full build with every panel, talent tooltip, si
   page,
 }) => {
   await page.goto("./");
+  await expect(page.getByTestId("data-build")).toContainText(
+    /WoW Forever build \d+\.\d+\.\d+\.\d+ · generated/,
+  );
   await expectNoSeriousA11yIssues(page, "start");
   await page.goto(`./${GOLDEN}`);
   await expect(page.getByTestId("dps-total")).toBeVisible();
