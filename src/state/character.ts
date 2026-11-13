@@ -1,6 +1,7 @@
 import { create } from "zustand";
-import { buffsFile, getClassInfo, loadWeapons } from "@/data";
-import type { ClassToken, MagicSchool, TargetPresetId, WeaponsFile } from "@/data/types";
+import { buffsFile, getClassInfo, loadWeapons, petsManual } from "@/data";
+import type { ClassToken, MagicSchool, PetFile, TargetPresetId, WeaponsFile } from "@/data/types";
+import { NO_PET, type PetChoice } from "@/engine/pets";
 import { EMPTY_BONUS, ammoFor, weaponsForSlot, type BonusStats } from "@/engine/stats";
 import { BONUS_SCALE, type CharacterCode, type CustomTarget } from "./charCode";
 
@@ -55,7 +56,11 @@ export interface CharacterState {
   target: TargetPresetId;
   custom: CustomTarget;
   weapons: WeaponsFile | null; // lazy weapons.json
+  pet: PetChoice; // Phase 6: active pet, sacrificed demon, owner scaling (URL tag 8)
   setRace(id: number): void;
+  setPet(patch: Partial<PetChoice>): void;
+  /** Phase 6: the pet of a link, checked against pets/<class>.json (false if something was dropped). */
+  applyPet(code: PetChoice | undefined, file: PetFile | null): boolean;
   setWeapon(slot: WeaponSlotKey, id: number, classToken: ClassToken, level: number): void;
   setBonus(key: keyof BonusStats, value: number): void;
   resetBonus(): void;
@@ -135,8 +140,22 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
   target: "boss",
   custom: DEFAULT_CUSTOM,
   weapons: null,
+  pet: NO_PET,
   setRace(id) {
     set({ raceId: id });
+  },
+  setPet(patch) {
+    set({ pet: { ...get().pet, ...patch } });
+  },
+  applyPet(code, file) {
+    const c = code ?? NO_PET;
+    const family = file?.pets.some((p) => p.id === c.family) ? c.family : 0;
+    const sacrifice =
+      file?.token === "warlock" && petsManual.sacrifice.some((s) => s.family === c.sacrifice)
+        ? c.sacrifice
+        : 0;
+    set({ pet: { family, sacrifice, scaling: c.scaling } });
+    return family === c.family && sacrifice === c.sacrifice;
   },
   setWeapon(slot, id, token, level) {
     const file = get().weapons;
@@ -171,7 +190,7 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
     const file = await weaponsFor(get().weaponIds);
     const weaponIds = file ? sanitizeWeapons(get().weaponIds, file, token, level) : NO_WEAPON_IDS;
     const kept = JSON.stringify(weaponIds) === JSON.stringify(get().weaponIds);
-    set({ raceId, weaponIds, ...(file ? { weapons: file } : {}) });
+    set({ raceId, weaponIds, pet: NO_PET, ...(file ? { weapons: file } : {}) });
     return kept;
   },
   async applyCode(code, token, level) {
@@ -218,6 +237,11 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
       bonus,
       buffCodes: buffsFile.buffs.filter((b) => s.buffIds.includes(b.id)).map((b) => b.code),
       target: s.target === "custom" ? { preset: "custom", custom: s.custom } : { preset: s.target },
+      ...(s.pet.family !== NO_PET.family ||
+      s.pet.sacrifice !== NO_PET.sacrifice ||
+      s.pet.scaling !== NO_PET.scaling
+        ? { pet: s.pet }
+        : {}),
     };
   },
 }));

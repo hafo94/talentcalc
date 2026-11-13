@@ -1,4 +1,5 @@
 import type { TargetPresetId } from "@/data/types";
+import { NO_PET, type PetChoice } from "@/engine/pets/types";
 import { CONDITION_TYPES } from "@/engine/rotation/conditions";
 
 /** Condition type indices whose operand is a number (stored in tenths); the others carry a ref key. */
@@ -80,9 +81,19 @@ export interface CharacterCode {
   target: { preset: TargetPresetId; custom?: CustomTarget }; // custom only with preset "custom"
   rotation?: RotationCode; // Phase 5; absent = default rotation (spec with the most points)
   sim?: SimCode; // Phase 5; absent = DEFAULT_SIM_CODE
+  pet?: PetChoice; // Phase 6; absent = NO_PET (no pet, scaling on)
 }
 
-export const TAG = { race: 1, weapons: 2, bonus: 3, buffs: 4, target: 5, rotation: 6, sim: 7 } as const;
+export const TAG = {
+  race: 1,
+  weapons: 2,
+  bonus: 3,
+  buffs: 4,
+  target: 5,
+  rotation: 6,
+  sim: 7,
+  pet: 8,
+} as const;
 export const DEFAULT_SIM_CODE: SimCode = { fightSec: 180, iterations: 1000, seed: 1, unlimitedMana: true };
 /** Entry head bits above the kind (kind < 16). */
 const ENTRY_OFF = 16;
@@ -175,6 +186,9 @@ export function encodeCharacterBytes(c: CharacterCode): number[] {
   const s = c.sim;
   if (s && JSON.stringify(s) !== JSON.stringify(DEFAULT_SIM_CODE))
     record(TAG.sim, [s.fightSec, s.iterations, s.seed, s.unlimitedMana ? 1 : 0].flatMap(varint));
+  const p = c.pet;
+  if (p && (p.family !== NO_PET.family || p.sacrifice !== NO_PET.sacrifice || p.scaling !== NO_PET.scaling))
+    record(TAG.pet, [p.family, p.sacrifice, p.scaling ? 0 : 1].flatMap(varint));
   return out;
 }
 
@@ -312,6 +326,10 @@ export function decodeCharacterBytes(bytes: Uint8Array): CharacterCode | null {
       case TAG.sim:
         if (v.length !== 4 || v[3]! > 1) return null;
         c.sim = { fightSec: v[0]!, iterations: v[1]!, seed: v[2]!, unlimitedMana: v[3] === 1 };
+        break;
+      case TAG.pet:
+        if (v.length !== 3 || v[2]! > 1) return null;
+        c.pet = { family: v[0]!, sacrifice: v[1]!, scaling: v[2] === 0 };
         break;
       default:
         break; // unknown tag from a newer version: ignore

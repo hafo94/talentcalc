@@ -56,7 +56,7 @@
         { "ability": "Arcane Shot", "kind": "cooldown" },
         { "ability": "Serpent Sting", "kind": "dot" }
       ],
-      "notes": ["Pet damage arrives in Phase 6."] },
+      "notes": ["Choose a pet in the Pet panel: its damage (and Bestial Wrath in the simulation) is added to the DPS."] },
     { "id": "hunter-marksmanship", "class": "hunter", "spec": 1, "label": "Marksmanship: Sniper, Aimed, Multi, Arcane Shot", "role": "dps", "tier": 1,
       "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
       "entries": [
@@ -67,7 +67,7 @@
         { "ability": "Arcane Shot", "kind": "cooldown" },
         { "ability": "Serpent Sting", "kind": "dot" }
       ],
-      "notes": ["Rapid Fire is a simulation-only cooldown; Rapid Killing is not modeled. Lone Wolf assumes no pet (pets: Phase 6)."] },
+      "notes": ["Rapid Fire is a simulation-only cooldown; Rapid Killing is not modeled. Lone Wolf is active only while no pet is chosen in the Pet panel."] },
     { "id": "hunter-survival", "class": "hunter", "spec": 2, "label": "Ranged: Aimed, Multi, Arcane Shot, Serpent Sting", "role": "dps", "tier": 2,
       "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
       "entries": [
@@ -208,7 +208,7 @@
         { "ability": "Bane of Agony", "kind": "dot" },
         { "ability": "Shadow Bolt", "kind": "filler" }
       ],
-      "notes": ["Demon pets, Demonic Sacrifice and Master Demonologist arrive in Phase 6."] },
+      "notes": ["Choose a demon or a Demonic Sacrifice in the Pet panel (Master Demonologist, Soul Link and Demonic Knowledge follow the demon)."] },
     { "id": "warlock-destruction", "class": "warlock", "spec": 2, "label": "Destruction: Immolate, Conflagrate, Incinerate or Shadow Bolt", "role": "dps", "tier": 1,
       "selfBuffs": [], "melee": false, "autoShot": false,
       "entries": [

@@ -8,6 +8,7 @@ import { derive, type Derived } from "@/state/derived";
 export function useDerived(): Derived {
   const tree = useCalc((s) => s.tree);
   const spells = useCalc((s) => s.spells);
+  const pets = useCalc((s) => s.pets);
   const ranks = useCalc((s) => s.ranks);
   const level = useCalc((s) => s.level);
   const raceId = useCharacter((s) => s.raceId);
@@ -17,14 +18,30 @@ export function useDerived(): Derived {
   const target = useCharacter((s) => s.target);
   const custom = useCharacter((s) => s.custom);
   const weapons = useCharacter((s) => s.weapons);
+  const pet = useCharacter((s) => s.pet);
   const rotation = useRotation((s) => s.custom);
   return useMemo(
     () =>
       derive(
-        { tree, ranks, level, spells },
-        { raceId, weaponIds, bonus, buffIds, target, custom, weapons },
+        { tree, ranks, level, spells, pets },
+        { raceId, weaponIds, bonus, buffIds, target, custom, weapons, pet },
         rotation,
       ),
-    [tree, ranks, level, spells, raceId, weaponIds, bonus, buffIds, target, custom, weapons, rotation],
+    [
+      tree,
+      ranks,
+      level,
+      spells,
+      pets,
+      raceId,
+      weaponIds,
+      bonus,
+      buffIds,
+      target,
+      custom,
+      weapons,
+      pet,
+      rotation,
+    ],
   );
 }

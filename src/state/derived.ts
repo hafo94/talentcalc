@@ -1,5 +1,14 @@
-import { baseStatsFile, buffsFile, getRace, racialsFile, rotationsFile, targetsFile } from "@/data";
-import type { ClassSpellFile, MagicSchool, SpecRotation, TargetPresetId } from "@/data/types";
+import {
+  baseStatsFile,
+  buffsFile,
+  getRace,
+  petsManual,
+  racialsFile,
+  rotationsFile,
+  targetsFile,
+} from "@/data";
+import type { ClassSpellFile, MagicSchool, PetFile, SpecRotation, TargetPresetId } from "@/data/types";
+import { PET_TALENT_IDS, evaluatePet, resolvePet, type PetDamage, type ResolvedPet } from "@/engine/pets";
 import { pointsBySpec, type ClassTree, type Ranks } from "@/engine/talents";
 import { SPECIAL_HANDLERS, type ActiveHandler } from "@/engine/talents/special";
 import {
@@ -21,6 +30,7 @@ import {
   type EquippedWeapons,
   type NotModeled,
   type TalentMapping,
+  type TargetInput,
   type TargetView,
 } from "@/engine/stats";
 import type { CharacterState } from "./character";
@@ -33,13 +43,16 @@ export interface DamageView {
   rotation: SpecRotation;
   result: DamageResult;
   handlers: ActiveHandler[];
+  pet: PetDamage | null; // Phase 6: the active pet vs the selected target
+  totalDps: number; // owner + pet
+  petNotes: string[]; // parts of the pet choice that do nothing (resolvePet)
 }
 export type Derived =
   | {
       ok: true;
       stats: CharacterStats;
       view: TargetView;
-      reference: TargetView[]; // `dps` filled when `damage` is not null
+      reference: TargetView[]; // `dps` (owner + pet) filled when `damage` is not null
       mapping: TalentMapping;
       notModeled: NotModeled[]; // mapping.notModeled minus what the damage engine models (section 8.4)
       damage: DamageView | null;
@@ -47,11 +60,18 @@ export type Derived =
     }
   | { ok: false; reason: "noClass" | "level" };
 
-type CalcInput = { tree: ClassTree | null; ranks: Ranks; level: number; spells: ClassSpellFile | null };
+type CalcInput = {
+  tree: ClassTree | null;
+  ranks: Ranks;
+  level: number;
+  spells: ClassSpellFile | null;
+  pets?: PetFile | null; // Phase 6
+};
 type CharInput = Pick<
   CharacterState,
   "raceId" | "weaponIds" | "bonus" | "buffIds" | "target" | "custom" | "weapons"
->;
+> &
+  Partial<Pick<CharacterState, "pet">>;
 
 /** Phase 5: the inputs derive and simInputFor share (weapons, talents, assemble arguments, rotation, custom target). */
 function inputsOf(calc: CalcInput & { tree: ClassTree }, ch: CharInput, custom: SpecRotation | null) {
@@ -71,6 +91,16 @@ function inputsOf(calc: CalcInput & { tree: ClassTree }, ch: CharInput, custom: 
     .filter((id) => (calc.ranks[id] ?? 0) > 0)
     .map((id) => ({ talent: tree.nodes.get(id)!.talent, rank: calc.ranks[id]! }));
   const classTalents = tree.order.map((id) => tree.nodes.get(id)!.talent);
+  const pet: ResolvedPet | null = ch.pet
+    ? resolvePet({
+        choice: ch.pet,
+        file: calc.pets ?? null,
+        manual: petsManual,
+        token: tree.token,
+        talents,
+        level: calc.level,
+      })
+    : null;
   const args = {
     classToken: tree.token,
     race: getRace(ch.raceId).token.toUpperCase(),
@@ -82,6 +112,8 @@ function inputsOf(calc: CalcInput & { tree: ClassTree }, ch: CharInput, custom: 
     talents,
     weapons,
     bonus: ch.bonus,
+    petActive: pet?.pet != null,
+    petOwnerEffects: pet?.ownerEffects ?? [],
   };
   // The editor's rotation (Phase 5) when it belongs to this class, else the spec with the most points.
   const chosen =
@@ -93,14 +125,14 @@ function inputsOf(calc: CalcInput & { tree: ClassTree }, ch: CharInput, custom: 
     number
   >;
   const customTarget = { level: ch.custom.level, armor: ch.custom.armor, resist };
-  return { weapons, talents, classTalents, args, rotation: enabledRotation(chosen), customTarget };
+  return { weapons, talents, classTalents, args, rotation: enabledRotation(chosen), customTarget, pet };
 }
 
 /** Pure: everything the stats and damage UI shows, from the stores (`custom`: the rotation editor's rotation). */
 export function derive(calc: CalcInput, ch: CharInput, custom: SpecRotation | null = null): Derived {
   const tree = calc.tree;
   if (!tree || ch.raceId === 0) return { ok: false, reason: "noClass" };
-  const { weapons, talents, classTalents, args, rotation, customTarget } = inputsOf(
+  const { weapons, talents, classTalents, args, rotation, customTarget, pet } = inputsOf(
     { ...calc, tree },
     ch,
     custom,
@@ -128,13 +160,23 @@ export function derive(calc: CalcInput, ch: CharInput, custom: SpecRotation | nu
     throw e;
   }
   const dw = weapons.offHand !== null;
-  const at = (p: TargetPresetId) =>
-    evaluateTarget(
-      stats,
-      presetTarget(targetsFile, p, calc.level, a.debuffs, customTarget),
-      targetsFile.armorFormula,
-      dw,
-    );
+  const targetOf = (p: TargetPresetId) => presetTarget(targetsFile, p, calc.level, a.debuffs, customTarget);
+  const at = (p: TargetPresetId) => evaluateTarget(stats, targetOf(p), targetsFile.armorFormula, dw);
+  const petAt = (target: TargetInput): PetDamage | null =>
+    prepared && pet?.pet && calc.spells
+      ? evaluatePet({
+          setup: pet.pet,
+          level: calc.level,
+          owner: stats,
+          ownerSpells: calc.spells.spells,
+          classSet: tree.info.spellClassSet,
+          talents,
+          classTalents,
+          spellMods: a.mapping.spellMods,
+          target,
+          armorFormula: targetsFile.armorFormula,
+        })
+      : null;
   const damageAt = (view: TargetView): DamageResult | null =>
     prepared
       ? evaluateDamage({
@@ -153,14 +195,26 @@ export function derive(calc: CalcInput, ch: CharInput, custom: SpecRotation | nu
       : null;
   const view = at(ch.target);
   const result = damageAt(view);
+  const petResult = result ? petAt(targetOf(ch.target)) : null;
   const reference = [...REFERENCE_PRESETS, ...(ch.target === "custom" ? (["custom"] as const) : [])].map(
     (p) => {
       const v = at(p);
       const d = p === ch.target && result ? result : damageAt(v);
-      return d ? { ...v, dps: d.rotation.dps } : v;
+      const pd = p === ch.target ? petResult : d ? petAt(targetOf(p)) : null;
+      return d ? { ...v, dps: d.rotation.dps + (pd?.rotation.dps ?? 0) } : v;
     },
   );
-  const damage = result && prepared ? { rotation, result, handlers: prepared.handlers } : null;
+  const damage =
+    result && prepared
+      ? {
+          rotation,
+          result,
+          handlers: prepared.handlers,
+          pet: petResult,
+          totalDps: result.rotation.dps + (petResult?.rotation.dps ?? 0),
+          petNotes: pet?.notes ?? [],
+        }
+      : null;
   return {
     ok: true,
     stats,
@@ -190,6 +244,7 @@ export function simInputFor(calc: CalcInput, ch: CharInput, custom: SpecRotation
       rotation: x.rotation,
       target: presetTarget(targetsFile, ch.target, calc.level, debuffs, x.customTarget),
       armorFormula: targetsFile.armorFormula,
+      pet: x.pet?.pet ?? null,
     };
   } catch (e) {
     if (e instanceof UnsupportedLevelError) return null;
@@ -206,6 +261,7 @@ function notModeled(mapping: TalentMapping, tree: ClassTree, damage: DamageView 
     const t = tree.nodes.get(n.nodeId)?.talent;
     if (!t) return true;
     if (n.reason === "special" && SPECIAL_HANDLERS.has(t.spellId)) return false;
+    if (PET_TALENT_IDS.has(t.spellId)) return false; // Phase 6: modeled with the pet choice (Pet panel)
     if (n.reason === "ability" && used.has(t.name)) return false;
     return true;
   });

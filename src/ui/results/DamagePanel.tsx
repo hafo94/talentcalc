@@ -1,4 +1,5 @@
 import type { AbilityResult } from "@/engine/abilities";
+import type { PetDamage } from "@/engine/pets";
 import type { Derived } from "@/state/derived";
 import { AbilityCard } from "@/ui/abilities/AbilityCard";
 import abilityStyles from "@/ui/abilities/Abilities.module.css";
@@ -67,6 +68,75 @@ function Resource({ d }: { d: Ok }) {
   );
 }
 
+/** Phase 6: the pet's damage (its own stats and outcome tables) with a breakdown and one card per ability. */
+function PetSection({ p, total }: { p: PetDamage; total: number }) {
+  const r = p.rotation;
+  const perMinute = new Map(r.casts.map((c) => [c.key, c.perMinute]));
+  const rows = [
+    ...r.casts
+      .filter((c) => c.perMinute > 0)
+      .map((c) => ({ key: c.key, perMinute: c.perMinute, dps: c.dps })),
+    ...Object.values(r.white).map((w) => ({
+      key: w!.white.name,
+      perMinute: w!.swingsPerMinute,
+      dps: w!.dps,
+    })),
+  ].sort((a, b) => b.dps - a.dps);
+  const cards = p.abilities.filter((a): a is AbilityResult => a.available && a.expected > 0);
+  return (
+    <section className={styles.pet} data-testid="pet-damage" aria-label={`Pet: ${p.name}`}>
+      <h3 className={styles.petTitle}>
+        Pet: {p.name}{" "}
+        <span className={styles.dpsSmall} data-testid="pet-dps">
+          {fmtDec1(r.dps)}
+        </span>{" "}
+        <span className={styles.unit}>
+          DPS ({fmtPct(total > 0 ? (r.dps / total) * 100 : 0)} of the total)
+        </span>
+      </h3>
+      <p className={styles.line} data-testid="pet-stats">
+        Attack power {fmtInt(p.stats.attackPower.value)} · spell power {fmtInt(p.stats.spellPower.fire.value)}{" "}
+        · melee crit vs target {fmtPct(p.view.mainHand?.crit.value ?? 0)} · hit chance{" "}
+        {fmtPct(100 - (p.view.mainHand?.miss.value ?? p.view.spell.miss.value))}
+        {p.focusPerSecond !== null ? ` · focus ${fmtDec1(p.focusPerSecond)} per second` : ""}
+      </p>
+      <table className={styles.table} data-testid="pet-breakdown">
+        <caption>Pet damage per second by source</caption>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Per minute</th>
+            <th>DPS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((x) => (
+            <tr key={x.key} data-testid={`pet-row-${slug(x.key)}`}>
+              <td>{x.key}</td>
+              <td>{fmtDec2(x.perMinute)}</td>
+              <td>{fmtDec1(x.dps)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className={abilityStyles.grid}>
+        {cards.map((a) => (
+          <AbilityCard key={a.key} a={a} perMinute={perMinute.get(a.key) ?? null} />
+        ))}
+      </div>
+      {r.skipped.length > 0 && (
+        <ul className={abilityStyles.unavailable}>
+          {r.skipped.map((s) => (
+            <li key={s.ability}>
+              {s.ability}: {s.reason}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
 /** Damage of the default rotation vs the selected target, then one card per ability. */
 export function DamagePanel() {
   const d = useDerived();
@@ -78,7 +148,7 @@ export function DamagePanel() {
         <p className={styles.line}>Loading spells…</p>
       </section>
     );
-  const { rotation, result } = d.damage;
+  const { rotation, result, pet, totalDps, petNotes } = d.damage;
   const r = result.rotation;
   const perMinute = new Map(r.casts.map((c) => [c.key, c.perMinute]));
   const cards: AbilityResult[] = [
@@ -90,7 +160,7 @@ export function DamagePanel() {
       <h2 className={styles.title}>Damage</h2>
       <div className={styles.summary}>
         <span className={styles.dps} data-testid="dps-total">
-          {fmtDec1(r.dps)}
+          {fmtDec1(totalDps)}
         </span>
         <span className={styles.unit}>DPS</span>
         <span className={styles.rotation} data-testid="dps-rotation">
@@ -100,6 +170,11 @@ export function DamagePanel() {
           </span>
         </span>
       </div>
+      {pet && (
+        <p className={styles.line} data-testid="dps-split">
+          You {fmtDec1(r.dps)} · {pet.name} {fmtDec1(pet.rotation.dps)}
+        </p>
+      )}
       <p className={styles.line}>
         {TIER_TEXT[rotation.tier]}. Analytical average; procs and uptimes as expected values.
       </p>
@@ -119,6 +194,12 @@ export function DamagePanel() {
           ))}
         </ul>
       )}
+      {pet && <PetSection p={pet} total={totalDps} />}
+      {petNotes.map((n) => (
+        <p key={n} className={styles.note} data-testid="pet-note">
+          {n}
+        </p>
+      ))}
       {rotation.notes.map((n) => (
         <p key={n} className={styles.note}>
           {n}

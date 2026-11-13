@@ -6,6 +6,7 @@ import { useCharacter } from "@/state/character";
 import { useCalc } from "@/state/store";
 import { BonusStats } from "./BonusStats";
 import { BuffsPanel } from "./BuffsPanel";
+import { PetPanel } from "./PetPanel";
 import { TargetPanel } from "./TargetPanel";
 import { WeaponPicker } from "./WeaponPicker";
 import styles from "./CharacterPanel.module.css";
@@ -144,6 +145,7 @@ export function CharacterPanel() {
         </div>
       </section>
       <WeaponsSection />
+      <PetPanel />
       <BonusStats hasSpell={hasSpell} hasRap={hasRap} />
       <BuffsPanel />
       <TargetPanel />

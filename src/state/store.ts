@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { classesFile, getClassInfo, loadClassSpells, loadTalentFile } from "@/data";
-import type { ClassSpellFile, ClassToken } from "@/data/types";
+import { classesFile, getClassInfo, loadClassSpells, loadPetFile, loadTalentFile } from "@/data";
+import type { ClassSpellFile, ClassToken, PetFile } from "@/data/types";
 import {
   addPoint as addPointRule,
   buildClassTree,
@@ -20,6 +20,7 @@ export interface CalcState {
   classToken: ClassToken | null;
   tree: ClassTree | null;
   spells: ClassSpellFile | null; // spells/<class>.json, loaded with the talent file (Phase 4)
+  pets: PetFile | null; // pets/<class>.json (Phase 6): hunter and warlock, null for the other classes
   status: "idle" | "loading" | "ready" | "error";
   error: string | null;
   notice: string | null;
@@ -47,15 +48,22 @@ export const pointsContext = (s: Pick<CalcState, "level" | "talentedRank">): Poi
 
 let requestId = 0;
 
-async function loadTree(token: ClassToken): Promise<{ tree: ClassTree; spells: ClassSpellFile }> {
-  const [file, spells] = await Promise.all([loadTalentFile(token), loadClassSpells(token)]);
-  return { tree: buildClassTree(file, getClassInfo(token)), spells };
+async function loadTree(
+  token: ClassToken,
+): Promise<{ tree: ClassTree; spells: ClassSpellFile; pets: PetFile | null }> {
+  const [file, spells, pets] = await Promise.all([
+    loadTalentFile(token),
+    loadClassSpells(token),
+    loadPetFile(token),
+  ]);
+  return { tree: buildClassTree(file, getClassInfo(token)), spells, pets };
 }
 
 export const useCalc = create<CalcState>()((set, get) => ({
   classToken: null,
   tree: null,
   spells: null,
+  pets: null,
   status: "idle",
   error: null,
   notice: null,
@@ -68,7 +76,7 @@ export const useCalc = create<CalcState>()((set, get) => ({
     const id = ++requestId;
     set({ classToken: token, status: "loading", error: null });
     try {
-      const [{ tree, spells }, charOk] = await Promise.all([
+      const [{ tree, spells, pets }, charOk] = await Promise.all([
         loadTree(token),
         useCharacter.getState().fitToClass(token, get().level),
       ]);
@@ -77,6 +85,7 @@ export const useCalc = create<CalcState>()((set, get) => ({
       set({
         tree,
         spells,
+        pets,
         status: "ready",
         ranks: {},
         activeSpec: 0,
@@ -84,14 +93,20 @@ export const useCalc = create<CalcState>()((set, get) => ({
       });
     } catch (e) {
       if (id !== requestId) return;
-      set({ tree: null, spells: null, status: "error", error: e instanceof Error ? e.message : String(e) });
+      set({
+        tree: null,
+        spells: null,
+        pets: null,
+        status: "error",
+        error: e instanceof Error ? e.message : String(e),
+      });
     }
   },
   async applyBuildCode(code) {
     const id = ++requestId;
     set({ classToken: code.classToken, status: "loading", error: null });
     try {
-      const [{ tree, spells }, charOk] = await Promise.all([
+      const [{ tree, spells, pets }, charOk] = await Promise.all([
         loadTree(code.classToken),
         useCharacter.getState().applyCode(code.character, code.classToken, code.level),
       ]);
@@ -101,9 +116,11 @@ export const useCalc = create<CalcState>()((set, get) => ({
       const rotationOk = useRotation
         .getState()
         .applyCode(code.character, code.classToken, catalogFor(spells, tree));
+      const petOk = useCharacter.getState().applyPet(code.character.pet, pets);
       set({
         tree,
         spells,
+        pets,
         status: "ready",
         level: code.level,
         talentedRank: code.talentedRank,
@@ -114,13 +131,20 @@ export const useCalc = create<CalcState>()((set, get) => ({
             dropped ? "Some talents in this link were not valid and were removed." : "",
             charOk ? "" : "Some character settings in this link were not valid and were removed.",
             rotationOk ? "" : "Some rotation settings in this link were not valid and were removed.",
+            petOk ? "" : "The pet in this link is not valid for this class and was removed.",
           ]
             .filter(Boolean)
             .join(" ") || null,
       });
     } catch (e) {
       if (id !== requestId) return;
-      set({ tree: null, spells: null, status: "error", error: e instanceof Error ? e.message : String(e) });
+      set({
+        tree: null,
+        spells: null,
+        pets: null,
+        status: "error",
+        error: e instanceof Error ? e.message : String(e),
+      });
     }
   },
   clearClass() {
@@ -130,6 +154,7 @@ export const useCalc = create<CalcState>()((set, get) => ({
       classToken: null,
       tree: null,
       spells: null,
+      pets: null,
       status: "idle",
       error: null,
       ranks: {},

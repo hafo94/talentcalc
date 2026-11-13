@@ -121,6 +121,12 @@
   font-size: 10px;
 }
 
+.pet {
+  color: var(--gold);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
 .shareCell {
   white-space: nowrap;
 }

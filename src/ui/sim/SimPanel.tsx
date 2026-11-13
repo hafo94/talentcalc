@@ -16,17 +16,18 @@ const LOG_LIMIT = DEFAULT_SIM_CONFIG.logLimit;
 function useSimInput() {
   const tree = useCalc((s) => s.tree);
   const spells = useCalc((s) => s.spells);
+  const pets = useCalc((s) => s.pets);
   const ranks = useCalc((s) => s.ranks);
   const level = useCalc((s) => s.level);
   const ch = useCharacter();
   const custom = useRotation((s) => s.custom);
   const sim = useRotation((s) => s.sim);
-  const { raceId, weaponIds, bonus, buffIds, target, weapons } = ch;
+  const { raceId, weaponIds, bonus, buffIds, target, weapons, pet } = ch;
   const customTarget = ch.custom;
   return useMemo(() => {
     const input = simInputFor(
-      { tree, ranks, level, spells },
-      { raceId, weaponIds, bonus, buffIds, target, custom: customTarget, weapons },
+      { tree, ranks, level, spells, pets },
+      { raceId, weaponIds, bonus, buffIds, target, custom: customTarget, weapons, pet },
       custom,
     );
     const key = JSON.stringify([
@@ -41,11 +42,13 @@ function useSimInput() {
       customTarget,
       custom,
       sim,
+      pet,
     ]);
     return { input, key, sim };
   }, [
     tree,
     spells,
+    pets,
     ranks,
     level,
     raceId,
@@ -55,6 +58,7 @@ function useSimInput() {
     target,
     customTarget,
     weapons,
+    pet,
     custom,
     sim,
   ]);
@@ -116,6 +120,11 @@ function Sources({ r }: { r: SimResult }) {
           return (
             <tr key={s.key} data-testid={`sim-row-${slug(s.key)}`}>
               <td>
+                {s.pet && (
+                  <span className={styles.pet} title="Damage of your pet">
+                    pet{" "}
+                  </span>
+                )}
                 {s.key}
                 {s.averaged && (
                   <span className={styles.avg} title="Expected value from the analytical model">
@@ -245,7 +254,7 @@ export function SimPanel() {
   const s = useSim();
   const running = s.status === "running";
   const r = s.result;
-  const analytical = d.ok && d.damage ? d.damage.result.rotation.dps : null;
+  const analytical = d.ok && d.damage ? d.damage.totalDps : null;
   return (
     <section className={styles.panel} data-testid="sim-panel" aria-labelledby="sim-title">
       <h2 id="sim-title" className={styles.title}>
@@ -287,6 +296,11 @@ export function SimPanel() {
               {fmtDec1(r.dps.mean)}
             </span>
             <span className={styles.unit}>DPS ± {fmtDec1(r.dps.stdev)}</span>
+            {r.pet && (
+              <span className={styles.meta} data-testid="sim-pet-dps">
+                incl. {r.pet.name} {fmtDec1(r.pet.dps.mean)} DPS ·{" "}
+              </span>
+            )}
             <span className={styles.meta} data-testid="sim-ci">
               95% CI {fmtDec1(r.dps.ci95[0])}–{fmtDec1(r.dps.ci95[1])} · min {fmtDec1(r.dps.min)} · max{" "}
               {fmtDec1(r.dps.max)}

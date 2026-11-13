@@ -83,3 +83,21 @@
   color: var(--text-dim);
   font-weight: normal;
 }
+
+.pet {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--panel-border);
+}
+
+.petTitle {
+  margin: 0 0 4px;
+  color: var(--gold);
+  font-size: 16px;
+}
+
+.dpsSmall {
+  color: var(--white);
+  font-size: 20px;
+  font-weight: bold;
+}
