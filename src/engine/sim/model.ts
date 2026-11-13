@@ -70,8 +70,8 @@ export interface ActiveBuffKey {
   stacks: number;
 }
 
-export interface SimModel {
-  input: SimInput;
+/** What one Fight needs: the player's SimModel or a pet's (Phase 6, src/engine/sim/petModel.ts). */
+export interface FightModel {
   token: ClassToken;
   level: number;
   rotation: SpecRotation;
@@ -79,13 +79,21 @@ export interface SimModel {
   entries: SimEntry[];
   buffs: BuffDef[];
   procs: ActiveProcs;
-  prepared: Prepared; // base state
   maxMana: number;
   spiritRegenPerSec: number; // outside the five-second rule
   castRegenPct: number; // talents (aura 134): % of Spirit regeneration while casting
+  classSet: number; // spell family set (charge buffs match casts by family mask)
+  focus: { max: number; perSecond: number } | null; // Phase 6: pet focus (null for the player)
+  sourcePrefix: string; // Phase 6: "" for the player, "<pet name>: " for a pet's damage sources and log lines
+  /** Phase 6: an entry that waits only for its resource blocks every lower entry that spends it (pets pool focus). */
+  strictPriority: boolean;
+  state(active: readonly ActiveBuffKey[]): StateEval;
+}
+export interface SimModel extends FightModel {
+  input: SimInput;
+  prepared: Prepared; // base state
   averaged: string[];
   modeled: string[];
-  state(active: readonly ActiveBuffKey[]): StateEval;
   stateCount(): number;
 }
 
@@ -302,6 +310,10 @@ export function buildModel(input: SimInput): SimModel {
     maxMana: prepared.stats.mana?.value ?? 0,
     spiritRegenPerSec: (spirit.flat + spirit.perSpirit * prepared.stats.primary.spi.value) / REGEN_TICK_SEC,
     castRegenPct,
+    classSet: book.classSet,
+    focus: null,
+    sourcePrefix: "",
+    strictPriority: false,
     averaged,
     modeled: procs.labels,
     state(active) {

@@ -51,7 +51,31 @@ export interface ActiveProcs {
   combustion: { spell: Spell; buff: BuffDef | null } | null;
   sealOfCommand: Spell | null; // the proc spell of the rotation's Seal of Command
   windfury: boolean;
+  critBuff: { chance: number; buff: BuffDef } | null; // Phase 6: pet Frenzy (a buff on melee crits)
   labels: string[]; // what the simulator samples, for the results panel
+}
+
+/** No procs at all (Phase 6: the base of a pet's procs). */
+export function noProcs(): ActiveProcs {
+  return {
+    ignitePct: 0,
+    flurryPct: 0,
+    isbPct: 0,
+    nightfallPct: 0,
+    nightfallSpells: new Set(),
+    deepWoundsPct: 0,
+    unbridledWrathPct: 0,
+    angerManagement: null,
+    sealFatePct: 0,
+    ruthlessnessPct: 0,
+    extraAttackPct: 0,
+    clearcasting: null,
+    combustion: null,
+    sealOfCommand: null,
+    windfury: false,
+    critBuff: null,
+    labels: [],
+  };
 }
 
 const value = (t: RankedTalent | undefined, i: number) =>
@@ -123,6 +147,7 @@ export function activeProcs(
     combustion: comb ? { spell: comb, buff: null } : null,
     sealOfCommand,
     windfury,
+    critBuff: null,
     labels,
   };
 }

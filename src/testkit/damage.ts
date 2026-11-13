@@ -2,8 +2,10 @@
 import rotationsJson from "@manual/rotations.json";
 import type { ClassSpellFile, ClassToken, RotationEntry, RotationsFile, TargetPresetId } from "@/data/types";
 import { classesFile } from "@/data";
+import { evaluatePet } from "@/engine/pets";
 import { evaluateDamage, pickRotation, prepareDamage } from "@/engine/rotation";
 import { EMPTY_BONUS, evaluateTarget, presetTarget } from "@/engine/stats";
+import { scenarioPet, type PetScenario } from "./pets";
 import { NO_WEAPONS, baseStats, buffs, racials, ranked, targets, type Scenario } from "./stats";
 import { treeFor } from "./talents";
 
@@ -20,6 +22,7 @@ export const spellFile = (token: ClassToken): ClassSpellFile => {
 export interface DamageScenario extends Scenario {
   rotation?: string; // rotation id; default: pickRotation by spent points
   entries?: RotationEntry[]; // Phase 5: replaces the rotation's entries
+  pet?: PetScenario; // Phase 6
 }
 
 /** Full damage evaluation of a scenario against one target preset (default boss). */
@@ -34,6 +37,8 @@ export function runDamage(s: DamageScenario, preset: TargetPresetId = s.target ?
     : pickRotation(rotations, s.classToken, points);
   const rotation = s.entries ? { ...base, entries: s.entries } : base;
   const info = classesFile.classes.find((c) => c.token === s.classToken)!;
+  const resolved = scenarioPet(s.classToken, s.pet, talents);
+  const classTalents = [...tree.nodes.values()].map((n) => n.talent);
   const p = prepareDamage({
     classToken: s.classToken,
     race: s.race,
@@ -47,12 +52,15 @@ export function runDamage(s: DamageScenario, preset: TargetPresetId = s.target ?
     bonus: { ...EMPTY_BONUS, ...s.bonus },
     spells: spellFile(s.classToken),
     spellClassSet: info.spellClassSet,
-    classTalents: [...tree.nodes.values()].map((n) => n.talent),
+    classTalents,
     rotation,
+    petActive: resolved.pet !== null,
+    petOwnerEffects: resolved.ownerEffects,
   });
+  const target = presetTarget(targets, preset, 60, p.assembled.debuffs);
   const view = evaluateTarget(
     p.stats,
-    presetTarget(targets, preset, 60, p.assembled.debuffs),
+    target,
     targets.armorFormula,
     p.assembled.input.weapons.offHand !== null,
   );
@@ -77,5 +85,26 @@ export function runDamage(s: DamageScenario, preset: TargetPresetId = s.target ?
       throw new Error(`${key} not available: ${a && !a.available ? a.reason : "missing"}`);
     return a;
   };
-  return { ...p, view, rotation, result, ability };
+  const pet = resolved.pet
+    ? evaluatePet({
+        setup: resolved.pet,
+        level: 60,
+        owner: p.stats,
+        ownerSpells: spellFile(s.classToken).spells,
+        classSet: info.spellClassSet,
+        talents,
+        classTalents,
+        spellMods: p.assembled.mapping.spellMods,
+        target,
+        armorFormula: targets.armorFormula,
+      })
+    : null;
+  const petAbility = (key: string) => {
+    const a = pet?.abilities.find((x) => x.key === key);
+    if (!a || !a.available)
+      throw new Error(`pet ${key} not available: ${a && !a.available ? a.reason : "missing"}`);
+    return a;
+  };
+  const totalDps = result.rotation.dps + (pet?.rotation.dps ?? 0);
+  return { ...p, view, rotation, result, ability, pet, resolved, petAbility, totalDps };
 }

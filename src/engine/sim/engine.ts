@@ -33,7 +33,7 @@ import {
   START_RAGE,
   TIMELINE_STEP_SEC,
 } from "./constants";
-import type { ActiveBuffKey, BuffDef, SimModel, StateEval } from "./model";
+import type { ActiveBuffKey, BuffDef, FightModel, StateEval } from "./model";
 import { EventQueue } from "./queue";
 import type { Rng } from "./rng";
 import type { SimConfig, SimLogLine } from "./types";
@@ -150,6 +150,7 @@ export class Fight implements ConditionState {
   private readonly dots: Dot[];
   private readonly igniteSlot: number;
   private readonly deepWoundsSlot: number;
+  private readonly prefix: string;
   private flurryCharges = 0;
   private shadowTranceUntil = -1;
   private isbUntil = -1;
@@ -162,7 +163,7 @@ export class Fight implements ConditionState {
   private lastSample = -Infinity;
 
   constructor(
-    private readonly model: SimModel,
+    private readonly model: FightModel,
     private readonly config: SimConfig,
     private readonly rng: Rng,
     private readonly acc: Accumulator,
@@ -170,6 +171,7 @@ export class Fight implements ConditionState {
   ) {
     this.T = config.fightSec;
     this.n = model.entries.length;
+    this.prefix = model.sourcePrefix;
     this.cdReady = new Float64Array(this.n);
     this.lastCast = new Float64Array(this.n).fill(-Infinity);
     this.buffs = model.buffs.map(() => null);
@@ -195,7 +197,15 @@ export class Fight implements ConditionState {
     this.dots.push(dot("Deep Wounds"));
     const p = model.power;
     this.maxResource =
-      p === "mana" ? model.maxMana : p === "rage" ? MAX_RAGE : p === "energy" ? MAX_ENERGY : 0;
+      p === "mana"
+        ? model.maxMana
+        : p === "rage"
+          ? MAX_RAGE
+          : p === "energy"
+            ? MAX_ENERGY
+            : p === "focus"
+              ? (model.focus?.max ?? 0)
+              : 0;
     this.resource = p === "rage" ? START_RAGE : this.maxResource;
   }
 
@@ -324,6 +334,8 @@ export class Fight implements ConditionState {
     if (dt > 0) {
       const p = this.model.power;
       if (p === "energy") this.resource = Math.min(this.maxResource, this.resource + this.energyRate() * dt);
+      else if (p === "focus")
+        this.resource = Math.min(this.maxResource, this.resource + (this.model.focus?.perSecond ?? 0) * dt);
       else if (p === "rage" && this.current.ragePerSec > 0)
         this.resource = Math.min(this.maxResource, this.resource + this.current.ragePerSec * dt);
       else if (p === "mana" && this.resource < this.maxResource) {
@@ -385,7 +397,7 @@ export class Fight implements ConditionState {
   }
   /** Charge buffs (Clearcasting, Presence of Mind, Cold Blood) are used by a matching cast. */
   private useCharges(a: AbilityResult): void {
-    const set = this.model.prepared.book.classSet;
+    const set = this.model.classSet;
     for (const b of this.buffs) {
       if (!b || b.def.charges <= 0 || b.charges <= 0) continue;
       if (!b.def.masks.some((m) => familyMatches(m, a.spell, set))) continue;
@@ -457,8 +469,10 @@ export class Fight implements ConditionState {
         const kind = this.model.entries[i]!.entry.kind;
         const onGcd = raw.available && raw.gcd > 0 && kind !== "nextSwing";
         if (onGcd && this.gcdUntil > this.t + EPS) continue;
-        // L8: a finisher that waits for its resource keeps the combo points (no cheaper finisher steals them)
-        const pools = kind === "finisher";
+        // L8: a finisher that waits for its resource keeps the combo points; a pet pools for any higher entry
+        const pools =
+          kind === "finisher" ||
+          (this.model.strictPriority && raw.available && raw.power === this.model.power && raw.cost > 0);
         if (pooling && pools) continue;
         const a = this.usable(i, st);
         if (!a) {
@@ -502,7 +516,9 @@ export class Fight implements ConditionState {
         ? this.energyRate()
         : p === "mana"
           ? this.manaRate(t < this.lastManaSpend + FIVE_SECOND_RULE_SEC)
-          : 0;
+          : p === "focus"
+            ? (this.model.focus?.perSecond ?? 0)
+            : 0;
     if (p === "mana") at(this.lastManaSpend + FIVE_SECOND_RULE_SEC);
     let timed = false;
     for (let i = 0; i < this.n; i++) {
@@ -815,6 +831,7 @@ export class Fight implements ConditionState {
     if (crit && pr.flurryPct > 0) this.flurryCharges = FLURRY_SWINGS;
     if (crit && pr.deepWoundsPct > 0) this.deepWounds();
     if (pr.unbridledWrathPct > 0 && this.rng() * 100 < pr.unbridledWrathPct) this.gain(1, "Unbridled Wrath");
+    if (crit && pr.critBuff && this.rng() * 100 < pr.critBuff.chance) this.applyBuff(pr.critBuff.buff);
     if (slot !== "mainHand" || extra) return;
     const st = this.state();
     if (pr.extraAttackPct > 0 && this.rng() * 100 < pr.extraAttackPct) this.whiteSwing(0, st, true, false);
@@ -896,7 +913,8 @@ export class Fight implements ConditionState {
   private targetMult(mask: number): number {
     return this.isbUntil > this.t && hasSchool(mask, "shadow") ? 1 + this.model.procs.isbPct / 100 : 1;
   }
-  private count(source: string, mask: number): SourceAcc {
+  private count(name: string, mask: number): SourceAcc {
+    const source = this.prefix + name;
     let a = this.acc.get(source);
     if (!a) {
       a = {
@@ -940,7 +958,7 @@ export class Fight implements ConditionState {
     if (!tr || tr.log.length >= tr.logLimit || source === "") return;
     tr.log.push({
       t: Math.round(this.t * 1000) / 1000,
-      source,
+      source: this.prefix + source,
       outcome,
       damage: Math.round(damage),
       resource: this.model.power ? Math.round(this.resource) : null,

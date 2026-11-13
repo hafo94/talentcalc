@@ -1,6 +1,8 @@
+import { PET_STREAM } from "@/engine/pets";
 import { Fight, type Accumulator, type FightTrace } from "./engine";
 import { buildModel } from "./model";
-import { createRng, iterationSeed } from "./rng";
+import { buildPetModel } from "./petModel";
+import { createRng, iterationSeed, splitmix32 } from "./rng";
 import type { SimConfig, SimInput, SimResult, SimSource, Summary } from "./types";
 
 const Z95 = 1.96;
@@ -35,13 +37,21 @@ export interface RunOptions {
  * Runs `config.iterations` fights (section 4.6). Iteration i uses its own seeded stream, so the result is identical for
  * the same input, config and seed, whatever the batching.
  */
+/** Seed of the pet's stream in iteration i (independent of the player's stream, which stays unchanged). */
+export const petIterationSeed = (seed: number, i: number): number =>
+  splitmix32((iterationSeed(seed, i) ^ PET_STREAM) >>> 0)();
+
 export function runSim(input: SimInput, config: SimConfig, opts: RunOptions = {}): SimResult {
   const t0 = globalThis.performance.now();
   const model = buildModel(input);
+  const petModel = buildPetModel(input, model);
   const n = Math.max(1, Math.floor(config.iterations));
   const acc: Accumulator = new Map();
+  const petAcc: Accumulator = new Map();
   const dps = new Float64Array(n);
+  const petDps = new Float64Array(n);
   const trace: FightTrace = { log: [], logLimit: config.logLimit, timeline: [] };
+  const petTrace: FightTrace = { log: [], logLimit: config.logLimit, timeline: [] };
   let idle = 0;
   let oom = 0;
   const every = opts.progressEvery ?? 50;
@@ -54,14 +64,27 @@ export function runSim(input: SimInput, config: SimConfig, opts: RunOptions = {}
       i === 0 ? trace : null,
     );
     const r = fight.run();
-    dps[i] = r.damage / config.fightSec;
+    const pet = petModel
+      ? new Fight(
+          petModel,
+          config,
+          createRng(petIterationSeed(config.seed, i)),
+          petAcc,
+          i === 0 ? petTrace : null,
+        ).run().damage
+      : 0;
+    dps[i] = (r.damage + pet) / config.fightSec;
+    petDps[i] = pet / config.fightSec;
     idle += r.idleSec;
     oom += r.oomSec;
     if (opts.onProgress && ((i + 1) % every === 0 || i + 1 === n)) opts.onProgress(i + 1, n);
   }
-  const total = [...acc.values()].reduce((a, s) => a + s.damage, 0);
-  const sources: SimSource[] = [...acc.entries()]
-    .map(([key, s]) => ({
+  const total = [...acc.values(), ...petAcc.values()].reduce((a, s) => a + s.damage, 0);
+  const sources: SimSource[] = [
+    ...[...acc.entries()].map(([key, s]) => ({ key, s, pet: false })),
+    ...[...petAcc.entries()].map(([key, s]) => ({ key, s, pet: true })),
+  ]
+    .map(({ key, s, pet }) => ({
       key,
       school: s.school,
       damage: s.damage / n,
@@ -73,6 +96,7 @@ export function runSim(input: SimInput, config: SimConfig, opts: RunOptions = {}
       misses: s.misses / n,
       ticks: s.ticks / n,
       averaged: s.averaged,
+      pet,
     }))
     .filter((s) => s.damage > 0 || s.casts > 0)
     .sort((a, b) => b.damage - a.damage || a.key.localeCompare(b.key));
@@ -82,6 +106,7 @@ export function runSim(input: SimInput, config: SimConfig, opts: RunOptions = {}
     rotationLabel: input.rotation.label,
     power,
     dps: summarize(dps),
+    pet: petModel && input.pet ? { name: input.pet.info.name, dps: summarize(petDps) } : null,
     sources,
     idleSec: idle / n,
     oomSec: oom / n,
@@ -92,9 +117,11 @@ export function runSim(input: SimInput, config: SimConfig, opts: RunOptions = {}
             points: trace.timeline,
           }
         : null,
-    log: trace.log,
+    log: petModel
+      ? [...trace.log, ...petTrace.log].sort((a, b) => a.t - b.t).slice(0, config.logLimit)
+      : trace.log,
     averaged: model.averaged,
-    modeled: model.modeled,
+    modeled: [...model.modeled, ...(petModel?.procs.labels ?? [])],
     elapsedMs: globalThis.performance.now() - t0,
   };
 }

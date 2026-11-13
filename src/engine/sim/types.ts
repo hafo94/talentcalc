@@ -1,5 +1,6 @@
 import type { School, SpecRotation, TargetsFile } from "@/data/types";
 import type { PowerKind } from "@/engine/abilities";
+import type { PetSetup } from "@/engine/pets";
 import type { PrepareArgs } from "@/engine/rotation";
 import type { TargetInput } from "@/engine/stats";
 
@@ -9,6 +10,7 @@ export interface SimInput {
   rotation: SpecRotation; // the user's rotation (with conditions)
   target: TargetInput; // presetTarget(...) incl. debuffs
   armorFormula: TargetsFile["armorFormula"];
+  pet?: PetSetup | null; // Phase 6: the active pet (resolvePet), simulated as its own actor
 }
 
 export interface SimConfig {
@@ -48,6 +50,7 @@ export interface SimSource {
   misses: number; // missed, dodged or resisted casts/swings per fight
   ticks: number; // periodic ticks per fight
   averaged: boolean; // expected-value damage from the analytical model (not sampled)
+  pet: boolean; // Phase 6: a damage source of the pet (key "<pet name>: <source>")
 }
 
 export interface SimLogLine {
@@ -62,7 +65,8 @@ export interface SimResult {
   config: SimConfig;
   rotationLabel: string;
   power: PowerKind | null;
-  dps: Summary;
+  dps: Summary; // player + pet
+  pet: { name: string; dps: Summary } | null; // Phase 6: the pet's share
   sources: SimSource[]; // sorted by damage
   idleSec: number; // mean seconds per fight with nothing to do (out of resource, waiting for cooldowns)
   oomSec: number; // mean seconds per fight waiting for mana

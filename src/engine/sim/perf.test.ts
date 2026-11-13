@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { ClassToken } from "@/data/types";
 import { simInput, type SimScenario } from "@/testkit/sim";
-import { buffs, weapon } from "@/testkit/stats";
+import { ammo, buffs, weapon } from "@/testkit/stats";
 import { treeFor } from "@/testkit/talents";
 import { runSim } from "./run";
 import { DEFAULT_SIM_CONFIG } from "./types";
@@ -44,6 +44,17 @@ const CASES: [string, SimScenario][] = [
       bonus: { spellPower: 300 },
       talents: maxed("mage", 1),
       rotation: "mage-fire",
+    },
+  ],
+  [
+    "hunter-beast-mastery + Cat (Phase 6)",
+    {
+      classToken: "hunter",
+      race: "DWARF",
+      weapons: { ranged: weapon(18713), ammo: ammo(18042) },
+      talents: maxed("hunter", 0),
+      rotation: "hunter-beast-mastery",
+      pet: { family: "Cat" },
     },
   ],
 ];
