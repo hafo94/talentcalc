@@ -122,7 +122,8 @@
   }
 
   .ref,
-  .ref tbody {
+  .ref tbody,
+  .ref caption {
     display: block;
   }
 
