@@ -25,6 +25,7 @@ export const AURA = {
   MOD_TARGET_RESISTANCE: 123,
   MOD_RANGED_ATTACK_POWER: 124,
   MOD_TOTAL_STAT_PERCENTAGE: 137,
+  MOD_RANGED_HASTE: 140, // Phase 5: Rapid Fire "+40% ranged attack speed" [VERIFY]
   MOD_ATTACK_POWER_PCT: 166,
   MOD_RANGED_ATTACK_POWER_PCT: 167,
   MOD_SPELL_DAMAGE_OF_STAT_PERCENT: 174,
@@ -160,6 +161,8 @@ export function mapAura(e: TalentEffect, v: number): Mapped {
       };
     case AURA.MOD_MELEE_HASTE:
       return { kind: "stat", perSlot: false, effects: [{ key: "meleeHaste", value: v }] };
+    case AURA.MOD_RANGED_HASTE:
+      return { kind: "stat", perSlot: false, effects: [{ key: "rangedHaste", value: v }] };
     case AURA.MOD_MELEE_RANGED_HASTE:
       return {
         kind: "stat",

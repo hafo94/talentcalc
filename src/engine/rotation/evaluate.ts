@@ -30,6 +30,7 @@ export interface DamageResult {
   rotation: RotationResult;
   abilities: AbilityEval[]; // rotation entries in order (pass 2), unavailable ones with their reason
   effects: RotationEffect[]; // uptime effects applied in pass 2
+  ctx: DamageContext; // Phase 5: the pass-2 context (the simulator evaluates proc spells and extra white hits with it)
 }
 
 /**
@@ -74,5 +75,5 @@ export function evaluateDamage(input: DamageInput): DamageResult {
   const p1 = pass(base);
   const effects = rotationEffects(input.handlers, p1.rotation, p1.ctx);
   const p2 = pass({ ...p1.ctx, effects });
-  return { rotation: p2.rotation, abilities: p2.evals.map((e) => e.ability), effects };
+  return { rotation: p2.rotation, abilities: p2.evals.map((e) => e.ability), effects, ctx: p2.ctx };
 }

@@ -15,6 +15,7 @@ import {
   WINDFURY,
   rageConversion,
 } from "@/engine/combat";
+import { simOnlyReason } from "./conditions";
 import type { CastLimit, CastLine, RotationResult, WhiteLine } from "./types";
 
 const MINUTE = 60;
@@ -91,6 +92,11 @@ export function runRotation(input: RotationInput): RotationResult {
   const ordered = [...input.evals.filter(generates), ...input.evals.filter((e) => !generates(e))];
   for (const { entry, ability } of ordered) {
     if (entry.kind === "nextSwing") continue;
+    const simOnly = simOnlyReason(entry);
+    if (simOnly) {
+      skipped.push({ ability: entry.ability, reason: simOnly });
+      continue;
+    }
     if (!ability.available) {
       skipped.push({ ability: entry.ability, reason: ability.reason });
       continue;
@@ -176,6 +182,11 @@ export function runRotation(input: RotationInput): RotationResult {
   let mhSwings = mh ? MINUTE / mh.speed : 0;
   for (const { entry, ability } of input.evals) {
     if (entry.kind !== "nextSwing") continue;
+    const simOnly = simOnlyReason(entry);
+    if (simOnly) {
+      skipped.push({ ability: entry.ability, reason: simOnly });
+      continue;
+    }
     if (!ability.available) {
       skipped.push({ ability: entry.ability, reason: ability.reason });
       continue;

@@ -184,6 +184,7 @@ interface Script {
   spellPowerBonus?(a: ScriptArgs): { value: number; text: string } | null;
   multiplier?(a: ScriptArgs): { value: number; text: string } | null;
   durationMs?(a: ScriptArgs): number;
+  dummyDamage?: true; // Phase 5: the DUMMY effect's base points are direct damage (Execute)
 }
 const dummyValue = (spell: Spell, index: number) => spell.effects.find((e) => e.index === index)?.base ?? 0;
 export const SCRIPTS: Readonly<Record<string, Script>> = {
@@ -216,6 +217,9 @@ export const SCRIPTS: Readonly<Record<string, Script>> = {
   "Slice and Dice": { durationMs: ({ spell, cp }) => (spell.duration?.ms ?? 0) + 3000 * cp },
   // "Instantly strike with your off-hand weapon"
   Shank: { slot: "offHand" },
+  // "causing 600 damage and converting each extra point of rage into ... additional damage" (the simulator adds the
+  // extra rage part, EXECUTE_DAMAGE_PER_RAGE; the analytical model skips execute-phase abilities)
+  Execute: { dummyDamage: true },
   // "gains additional Spell Damage equal to $s2% of your maximum Mana"
   "Arcane Wrath": {
     spellPowerBonus: ({ ctx, spell }) => {
@@ -367,7 +371,9 @@ function partsOf(
   }
 
   // 2. direct school damage (effect 2), incl. combo points and spell power
-  for (const e of effects.filter((x) => x.effect === EFFECT.SCHOOL_DAMAGE)) {
+  const directEffect = (x: SpellEffect) =>
+    x.effect === EFFECT.SCHOOL_DAMAGE || (x.effect === EFFECT.DUMMY && script?.dummyDamage === true);
+  for (const e of effects.filter(directEffect)) {
     const base = effectValue(spell, e, ctx.level, mods) + (e.pointsPerCombo ?? 0) * cp;
     const spPart = magic && e.spCoef ? e.spCoef * spTotal : 0;
     const bonus = script?.directBonus?.({ ctx, spell, cp }) ?? null;
@@ -597,6 +603,7 @@ export function evaluateAbility(
     expectedDirect,
     expectedPeriodic,
     extras: draft.extras,
+    parts: draft.parts,
     expected,
     dpct: expected / execute,
     sources: uniq,

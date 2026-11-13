@@ -17,6 +17,7 @@ export interface PrepareArgs extends Omit<AssembleArgs, "extraEffects" | "formMa
   spellClassSet: number; // ClassInfo.spellClassSet
   classTalents: readonly Talent[];
   rotation: SpecRotation;
+  extraBuffs?: readonly Spell[]; // Phase 5: active simulator buffs (Death Wish, Arcane Power ...), applied like self-buffs
 }
 export interface Prepared {
   assembled: Assembled;
@@ -35,7 +36,10 @@ export function prepareDamage(a: PrepareArgs): Prepared {
   const book = buildSpellbook(a.spells, a.spellClassSet, a.baseStats.classes[cls]?.mana ?? 0);
   const form = a.rotation.form ?? null;
   const mask = formMask(form);
-  const selfBuffs = selfBuffSpells(book, a.rotation, a.level, a.talents, a.classTalents);
+  const selfBuffs = [
+    ...selfBuffSpells(book, a.rotation, a.level, a.talents, a.classTalents),
+    ...(a.extraBuffs ?? []),
+  ];
   const handlers = activeHandlers(a.talents, mask);
   const extra: SourcedEffect[] = [
     // src: vmangos (Classic 1.12): Cat Form attack power = 2 Str + Agi - 20 (+ Predatory Strikes) [VERIFY Q55]

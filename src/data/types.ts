@@ -405,7 +405,32 @@ export interface ClassSpellFile {
 }
 
 // ---- Phase 4: default rotations (data/manual/rotations.json) ----
-export type RotationEntryKind = "cooldown" | "dot" | "maintain" | "filler" | "builder" | "finisher" | "nextSwing";
+// "burst" (Phase 5): a cooldown whose caster auras apply while it lasts (Death Wish, Arcane Power, Cold Blood, Evocation).
+// The analytical model skips it; the simulator casts it when its conditions hold.
+export type RotationEntryKind =
+  | "cooldown"
+  | "dot"
+  | "maintain"
+  | "filler"
+  | "builder"
+  | "finisher"
+  | "nextSwing"
+  | "burst";
+/** Comparison of a condition: value >= x ("gte") or value < x ("lt"). */
+export type ConditionCmp = "gte" | "lt";
+/**
+ * Phase 5 rotation condition (all must hold). Evaluated by the simulator (src/engine/rotation/conditions.ts); the
+ * analytical model skips entries with sim-only conditions (targetHp, aura, cooldown, timeLeft).
+ */
+export type RotationCondition =
+  | { type: "resource"; cmp: ConditionCmp; value: number } // rage/energy points; mana: % of maximum mana
+  | { type: "comboPoints"; cmp: ConditionCmp; value: number }
+  | { type: "targetHp"; cmp: ConditionCmp; value: number } // % of target health (execute: lt 20)
+  | { type: "timeLeft"; cmp: ConditionCmp; value: number } // seconds of fight left
+  | { type: "auraLeft"; cmp: ConditionCmp; value: number } // seconds left of this entry's own DoT/buff (0 = missing)
+  | { type: "aura"; ref: string; active: boolean } // a player buff/proc or target debuff by name (Clearcasting, Flurry)
+  | { type: "cooldown"; ref: string; ready: boolean }; // another ability's cooldown (by ability name)
+export type ConditionType = RotationCondition["type"];
 export interface RotationEntry {
   ability: string; // ability name (rank chain name in spells/<class>.json)
   kind: RotationEntryKind;
@@ -414,6 +439,8 @@ export interface RotationEntry {
   buff?: true; // the ability's caster auras are applied while the rotation runs (Slice and Dice, seals)
   requires?: string; // only cast when this other rotation entry is cast (Conflagrate requires Immolate)
   requiresTalent?: string; // only cast when this talent has a point (Scorch for Improved Scorch)
+  conditions?: RotationCondition[]; // Phase 5: extra conditions (all must hold)
+  off?: true; // Phase 5: switched off in the editor (both engines ignore the entry)
   note?: string;
 }
 export type RotationRole = "dps" | "tank" | "healer";

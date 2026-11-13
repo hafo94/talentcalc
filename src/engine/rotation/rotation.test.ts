@@ -73,7 +73,9 @@ describe("every rotation with its spec at max rank", () => {
       const rot = d.result.rotation;
       expect(Number.isFinite(rot.dps) && rot.dps > 0).toBe(true);
       for (const c of rot.casts) expect(Number.isFinite(c.dps) && c.perMinute >= 0).toBe(true);
-      if (r.tier === 1) expect(rot.skipped.filter((s) => !s.reason.endsWith("is the builder"))).toEqual([]);
+      const expected = (reason: string) =>
+        reason.endsWith("is the builder") || reason.endsWith("simulation only");
+      if (r.tier === 1) expect(rot.skipped.filter((s) => !expected(s.reason))).toEqual([]);
     });
   }
 });

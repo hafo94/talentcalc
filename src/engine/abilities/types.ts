@@ -114,6 +114,7 @@ export interface AbilityResult {
   expectedDirect: number; // per cast, incl. hit/crit/mitigation
   expectedPeriodic: number; // per cast, full duration
   extras: { label: string; value: number }[]; // per cast (Ignite, Lightning Overload)
+  parts: DamagePart[]; // Phase 5: the damage parts the expected values are summed from (the simulator samples them)
   expected: number; // expectedDirect + expectedPeriodic + extras
   dpct: number; // expected / execute time (max(timeCost, gcd), or 1.5 s for off-GCD abilities)
   sources: SourceLine[];
