@@ -127,3 +127,15 @@
   gap: 8px;
   margin-top: 8px;
 }
+
+.changes {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  font-size: 12px;
+}
+
+.table tbody th {
+  color: var(--text);
+  font-weight: normal;
+  text-align: left;
+}

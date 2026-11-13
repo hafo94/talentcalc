@@ -135,6 +135,58 @@ async function weaponsFor(ids: WeaponIds): Promise<WeaponsFile | null> {
   return null;
 }
 
+/** Phase 7: the pet of a link, checked against pets/<class>.json (pure; applyPet and the compare view use it). */
+export function petFromCode(
+  code: PetChoice | undefined,
+  file: PetFile | null,
+): { pet: PetChoice; ok: boolean } {
+  const c = code ?? NO_PET;
+  const family = file?.pets.some((p) => p.id === c.family) ? c.family : 0;
+  const sacrifice =
+    file?.token === "warlock" && petsManual.sacrifice.some((s) => s.family === c.sacrifice) ? c.sacrifice : 0;
+  return {
+    pet: { family, sacrifice, scaling: c.scaling },
+    ok: family === c.family && sacrifice === c.sacrifice,
+  };
+}
+
+export type CharacterValues = Pick<
+  CharacterState,
+  "raceId" | "bonus" | "buffIds" | "weaponIds" | "target" | "custom"
+>;
+/**
+ * Phase 7: the character of a link (pure; applyCode and the compare view use it). Weapons are checked only when
+ * weapons.json is given (else they are dropped). `ok` is false if something was invalid.
+ */
+export function characterFromCode(
+  code: CharacterCode,
+  token: ClassToken,
+  level: number,
+  file: WeaponsFile | null,
+): { value: CharacterValues; ok: boolean } {
+  const cls = getClassInfo(token);
+  let ok = code.raceId === null || cls.raceIds.includes(code.raceId);
+  const raceId = code.raceId !== null && ok ? code.raceId : cls.raceIds[0]!;
+  const bonus = { ...EMPTY_BONUS };
+  for (const [k, v] of Object.entries(code.bonus))
+    bonus[k as keyof BonusStats] = clampBonus(k as keyof BonusStats, v);
+  const known = buffsFile.buffs.filter((b) => code.buffCodes.includes(b.code));
+  if (known.length !== code.buffCodes.length) ok = false;
+  let buffIds: string[] = [];
+  for (const b of known) buffIds = withBuff(buffIds, b.id);
+  const weaponIds = file ? sanitizeWeapons(code.weapons, file, token, level) : NO_WEAPON_IDS;
+  if (JSON.stringify(weaponIds) !== JSON.stringify(code.weapons)) ok = false;
+  const c = code.target.custom;
+  const custom: CustomTarget = c
+    ? {
+        level: Math.min(63, Math.max(1, c.level)),
+        armor: Math.min(20000, c.armor),
+        resist: c.resist.map((r) => Math.min(1000, r)) as CustomTarget["resist"],
+      }
+    : DEFAULT_CUSTOM;
+  return { value: { raceId, bonus, buffIds, weaponIds, target: code.target.preset, custom }, ok };
+}
+
 export const useCharacter = create<CharacterState>()((set, get) => ({
   raceId: 0,
   weaponIds: NO_WEAPON_IDS,
@@ -151,14 +203,9 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
     set({ pet: { ...get().pet, ...patch } });
   },
   applyPet(code, file) {
-    const c = code ?? NO_PET;
-    const family = file?.pets.some((p) => p.id === c.family) ? c.family : 0;
-    const sacrifice =
-      file?.token === "warlock" && petsManual.sacrifice.some((s) => s.family === c.sacrifice)
-        ? c.sacrifice
-        : 0;
-    set({ pet: { family, sacrifice, scaling: c.scaling } });
-    return family === c.family && sacrifice === c.sacrifice;
+    const { pet, ok } = petFromCode(code, file);
+    set({ pet });
+    return ok;
   },
   setWeapon(slot, id, token, level) {
     const file = get().weapons;
@@ -205,36 +252,9 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
     return kept;
   },
   async applyCode(code, token, level) {
-    const cls = getClassInfo(token);
-    let ok = code.raceId === null || cls.raceIds.includes(code.raceId);
-    const raceId = code.raceId !== null && ok ? code.raceId : cls.raceIds[0]!;
-    const bonus = { ...EMPTY_BONUS };
-    for (const [k, v] of Object.entries(code.bonus))
-      bonus[k as keyof BonusStats] = clampBonus(k as keyof BonusStats, v);
-    const known = buffsFile.buffs.filter((b) => code.buffCodes.includes(b.code));
-    if (known.length !== code.buffCodes.length) ok = false;
-    let buffIds: string[] = [];
-    for (const b of known) buffIds = withBuff(buffIds, b.id);
     const file = await weaponsFor(code.weapons);
-    const weaponIds = file ? sanitizeWeapons(code.weapons, file, token, level) : NO_WEAPON_IDS;
-    if (JSON.stringify(weaponIds) !== JSON.stringify(code.weapons)) ok = false;
-    const c = code.target.custom;
-    const custom: CustomTarget = c
-      ? {
-          level: Math.min(63, Math.max(1, c.level)),
-          armor: Math.min(20000, c.armor),
-          resist: c.resist.map((r) => Math.min(1000, r)) as CustomTarget["resist"],
-        }
-      : DEFAULT_CUSTOM;
-    set({
-      raceId,
-      bonus,
-      buffIds,
-      weaponIds,
-      target: code.target.preset,
-      custom,
-      ...(file ? { weapons: file } : {}),
-    });
+    const { value, ok } = characterFromCode(code, token, level, file);
+    set({ ...value, ...(file ? { weapons: file } : {}) });
     return ok;
   },
   toCode(token) {
