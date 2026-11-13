@@ -458,6 +458,7 @@ export interface SpecRotation {
   autoShot: boolean; // hunter Auto Shot
   entries: RotationEntry[];
   notes: string[];
+  noPetNotes?: string[]; // Phase 7: shown only while no pet (and no Demonic Sacrifice) is chosen
 }
 export interface RotationsFile {
   _source: string;

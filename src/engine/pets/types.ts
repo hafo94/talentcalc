@@ -1,4 +1,4 @@
-import type { PetInfo, PetOwnerConfig, Spell } from "@/data/types";
+import type { ClassToken, PetInfo, PetOwnerConfig, Spell } from "@/data/types";
 import type { AbilityEval, DamageContext, RotationEffect } from "@/engine/abilities";
 import type { RotationResult } from "@/engine/rotation";
 import type { CharacterStats, SourcedEffect, TargetView } from "@/engine/stats";
@@ -10,6 +10,15 @@ export interface PetChoice {
   scaling: boolean; // pets scale with the owner's stats (Q5)
 }
 export const NO_PET: PetChoice = { family: 0, sacrifice: 0, scaling: true };
+/**
+ * Phase 7 (owner decision): the pet a new build starts with when the class is picked in the UI (Cat 2, Imp 23,
+ * CreatureFamily ids). Links never use it: a link without a pet record (tag 8) is NO_PET, the URL default.
+ */
+export const DEFAULT_PET_FAMILY: Partial<Record<ClassToken, number>> = { hunter: 2, warlock: 23 };
+export const defaultPet = (token: ClassToken): PetChoice => ({
+  ...NO_PET,
+  family: DEFAULT_PET_FAMILY[token] ?? 0,
+});
 
 /** The active pet, as plain data (SimInput carries it to the worker). */
 export interface PetSetup {

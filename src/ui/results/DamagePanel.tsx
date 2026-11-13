@@ -148,7 +148,7 @@ export function DamagePanel() {
         <p className={styles.line}>Loading spells…</p>
       </section>
     );
-  const { rotation, result, pet, totalDps, petNotes } = d.damage;
+  const { rotation, result, pet, totalDps, petNotes, notes } = d.damage;
   const r = result.rotation;
   const perMinute = new Map(r.casts.map((c) => [c.key, c.perMinute]));
   const cards: AbilityResult[] = [
@@ -200,8 +200,8 @@ export function DamagePanel() {
           {n}
         </p>
       ))}
-      {rotation.notes.map((n) => (
-        <p key={n} className={styles.note}>
+      {notes.map((n) => (
+        <p key={n} className={styles.note} data-testid="rotation-note">
           {n}
         </p>
       ))}

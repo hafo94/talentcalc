@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { buffsFile, getClassInfo, loadWeapons, petsManual } from "@/data";
 import type { ClassToken, MagicSchool, PetFile, TargetPresetId, WeaponsFile } from "@/data/types";
-import { NO_PET, type PetChoice } from "@/engine/pets";
+import { NO_PET, defaultPet, type PetChoice } from "@/engine/pets";
 import { EMPTY_BONUS, ammoFor, weaponsForSlot, type BonusStats } from "@/engine/stats";
 import { BONUS_SCALE, type CharacterCode, type CustomTarget } from "./charCode";
 
@@ -68,6 +68,7 @@ export interface CharacterState {
   setPreset(name: "raidBuffs" | "raidDebuffs", on: boolean): void;
   setTarget(preset: TargetPresetId): void;
   setCustom(patch: Partial<CustomTarget>): void;
+  /** A class picked in the UI: keeps what fits, starts with the class's default pet (Phase 7). */
   fitToClass(token: ClassToken, level: number): Promise<boolean>; // false if something was dropped
   applyCode(code: CharacterCode, token: ClassToken, level: number): Promise<boolean>;
   toCode(token: ClassToken): CharacterCode;
@@ -190,7 +191,7 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
     const file = await weaponsFor(get().weaponIds);
     const weaponIds = file ? sanitizeWeapons(get().weaponIds, file, token, level) : NO_WEAPON_IDS;
     const kept = JSON.stringify(weaponIds) === JSON.stringify(get().weaponIds);
-    set({ raceId, weaponIds, pet: NO_PET, ...(file ? { weapons: file } : {}) });
+    set({ raceId, weaponIds, pet: defaultPet(token), ...(file ? { weapons: file } : {}) });
     return kept;
   },
   async applyCode(code, token, level) {

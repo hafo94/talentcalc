@@ -57,7 +57,7 @@ export function StatStrip() {
       { testId: "strip-dr", label: "Armor DR", stat: view.armorReduction, format: fmtPct },
     ];
   }
-  const dps = d.damage?.result.rotation.dps;
+  const dps = d.damage?.totalDps; // Phase 7: incl. the pet (hunters and warlocks now start with one)
   return (
     <div className={styles.strip} data-testid="stat-strip" aria-label="Key stats">
       {dps !== undefined && (

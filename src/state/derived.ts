@@ -46,6 +46,7 @@ export interface DamageView {
   pet: PetDamage | null; // Phase 6: the active pet vs the selected target
   totalDps: number; // owner + pet
   petNotes: string[]; // parts of the pet choice that do nothing (resolvePet)
+  notes: string[]; // Phase 7: rotation notes, plus noPetNotes while no pet or sacrifice is chosen
 }
 export type Derived =
   | {
@@ -213,6 +214,10 @@ export function derive(calc: CalcInput, ch: CharInput, custom: SpecRotation | nu
           pet: petResult,
           totalDps: result.rotation.dps + (petResult?.rotation.dps ?? 0),
           petNotes: pet?.notes ?? [],
+          notes: [
+            ...rotation.notes,
+            ...(ch.pet && (ch.pet.family !== 0 || ch.pet.sacrifice !== 0) ? [] : (rotation.noPetNotes ?? [])),
+          ],
         }
       : null;
   return {
