@@ -1,23 +1,30 @@
 {
-  "_source": "Phase 4 default priority rotations (docs/phase4-implementation-plan.md section 6). Ability names are rank-chain names in data/generated/<build>/spells/<class>.json. Entries are in priority order; an entry whose ability is not learned (talent not taken, wrong weapon) is skipped.",
+  "_source": "Phase 4 default priority rotations (docs/phase4-implementation-plan.md section 6), Phase 5 cooldowns and conditions (docs/phase5-implementation-plan.md section 3). Ability names are rank-chain names in data/generated/<build>/spells/<class>.json. Entries are in priority order; an entry whose ability is not learned (talent not taken, wrong weapon) is skipped.",
   "_status": "[VERIFY] Classic-style priorities adapted to the Forever spell list; not checked against Forever logs.",
   "rotations": [
     { "id": "warrior-arms", "class": "warrior", "spec": 0, "label": "Arms: Mortal Strike, Whirlwind, Heroic Strike", "role": "dps", "tier": 1,
       "selfBuffs": [], "melee": true, "autoShot": false,
       "entries": [
+        { "ability": "Recklessness", "kind": "burst", "conditions": [{ "type": "targetHp", "cmp": "lt", "value": 20 }] },
+        { "ability": "Execute", "kind": "cooldown" },
         { "ability": "Mortal Strike", "kind": "cooldown" },
         { "ability": "Whirlwind", "kind": "cooldown" },
-        { "ability": "Heroic Strike", "kind": "nextSwing" }
+        { "ability": "Bloodrage", "kind": "burst" },
+        { "ability": "Heroic Strike", "kind": "nextSwing", "conditions": [{ "type": "resource", "cmp": "gte", "value": 50 }] }
       ],
-      "notes": ["Slam, Overpower, Rend and Execute are not in the Phase 4 rotation (Phase 5)."] },
+      "notes": ["Recklessness, Execute and Bloodrage are simulation-only entries. Slam, Overpower and Rend are not in the default rotation."] },
     { "id": "warrior-fury", "class": "warrior", "spec": 1, "label": "Fury: Bloodthirst, Whirlwind, Heroic Strike", "role": "dps", "tier": 1,
       "selfBuffs": [], "melee": true, "autoShot": false,
       "entries": [
+        { "ability": "Death Wish", "kind": "burst" },
+        { "ability": "Recklessness", "kind": "burst", "conditions": [{ "type": "targetHp", "cmp": "lt", "value": 20 }] },
+        { "ability": "Execute", "kind": "cooldown" },
         { "ability": "Bloodthirst", "kind": "cooldown" },
         { "ability": "Whirlwind", "kind": "cooldown" },
-        { "ability": "Heroic Strike", "kind": "nextSwing" }
+        { "ability": "Bloodrage", "kind": "burst" },
+        { "ability": "Heroic Strike", "kind": "nextSwing", "conditions": [{ "type": "resource", "cmp": "gte", "value": 50 }] }
       ],
-      "notes": ["Execute phase, Death Wish and Recklessness are not modeled (Phase 5)."] },
+      "notes": ["Death Wish, Recklessness, Execute and Bloodrage are simulation-only entries."] },
     { "id": "warrior-protection", "class": "warrior", "spec": 2, "label": "Basic: Heroic Strike", "role": "tank", "tier": 3,
       "selfBuffs": [], "melee": true, "autoShot": false,
       "entries": [{ "ability": "Heroic Strike", "kind": "nextSwing" }],
@@ -37,11 +44,12 @@
         { "ability": "Holy Strike", "kind": "cooldown" },
         { "ability": "Judgement", "kind": "cooldown" }
       ],
-      "notes": ["Seal of Righteousness, Consecration, Exorcism (Undead/Demon only) and Hammer of Wrath (execute) are not modeled."] },
+      "notes": ["Seal of Righteousness, Consecration, Exorcism (Undead/Demon only) and Hammer of Wrath (ranged attack table in the data, Q66) are not modeled."] },
 
     { "id": "hunter-beast-mastery", "class": "hunter", "spec": 0, "label": "Ranged: Aimed, Multi, Arcane Shot, Serpent Sting", "role": "dps", "tier": 2,
       "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
       "entries": [
+        { "ability": "Rapid Fire", "kind": "burst" },
         { "ability": "Aimed Shot", "kind": "cooldown" },
         { "ability": "Multi-Shot", "kind": "cooldown" },
         { "ability": "Arcane Shot", "kind": "cooldown" },
@@ -51,16 +59,18 @@
     { "id": "hunter-marksmanship", "class": "hunter", "spec": 1, "label": "Marksmanship: Sniper, Aimed, Multi, Arcane Shot", "role": "dps", "tier": 1,
       "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
       "entries": [
+        { "ability": "Rapid Fire", "kind": "burst" },
         { "ability": "Sniper Shot", "kind": "cooldown" },
         { "ability": "Aimed Shot", "kind": "cooldown" },
         { "ability": "Multi-Shot", "kind": "cooldown" },
         { "ability": "Arcane Shot", "kind": "cooldown" },
         { "ability": "Serpent Sting", "kind": "dot" }
       ],
-      "notes": ["Rapid Fire and Rapid Killing are cooldowns (Phase 5). Lone Wolf assumes no pet (pets: Phase 6)."] },
+      "notes": ["Rapid Fire is a simulation-only cooldown; Rapid Killing is not modeled. Lone Wolf assumes no pet (pets: Phase 6)."] },
     { "id": "hunter-survival", "class": "hunter", "spec": 2, "label": "Ranged: Aimed, Multi, Arcane Shot, Serpent Sting", "role": "dps", "tier": 2,
       "selfBuffs": ["Aspect of the Hawk", "Hunter's Mark"], "melee": false, "autoShot": true,
       "entries": [
+        { "ability": "Rapid Fire", "kind": "burst" },
         { "ability": "Aimed Shot", "kind": "cooldown" },
         { "ability": "Multi-Shot", "kind": "cooldown" },
         { "ability": "Arcane Shot", "kind": "cooldown" },
@@ -71,6 +81,7 @@
     { "id": "rogue-assassination", "class": "rogue", "spec": 0, "label": "Slice and Dice, Mutilate, Eviscerate", "role": "dps", "tier": 2,
       "selfBuffs": [], "melee": true, "autoShot": false,
       "entries": [
+        { "ability": "Cold Blood", "kind": "burst" },
         { "ability": "Slice and Dice", "kind": "finisher", "cp": 5, "buff": true },
         { "ability": "Mutilate", "kind": "builder" },
         { "ability": "Sinister Strike", "kind": "builder" },
@@ -80,12 +91,14 @@
     { "id": "rogue-combat", "class": "rogue", "spec": 1, "label": "Combat: Slice and Dice, Shank, Sinister Strike, Eviscerate", "role": "dps", "tier": 1,
       "selfBuffs": [], "melee": true, "autoShot": false,
       "entries": [
+        { "ability": "Blade Flurry", "kind": "burst" },
+        { "ability": "Adrenaline Rush", "kind": "burst" },
         { "ability": "Slice and Dice", "kind": "finisher", "cp": 5, "buff": true },
         { "ability": "Shank", "kind": "cooldown" },
         { "ability": "Sinister Strike", "kind": "builder" },
         { "ability": "Eviscerate", "kind": "finisher", "cp": 5 }
       ],
-      "notes": ["Blade Flurry and Adrenaline Rush are cooldowns (Phase 5)."] },
+      "notes": ["Blade Flurry and Adrenaline Rush are simulation-only cooldowns (single target: Blade Flurry adds only its attack speed)."] },
     { "id": "rogue-subtlety", "class": "rogue", "spec": 2, "label": "Slice and Dice, Hemorrhage, Eviscerate", "role": "dps", "tier": 2,
       "selfBuffs": [], "melee": true, "autoShot": false,
       "entries": [
@@ -100,6 +113,7 @@
     { "id": "priest-discipline", "class": "priest", "spec": 0, "label": "Basic: Shadow Word: Pain, Mind Blast, Smite", "role": "healer", "tier": 3,
       "selfBuffs": [], "melee": false, "autoShot": false,
       "entries": [
+        { "ability": "Inner Focus", "kind": "burst" },
         { "ability": "Shadow Word: Pain", "kind": "dot" },
         { "ability": "Mind Blast", "kind": "cooldown" },
         { "ability": "Smite", "kind": "filler" }
@@ -150,27 +164,36 @@
     { "id": "mage-arcane", "class": "mage", "spec": 0, "label": "Arcane: Arcane Wrath, Arcane Missiles", "role": "dps", "tier": 2,
       "selfBuffs": [], "melee": false, "autoShot": false,
       "entries": [
+        { "ability": "Evocation", "kind": "burst", "conditions": [{ "type": "resource", "cmp": "lt", "value": 20 }] },
+        { "ability": "Arcane Power", "kind": "burst" },
+        { "ability": "Presence of Mind", "kind": "burst" },
         { "ability": "Arcane Wrath", "kind": "cooldown" },
         { "ability": "Arcane Missiles", "kind": "filler" }
       ],
-      "notes": ["Arcane Blast stacks, Missile Barrage and Arcane Power are not modeled."] },
+      "notes": ["Evocation, Arcane Power and Presence of Mind are simulation-only. Arcane Blast stacks and Missile Barrage are not modeled."] },
     { "id": "mage-fire", "class": "mage", "spec": 1, "label": "Fire: Scorch (Improved Scorch), Fire Blast, Fireball", "role": "dps", "tier": 1,
       "selfBuffs": [], "melee": false, "autoShot": false,
       "entries": [
+        { "ability": "Evocation", "kind": "burst", "conditions": [{ "type": "resource", "cmp": "lt", "value": 20 }] },
+        { "ability": "Combustion", "kind": "burst" },
         { "ability": "Scorch", "kind": "maintain", "everySec": 30, "requiresTalent": "Improved Scorch" },
         { "ability": "Fire Blast", "kind": "cooldown" },
         { "ability": "Fireball", "kind": "filler" }
       ],
-      "notes": ["Combustion, Heating Up and Pyroblast procs are not modeled."] },
+      "notes": ["Evocation and Combustion are simulation-only. Heating Up and Pyroblast procs are not modeled."] },
     { "id": "mage-frost", "class": "mage", "spec": 2, "label": "Frost: Frostbolt", "role": "dps", "tier": 1,
       "selfBuffs": [], "melee": false, "autoShot": false,
-      "entries": [{ "ability": "Frostbolt", "kind": "filler" }],
-      "notes": ["Shatter, Fingers of Frost and Ice Lance need frozen targets (Phase 5)."] },
+      "entries": [
+        { "ability": "Evocation", "kind": "burst", "conditions": [{ "type": "resource", "cmp": "lt", "value": 20 }] },
+        { "ability": "Frostbolt", "kind": "filler" }
+      ],
+      "notes": ["Shatter, Fingers of Frost and Ice Lance need frozen targets: not modeled."] },
 
     { "id": "warlock-affliction", "class": "warlock", "spec": 0, "label": "Affliction: Corruption, Bane of Agony, Siphon Life, Shadow Bolt", "role": "dps", "tier": 2,
       "selfBuffs": [], "melee": false, "autoShot": false,
       "entries": [
         { "ability": "Corruption", "kind": "dot" },
+        { "ability": "Amplify Curse", "kind": "burst" },
         { "ability": "Bane of Agony", "kind": "dot" },
         { "ability": "Siphon Life", "kind": "dot" },
         { "ability": "Shadow Bolt", "kind": "filler" }
