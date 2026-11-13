@@ -17,7 +17,7 @@ export function StatStrip() {
   if (!d.ok) {
     return d.reason === "level" ? (
       <div className={styles.strip} data-testid="stat-strip">
-        <span className={styles.note}>Stats: level 60 only</span>
+        <span className={styles.note}>Stats: no base stats for this level</span>
       </div>
     ) : null;
   }

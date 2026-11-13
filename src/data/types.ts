@@ -253,6 +253,8 @@ export interface BuffDef {
   spellId: number | null;
   spellName?: string;
   group?: string; // at most one buff per group
+  minLevel?: number; // Phase 7: lowest player level the buff applies at (absent = 1); checked by the pipeline
+  itemId?: number; // Phase 7: consumable item whose RequiredLevel is minLevel
   effects: ManualEffect[];
   notes?: string;
   classic?: string;
@@ -297,12 +299,15 @@ export interface ApFormula {
   perAgi: number;
   flat: number;
 }
+/** Phase 7: level-1 values of a class (Human); levels 2..59 are interpolated (src/engine/stats/levels.ts). */
+export type LevelOneStats = Omit<ClassBaseStats, "baseMeleeCrit" | "baseSpellCrit">;
 export interface BaseStatsFile {
   _source: string;
   _status: string;
   level: number;
   baseCritUnit: "percent";
   classes: Record<ManualClassToken, ClassBaseStats>;
+  level1?: { _source: string; classes: Record<ManualClassToken, LevelOneStats> }; // Phase 7 [VERIFY Q76]
   raceOffsets: Record<string, Record<PrimaryStat, number>>;
   conversions: {
     meleeAttackPower: Record<ManualClassToken, ApFormula>;
@@ -509,6 +514,7 @@ export interface PetBaseStats {
 }
 export interface PetOwnerConfig {
   base: PetBaseStats;
+  level1?: Pick<PetBaseStats, "str" | "agi" | "sta" | "int" | "spi">; // Phase 7: level-1 values [VERIFY Q77]
   /** Owner scaling (Q5): % of the owner's ranged attack power (hunter) or spell power (warlock, max of fire/shadow). */
   scaling: {
     from: "rangedAttackPower" | "spellPower";

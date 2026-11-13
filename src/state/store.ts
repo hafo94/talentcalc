@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { classesFile, getClassInfo, loadClassSpells, loadPetFile, loadTalentFile } from "@/data";
 import type { ClassSpellFile, ClassToken, PetFile } from "@/data/types";
 import {
+  MAX_LEVEL,
+  MIN_LEVEL,
   addPoint as addPointRule,
   buildClassTree,
   removePoint as removePointRule,
@@ -36,6 +38,8 @@ export interface CalcState {
   resetSpec(specIndex: number): void;
   resetAll(): void;
   setTalented(on: boolean): void;
+  /** Phase 7: 1..60. Talent points above the new level and weapons it cannot use are removed (with a notice). */
+  setLevel(level: number): void;
   setActiveSpec(i: number): void;
   dismissNotice(): void;
 }
@@ -186,6 +190,23 @@ export const useCalc = create<CalcState>()((set, get) => ({
     if (!s.tree) return set({ talentedRank });
     const { ranks } = sanitize(s.tree, s.ranks, pointsContext({ level: s.level, talentedRank }));
     set({ talentedRank, ranks });
+  },
+  setLevel(level) {
+    const s = get();
+    const lv = Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, Math.round(level)));
+    if (!Number.isFinite(lv) || lv === s.level) return;
+    const { ranks, dropped } = s.tree
+      ? sanitize(s.tree, s.ranks, pointsContext({ level: lv, talentedRank: s.talentedRank }))
+      : { ranks: s.ranks, dropped: false };
+    const weaponsOk = s.classToken ? useCharacter.getState().fitToLevel(s.classToken, lv) : true;
+    const notice =
+      [
+        dropped ? `Talent points above level ${lv} were removed.` : "",
+        weaponsOk ? "" : `Weapons that need a higher level than ${lv} were removed.`,
+      ]
+        .filter(Boolean)
+        .join(" ") || null;
+    set({ level: lv, ranks, ...(notice ? { notice } : {}) });
   },
   setActiveSpec(i) {
     set({ activeSpec: Math.max(0, Math.min(2, i)) });

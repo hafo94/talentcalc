@@ -114,6 +114,7 @@ export function CharacterPanel() {
   const classToken = useCalc((s) => s.classToken);
   const raceId = useCharacter((s) => s.raceId);
   const setRace = useCharacter((s) => s.setRace);
+  const level = useCalc((s) => s.level);
   if (!classToken) return null;
   const cls = getClassInfo(classToken);
   const races = cls.raceIds.map((id) => classesFile.races.find((r) => r.id === id)!);
@@ -141,7 +142,9 @@ export function CharacterPanel() {
               </option>
             ))}
           </select>
-          <span className={styles.dim}>Level 60</span>
+          <span className={styles.dim} data-testid="character-level">
+            Level {level}
+          </span>
         </div>
       </section>
       <WeaponsSection />

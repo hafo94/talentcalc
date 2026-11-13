@@ -1,6 +1,7 @@
 import { buffsFile, targetsFile } from "@/data";
 import type { MagicSchool } from "@/data/types";
 import { CUSTOM_LIMITS, RESIST_ORDER, useCharacter } from "@/state/character";
+import { useCalc } from "@/state/store";
 import { StatValue } from "@/ui/stats/StatValue";
 import { fmtInt, fmtPct } from "@/ui/stats/format";
 import { useDerived } from "@/ui/stats/useDerived";
@@ -15,7 +16,8 @@ export function TargetPanel() {
   const setTarget = useCharacter((s) => s.setTarget);
   const setCustom = useCharacter((s) => s.setCustom);
   const d = useDerived();
-  const rows = targetsFile.byPlayerLevel["60"] ?? [];
+  const level = useCalc((s) => s.level);
+  const rows = targetsFile.byPlayerLevel[String(level)] ?? [];
   const num = (v: string, lo: number, hi: number) => Math.min(hi, Math.max(lo, Math.round(Number(v) || 0)));
 
   return (

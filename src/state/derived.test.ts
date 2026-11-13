@@ -39,9 +39,9 @@ describe("derive", () => {
         for (const v of d.reference) expect(Number.isFinite(v.dps), `${c.token} ${v.presetId}`).toBe(true);
       }
   });
-  it("level below 60 has no stats", () => {
+  it("a level outside 1..60 has no stats (Phase 7: levels 1..59 are supported)", () => {
     expect(
-      derive({ tree: treeFor("warrior"), ranks: {}, level: 40, spells: spellFile("warrior") }, ch),
+      derive({ tree: treeFor("warrior"), ranks: {}, level: 61, spells: spellFile("warrior") }, ch),
     ).toEqual({
       ok: false,
       reason: "level",

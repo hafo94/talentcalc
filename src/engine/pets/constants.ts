@@ -22,6 +22,8 @@ export const PET_TALENT_IDS: ReadonlySet<number> = new Set(Object.values(PET_TAL
 
 /** Race key of the pet's own base-stat table (computeCharacter input; the class key is the owner's). */
 export const PET_RACE = "PET";
+/** Level of data/manual/pets.json owners.*.base (the file's `level`); below it petBaseAt interpolates (Phase 7). */
+export const PET_BASE_LEVEL = 60;
 /** Item subclass of the pet's synthetic weapon (13 fist weapon: no normalized-speed rule applies). */
 export const PET_WEAPON_SUBCLASS = 13;
 /** Effects that apply an aura to the pet: 6 apply aura, 35 party aura, 65 raid aura, 119 pet area aura, 143 owner area aura. */

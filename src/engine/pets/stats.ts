@@ -1,4 +1,11 @@
-import type { BaseStatsFile, ManualClassToken, Spell, Weapon } from "@/data/types";
+import type {
+  BaseStatsFile,
+  ManualClassToken,
+  PetBaseStats,
+  PetOwnerConfig,
+  Spell,
+  Weapon,
+} from "@/data/types";
 import { collectMods, effectValue, familyMatches, type ModSource } from "@/engine/abilities";
 import {
   EMPTY_BONUS,
@@ -13,6 +20,7 @@ import {
   AURA_PROC_TRIGGER,
   OP_PROC_CHANCE,
   PET_AURA_EFFECTS,
+  PET_BASE_LEVEL,
   PET_RACE,
   PET_WEAPON_SUBCLASS,
   POWER_FOCUS,
@@ -112,6 +120,31 @@ function ownerScaling(setup: PetSetup, owner: CharacterStats): SourcedEffect[] {
 }
 
 /**
+ * Phase 7: the pet's base stats at `level` (pet level = player level). Primary stats are interpolated linearly between
+ * `level1` and `base` (level 60); melee damage per swing is level -/+ floor(level / 4) (CMaNGOS Pet::InitStatsForLevel),
+ * scaled so that level 60 gives base.minDamage / maxDamage. Crit, attack speed and the AP formula do not change. [VERIFY Q77]
+ */
+export function petBaseAt(config: PetOwnerConfig, level: number): PetBaseStats {
+  const b = config.base;
+  if (level >= PET_BASE_LEVEL || !config.level1) return b;
+  const one = config.level1;
+  const t = (Math.max(1, level) - 1) / (PET_BASE_LEVEL - 1);
+  const lerp = (k: keyof typeof one) => Math.round(one[k] + (b[k] - one[k]) * t);
+  const q = Math.floor(level / 4);
+  const top = Math.floor(PET_BASE_LEVEL / 4);
+  return {
+    ...b,
+    str: lerp("str"),
+    agi: lerp("agi"),
+    sta: lerp("sta"),
+    int: lerp("int"),
+    spi: lerp("spi"),
+    minDamage: (b.minDamage * (level - q)) / (PET_BASE_LEVEL - top),
+    maxDamage: (b.maxDamage * (level + q)) / (PET_BASE_LEVEL + top),
+  };
+}
+
+/**
  * The pet's character sheet (section 4.3): the Phase 3 stat engine (computeCharacter) with the pet's own base-stat
  * table (class key = the owner, race PET), a synthetic weapon for its melee attack, owner scaling, the shared owner
  * talents and the passive auras. Returns the stats and the weapons the damage engine uses.
@@ -120,7 +153,7 @@ export function computePetStats(
   setup: PetSetup,
   a: { level: number; owner: CharacterStats; auras: PetAuras },
 ): { stats: CharacterStats; weapons: EquippedWeapons } {
-  const b = setup.config.base;
+  const b = petBaseAt(setup.config, a.level);
   const cls = setup.info.owner.toUpperCase() as ManualClassToken;
   const baseStats = {
     _source: "data/manual/pets.json",

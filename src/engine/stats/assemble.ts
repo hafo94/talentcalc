@@ -45,7 +45,7 @@ export function assemble(a: AssembleArgs): Assembled {
   const debuffs: SourcedEffect[] = [];
   const selected = new Set(a.buffIds);
   for (const b of a.buffs.buffs) {
-    if (!selected.has(b.id)) continue;
+    if (!selected.has(b.id) || (b.minLevel ?? 1) > a.level) continue; // Phase 7: buffs above the level do nothing
     for (const e of b.effects) {
       if (b.category === "debuff") debuffs.push(strip(e, b.name, "debuff"));
       else effects.push(strip(e, b.name, "buff"));

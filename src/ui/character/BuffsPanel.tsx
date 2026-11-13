@@ -1,13 +1,19 @@
 import { buffsFile } from "@/data";
 import type { BuffCategory, BuffDef } from "@/data/types";
 import { useCharacter } from "@/state/character";
+import { useCalc } from "@/state/store";
 import { effectsSummary } from "./effectText";
 import styles from "./CharacterPanel.module.css";
 
 export function BuffCheck({ buff }: { buff: BuffDef }) {
   const checked = useCharacter((s) => s.buffIds.includes(buff.id));
   const toggle = useCharacter((s) => s.toggleBuff);
-  const title = (buff.notes ?? "") + (buff.classic ? ` Classic 1.12: ${buff.classic}.` : "");
+  const level = useCalc((s) => s.level);
+  const tooLow = (buff.minLevel ?? 1) > level; // Phase 7: kept in the build, but it does nothing at this level
+  const title =
+    (tooLow ? `Requires level ${buff.minLevel}: no effect at level ${level}. ` : "") +
+    (buff.notes ?? "") +
+    (buff.classic ? ` Classic 1.12: ${buff.classic}.` : "");
   return (
     <label className={styles.buff} title={title.trim() || undefined}>
       <input
@@ -18,6 +24,7 @@ export function BuffCheck({ buff }: { buff: BuffDef }) {
       />
       <span>
         {buff.name} <span className={styles.dim}>{effectsSummary(buff.effects)}</span>
+        {tooLow && <span className={styles.levelReq}> (level {buff.minLevel})</span>}
       </span>
     </label>
   );

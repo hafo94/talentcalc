@@ -1,8 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { availablePoints, pointsBySpec, pointsSpent, requiredLevel } from "@/engine/talents";
+import {
+  MAX_LEVEL,
+  MIN_LEVEL,
+  availablePoints,
+  pointsBySpec,
+  pointsSpent,
+  requiredLevel,
+} from "@/engine/talents";
 import { classesFile } from "@/data";
 import { pointsContext, useCalc } from "@/state/store";
 import styles from "./PointsSummary.module.css";
+
+const LEVELS = Array.from({ length: MAX_LEVEL - MIN_LEVEL + 1 }, (_, i) => MAX_LEVEL - i);
 
 async function copyText(text: string): Promise<void> {
   try {
@@ -28,6 +37,7 @@ export function PointsSummary() {
   const level = useCalc((s) => s.level);
   const talentedRank = useCalc((s) => s.talentedRank);
   const setTalented = useCalc((s) => s.setTalented);
+  const setLevel = useCalc((s) => s.setLevel);
   const resetAll = useCalc((s) => s.resetAll);
   const [copied, setCopied] = useState(false);
   const [announce, setAnnounce] = useState("");
@@ -74,7 +84,21 @@ export function PointsSummary() {
       <span className={styles.item} data-testid="required-level">
         Required level: {req ?? "–"}
       </span>
-      <span className={styles.item}>Level {level}</span>
+      <label className={styles.item}>
+        Level{" "}
+        <select
+          className={styles.level}
+          data-testid="level-select"
+          value={level}
+          onChange={(e) => setLevel(Number(e.target.value))}
+        >
+          {LEVELS.map((l) => (
+            <option key={l} value={l}>
+              {l}
+            </option>
+          ))}
+        </select>
+      </label>
       <label
         className={styles.item}
         title="Account perk: talent points start at level 5 instead of 10 (max 51). At level 60 it only lowers the required level."

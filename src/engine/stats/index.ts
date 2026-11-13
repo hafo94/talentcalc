@@ -4,6 +4,7 @@ export * from "./types";
 export * from "./equip";
 export * from "./talentEffects";
 export * from "./character";
+export * from "./levels";
 export * from "./target";
 export * from "./assemble";
 export * from "./weapons";

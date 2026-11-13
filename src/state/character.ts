@@ -71,6 +71,8 @@ export interface CharacterState {
   /** A class picked in the UI: keeps what fits, starts with the class's default pet (Phase 7). */
   fitToClass(token: ClassToken, level: number): Promise<boolean>; // false if something was dropped
   applyCode(code: CharacterCode, token: ClassToken, level: number): Promise<boolean>;
+  /** Phase 7: drops weapons and ammo above `level` (false if something was dropped). */
+  fitToLevel(token: ClassToken, level: number): boolean;
   toCode(token: ClassToken): CharacterCode;
 }
 
@@ -192,6 +194,14 @@ export const useCharacter = create<CharacterState>()((set, get) => ({
     const weaponIds = file ? sanitizeWeapons(get().weaponIds, file, token, level) : NO_WEAPON_IDS;
     const kept = JSON.stringify(weaponIds) === JSON.stringify(get().weaponIds);
     set({ raceId, weaponIds, pet: defaultPet(token), ...(file ? { weapons: file } : {}) });
+    return kept;
+  },
+  fitToLevel(token, level) {
+    const file = get().weapons;
+    if (!file) return true;
+    const weaponIds = sanitizeWeapons(get().weaponIds, file, token, level);
+    const kept = JSON.stringify(weaponIds) === JSON.stringify(get().weaponIds);
+    if (!kept) set({ weaponIds });
     return kept;
   },
   async applyCode(code, token, level) {

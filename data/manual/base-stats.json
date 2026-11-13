@@ -14,6 +14,20 @@
   "WARLOCK": {"str": 50, "agi": 55, "sta": 70, "int": 105, "spi": 110, "health": 1414, "mana": 1373, "baseMeleeCrit": 2, "baseSpellCrit": 1.7},
   "DRUID": {"str": 65, "agi": 55, "sta": 65, "int": 100, "spi": 110, "health": 1483, "mana": 1244, "baseMeleeCrit": 0.9, "baseSpellCrit": 1.85}
  },
+ "level1": {
+  "_source": "[VERIFY] Phase 7: Classic 1.12 level-1 base stats of a Human of each class (Human base 20/20/20/20/21 plus the Classic class modifiers; health and mana from vmangos player_classlevelstats level 1, recalled). Levels 2..59 are a linear interpolation between this table and 'classes' (level 60), rounded; race offsets and base crit do not change with level; agiPerMeleeCrit / intPerSpellCrit scale with the class's base Agility / Intellect at that level. Forever's client data has no player level-stat table (ExpectedStat.PlayerPrimaryStat is a retail item-budget curve: 20 at level 1, 3212 at 60). Confirm with naked character sheets at levels 10/30/50 (OPEN_QUESTIONS Q76).",
+  "classes": {
+   "WARRIOR": {"str": 23, "agi": 20, "sta": 22, "int": 20, "spi": 21, "health": 20, "mana": 0},
+   "PALADIN": {"str": 22, "agi": 20, "sta": 22, "int": 20, "spi": 22, "health": 28, "mana": 60},
+   "HUNTER": {"str": 20, "agi": 23, "sta": 21, "int": 20, "spi": 22, "health": 46, "mana": 65},
+   "ROGUE": {"str": 21, "agi": 23, "sta": 21, "int": 20, "spi": 21, "health": 45, "mana": 0},
+   "PRIEST": {"str": 20, "agi": 20, "sta": 20, "int": 22, "spi": 24, "health": 52, "mana": 73},
+   "SHAMAN": {"str": 21, "agi": 20, "sta": 21, "int": 21, "spi": 23, "health": 37, "mana": 55},
+   "MAGE": {"str": 20, "agi": 20, "sta": 20, "int": 23, "spi": 23, "health": 32, "mana": 100},
+   "WARLOCK": {"str": 20, "agi": 20, "sta": 21, "int": 22, "spi": 23, "health": 23, "mana": 90},
+   "DRUID": {"str": 21, "agi": 20, "sta": 20, "int": 22, "spi": 23, "health": 44, "mana": 60}
+  }
+ },
  "raceOffsets": {
   "HUMAN": {"str": 0, "agi": 0, "sta": 0, "int": 0, "spi": 0},
   "ORC": {"str": 3, "agi": -3, "sta": 2, "int": -3, "spi": 2},

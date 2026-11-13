@@ -264,7 +264,7 @@ function ReferenceTable({ d }: { d: Ok }) {
     <section className={styles.block}>
       <div className={styles.scroll}>
         <table className={styles.ref} data-testid="reference-table">
-          <caption>Same build vs reference targets for level 60 (debuffs applied)</caption>
+          <caption>Same build vs reference targets for level {s.level} (debuffs applied)</caption>
           <thead>
             <tr>
               <th>Target</th>
@@ -312,7 +312,7 @@ export function StatsPanel() {
     return (
       <div className={styles.panel} data-testid="stats-panel">
         <h2 className={styles.title}>Stats</h2>
-        <p className={styles.dim}>Stats are computed for level 60 only (level selector: Phase 7).</p>
+        <p className={styles.dim}>No base stats for this level.</p>
       </div>
     );
   }

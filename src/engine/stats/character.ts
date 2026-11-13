@@ -8,6 +8,8 @@ import {
   OFFHAND_DAMAGE_MULT,
   SKILL_PER_LEVEL,
 } from "./constants";
+import { UnsupportedLevelError } from "./errors";
+import { baseStatsAt } from "./levels";
 import { applyPct, makeStat, type Part, type SourceKind, type Stat } from "./stat";
 import {
   ATTACK_SLOTS,
@@ -21,7 +23,7 @@ import {
 
 const WAND_SUBCLASS = 19;
 
-export class UnsupportedLevelError extends Error {}
+export { UnsupportedLevelError };
 
 const STAT_LABEL: Record<PrimaryStat, string> = {
   str: "Strength",
@@ -94,11 +96,10 @@ function effectParts(
 export function computeCharacter(input: CharacterInput): CharacterStats {
   const { baseStats: bs, bonus, effects, level } = input;
   const cls = input.classToken.toUpperCase() as Uppercase<typeof input.classToken>;
-  if (bs.level !== level)
-    throw new UnsupportedLevelError(`base stats exist for level ${bs.level} only (Q14)`);
-  const base = bs.classes[cls];
   const race = bs.raceOffsets[input.race];
-  if (!base || !race) throw new Error(`no base stats for ${input.race} ${cls}`);
+  if (!bs.classes[cls] || !race) throw new Error(`no base stats for ${input.race} ${cls}`);
+  const lv = baseStatsAt(bs, cls, level); // Phase 7: interpolated below level 60 [VERIFY Q76]
+  const base = lv.base;
   const conv = bs.conversions;
 
   // 1. primary stats
@@ -212,19 +213,23 @@ export function computeCharacter(input: CharacterInput): CharacterStats {
     label: `${p.label} (${p.value} hit rating)`,
     value: p.value / HIT_RATING_PER_PCT,
   }));
-  const agiPer = conv.agiPerMeleeCrit[cls];
+  const agiPer = lv.agiPerMeleeCrit;
   const weaponCrit = (slot: AttackSlot): Stat =>
     makeStat([
       part("Base", "base", base.baseMeleeCrit),
-      part(`Agility ${r2(P("agi"))} / ${agiPer}`, "conversion", P("agi") / agiPer),
+      part(`Agility ${r2(P("agi"))} / ${r2(agiPer)}`, "conversion", P("agi") / agiPer),
       part("Bonus stats", "gear", bonus.crit),
       ...critRating,
       ...effectParts(effects, (e) => e.key === "crit" || (e.key === "weaponCrit" && hasSlot(e, slot))),
     ]);
-  const intPer = conv.intPerSpellCrit[cls];
+  const intPer = lv.intPerSpellCrit;
   const spellCrit = makeStat([
     part("Base", "base", base.baseSpellCrit),
-    part(`Intellect ${r2(P("int"))} / ${intPer ?? "-"}`, "conversion", intPer ? P("int") / intPer : 0),
+    part(
+      `Intellect ${r2(P("int"))} / ${intPer === undefined ? "-" : r2(intPer)}`,
+      "conversion",
+      intPer ? P("int") / intPer : 0,
+    ),
     part("Bonus stats", "gear", bonus.spellCrit),
     ...critRating,
     ...effectParts(effects, (e) => e.key === "crit" || e.key === "spellCrit"),

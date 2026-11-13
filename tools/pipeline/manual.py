@@ -45,6 +45,26 @@ def _check_effect_sources(fn, d, sid, db, mv):
                                   (e["key"], src, e["value"], r[col], src.get("mult", 1), num(want))})
 
 
+def _check_min_level(d, db, mv):
+    """Phase 7: buffs.json minLevel (absent = 1) must equal SpellLevels.BaseLevel of the buff's spell (class buffs and
+    debuffs: the modeled rank) and, with an itemId, max(1, ItemSparse.RequiredLevel) of the item."""
+    want = d.get("minLevel", 1)
+    bid = str(d.get("id"))
+    if d.get("category") in ("raid", "debuff") and d.get("spellId") is not None:
+        row = db.by_spell("SpellLevels").get(str(d["spellId"]))
+        base = I(row["BaseLevel"]) if row else 0
+        if base > 0 and base != want:
+            mv.append({"file": "buffs.json", "id": bid,
+                       "problem": "minLevel %s != SpellLevels.BaseLevel %s" % (want, base)})
+    if d.get("itemId") is not None:
+        item = db.by_id("ItemSparse").get(str(d["itemId"]))
+        if item is None:
+            mv.append({"file": "buffs.json", "id": bid, "problem": "itemId %s not in ItemSparse" % d["itemId"]})
+        elif max(1, I(item["RequiredLevel"])) != want:
+            mv.append({"file": "buffs.json", "id": bid,
+                       "problem": "minLevel %s != ItemSparse.RequiredLevel %s" % (want, item["RequiredLevel"])})
+
+
 def validate_manual(manual_dir, db, report):
     """Returns {filename: parsed JSON}. Problems go to report['manualValidation'] (warnings)."""
     mv = report.setdefault("manualValidation", [])
@@ -75,6 +95,8 @@ def validate_manual(manual_dir, db, report):
                            "problem": "spellId %s is '%s', expected name containing '%s'" %
                                       (sid, row["Name_lang"], expect)})
             _check_effect_sources(fn, d, sid, db, mv)
+    for d in data.get("buffs.json", {}).get("buffs") or []:
+        _check_min_level(d, db, mv)
     fam = {r["ID"]: r["Name_lang"] for r in db.rows("CreatureFamily")}
     pets = data.get("pets.json", {})
     for grp in ("sacrifice", "masterDemonologist"):

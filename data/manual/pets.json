@@ -2,15 +2,18 @@
  "_source": "Phase 6 (docs/phase6-implementation-plan.md section 3). Pet base stats, focus and owner scaling are server-side (not in client data): Classic 1.12 / TBC 2.4 values recalled from CMaNGOS / vmangos Pet::InitStatsForLevel and pet_levelstats. Family damage modifiers, pet abilities, the talent effects on pets and the sacrifice / Master Demonologist / Soul Link auras come from the client data (data/generated/<build>/pets/<owner>.json).",
  "_status": "[VERIFY] base, scaling and focus numbers (Q5, Q69-Q73)",
  "level": 60,
+ "_levels": "[VERIFY Q77] Phase 7: below level 60 the pet's primary stats are interpolated linearly between owners.*.level1 and owners.*.base (pet level = player level); melee damage is level -/+ floor(level / 4) per swing (CMaNGOS Pet::InitStatsForLevel), scaled so level 60 gives base.minDamage/maxDamage.",
  "owners": {
   "hunter": {
    "base": { "str": 136, "agi": 102, "sta": 154, "int": 66, "spi": 101, "apPerStr": 2, "apFlat": -20, "minDamage": 45, "maxDamage": 75, "speedMs": 2000, "meleeCrit": 5, "spellCrit": 5 },
+   "level1": { "str": 22, "agi": 20, "sta": 22, "int": 20, "spi": 20 },
    "scaling": { "from": "rangedAttackPower", "attackPowerPct": 22, "spellPowerPct": 12.8, "inheritHit": true },
    "focus": { "max": 100, "perSecond": 6 },
    "noMelee": []
   },
   "warlock": {
    "base": { "str": 136, "agi": 102, "sta": 154, "int": 66, "spi": 101, "apPerStr": 2, "apFlat": -20, "minDamage": 45, "maxDamage": 75, "speedMs": 2000, "meleeCrit": 5, "spellCrit": 5 },
+   "level1": { "str": 22, "agi": 20, "sta": 22, "int": 20, "spi": 20 },
    "scaling": { "from": "spellPower", "attackPowerPct": 57, "spellPowerPct": 15, "inheritHit": true },
    "focus": null,
    "noMelee": [23]

@@ -181,3 +181,7 @@
 .result {
   margin-top: 8px;
 }
+
+.levelReq {
+  color: var(--red);
+}
