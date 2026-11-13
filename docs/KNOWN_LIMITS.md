@@ -15,8 +15,9 @@ Status: ⬜ open · 🟨 planned (phase noted) · ✅ fixed (note the commit or 
 | L2 | No mana, MP5 or spirit-regen gear, so casters have no regen from gear. **Unlimited mana is on by default** in the sim | A caster with no gear runs dry in 40–60 s; sim DPS with real mana is 66–83% lower | Add Int/Spirit/MP5 inputs and buffs, then turn unlimited mana off by default | ⬜ |
 | L3 | Weapons missing from Forever's client data come from Classic Era, with unverified stats (Q18/Q19); equip/use effects not exported | Some weapon stats may differ from Forever | Export ItemEffect; verify a sample in game | ⬜ |
 | L4 | Shields not modeled (Q46) | Bastion/shield talents inactive | Off-hand shield slot | ⬜ |
-| L5 | Level fixed at 60 in the UI (the engine takes a level) | No leveling builds | Phase 7 level selector | 🟨 Phase 7 |
+| L5 | Level fixed at 60 in the UI (the engine takes a level) | No leveling builds | Phase 7 level selector | ✅ Phase 7: level selector 1–60 (base stats interpolated from level 1, `[VERIFY Q76]`) |
 | L6 | Base stats, base crit and stat conversions are Classic values (Q4, Q25, Q33) | Crit can be off by up to 5 points if Forever uses a flat 5% | In-game checks with no gear on | ⬜ |
+| L26 | Below 60, base stats are a linear interpolation between Classic level-1 and level-60 values (no level-stat table in Forever's client data, Q76); rating conversions (hit 10, crit 14, haste 10 per 1%) stay level-60 values; only the highest rank of a buff is modeled, so a buff does nothing below its `minLevel` | Leveling builds are approximate | Naked character sheets at several levels (Q76, Q78, Q79) | ⬜ |
 
 ## Damage engine (Phase 4, analytical)
 
@@ -48,18 +49,21 @@ Status: ⬜ open · 🟨 planned (phase noted) · ✅ fixed (note the commit or 
 | L22 | Other summons are not modeled: Searing/Magma Totem, Shadowfiend, Summon Hawk's 18 s assault, Inferno, Doomguard; Felguard has no summon spell in Forever | Totem, Shadowfiend and Infernal damage missing | Model summons as timed pet actors | ⬜ |
 | L23 | Pet base stats, focus regeneration and owner scaling are Classic/TBC values (Q5, Q69-Q71) | Pet DPS may be off by up to about 30% | Pet character sheet checks in game | ⬜ |
 | L24 | Pets get no raid buffs or consumables; pet mana is unlimited; pet buffs to the owner (Furious Howl, Blood Pact) and Intimidation are not applied; pet abilities have no attack power scaling (Q72) | Pet DPS slightly low | Pet buff list, AP coefficient test | ⬜ |
+| L27 | Pet stats below 60 are interpolated (Q77) | Leveling hunters and warlocks are approximate | Pet sheet at two levels | ⬜ |
 
 ## Damage engine, later findings
 
 | # | Limit | Effect | Fix idea | Status |
 |---|---|---|---|---|
 | L25 | Analytical buff finishers keep 100% aura uptime although their casts include the refresh gap (Combat Slice and Dice has about 70% uptime) | Within 3% of the simulation | Model uptime from the refresh gap | ⬜ |
+| L28 | Talent impact, tree DPS and stat weights are analytical (simulation-only entries, bursts and the execute phase do not count); the simulated weights are on demand and sample the same simulator; the white-attack crit cap is not reported as a cap | Some talents show 0 DPS (Q81) | Optional simulated impact on demand | ⬜ |
 
 ## UI
 
 | # | Limit | Effect | Fix idea | Status |
 |---|---|---|---|---|
-| L20 | The reference-target table scrolls sideways on phones | Minor | Card layout on narrow screens | ⬜ |
+| L20 | The reference-target table scrolls sideways on phones | Minor | Card layout on narrow screens | ✅ Phase 7: card layout below 600 px |
 | L21 | Tree background art is hotlinked from Wowhead's CDN (Q30) | Could break or be disallowed | Can be switched off; consider gradients only | ⬜ |
+| L29 | Compare holds one pinned build (A); the URL grows by one build string | Minor | More slots if wanted | ⬜ |
 
 When a limit is fixed, set ✅ with the phase or commit, and keep the row for history.

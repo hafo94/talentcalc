@@ -4,7 +4,7 @@ Status: ❓ open · 🔬 investigating · ✅ resolved (record the answer and so
 
 | # | Question | Why it matters | How to resolve | Status |
 |---|---|---|---|---|
-| Q1 | Platform: web app or in-game addon? | Shapes the whole stack | Owner decision | ✅ Website (owner, 2026-11-12) |
+| Q1 | Platform: web app or in-game addon? | Shapes the whole stack | Owner decision | ✅ Website (owner, 2026-11-12). Phase 7: level selector shipped |
 | Q2 | Are high-rank spell base points retuned in Forever? Fireball r11 data gives ~397–505 (Classic 561–715) | Every damage number | Compare in-game tooltips for 3–5 spells | ❓ Phase 4 uses the data as is (Fireball r12 483 vs Classic 678, Shadow Bolt r10 268 vs 510, Frostbolt r11 475 vs 535, Lightning Bolt r10 353 vs 452, Starfire r7 533 vs 588); the goldens document it. |
 | Q3 | Melee/spell outcome-table constants (miss, glancing, crit suppression, spell hit cap) in Forever | Hit/crit math | Target-dummy testing, Blizzard notes, community testing | ❓ |
 | Q4 | Stat conversion ratios (AP per Str/Agi, crit per Agi/Int) at 60 | Derived stats | Character-sheet deltas while swapping gear | ❓ Phase 3: also covers the attack power formulas and Agi -> crit for casters (`base-stats.json`). |
@@ -79,3 +79,10 @@ Status: ❓ open · 🔬 investigating · ✅ resolved (record the answer and so
 | Q73 | Which Demonic Sacrifice buff belongs to which demon (Burning Shadow 18789 for the Imp, Touch of Fire 18791 for Succubus/Incubus, from the talent text), and does Demonic Pact keep it with a different demon summoned? | Sacrifice builds | Sacrifice each demon, read the buff | ❓ |
 | Q74 | Pets vs a boss: 8% miss / 6.5% dodge / 40% glancing at 65% / crit suppression like players; pet spells 17% miss and 6% resist; attacking from behind (no parry) | Pet hit/crit | Pet combat log vs a boss dummy | ❓ |
 | Q75 | Hammer of Wrath / Summon Hawk on the main-hand table: crit chance and crit bonus (physical 200% assumed), and is Hammer of Wrath on a 1 s cast in Forever (talents make it 0)? | Ret execute, hawk | Combat log | ❓ |
+| Q76 | Base stats below 60: are Forever's level-1 values the Classic ones (Human 20/20/20/20/21 + class modifiers; health/mana of `player_classlevelstats`) and is the growth close to linear? Does Agility/Intellect per crit scale with the base stat? | Leveling builds: crit, AP, mana | Naked character sheets at 10/30/50 (or the addon) | ❓ |
+| Q77 | Pet stats below 60 (level-1 22/20/22/20/20, linear; damage level ± level/4) | Leveling hunters/warlocks | Pet sheet at two levels | ❓ |
+| Q78 | Buffs below their rank level: does Forever down-rank buffs cast on a lower-level player (Classic 1.12 rule: rank level ≤ target level + 10), or apply the full rank? (The calculator applies nothing below `minLevel`.) | Leveling buffs | Buff a level-40 character with max-rank buffs | ❓ |
+| Q79 | Rating conversions below 60 (hit 10 / crit 14 / haste 10 rating per 1% at 60): level-scaled like TBC? | Low-level weapons with rating | Tooltip % at two levels | ❓ |
+| Q80 | Stat weights use the special-attack hit cap (`hitCap`, 9% vs a boss incl. suppression); for dual wielders white attacks keep missing above it (`whiteHitCap`), which the "above the cap" row measures. Are both caps right in Forever (Q3)? | Hit EP | Q3 tests | ❓ |
+| Q81 | Talent impact on talents the analytical model treats as simulation-only (bursts, execute phase) shows 0 DPS: should the tooltip use the simulator for them (on demand)? | Tooltip completeness | Owner preference | ❓ |
+| Q82 | Does Forever keep releasing builds that change talent values (70938 changed Wrack)? How often should the data be refreshed (footer warns after 90 days)? | Data freshness | Watch wago.tools | ❓ |

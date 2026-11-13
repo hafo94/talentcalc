@@ -232,12 +232,26 @@ Forever's client data holds most of a pet. Verified on build 70888 (details in `
 - **Forever changes:** Shank, Holy Strike, Arcane Wrath, Sniper Shot, Summon Hawk, Bane of Agony/Doom, Incinerate, Seal of Fury, Hammer of the Righteous, Windfury Weapon (2 extra attacks, 333 AP), Lightning Overload, Mutilate (triggered 1241586/1241590). Multi-Shot has one rank. Rogue poisons are item enchants (not in the spell data). Aura 598 = attack power from a stat percent, 580 = ranged attack power from a stat percent. Fire Vulnerability (22959) and Shadow Weaving (15258) use aura 270 (3% x 5 stacks, 2% x 5).
 - **Spell values are Forever data, not Classic** (Q2): Fireball r12 483 (Classic 678 avg), Shadow Bolt r10 268 (510), Frostbolt r11 475 (535), Lightning Bolt r10 353 (452), Starfire r7 533 (588).
 
+## Level data (Phase 7)
+
+| Table | What it has | Usable for base stats? |
+|---|---|---|
+| `ExpectedStat` (ExpansionID -2, levels 1-133) | `PlayerHealth` 36 -> 2603 at 60, `PlayerMana` 260 -> 50000, `PlayerPrimaryStat` 20 -> 3211.8 at 60, `PlayerSecondaryStat` | No: retail item-budget scaling (a Classic level-60 Warrior has 120 Str). `CreatureArmor`/`CreatureHealth` are used for targets. |
+| `CharBaseInfo` | race/class combos only | No |
+| gt tables (`gtChanceToMeleeCrit`, ...) | not in the client / not on wago for wowf | No |
+| `SpellLevels` | `BaseLevel` / `SpellLevel` per spell rank | Yes: spell ranks, buff `minLevel` |
+| `ItemSparse.RequiredLevel` | items | Yes: weapons, consumable `minLevel` |
+
+Base stats below 60 are therefore a documented approximation (Q76); see CALC_MODEL section 3.
+
 ## Refresh procedure (when a new Forever build ships)
 
-1. Run `curl -s https://wago.tools/api/builds` and read `.wowf[0].version`.
-2. Run `tools/research/fetch_db2.sh <build>`.
-3. Run `python3 tools/research/extract_research.py data/raw/<build> docs/research`, then check `git diff docs/research` to see what changed.
-3b. `fetch_db2.sh` also fetches `SpellEquippedItems` and `CharBaseInfo` (Phase 3).
-4. Optionally run `tools/pipeline/fetch_era_items.sh` (Classic Era `ItemSparse`, weapon fallback).
-5. Run `python3 tools/pipeline/build_data.py --build <build>` and the tests
-   (`python3 -m unittest discover -s tools/pipeline/tests -t tools -v`); review `data/generated/<build>/report.json`.
+1. Run `python3 tools/refresh_build.py [--build X] --date YYYY-MM-DD --report /tmp/refresh.md`. It finds the latest wowf build from wago.tools `/api/builds`,
+   fetches it, builds the data, writes a Markdown diff summary against the app's build (counts, changed files with the build string/date blanked, talents, spell
+   values, weapons, targets, manual-data checks, warnings), and runs the pipeline tests against the new build (`TALENTCALC_BUILD`). Exit 0 = ok, 1 = review, 2 = failure.
+2. `--switch` rewrites the places that name the build (the app then uses the new data). Then run `npm test` and `npm run e2e`, and re-derive moved goldens with the
+   plans' Python scripts.
+3. Optional: `python3 tools/research/extract_research.py data/raw/<build> docs/research`, then check `git diff docs/research`.
+4. Optional: `tools/pipeline/fetch_era_items.sh` (Classic Era `ItemSparse`, weapon fallback).
+
+wago.tools rejects Python's default user agent (HTTP 403): the script sends `talentcalc-refresh/1.0`.

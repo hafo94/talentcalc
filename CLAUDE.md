@@ -20,6 +20,7 @@ calculator + DPS calculator. It is a static web app (Vite + React + TS web app; 
 - Fetch Classic Era items (weapon fallback): `tools/pipeline/fetch_era_items.sh 1.15.9.70576`
 - Build data: `python3 tools/pipeline/build_data.py --build 1.60.1.70888` → `data/generated/<build>/` (commit it; never hand-edit)
 - Test pipeline: `python3 -m unittest discover -s tools/pipeline/tests -t tools -v`
+- Data refresh: `python3 tools/refresh_build.py [--build X] --date YYYY-MM-DD` (report only; `--switch` points the app at the build)
 - Research dumps: `python3 tools/research/extract_research.py data/raw/<build> docs/research`
 
 - Web app: `npm ci`, `npm run dev`, `npm test`, `npm run lint`, `npm run typecheck`, `npm run e2e`, `npm run build`
@@ -36,3 +37,4 @@ calculator + DPS calculator. It is a static web app (Vite + React + TS web app; 
 - Manual data is imported through the `@manual` alias. Buff/racial values carry `effects[].src`; the pipeline validates them against `SpellEffect`. Buff `code`s are never reused.
 - URL: `#v1` talent-only, `#v2` with character payload (`src/state/charCode.ts`). Existing links must keep decoding.
 - Pets come from `data/generated/<build>/pets/<owner>.json` (pipeline v4) and `data/manual/pets.json` ([VERIFY] base stats/scaling); the pet engine (`src/engine/pets`) reuses `computeCharacter`, `evaluateTarget`, `evaluateAbility` and `runRotation`; in the simulator a pet is a `FightModel` run by the same `Fight` with its own RNG stream; URL tag 8 (`PetChoice`).
+- Insight (`src/state/insight.ts`), stat weights (`src/state/weights.ts`, simulated in `src/engine/sim/weights.ts`) and compare (`src/state/compare.ts`) are differences of `derive` with `{ reference: false }`; never re-implement a rule there. Base stats below 60 come from `base-stats.json level1` (`src/engine/stats/levels.ts`, [VERIFY]). URL: a pinned compare build follows `~` (`#<B>~<A>`); `defaultPet` is only for classes picked in the UI. Accessibility: `npm run e2e` runs axe-core; new UI must have no serious/critical violations.

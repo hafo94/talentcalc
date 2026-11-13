@@ -52,7 +52,7 @@ talentcalc/
 │     ├─ talents/            TalentTree, TalentNode, tooltips (Classic look)
 │     ├─ character/          class/race/level, gear + weapon picker, buffs, target
 │     ├─ rotation/           priority list editor
-│     └─ results/            DPS panel, breakdown, stat weights, talent impact
+│     └─ results/            DPS panel, breakdown, stat weights, compare
 └─ tests/
 ```
 
@@ -115,7 +115,7 @@ Phase 3 additions: `Talent.effects[]` (`index, effect, aura, misc, mask, targets
 
 **Manual data** (`data/manual/`, alias `@manual`, static imports): `rotations.json` (Phase 4: 27 default priority rotations, tiers 1-3), `base-stats.json` (level 60 class bases, race offsets, AP/crit/health/mana
 conversions), `buffs.json` (stable URL `code`, exclusive `group`, `effects[].src` = the `SpellEffect` column the value was read from, `presets`),
-`racials.json`, `pets.json` (Phase 6: `level`, `owners.{hunter,warlock}` = `{ base, scaling { from, attackPowerPct, spellPowerPct, inheritHit }, focus, noMelee }`, `sacrifice[]`, `masterDemonologist[]`, `soulLink`; all `[VERIFY]`). The pipeline checks every `src` against `SpellEffect` and reports mismatches in `report.manualValidation`.
+`base-stats.json level1` (Phase 7: Classic level-1 stats), `pets.json owners.*.level1`, `buffs.json minLevel/itemId`, `racials.json`, `pets.json` (Phase 6: `level`, `owners.{hunter,warlock}` = `{ base, scaling { from, attackPowerPct, spellPowerPct, inheritHit }, focus, noMelee }`, `sacrifice[]`, `masterDemonologist[]`, `soulLink`; all `[VERIFY]`). The pipeline checks every `src` against `SpellEffect` and reports mismatches in `report.manualValidation`.
 
 **Data loading:** `weapons.json` (~107 KB gzip) is a lazy chunk, loaded in the background after the first class is selected and awaited only
 when a link contains weapons. `targets.json` and the manual files are static imports.
@@ -154,7 +154,7 @@ Phase 4 evaluator's parts. Seeded RNG only (`iterationSeed(seed, i)`), so result
 #v1.<classToken>.<level>.<talentedRank>[.<payload>]
 ```
 - `v1`: format version. Any other prefix is a decode error.
-- `classToken`: lowercase class token (`mage`). `level`: 1..60 (v1 writes 60). `talentedRank`: one digit 0..5 (UI writes 0 or 5).
+- `classToken`: lowercase class token (`mage`). `level`: 1..60 (the level selector writes it). `talentedRank`: one digit 0..5 (UI writes 0 or 5).
 - `payload`: omitted when no points are spent. Otherwise unpadded base64url of unsigned LEB128 varints, one per invested node sorted by
   node ID: `(nodeId - previousNodeId) * 8 + rank` (rank 1..7). Node IDs are stable `TraitNode.ID` keys, so links survive layout changes
   and regenerated data; unknown nodes are dropped on load (`sanitize`). Golden vector: Mage Fire 33 / Frost 18 is
@@ -167,7 +167,9 @@ tag-length-value records, tags ascending, default records omitted, unknown tags 
 Golden: `#v2.warrior.60.0.nd0z.AgXwYwAAAAMJAMgBDugHENgEBA8BAgMEBQYHCAkKCww8Pj8` (Human Warrior, Cruelty 5/5, Arcanite Reaper, bonus stats, raid buffs
 + Sunder, Faerie Fire, CoR). See `src/state/charCode.ts` and `charCode.test.ts`.
 
-**Pet record (Phase 6, tag 8, still v2):** `[family, sacrifice, scaling ? 0 : 1]` (CreatureFamily ids, 0 = none), omitted when it is the default (no pet, scaling on). Goldens (independent Python encoder): `#v2.hunter.60.0..CAMCAAA` (Cat), `#v2.warlock.60.0..CAMRFwE` (Succubus, Imp sacrificed, scaling off), `#v2.hunter.60.0..BwasAtAPKgAIAxsAAA` (tag 7 + Wind Serpent).
+**Compare (Phase 7, no new version):** `#<build B>~<build A>`; `~` never occurs in a build string (base64url, tokens, digits), so older links are unchanged. Golden: `#v1.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N~v1.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N`.
+
+**Pet record (Phase 6, tag 8, still v2):** `[family, sacrifice, scaling ? 0 : 1]` (CreatureFamily ids, 0 = none), omitted when it is the default (no pet, scaling on). New UI builds start with a Cat/Imp (`fitToClass`), written as tag 8 like any pet: `#v2.hunter.60.0..CAMCAAA`, `#v2.warlock.60.0..CAMXAAA`; a link without tag 8 still means no pet. Goldens (independent Python encoder): `#v2.hunter.60.0..CAMCAAA` (Cat), `#v2.warlock.60.0..CAMRFwE` (Succubus, Imp sacrificed, scaling off), `#v2.hunter.60.0..BwasAtAPKgAIAxsAAA` (tag 7 + Wind Serpent).
 
 **Phase 5 records (still v2, no v3):** tag 6 rotation (`spec [abilityId, head, [cp], [everySec x 10], [n, (type x 2 + flag, operand)...]]...`, written only after an edit
 or a "Based on" choice; abilities are the first spell id of their rank chain or the talent spell id) and tag 7 simulation (`fightSec, iterations, seed, unlimitedMana`,
@@ -208,3 +210,25 @@ src/ui/character/PetPanel.tsx, results/DamagePanel.tsx, sim/SimPanel.tsx
 
 Import direction: `stats` <- `combat` <- `abilities` <- `talents/special` <- `rotation` <- `pets` <- `sim`. `prepareDamage` receives the owner effects as plain
 data (`petOwnerEffects`, `petActive`) computed by the caller with `resolvePet`, so `rotation` never imports `pets`. `PET_STREAM` must stay fixed.
+
+## Phase 7: insight, levels, compare
+
+```
+src/engine/stats/{levels,errors}.ts   baseStatsAt(file, cls, level), UnsupportedLevelError
+src/engine/pets/stats.ts              petBaseAt(config, level)
+src/engine/sim/{run,weights}.ts       runDpsSamples, simWeights (paired, common random numbers); worker protocol "run | weights"
+src/state/insight.ts                  IMPACT_STATS, snapshot, talentImpact, treeContribution, InsightCache
+src/state/weights.ts, weightsSim.ts   analytical stat weights, worker client
+src/state/compare.ts                  COMPARE_SEPARATOR, splitHash/joinHash, useCompare, loadBuild, talentDiff
+src/state/urlSync.ts                  "#B~A", applying guard
+src/ui/stats/useDerived.ts            one shared derive per state change for all panels
+src/ui/talents/useInsight.ts          insightCache, idle scheduling (tree totals, heat map)
+src/ui/results/{WeightsPanel,ComparePanel}.tsx, src/ui/common/dataAge.ts
+tools/refresh_build.py                data refresh
+e2e/a11y.ts                           axe-core via @axe-core/playwright 4.10.2
+```
+
+Import rule: insight, weights and compare live in `src/state` because they are differences of `derive` (which lives there); they stay pure (no React, no store reads).
+`engine/sim/weights.ts` only imports `engine/sim/run` and types. The insight and weight functions call `derive` with `{ reference: false }`; the panels never do.
+`useDerived` memoizes one result for all callers. Tree totals, the heat map and analytical weights run in `requestIdleCallback` (timeout 500 ms; `setTimeout(0)` on
+Safari) and their effects cancel the pending callback on every input change; the tooltip impact is a synchronous memo (at most 2 light derives).

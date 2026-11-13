@@ -78,7 +78,7 @@ Custom accepts level 1-63, armor 0-20000 and six resistances 0-1000. Debuffs red
 creature value [VERIFY against a few real mobs]. Named raid-boss presets can be added later in
 `data/manual/targets.json`.
 
-## 3. Stat conversions (level 60) [VERIFY all]
+## 3. Stat conversions [VERIFY all]
 
 | Stat | Effect |
 |---|---|
@@ -93,6 +93,13 @@ Attack power (Classic 1.12 formulas, `conversions` in `base-stats.json`): melee 
 Warrior/Rogue L + Agi - 10 (a naked Human Warrior has 400 AP, 130 RAP). Mage, Priest and Warlock get Agi -> crit 1/20 `[VERIFY]`. Health = base + min(Sta, 20) +
 10 x (Sta - 20); mana = base + min(Int, 20) + 15 x (Int - 20). Rating conversion at 60 (Q35): 10 hit rating = 1%, 14 crit rating = 1%, 10 haste rating = 1%,
 for melee, ranged and spells alike (Forever turned Classic "+1% hit/crit" equip effects into ratings).
+
+**Levels below 60 (Phase 7, `[VERIFY Q76]`):** Forever's client data has no player level-stat table, so `baseStatsAt` (`src/engine/stats/levels.ts`)
+interpolates linearly between the Classic level-1 values (`base-stats.json level1`) and the level-60 table: with `t = (L - 1) / 59`,
+`s(L) = round(s1 + (s60 - s1) x t)` for Str, Agi, Sta, Int, Spi, health and mana. Agility and Intellect per 1% crit scale with the class's base stat
+(`agiPer60 x agi(L) / agi60`), so a naked character keeps the same crit from base stats at every level. Race offsets and the base crit constant are unchanged.
+Talent points = level - 9, spell ranks = highest learnable, weapon skill 5 x L, reference mobs from `targets.json byPlayerLevel`; weapons, ammo and buffs
+(`minLevel`) are filtered by level. Rating conversions stay level-60 values (L26).
 
 ### 3b. Stat aggregation order (`computeCharacter`)
 ```
@@ -197,6 +204,7 @@ Data: `pets/<owner>.json` (pipeline v4: abilities, family passives, passives mod
 - **Owner effects** (`resolvePet`): Focused Fire (+2% both), Master Demonologist (the active demon's aura at the talent rank value, both), Soul Link (+3% both),
   Demonic Knowledge (spell power from the level, both). Demonic Sacrifice (owner only) needs the talent and is cancelled by a summoned demon unless Demonic Pact
   is taken and the demon differs. Lone Wolf turns off with a pet. Bestial Wrath (+50% pet damage, 18 s) is a pet burst: simulation only.
+- **Pet level = player level (Phase 7, Q77)**: `petBaseAt` interpolates the primary stats from `pets.json owners.*.level1` (22/20/22/20/20) to the level-60 base; melee damage is `min x (L - floor(L/4)) / 45` to `max x (L + floor(L/4)) / 75` (CMaNGOS formula).
 - Not modeled: other summons (L22), pet raid buffs (L24), Doomguard, Felguard.
 
 ## 6. Rotation and DPS
@@ -261,3 +269,20 @@ energy buys (148.6 vs 134.4 DPS) is real with Forever's numbers; the default kee
 - Golden tests: known Classic builds vs published sim values (expect drift where Forever differs).
 - In-game ground truth: character-sheet values (AP, crit, hit, spell power) for a few captured
   gear sets, plus target-dummy damage logs. A tiny companion addon (stretch, Phase 7) can export these.
+
+## 8. Insight (Phase 7)
+
+All insight numbers are differences of the analytical `derive` (`reference: false`, no reference rows), never a second implementation of a rule.
+
+- **Talent impact** (`src/state/insight.ts`): `snapshot` = total DPS (owner + pet) and the key stats of one evaluation. The next point is the snapshot with the node at
+  `rank + 1` minus the baseline, the last point the baseline minus the node at `rank - 1` (point rules are ignored: a locked talent shows what its first point adds).
+  Both use the panels' rotation rule (the editor's rotation, else the spec with the most points), so the tooltip predicts the Damage panel after the click; when the point
+  changes the leading spec the tooltip says "Rotation becomes: ...". Percent = delta / baseline x 100. Key stats shown when the delta is >= 0.5 (points) or >= 0.005 (%).
+- **Tree contribution**: baseline DPS minus DPS without that tree's points (0 for a tree without points). **Heat map**: the next-point DPS of every talent.
+- **Stat weights** (`src/state/weights.ts`): paired evaluations with more of one bonus stat (AP/RAP +50, spell power +25, Str/Agi/Int +25, crit/spell crit/haste +1%,
+  weapon skill +5). The reference stat is the power stat (AP, ranged AP, spell power) with the most DPS per point (ties go to the more specific one); EP = DPS per point /
+  reference DPS per point. Hit is measured as the average DPS per 1% from the current hit up to the cap (this handles the suppressed first 1% vs a boss) and, separately, above
+  the cap (+1% from the cap); at or above the cap only "above the cap" is shown.
+- **Simulated weights** (`src/engine/sim/weights.ts`): every variant runs with the same seed (common random numbers), and a pair's 95% CI comes from the per-iteration
+  differences, which is far narrower than two independent runs.
+- **Compare**: build A (pinned) and B (current) are each evaluated against their own selected target with the same code as the panels; the table shows B - A.

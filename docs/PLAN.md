@@ -112,14 +112,29 @@ Output: `src/engine/sim`, `src/engine/rotation/{conditions,catalog}`, `src/state
 
 Output: pipeline v4 (`pets/<owner>.json`), `src/engine/pets`, `src/engine/sim/petModel.ts`, Pet panel, URL tag 8. 53 pipeline tests, 287 Vitest tests, 31 Playwright tests. Open items: Q69–Q75.
 
-## Phase 7 — Insight & polish ⬜
-- [ ] Talent impact: hover shows ΔDPS, Δhit and Δcrit of the next and previous point
-- [ ] Stat weights (EP values)
-- [ ] Compare two builds side by side
-- [ ] Level selector (1–60): talent points = level − 9, spell ranks by level, reference mobs rescale to the chosen level
-- [ ] Mobile layout; accessibility pass
-- [ ] Data refresh doc + script for new Forever builds; build version shown in the footer
-- [ ] Stretch: companion addon that exports character-sheet stats for validation
+## Phase 7 — Insight, levels & polish ✅
+- [x] Default pet for new builds (Cat / Imp); links keep what they encode; "Choose a pet" note only without a pet
+- [x] Talent impact: tooltip ΔDPS and key stat changes for the next and last point; per-tree DPS; heat map (idle batches)
+- [x] Stat weights (EP): analytical with hit measured to and above the cap; simulated on demand with paired iterations and 95% CI
+- [x] Compare two builds: pin A, edit B, `#B~A` links
+- [x] Level selector 1–60: talent points, spell ranks, base stats by level (approximation, Q76), weapons and buffs by level, reference mobs, pet level
+- [x] Mobile reference cards (L20); axe-core accessibility checks (no serious/critical issues); keyboard access
+- [x] Data refresh script `tools/refresh_build.py`, footer build + outdated notice
+- [x] Stretch: companion addon — design sketch in `docs/phase7-implementation-plan.md` (section 12), not built
+
+Output: manual `level1`/`minLevel` data, `src/state/{insight,weights,compare}.ts`, `src/engine/sim/weights.ts`, `src/engine/stats/levels.ts`, Stat weights and Compare panels, `tools/refresh_build.py`. 59 pipeline tests, 315 Vitest tests, 39 Playwright tests. Open items: Q76–Q82.
+
+## Planned phases complete
+Phases 0–7 are done. Further work is driven by [KNOWN_LIMITS](KNOWN_LIMITS.md).
+
+## Next ideas
+1. Switch to Forever build 1.60.1.70938 (or the newest) with `tools/refresh_build.py --switch` and re-derive the moved goldens.
+2. L1: full item slots (armor export).
+3. L2: mana/MP5/spirit gear, then unlimited mana off by default.
+4. L11/L12: promote tier-2 specs and add the next talent handlers.
+5. L15: more procs as simulator events.
+6. L22: totems, Shadowfiend, Infernal as timed pets.
+7. The companion addon (section 12 of the Phase 7 plan) to verify Q4/Q25/Q33/Q69/Q76 with character-sheet exports.
 
 ---
 
