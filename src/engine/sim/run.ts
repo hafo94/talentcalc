@@ -41,6 +41,27 @@ export interface RunOptions {
 export const petIterationSeed = (seed: number, i: number): number =>
   splitmix32((iterationSeed(seed, i) ^ PET_STREAM) >>> 0)();
 
+/**
+ * Phase 7: total DPS (player + pet) of every iteration, nothing else (stat weights). Iteration i uses the same seeded
+ * streams as runSim, so `runDpsSamples(x, c)` has the mean of `runSim(x, c).dps` and two inputs with the same seed
+ * share their random numbers (paired differences).
+ */
+export function runDpsSamples(input: SimInput, config: SimConfig): Float64Array {
+  const model = buildModel(input);
+  const petModel = buildPetModel(input, model);
+  const n = Math.max(1, Math.floor(config.iterations));
+  const acc: Accumulator = new Map();
+  const out = new Float64Array(n);
+  for (let i = 0; i < n; i++) {
+    const r = new Fight(model, config, createRng(iterationSeed(config.seed, i)), acc, null).run();
+    const pet = petModel
+      ? new Fight(petModel, config, createRng(petIterationSeed(config.seed, i)), acc, null).run().damage
+      : 0;
+    out[i] = (r.damage + pet) / config.fightSec;
+  }
+  return out;
+}
+
 export function runSim(input: SimInput, config: SimConfig, opts: RunOptions = {}): SimResult {
   const t0 = globalThis.performance.now();
   const model = buildModel(input);

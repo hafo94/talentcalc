@@ -10,6 +10,8 @@ export interface SimWorker {
 }
 let factory = (): SimWorker =>
   new Worker(new URL("../engine/sim/worker.ts", import.meta.url), { type: "module" }) as unknown as SimWorker;
+/** A new simulation worker (Phase 7: also used by the stat-weights store). */
+export const createSimWorker = (): SimWorker => factory();
 /** TEST-ONLY: replaces the worker factory. */
 export function setSimWorkerFactory(f: () => SimWorker): void {
   factory = f;
@@ -51,7 +53,7 @@ export const useSim = create<SimState>()((set) => ({
         set({ status: "done", result: m.result, key, done: m.result.config.iterations });
         w.terminate();
         if (worker === w) worker = null;
-      } else {
+      } else if (m.type === "error") {
         set({ status: "error", error: m.message });
         w.terminate();
         if (worker === w) worker = null;

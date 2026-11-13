@@ -7,6 +7,8 @@ import { petFile } from "@/testkit/pets";
 import { EMPTY_BONUS } from "@/engine/stats";
 import { DEFAULT_CUSTOM, NO_WEAPON_IDS } from "./character";
 import { derive } from "./derived";
+import { InsightCache, snapshot, talentImpact } from "./insight";
+import { statWeights } from "./weights";
 import type { ClassToken } from "@/data/types";
 
 /** Every talent of one spec at max rank (the engine does not enforce point rules): the heaviest realistic load. */
@@ -53,5 +55,48 @@ describe("performance budget (section 10.4)", () => {
       console.log(`${token}: ${ms.toFixed(3)} ms per derive`);
       expect(ms).toBeLessThan(5);
     }
+  });
+});
+
+describe("Phase 7 insight budgets (Node, after warm-up)", () => {
+  const calc = {
+    tree: treeFor("hunter"),
+    ranks: maxSpec("hunter", 0),
+    level: 60,
+    spells: spellFile("hunter"),
+    pets: petFile("hunter"),
+  };
+  const ch = {
+    raceId: 3,
+    weaponIds: { ...NO_WEAPON_IDS, ranged: 18713, ammo: 18042 },
+    bonus: EMPTY_BONUS,
+    buffIds: [...buffsFile.presets.raidBuffs, ...buffsFile.presets.raidDebuffs],
+    target: "boss" as const,
+    custom: DEFAULT_CUSTOM,
+    weapons: weaponsFile,
+    pet: { family: 2, sacrifice: 0, scaling: true },
+  };
+  const inp = { calc, ch, rotation: null };
+  const time = (n: number, f: () => void) => {
+    for (let i = 0; i < 5; i++) f();
+    const t0 = performance.now();
+    for (let i = 0; i < n; i++) f();
+    return (performance.now() - t0) / n;
+  };
+  it("BM hunter + Cat: one talent tooltip < 4 ms, stat weights < 60 ms, heat map of 3 trees < 150 ms", () => {
+    const base = snapshot(inp)!;
+    const id = calc.tree.order[0]!;
+    const tooltip = time(20, () => talentImpact(inp, base, id));
+    const weights = time(5, () => statWeights(inp));
+    const heat = time(2, () => {
+      const cache = new InsightCache();
+      for (const n of calc.tree.order) cache.impact({ ...inp, calc: { ...calc } }, n);
+    });
+    console.log(
+      `tooltip ${tooltip.toFixed(2)} ms, weights ${weights.toFixed(1)} ms, heat map ${heat.toFixed(0)} ms`,
+    );
+    expect(tooltip).toBeLessThan(4);
+    expect(weights).toBeLessThan(60);
+    expect(heat).toBeLessThan(150);
   });
 });

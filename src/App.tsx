@@ -3,6 +3,7 @@ import { DATA_BUILD, manifest } from "@/data";
 import { useCalc } from "@/state/store";
 import { CharacterPanel } from "@/ui/character/CharacterPanel";
 import { DamagePanel } from "@/ui/results/DamagePanel";
+import { WeightsPanel } from "@/ui/results/WeightsPanel";
 import { useMediaQuery } from "@/ui/common/useMediaQuery";
 import { RotationEditor } from "@/ui/rotation/RotationEditor";
 import { SimPanel } from "@/ui/sim/SimPanel";
@@ -57,6 +58,7 @@ export function App() {
             <StatsPanel />
           </div>
           <DamagePanel />
+          <WeightsPanel />
           <div className={styles.panels}>
             <RotationEditor />
             <SimPanel />
@@ -65,7 +67,12 @@ export function App() {
       )}
       {classToken && status === "ready" && !desktop && section === "Gear" && <CharacterPanel />}
       {classToken && status === "ready" && !desktop && section === "Stats" && <StatsPanel />}
-      {classToken && status === "ready" && !desktop && section === "Damage" && <DamagePanel />}
+      {classToken && status === "ready" && !desktop && section === "Damage" && (
+        <>
+          <DamagePanel />
+          <WeightsPanel />
+        </>
+      )}
       {classToken && status === "ready" && !desktop && section === "Sim" && (
         <>
           <RotationEditor />

@@ -101,3 +101,29 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+/* Phase 7: collapsible panels (stat weights, compare) */
+.summaryToggle {
+  cursor: pointer;
+  color: var(--gold);
+}
+
+.summaryToggle:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.titleInline {
+  display: inline;
+  margin: 0;
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.actionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}

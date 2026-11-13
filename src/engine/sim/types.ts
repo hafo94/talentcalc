@@ -3,6 +3,7 @@ import type { PowerKind } from "@/engine/abilities";
 import type { PetSetup } from "@/engine/pets";
 import type { PrepareArgs } from "@/engine/rotation";
 import type { TargetInput } from "@/engine/stats";
+import type { SimWeightsRequest, SimWeightsResult } from "./weights";
 
 /** Everything one simulation needs; plain data, so it can be posted to the worker (structured clone). */
 export interface SimInput {
@@ -77,8 +78,11 @@ export interface SimResult {
   elapsedMs: number;
 }
 
-export type SimRequest = { type: "run"; id: number; input: SimInput; config: SimConfig };
+export type SimRequest =
+  | { type: "run"; id: number; input: SimInput; config: SimConfig }
+  | { type: "weights"; id: number; request: SimWeightsRequest }; // Phase 7
 export type SimResponse =
   | { type: "progress"; id: number; done: number; total: number }
   | { type: "result"; id: number; result: SimResult }
+  | { type: "weights"; id: number; result: SimWeightsResult } // Phase 7
   | { type: "error"; id: number; message: string };
