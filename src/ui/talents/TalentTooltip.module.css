@@ -43,3 +43,9 @@
 .gap {
   height: 0.8em;
 }
+
+.impact {
+  margin-top: 0.6em;
+  padding-top: 0.4em;
+  border-top: 1px solid #333;
+}

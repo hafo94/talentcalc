@@ -61,14 +61,14 @@ export type Derived =
     }
   | { ok: false; reason: "noClass" | "level" };
 
-type CalcInput = {
+export type CalcInput = {
   tree: ClassTree | null;
   ranks: Ranks;
   level: number;
   spells: ClassSpellFile | null;
   pets?: PetFile | null; // Phase 6
 };
-type CharInput = Pick<
+export type CharInput = Pick<
   CharacterState,
   "raceId" | "weaponIds" | "bonus" | "buffIds" | "target" | "custom" | "weapons"
 > &
@@ -129,8 +129,18 @@ function inputsOf(calc: CalcInput & { tree: ClassTree }, ch: CharInput, custom: 
   return { weapons, talents, classTalents, args, rotation: enabledRotation(chosen), customTarget, pet };
 }
 
+/** Phase 7: `reference: false` skips the reference-target rows (insight and stat weights need only the selected target). */
+export interface DeriveOptions {
+  reference?: boolean;
+}
+
 /** Pure: everything the stats and damage UI shows, from the stores (`custom`: the rotation editor's rotation). */
-export function derive(calc: CalcInput, ch: CharInput, custom: SpecRotation | null = null): Derived {
+export function derive(
+  calc: CalcInput,
+  ch: CharInput,
+  custom: SpecRotation | null = null,
+  opts: DeriveOptions = {},
+): Derived {
   const tree = calc.tree;
   if (!tree || ch.raceId === 0) return { ok: false, reason: "noClass" };
   const { weapons, talents, classTalents, args, rotation, customTarget, pet } = inputsOf(
@@ -197,14 +207,16 @@ export function derive(calc: CalcInput, ch: CharInput, custom: SpecRotation | nu
   const view = at(ch.target);
   const result = damageAt(view);
   const petResult = result ? petAt(targetOf(ch.target)) : null;
-  const reference = [...REFERENCE_PRESETS, ...(ch.target === "custom" ? (["custom"] as const) : [])].map(
-    (p) => {
-      const v = at(p);
-      const d = p === ch.target && result ? result : damageAt(v);
-      const pd = p === ch.target ? petResult : d ? petAt(targetOf(p)) : null;
-      return d ? { ...v, dps: d.rotation.dps + (pd?.rotation.dps ?? 0) } : v;
-    },
-  );
+  const presets = opts.reference === false ? [] : REFERENCE_PRESETS;
+  const reference = [
+    ...presets,
+    ...(ch.target === "custom" && presets.length ? (["custom"] as const) : []),
+  ].map((p) => {
+    const v = at(p);
+    const d = p === ch.target && result ? result : damageAt(v);
+    const pd = p === ch.target ? petResult : d ? petAt(targetOf(p)) : null;
+    return d ? { ...v, dps: d.rotation.dps + (pd?.rotation.dps ?? 0) } : v;
+  });
   const damage =
     result && prepared
       ? {

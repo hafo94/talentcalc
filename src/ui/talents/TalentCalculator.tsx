@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCalc } from "@/state/store";
 import { WowIcon } from "@/ui/common/WowIcon";
 import { useMediaQuery } from "@/ui/common/useMediaQuery";
@@ -7,6 +7,7 @@ import { PointsSummary } from "./PointsSummary";
 import { TalentTooltip } from "./TalentTooltip";
 import { TalentTree } from "./TalentTree";
 import { useTooltip } from "./tooltipStore";
+import { useHeatmap, useTreeContribution } from "./useInsight";
 import { pointsInSpec } from "@/engine/talents";
 import styles from "./TalentCalculator.module.css";
 
@@ -20,6 +21,9 @@ export function TalentCalculator() {
   const setActiveSpec = useCalc((s) => s.setActiveSpec);
   const desktop = useMediaQuery("(min-width: 980px)");
   const closeTooltip = useTooltip((s) => s.close);
+  const [heat, setHeat] = useState(false);
+  const contribution = useTreeContribution();
+  const heatmap = useHeatmap(heat);
 
   useEffect(() => {
     closeTooltip();
@@ -43,6 +47,16 @@ export function TalentCalculator() {
     <div>
       <PointsSummary />
       <StatStrip />
+      <label className={styles.heatToggle}>
+        <input
+          type="checkbox"
+          data-testid="heatmap-toggle"
+          checked={heat}
+          onChange={(e) => setHeat(e.target.checked)}
+        />{" "}
+        Show the DPS of the next point on every talent
+        {heat && !heatmap && <span className={styles.busy}> (computing…)</span>}
+      </label>
       {!desktop && (
         <div className={styles.tabs} role="tablist" aria-label="Talent trees">
           {specs.map((s, i) => (
@@ -65,7 +79,13 @@ export function TalentCalculator() {
       )}
       <div className={desktop ? styles.row : styles.single}>
         {specs.map((s, i) => (
-          <TalentTree key={s.index} specIndex={i} hidden={!desktop && activeSpec !== i} />
+          <TalentTree
+            key={s.index}
+            specIndex={i}
+            hidden={!desktop && activeSpec !== i}
+            contribution={contribution?.[i] ?? null}
+            heatmap={heatmap}
+          />
         ))}
       </div>
       <TalentTooltip />

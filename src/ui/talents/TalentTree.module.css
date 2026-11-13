@@ -33,6 +33,13 @@
   text-overflow: ellipsis;
 }
 
+.dps {
+  flex: none;
+  color: var(--text-dim);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
 .points {
   color: var(--white);
   font-weight: bold;

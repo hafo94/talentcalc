@@ -72,3 +72,30 @@
 .node[data-state="maxed"] .badge {
   color: var(--gold);
 }
+
+/* Phase 7 heat map: DPS of the next point, top left of the icon */
+.impact {
+  position: absolute;
+  left: -10px;
+  top: -9px;
+  height: 15px;
+  padding: 0 3px;
+  line-height: 13px;
+  background: var(--badge-bg);
+  border: 1px solid #4a4a4a;
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--grey);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.impact[data-sign="pos"] {
+  color: var(--green);
+}
+
+.impact[data-sign="neg"] {
+  color: var(--red);
+}

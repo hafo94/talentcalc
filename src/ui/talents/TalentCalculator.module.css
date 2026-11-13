@@ -59,3 +59,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.heatToggle {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.busy {
+  color: var(--grey);
+}

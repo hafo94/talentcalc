@@ -3,6 +3,7 @@ import { REMOTE_BACKGROUNDS, SPEC_TINTS, specBackgroundUrl } from "@/data/assets
 import { canAdd, nodeState, pointsInSpec } from "@/engine/talents";
 import { pointsContext, useCalc } from "@/state/store";
 import { WowIcon } from "@/ui/common/WowIcon";
+import { fmtDec1, fmtSigned } from "@/ui/stats/format";
 import { PrereqArrows } from "./PrereqArrows";
 import { TREE_H, TREE_W } from "./geometry";
 import { TalentNode } from "./TalentNode";
@@ -11,9 +12,11 @@ import styles from "./TalentTree.module.css";
 interface Props {
   specIndex: number;
   hidden?: boolean;
+  contribution?: number | null; // Phase 7: DPS of this tree's points (null while computing)
+  heatmap?: ReadonlyMap<number, number> | null; // Phase 7: next-point DPS per node
 }
 
-export function TalentTree({ specIndex, hidden }: Props) {
+export function TalentTree({ specIndex, hidden, contribution, heatmap }: Props) {
   const tree = useCalc((s) => s.tree);
   const ranks = useCalc((s) => s.ranks);
   const level = useCalc((s) => s.level);
@@ -49,6 +52,15 @@ export function TalentTree({ specIndex, hidden }: Props) {
       <header className={styles.header}>
         <WowIcon name={info?.icon ?? null} size={20} />
         <span className={styles.specName}>{spec.name}</span>
+        {points > 0 && contribution != null && (
+          <span
+            className={styles.dps}
+            data-testid={`spec-dps-${specIndex}`}
+            title={`DPS from the ${spec.name} points: current DPS minus the DPS without them (same rotation)`}
+          >
+            {fmtSigned(contribution, fmtDec1)} DPS
+          </span>
+        )}
         <span className={styles.points} data-testid={`spec-points-${specIndex}`}>
           {points}
         </span>
@@ -106,7 +118,7 @@ export function TalentTree({ specIndex, hidden }: Props) {
         <div className={styles.shade} />
         <PrereqArrows spec={spec} ranks={ranks} />
         {nodes.map((n) => (
-          <TalentNode key={n.talent.nodeId} {...n} />
+          <TalentNode key={n.talent.nodeId} {...n} impactDps={heatmap?.get(n.talent.nodeId)} />
         ))}
       </div>
     </section>

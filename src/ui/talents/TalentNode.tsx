@@ -3,6 +3,7 @@ import type { Talent } from "@/data/types";
 import type { NodeState } from "@/engine/talents";
 import { useCalc } from "@/state/store";
 import { WowIcon } from "@/ui/common/WowIcon";
+import { fmtDec1, fmtSigned } from "@/ui/stats/format";
 import { ICON, nodeBox } from "./geometry";
 import { useTooltip } from "./tooltipStore";
 import styles from "./TalentNode.module.css";
@@ -12,6 +13,7 @@ interface Props {
   rank: number;
   state: NodeState;
   canAddNow: boolean;
+  impactDps?: number; // Phase 7 heat map: DPS of the next point
 }
 
 const LONG_PRESS_MS = 500;
@@ -61,7 +63,7 @@ function focusNeighbor(el: HTMLElement, dir: Dir) {
   best?.focus();
 }
 
-export function TalentNode({ talent, rank, state, canAddNow }: Props) {
+export function TalentNode({ talent, rank, state, canAddNow, impactDps }: Props) {
   const addPoint = useCalc((s) => s.addPoint);
   const removePoint = useCalc((s) => s.removePoint);
   const tooltipOpen = useTooltip((s) => s.nodeId === talent.nodeId);
@@ -146,6 +148,16 @@ export function TalentNode({ talent, rank, state, canAddNow }: Props) {
       <span className={styles.iconWrap}>
         <WowIcon name={talent.icon} size={ICON} />
       </span>
+      {impactDps !== undefined && (
+        <span
+          className={styles.impact}
+          data-testid="node-impact"
+          data-sign={Math.abs(impactDps) < 0.05 ? "zero" : impactDps > 0 ? "pos" : "neg"}
+          aria-hidden="true"
+        >
+          {fmtSigned(impactDps, fmtDec1)}
+        </span>
+      )}
       <span className={styles.badge} data-testid="rank">
         {rank}/{talent.maxRank}
       </span>
