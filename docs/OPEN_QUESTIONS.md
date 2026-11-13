@@ -54,11 +54,21 @@ Status: ❓ open · 🔬 investigating · ✅ resolved (record the answer and so
 | Q48 | Weapon effect order: is the flat bonus of 121/17/58 multiplied by a later 31 (Backstab = 1.5 W + 225, Mutilate tooltip) also for Holy Strike (tooltip shows 81-105 unhalved) and Counterattack? | Paladin, hunter melee | Holy Strike hits vs a dummy with a known weapon | ❓ |
 | Q49 | Can ranged attacks be dodged? (Phase 4: no) | Hunter DPS (~6%) | Target-dummy logs | ❓ |
 | Q50 | Average partial resist (0.75 x R / 5L, +8 per level) and binary spells in Forever | Caster DPS (6% vs boss) | Logs: resist rate vs boss | ❓ |
-| Q51 | Rage from damage dealt: Classic `7.5 x dmg / c(L)` or the modern weapon-speed formula? Do Heroic Strike swings generate rage? | Warrior DPS | Rage gained per white hit at known damage | ❓ |
+| Q51 | Rage from damage dealt: Classic `7.5 x dmg / c(L)` or the modern weapon-speed formula? Do Heroic Strike swings generate rage? | Warrior DPS | Rage gained per white hit at known damage (Phase 5 simulator uses the same formula per hit.) | ❓ |
 | Q52 | Do percent spell modifiers and aura 79s multiply (modern) or add (Classic)? | Stacked talents | Two-talent test (e.g. Darkness + Shadowform) | ❓ |
 | Q53 | AP scaling of Eviscerate, Ferocious Bite, Rip (not in client data; TBC values used) | Rogue/feral DPS | Tooltip at two AP values | ❓ |
-| Q54 | Seal of Command proc rate (7 PPM assumed) and Windfury Weapon (tooltip: 20%, 2 attacks, +333 AP; white hits only?) | Ret / Enhancement | Proc counts in logs | ❓ |
+| Q54 | Seal of Command proc rate (7 PPM assumed) and Windfury Weapon (tooltip: 20%, 2 attacks, +333 AP; white hits only?) | Ret / Enhancement | Proc counts in logs (Sampled in Phase 5.) | ❓ |
 | Q55 | Cat Form weapon (level x 0.85-1.25 per 1.0 s, AP + Agi) and form passives (Cat Form (Passive) has 107/108 auras, not modeled) | Feral DPS | Cat Form character sheet and Claw hits | ❓ |
 | Q56 | Forever Whirlwind with an off hand: does it really strike with both weapons, at the off-hand penalty? | Fury DPS | Whirlwind hits in logs | ❓ |
-| Q57 | Spell haste on GCD (not hasted in Phase 4), ranged haste on Aimed/Sniper Shot casts, no haste on melee casts | Haste value | In-game cast bars | ❓ |
+| Q57 | Spell haste on GCD (not hasted in Phase 4), ranged haste on Aimed/Sniper Shot casts, no haste on melee casts | Haste value | In-game cast bars (The Phase 5 simulator does not haste the GCD either.) | ❓ |
 | Q58 | Judgement of Command halved unless the target is stunned (tooltip) and Judgement being off the GCD (gcdMs 0) | Ret DPS | Logs | ❓ |
+| Q59 | Mana regeneration in Forever: Classic Spirit formulas per class (`SPIRIT_REGEN`), 2 s ticks, five-second rule? Modern engines regenerate continuously and some have no five-second rule. No MP5 in gear v1 | Every caster's sim DPS with mana modeled | Mana bar over time while idle and after a cast | ❓ |
+| Q60 | Execute: extra rage converted at 15 damage per rage (Classic rank 5; Forever token `$*10;F1` unresolved)? Does Execute consume all rage? | Fury/Arms execute phase | Execute hits at known rage | ❓ |
+| Q61 | Proc details: rolling Ignite (4 s, 2 ticks, refresh adds), Deep Wounds refresh, Improved Shadow Bolt charges (Classic: 4 charges; sim: 12 s only), Shadow Trance 10 s, Flurry charges used by both hands | Fire, Fury, Affliction | Combat logs | ❓ |
+| Q62 | Clearcasting rules: Arcane Concentration on every landed damage spell, Elemental Focus on fire/frost/nature casts; charge buffs used by any cast matching their 107/108 masks (Presence of Mind is also used by an instant) | Arcane, Elemental, Cold Blood | Logs / tooltips | ❓ |
+| Q63 | Does a ranged cast (Aimed Shot) restart the Auto Shot timer, and does Auto Shot wait during casts? | Hunter DPS (-8% vs the analytical model) | Swing timer addon | ❓ |
+| Q64 | Haste changes mid-swing (sim: from the next swing), energy as continuous 10/s (Classic ticks 20 per 2 s), GCD not hasted (Q57) | Rogue/feral variance, haste value | In-game swing/energy timers | ❓ |
+| Q65 | Combustion: +10% Fire crit per Fire hit (every hit, crits included) until 3 crits; up to 10 stacks (`maxStacks` of 28682) | Fire burst | Logs | ❓ |
+| Q66 | Hammer of Wrath has `DefenseType` 3 (ranged): which attack table and crit bonus does it use without a ranged weapon? (Phase 4 requires a ranged weapon, so it is not in the Retribution default) | Ret execute phase | Hammer of Wrath hits in logs | ❓ |
+| Q67 | Power Infusion and other ally-target buffs (`targets [21, 0]`) are not applied when self-cast | Discipline/raid cooldowns | Self-cast test | ❓ |
+| Q68 | Simplifications to confirm: fights start at 0 rage with full energy/mana and no pre-pull; partial resists use the average factor (no 0/25/50/75% sampling); glancing blows use the average multiplier; target health falls linearly | Variance (stdev) more than mean | Logs; owner decision for a "pre-pull" option | ❓ |

@@ -18,7 +18,7 @@ character-sheet stats for validation (see the Phase 7 stretch goal).
 | Styling | CSS modules + CSS variables | Classic tree look without a heavy UI kit |
 | State | Zustand 5 | Small; the build/character state is one store |
 | Engine | Plain TS modules, no React imports | Unit-testable, runs in a Web Worker |
-| Simulation | Web Worker (Comlink) | Keeps the UI responsive during multi-iteration sims |
+| Simulation | Web Worker (plain postMessage, no library) | Keeps the UI responsive during multi-iteration sims; protocol run -> progress* -> result/error, cancel = terminate |
 | Tests | Vitest (engine and pipeline output), Playwright (UI smoke) | |
 | Data pipeline | Python 3 (stdlib csv/json) | CSVs in, compact JSON out; already used for research |
 | Data loading | `@data` alias → `data/generated/<build>` (set in `vite.config.ts` and `tsconfig.app.json`). `classes.json` and `manifest.json` are static imports, each `talents/<class>.json` and `spells/<class>.json` are lazy-loaded per class, `spells.json` is not loaded by the app; `spells/<class>.json` is lazy-loaded together with the talent file (Phase 4) | Small first load; one ~6 KB gzip chunk per class |
@@ -131,6 +131,22 @@ is loaded with the tree; `derive` returns `damage` (null while spells load), `no
 reference target row. UI: `src/ui/results` (Damage panel, DPS breakdown), `src/ui/abilities` (ability cards). Per-click cost 1-2 ms for 5 targets x 2 passes.
 No URL change: the rotation is chosen from the spec with the most points (the editor and its URL record are Phase 5).
 
+## Phase 5: rotations and simulation
+
+```
+src/engine/rotation/conditions.ts   condition helpers: conditionsHold, simOnlyReason, enabledRotation, CONDITION_TYPES (append-only)
+src/engine/rotation/catalog.ts      abilityCatalog: abilities the editor offers, URL ids, default entries
+src/engine/sim/{types,constants,rng,queue,procs,model,engine,run,worker,index}.ts
+src/state/rotation.ts               useRotation (custom rotation, sim settings), URL mapping (ENTRY_KINDS, PROC_AURAS append-only)
+src/state/sim.ts                    useSim: worker client (run, progress, cancel)
+src/state/derived.ts                derive(calc, ch, custom), simInputFor
+src/ui/rotation/ , src/ui/sim/      RotationEditor, SimPanel (+ CSS modules)
+src/testkit/sim.ts                  test-only simInput(scenario)
+```
+Import direction: `stats` <- `combat` <- `abilities` <- `talents/special` <- `rotation` (incl. `conditions`, `catalog`) <- `sim`. `src/state` imports `engine/*`;
+`src/ui` imports `state`. `engine/sim/worker.ts` is only referenced by `state/sim.ts` through `new URL(...)`. The simulator never computes damage; it samples the
+Phase 4 evaluator's parts. Seeded RNG only (`iterationSeed(seed, i)`), so results do not depend on batching.
+
 ## Build URL format
 
 ```
@@ -150,6 +166,13 @@ tag-length-value records, tags ascending, default records omitted, unknown tags 
 Golden: `#v2.warrior.60.0.nd0z.AgXwYwAAAAMJAMgBDugHENgEBA8BAgMEBQYHCAkKCww8Pj8` (Human Warrior, Cruelty 5/5, Arcanite Reaper, bonus stats, raid buffs
 + Sunder, Faerie Fire, CoR). See `src/state/charCode.ts` and `charCode.test.ts`.
 
+**Phase 5 records (still v2, no v3):** tag 6 rotation (`spec [abilityId, head, [cp], [everySec x 10], [n, (type x 2 + flag, operand)...]]...`, written only after an edit
+or a "Based on" choice; abilities are the first spell id of their rank chain or the talent spell id) and tag 7 simulation (`fightSec, iterations, seed, unlimitedMana`,
+omitted when 180, 1000, 1, 1). Older decoders skip unknown tags; v1/v2 links decode unchanged. Goldens (independent Python encoder):
+`#v2.warrior.60.0..BgEB` (rotation based on Fury) and
+`#v2.mage.60.0.89IzHQsNCgkLExETCwkTFQ0N.BhMCk16XAQEAyAF0A9gQgAEBBMgBBwasAtAPKgA` (Fire 33 / Frost 18, edited Frost rotation, 300 s x 2000, seed 42, mana on).
+See `src/state/rotation.ts`.
+
 ## Tree backgrounds
 
 Classic background art is hotlinked from `https://wow.zamimg.com/images/wow/talents/backgrounds/classic/{talentTabId}.jpg` and drawn over
@@ -166,5 +189,5 @@ names missing on both CDNs.
 1. **Data-driven first.** Hand-code only what the data can't express, and key it by spell ID.
 2. **Engine is pure.** Same inputs give the same outputs; the RNG is injected and seeded.
 3. **Every constant is cited and tagged** `[VERIFY]` until it is confirmed in Forever.
-4. **The build is the URL.** Class, talent ranks, gear, buffs, rotation and target are serialized compactly.
+4. **The build is the URL.** Class, talent ranks, gear, buffs, rotation (Phase 5: tag 6/7) and target are serialized compactly.
 5. **Build pinning.** The app shows which Forever build its data came from.

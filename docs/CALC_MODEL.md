@@ -195,10 +195,9 @@ Two modes, sharing one evaluator:
 
 1. **Analytical (instant, Phase 4)**: casts per minute per ability from a simple priority model, using
    averages. It recomputes on every click (~1-2 ms, test budget 5 ms), so the UI stays live.
-2. **Simulation (accurate)**: event-driven combat sim over N iterations of a fight length T, in a Web Worker.
-   It models GCD, cast times, swing timers, cooldowns, resources (mana, rage, energy, focus),
-   procs, DoT ticks and crit/hit RNG with a seeded PRNG.
-   Output: mean DPS ± stdev, a damage breakdown, and timelines.
+2. **Simulation (Phase 5)**: event-driven combat sim over N iterations of a fight length T, in a Web Worker (`src/engine/sim`).
+   It never computes damage: it samples `AbilityResult.parts` and `WhiteResult` from the Phase 4 evaluator (land roll, crit roll, uniform
+   weapon/spell range). Output: mean DPS ± stdev, 95% CI, breakdown, resource timeline, combat log.
 
 A rotation is a user-ordered **priority list** of `{ability, conditions}` (resource ≥ X, cooldown ready,
 debuff missing, target HP < 20%…). Each class/spec ships default rotations.
@@ -211,7 +210,31 @@ white damage (`7.5 x dmg / c(L)`, Q51), energy is 10/s, mana never limits (mana/
 handlers turn them into uptimes (Flurry, Improved Shadow Bolt, Deep Wounds, extra rage), pass 2 recomputes. Self-buffs (Shadowform, Aspect of the Hawk,
 Hunter's Mark, Seal of Command, Slice and Dice) have 100% uptime. Tiers: 1 fully modeled, 2 generic model (some spec mechanics missing), 3 basic rotation for
 tank/healer specs. Approximations: no cooldown collisions or GCD drift, averages for DoTs/buffs/procs; stance switching, execute phase, movement and cooldown
-abilities (Death Wish, Arcane Power, Combustion, Rapid Fire, Blade Flurry, Adrenaline Rush) are out of scope (Phase 5).
+abilities (Death Wish, Arcane Power, Combustion, Rapid Fire, Blade Flurry, Adrenaline Rush) are out of scope for the analytical model (simulated in Phase 5). Entries with sim-only conditions (target health, aura, cooldown, time left), `burst` cooldowns and execute-only abilities are skipped ("simulation only").
+
+**Simulation model (`src/engine/sim`, Phase 5):**
+- *Event loop*: binary heap by (time, insertion). The player acts after every event: the priority list is walked top-down, the first usable entry is cast
+  (off-GCD casts continue the walk). Busy means a pending cast/channel object. Channels are clipped after a tick when a higher entry is usable.
+  Haste applies from the next swing; the GCD is not hasted (Q57).
+- *Implicit rules per kind*: `dot` recast when <= its cast time is left; `maintain` every `everySec`; `finisher` needs `cp` combo points (buff/periodic
+  finishers wait until the aura is gone); `builder` only the first learned builder, not at 5 CP; `burst` not while its buff is active; `nextSwing` is queued
+  off the GCD and paid at the swing. An explicit `auraLeft` condition replaces the implicit refresh rule.
+- *Dynamic buffs*: bursts, buff finishers and proc buffs re-run `prepareDamage(..., extraBuffs)` + `evaluateTarget` + `evaluateDamage` once per buff set
+  (memoized), so stat/damage auras use the exact Phase 3/4 code.
+- *Resources*: rage from damage (`7.5 x dmg / c(L)`, starts at 0), energy 10/s (full), mana from Spirit per 2 s tick with a five-second rule (talents with aura
+  134, Evocation). Default **Unlimited mana is on**: gear v1 has no mana items, so a naked caster is out of mana after 40-60 s (-66% to -83% DPS).
+- *Procs sampled* (15 talents: Ignite rolling, Flurry, Improved Shadow Bolt, Nightfall, Deep Wounds, Unbridled Wrath, Anger Management, Seal Fate, Ruthlessness,
+  Weaponmaster/Hack and Slash, Arcane Concentration, Elemental Focus, Combustion) plus Seal of Command (7 PPM) and Windfury Weapon. Other handlers stay analytical
+  averages and are listed as such in the results.
+- *Execute phase*: target health falls linearly 100% to 0%; Execute/Hammer of Wrath usable below 20%; Execute adds 15 damage per extra rage and spends all rage (Q60).
+- *Auto Shot*: waits for casts; a ranged cast (Aimed Shot) restarts its timer (Q63).
+- Constants in `src/engine/sim/constants.ts` are tagged `[VERIFY]` (Q59-Q65).
+
+Divergences simulation vs analytical (1000 x 180 s, max talents, boss): within about 3% for filler casters, DoT rotations, Subtlety/Assassination, feral, Retribution and
+basic warrior; simulation higher for burst cooldowns and the execute phase (warriors +27% / +59%, arcane +4%) and Combat rogue (+15%: the analytical energy model buys no
+Eviscerate); simulation lower for hunters (-8% to -9%: Aimed Shot restarts Auto Shot), cooldowns drifting behind long casts (Mind Blast, Fire Blast) and the unfinished last
+cast. Cross-check builds C1-C8 (Frostbolt, SW:P/Mind Blast/Smite, Heroic Strike, Retribution, Destruction, Balance, feral cat, Subtlety) agree within 3%.
+With mana modeled every caster without gear mana goes out of mana (gear v2 is Phase 7).
 
 **Stat weights:** rerun with +X of each stat. DPS per stat point shows the "crit/hit increase" value of talents and gear.
 

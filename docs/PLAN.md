@@ -17,8 +17,8 @@ Status legend: ⬜ not started · 🟨 in progress · ✅ done · ⛔ blocked
 | 1 | Data pipeline | ✅ | `data/generated/<build>/` JSON for all 9 classes, with tests and a coverage report |
 | 2 | Talent calculator (UI parity) | ✅ | All 27 specs render; point rules exactly like Classic; URL sharing |
 | 3 | Character & gear model | ✅ | Class/race/level, weapon picker, gear stats, buffs, target → derived stats panel |
-| 4 | Damage engine (analytical) | ⬜ | Per-ability hit/crit/avg damage; talent effects applied; live DPS for default rotations |
-| 5 | Rotations & simulation | ⬜ | Rotation editor, Web Worker sim, DPS ± stdev, damage breakdown |
+| 4 | Damage engine (analytical) | ✅ | Per-ability hit/crit/avg damage; talent effects applied; live DPS for default rotations |
+| 5 | Rotations & simulation | ✅ | Rotation editor, Web Worker sim, DPS ± stdev, damage breakdown |
 | 6 | Pets | ⬜ | Hunter + Warlock pet damage included in total DPS |
 | 7 | Insight, levels & polish | ⬜ | Talent-impact tooltips, stat weights, level selector with level-based targets, compare builds, mobile, deploy |
 
@@ -94,12 +94,14 @@ Output: pipeline v2 (`classes[].raceIds/weaponSubclasses/dualWield`, `Talent.eff
 Output: pipeline v3 (`spells/<class>.json`, seal judgement closure), `src/engine/{combat,abilities,rotation,talents/special}`, `src/ui/{results,abilities}`,
 manual `rotations.json`. 50 pipeline tests, 220 Vitest tests, 24 Playwright tests. Open items: Q47-Q58 (plus Q2 answered with the data).
 
-## Phase 5 — Rotations & simulation ⬜
-- [ ] Rotation editor: drag-and-drop priority list with conditions (URL record for rotation choice; Phase 4 picks the dominant spec)
-- [ ] Event-driven simulator in a Web Worker (GCD, casts, swings, resources, procs, DoTs, cooldowns)
-- [ ] Seeded RNG, N iterations, fight-length setting, execute phase
-- [ ] Results: DPS mean ± stdev, damage breakdown table/pie, casts per fight, resource graph
-- [ ] Cross-check analytical vs sim (within 3% on simple rotations)
+## Phase 5 — Rotations & simulation ✅
+- [x] Rotation editor: priority list per spec with drag-and-drop and keyboard reorder, add/remove, on/off, type, conditions (resource, combo points, target health, time left, own DoT/buff left, aura, cooldown), Based on / Reset; URL tags 6/7 in the v2 payload
+- [x] Event-driven simulator in a Web Worker (plain postMessage): GCD, casts, channels (clipping), swing timers (MH/OH, Auto Shot reset), cooldown buffs, rage/energy/mana (five-second rule, Evocation), procs as RNG events (15 talents + Seal of Command + Windfury), DoT ticks, execute phase
+- [x] Seeded RNG (sfc32), N iterations, fight length, execute phase (linear health)
+- [x] Results: DPS mean ± stdev, 95% CI, min/max, breakdown table with share bars, casts per fight, resource graph, combat log
+- [x] Cross-check analytical vs sim within 3% on 8 builds (C1-C8); divergences documented (CALC_MODEL section 6)
+
+Output: `src/engine/sim`, `src/engine/rotation/{conditions,catalog}`, `src/state/{rotation,sim}`, `src/ui/{rotation,sim}`, migrated `rotations.json`. 50 pipeline tests, 261 Vitest tests, 28 Playwright tests. Open items: Q59-Q68.
 
 ## Phase 6 — Pets ⬜
 - [ ] Hunter pets: family picker, family modifiers, BM talents, pet abilities, focus model
