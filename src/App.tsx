@@ -4,13 +4,15 @@ import { useCalc } from "@/state/store";
 import { CharacterPanel } from "@/ui/character/CharacterPanel";
 import { DamagePanel } from "@/ui/results/DamagePanel";
 import { useMediaQuery } from "@/ui/common/useMediaQuery";
+import { RotationEditor } from "@/ui/rotation/RotationEditor";
+import { SimPanel } from "@/ui/sim/SimPanel";
 import { StatsPanel } from "@/ui/stats/StatsPanel";
 import { ClassPicker } from "@/ui/talents/ClassPicker";
 import { TalentCalculator } from "@/ui/talents/TalentCalculator";
 import styles from "./App.module.css";
 
-type Section = "Talents" | "Gear" | "Stats" | "Damage";
-const SECTIONS: Section[] = ["Talents", "Gear", "Stats", "Damage"];
+type Section = "Talents" | "Gear" | "Stats" | "Damage" | "Sim";
+const SECTIONS: Section[] = ["Talents", "Gear", "Stats", "Damage", "Sim"];
 
 export function App() {
   const classToken = useCalc((s) => s.classToken);
@@ -55,11 +57,21 @@ export function App() {
             <StatsPanel />
           </div>
           <DamagePanel />
+          <div className={styles.panels}>
+            <RotationEditor />
+            <SimPanel />
+          </div>
         </>
       )}
       {classToken && status === "ready" && !desktop && section === "Gear" && <CharacterPanel />}
       {classToken && status === "ready" && !desktop && section === "Stats" && <StatsPanel />}
       {classToken && status === "ready" && !desktop && section === "Damage" && <DamagePanel />}
+      {classToken && status === "ready" && !desktop && section === "Sim" && (
+        <>
+          <RotationEditor />
+          <SimPanel />
+        </>
+      )}
       <footer className={styles.footer}>
         Data: WoW Forever build {DATA_BUILD} · generated {manifest.generatedAt} · Icons and art © Blizzard
         Entertainment

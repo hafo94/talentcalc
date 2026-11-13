@@ -1,0 +1,246 @@
+.panel {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field input {
+  width: 7em;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.progress {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.error {
+  color: var(--red);
+}
+
+.stale {
+  margin: 4px 0;
+  color: var(--warn);
+  font-size: 12px;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+}
+
+.dps {
+  color: var(--white);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.unit {
+  color: var(--text-dim);
+}
+
+.meta {
+  margin: 2px 0;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.table {
+  width: 100%;
+  margin-top: 6px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.table caption {
+  padding-bottom: 4px;
+  color: var(--text-dim);
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 2px 4px;
+  border-bottom: 1px solid var(--panel-border);
+  text-align: right;
+}
+
+.table th:first-child,
+.table td:first-child {
+  text-align: left;
+}
+
+.table thead th {
+  color: var(--text-dim);
+  font-weight: normal;
+}
+
+.avg {
+  color: var(--text-dim);
+  font-size: 10px;
+}
+
+.shareCell {
+  white-space: nowrap;
+}
+
+.bar {
+  width: 60px;
+  height: 10px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.bar rect {
+  fill: var(--gold);
+}
+
+.figure {
+  margin: 10px 0 0;
+}
+
+.figure figcaption {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.grid {
+  stroke: var(--panel-border);
+  stroke-width: 1;
+}
+
+.axis {
+  fill: var(--text-dim);
+  font-size: 10px;
+}
+
+.execute {
+  stroke: var(--grey);
+  stroke-dasharray: 4 3;
+}
+
+.line {
+  fill: none;
+  stroke: var(--focus);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.cross {
+  stroke: var(--text-dim);
+  stroke-width: 1;
+}
+
+.dot {
+  fill: var(--focus);
+  stroke: var(--panel);
+  stroke-width: 2;
+}
+
+.readout {
+  margin: 2px 0;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.log {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.log summary {
+  cursor: pointer;
+  color: var(--text);
+}
+
+.log table {
+  display: block;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.notes {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+/* Fields and buttons: same look as the Character panel and the talent summary bar (.btn). */
+.panel select,
+.panel input[type="number"] {
+  padding: 2px 4px;
+  background: var(--field-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  color: var(--text);
+}
+
+.panel button {
+  padding: 3px 8px;
+  background: #1d1b16;
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.panel button:disabled {
+  color: var(--grey);
+  cursor: default;
+  opacity: 0.6;
+}
+
+.panel button:focus-visible,
+.panel select:focus-visible,
+.panel input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}

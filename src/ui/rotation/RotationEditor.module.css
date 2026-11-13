@@ -1,0 +1,181 @@
+.panel {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+
+.title {
+  margin: 0;
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.base {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.badge {
+  padding: 0 4px;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.hint {
+  margin: 6px 0;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry {
+  margin: 4px 0;
+  padding: 4px 6px;
+  background: var(--field-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.off .name {
+  color: var(--grey);
+  text-decoration: line-through;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+
+.handle {
+  color: var(--grey);
+  cursor: grab;
+}
+
+.rank {
+  min-width: 1.5em;
+  color: var(--text-dim);
+  font-size: 12px;
+  text-align: right;
+}
+
+.name {
+  flex: 1 1 120px;
+  min-width: 0;
+  color: var(--text);
+}
+
+.small {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.number {
+  width: 4.5em;
+}
+
+.unit {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.buttons {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.icon {
+  min-width: 26px;
+  padding: 1px 4px;
+}
+
+.skip {
+  margin: 2px 0 0 2.5em;
+  color: var(--warn);
+  font-size: 11px;
+}
+
+.conditions {
+  margin: 4px 0 0 2.5em;
+  padding: 0;
+  list-style: none;
+}
+
+.condition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0;
+  font-size: 12px;
+}
+
+.condition::before {
+  content: "if";
+  color: var(--text-dim);
+}
+
+.add {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.add select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Fields and buttons: same look as the Character panel and the talent summary bar (.btn). */
+.panel select,
+.panel input[type="number"] {
+  padding: 2px 4px;
+  background: var(--field-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  color: var(--text);
+}
+
+.panel button {
+  padding: 3px 8px;
+  background: #1d1b16;
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.panel button:disabled {
+  color: var(--grey);
+  cursor: default;
+  opacity: 0.6;
+}
+
+.panel button:focus-visible,
+.panel select:focus-visible,
+.panel input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
