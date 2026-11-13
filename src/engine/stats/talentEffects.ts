@@ -46,6 +46,8 @@ const IGNORED_AURAS = new Set([
   142, 154, 172, 175, 178, 185, 186, 232, 268, 271, 466,
 ]);
 const WEAPON_SKILL_LINES = new Set(Object.keys(WEAPON_SKILL_LINE_SUBCLASSES).map(Number));
+/** Phase 6: talents active only without a pet. Lone Wolf (415370): "while you do not have an active pet". */
+export const NO_PET_TALENTS: ReadonlySet<number> = new Set([415370]);
 
 export type NotModeledReason = "spellMod" | "special" | "unsupported" | "ability" | "inactive";
 export interface NotModeled {
@@ -211,6 +213,7 @@ export function mapTalents(
   list: readonly RankedTalent[],
   weapons: EquippedWeapons,
   formMask = 0,
+  petActive = false,
 ): TalentMapping {
   const out: TalentMapping = { applied: [], damageDone: [], spellMods: [], notModeled: [] };
   for (const { talent: t, rank } of list) {
@@ -226,6 +229,10 @@ export function mapTalents(
     }
     if (t.shapeshiftMask !== 0 && (t.shapeshiftMask & formMask) === 0) {
       note("inactive", "requires a shapeshift form that the rotation does not use");
+      continue;
+    }
+    if (petActive && NO_PET_TALENTS.has(t.spellId)) {
+      note("inactive", "only without an active pet");
       continue;
     }
     const slots = matchingSlots(t.equipped, weapons);

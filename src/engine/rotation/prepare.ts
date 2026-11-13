@@ -13,6 +13,8 @@ import { activeHandlers, type ActiveHandler } from "@/engine/talents/special";
 import { selfBuffEffects, selfBuffSpells } from "./selfBuffs";
 
 export interface PrepareArgs extends Omit<AssembleArgs, "extraEffects" | "formMask"> {
+  /** Phase 6: effects of the pet choice on the owner (resolvePet: Focused Fire, Master Demonologist, sacrifice ...). */
+  petOwnerEffects?: readonly SourcedEffect[];
   spells: ClassSpellFile;
   spellClassSet: number; // ClassInfo.spellClassSet
   classTalents: readonly Talent[];
@@ -56,6 +58,7 @@ export function prepareDamage(a: PrepareArgs): Prepared {
       : []),
     ...selfBuffEffects(selfBuffs),
     ...handlers.flatMap((h) => h.handler.stats?.(h.args, { weapons: a.weapons, form, level: a.level }) ?? []),
+    ...(a.petOwnerEffects ?? []),
   ];
   const assembled = assemble({ ...a, extraEffects: extra, formMask: mask });
   return { assembled, stats: computeCharacter(assembled.input), book, selfBuffs, handlers };

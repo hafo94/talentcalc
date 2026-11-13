@@ -320,8 +320,7 @@ const HANDLERS: SpecialHandler[] = [
   {
     spellId: 415370,
     name: "Lone Wolf",
-    modeled:
-      "+20% damage applied (aura 79): pets are not modeled until Phase 6, so the hunter never has an active pet.",
+    modeled: "+20% damage (aura 79) while no pet is active; choosing a pet in the Pet panel turns it off.",
   },
 ];
 

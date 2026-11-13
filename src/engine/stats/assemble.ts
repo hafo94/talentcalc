@@ -18,6 +18,8 @@ export interface AssembleArgs {
   extraEffects?: readonly SourcedEffect[];
   /** Phase 4: ShapeshiftMask bit of the rotation's form (0 = no form). */
   formMask?: number;
+  /** Phase 6: a pet is active (Lone Wolf turns off). */
+  petActive?: boolean;
 }
 export interface Assembled {
   input: CharacterInput;
@@ -49,7 +51,7 @@ export function assemble(a: AssembleArgs): Assembled {
       else effects.push(strip(e, b.name, "buff"));
     }
   }
-  const mapping = mapTalents(a.talents, a.weapons, a.formMask ?? 0);
+  const mapping = mapTalents(a.talents, a.weapons, a.formMask ?? 0, a.petActive ?? false);
   effects.push(...mapping.applied, ...mapping.damageDone, ...(a.extraEffects ?? []));
   return {
     input: {

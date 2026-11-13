@@ -1,6 +1,7 @@
 import targetsJson from "@data/targets.json";
 import baseStatsJson from "@manual/base-stats.json";
 import buffsJson from "@manual/buffs.json";
+import petsJson from "@manual/pets.json";
 import racialsJson from "@manual/racials.json";
 import rotationsJson from "@manual/rotations.json";
 import type {
@@ -11,6 +12,8 @@ import type {
   ClassSpellFile,
   ClassToken,
   Manifest,
+  PetFile,
+  PetsManualFile,
   RaceInfo,
   RacialsFile,
   RotationsFile,
@@ -56,6 +59,7 @@ export const baseStatsFile = baseStatsJson as unknown as BaseStatsFile;
 export const buffsFile = buffsJson as unknown as BuffsFile;
 export const racialsFile = racialsJson as unknown as RacialsFile;
 export const rotationsFile = rotationsJson as unknown as RotationsFile;
+export const petsManual = petsJson as unknown as PetsManualFile;
 
 export function getRace(id: number): RaceInfo {
   const r = classesFile.races.find((x) => x.id === id);
@@ -83,5 +87,19 @@ export function loadClassSpells(token: ClassToken): Promise<ClassSpellFile> {
   const p = loader().then((m) => m.default as unknown as ClassSpellFile);
   p.catch(() => spellCache.delete(token));
   spellCache.set(token, p);
+  return p;
+}
+
+const petLoaders = import.meta.glob<{ default: unknown }>("@data/pets/*.json");
+const petCache = new Map<ClassToken, Promise<PetFile | null>>();
+/** pets/<owner>.json (Phase 6, ~10 KB gzip): hunter and warlock only; null for every other class. */
+export function loadPetFile(token: ClassToken): Promise<PetFile | null> {
+  const hit = petCache.get(token);
+  if (hit) return hit;
+  const key = Object.keys(petLoaders).find((k) => k.endsWith(`/pets/${token}.json`));
+  const loader = key ? petLoaders[key] : undefined;
+  const p = loader ? loader().then((m) => m.default as unknown as PetFile) : Promise.resolve(null);
+  p.catch(() => petCache.delete(token));
+  petCache.set(token, p);
   return p;
 }

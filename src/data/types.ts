@@ -345,7 +345,7 @@ export interface SpellCost {
   perSecond: number;
   optional: number;
 }
-export type SpellSource = "ability" | "talent" | "triggered";
+export type SpellSource = "ability" | "talent" | "triggered" | "pet"; // "pet": pets/<owner>.json (Phase 6)
 export interface Spell {
   id: number;
   name: string;
@@ -463,4 +463,73 @@ export interface RotationsFile {
   _source: string;
   _status: string;
   rotations: SpecRotation[];
+}
+
+// ---- Phase 6: pets (data/generated/<build>/pets/<owner>.json, docs/phase6-implementation-plan.md section 2) ----
+/** A pet ability: one rank chain of the family's skill line, ranks by learn level. */
+export interface PetAbilityChain {
+  name: string;
+  ranks: number[];
+}
+/** A hunter pet family or a warlock demon (CreatureFamily row whose skill line has the owner's pet scaling aura). */
+export interface PetInfo {
+  id: number; // CreatureFamily.ID (stable URL key)
+  name: string;
+  owner: ClassToken;
+  icon: string | null;
+  skillLine: number;
+  exotic: boolean; // CreatureFamily.PetTalentType 1 (Core Hound)
+  abilities: PetAbilityChain[]; // active spells of the skill line
+  passives: number[]; // passive spells (family damage modifier, talent-modified passives, pet scaling)
+}
+export interface PetFile {
+  build: string;
+  classId: number;
+  token: ClassToken;
+  pets: PetInfo[];
+  spells: Spell[]; // abilities, passives, triggered spells and the auras data/manual/pets.json refers to
+}
+
+// ---- Phase 6: data/manual/pets.json ----
+/** Level-60 pet base stats (server-side, not in client data) [VERIFY Q69]. */
+export interface PetBaseStats {
+  str: number;
+  agi: number;
+  sta: number;
+  int: number;
+  spi: number;
+  apPerStr: number; // attack power = apPerStr x Str + apFlat
+  apFlat: number;
+  minDamage: number; // melee damage per swing before attack power
+  maxDamage: number;
+  speedMs: number;
+  meleeCrit: number; // % before talents and target
+  spellCrit: number;
+}
+export interface PetOwnerConfig {
+  base: PetBaseStats;
+  /** Owner scaling (Q5): % of the owner's ranged attack power (hunter) or spell power (warlock, max of fire/shadow). */
+  scaling: {
+    from: "rangedAttackPower" | "spellPower";
+    attackPowerPct: number;
+    spellPowerPct: number;
+    inheritHit: boolean;
+  };
+  focus: { max: number; perSecond: number } | null; // null: the pet's mana is not modeled (unlimited)
+  noMelee: number[]; // family ids that never melee (Imp)
+}
+export interface PetAuraRef {
+  family: number;
+  name: string;
+  spellId: number;
+  spellName: string;
+}
+export interface PetsManualFile {
+  _source: string;
+  _status: string;
+  level: number;
+  owners: Partial<Record<ClassToken, PetOwnerConfig>>;
+  sacrifice: PetAuraRef[]; // Demonic Sacrifice: buff of the sacrificed demon (server script, not in client data)
+  masterDemonologist: (PetAuraRef & { valueIndex: number })[]; // talent value index per demon
+  soulLink: { spellId: number; spellName: string };
 }

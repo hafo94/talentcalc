@@ -26,6 +26,7 @@ export interface RotationInput {
   white: { mainHand: WhiteResult | null; offHand: WhiteResult | null; ranged: WhiteResult | null };
   ctx: DamageContext;
   talentRank(name: string): number;
+  focusPerMinute?: number; // Phase 6: pet focus regeneration (the only focus user)
 }
 
 /** Resource the rotation spends: rage (warrior), energy (rogue, Cat Form), else mana. */
@@ -56,6 +57,7 @@ export function runRotation(input: RotationInput): RotationResult {
   const ranged = rotation.autoShot ? input.white.ranged : null;
   let income = 0;
   if (power === "energy") income = ENERGY_PER_SECOND * MINUTE;
+  if (power === "focus") income = input.focusPerMinute ?? 0;
   if (power === "rage") {
     for (const w of [mh, oh]) if (w) income += (MINUTE / w.speed) * ragePerSwing(w, ctx.level);
     income += effects.reduce((a, fx) => a + (fx.ragePerMinute ?? 0), 0);
