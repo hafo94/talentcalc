@@ -6,7 +6,7 @@ from .util import F, I, num
 
 REQUIRED = {
     "base-stats.json": ["level", "classes", "raceOffsets", "conversions"],
-    "pets.json": ["hunterFamilies", "warlockDemons", "ownerScaling"],
+    "pets.json": ["level", "owners", "sacrifice", "masterDemonologist", "soulLink"],
     "buffs.json": ["buffs", "presets"],
     "racials.json": ["racials"],
     "targets.json": ["named"],
@@ -77,8 +77,9 @@ def validate_manual(manual_dir, db, report):
             _check_effect_sources(fn, d, sid, db, mv)
     fam = {r["ID"]: r["Name_lang"] for r in db.rows("CreatureFamily")}
     pets = data.get("pets.json", {})
-    for grp in ("hunterFamilies", "warlockDemons"):
-        for fid, v in (pets.get(grp) or {}).items():
+    for grp in ("sacrifice", "masterDemonologist"):
+        for v in pets.get(grp) or []:
+            fid = str(v.get("family"))
             if fid not in fam:
                 mv.append({"file": "pets.json", "id": fid, "problem": "CreatureFamily id not found"})
             elif fam[fid].lower() != v.get("name", "").lower():

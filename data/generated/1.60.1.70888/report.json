@@ -651,5 +651,10 @@
   132
  ],
  "manualValidation":[],
- "warnings":[]
+ "warnings":[],
+ "petsSkipped":[
+  {"id":19,"name":"Doomguard","reason":"no Summon Doomguard warlock ability"},
+  {"id":28,"name":"Remote Control","reason":"no pet scaling aura in skill line 758"},
+  {"id":310,"name":"Felguard","reason":"no Summon Felguard warlock ability"}
+ ]
 }

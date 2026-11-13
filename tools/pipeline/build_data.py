@@ -17,6 +17,7 @@ from pipeline.db2 import MissingTableError, RawDB  # noqa: E402
 from pipeline.icons import IconResolver  # noqa: E402
 from pipeline.items import build_weapons  # noqa: E402
 from pipeline.manual import validate_manual  # noqa: E402
+from pipeline.pets import build_pets  # noqa: E402
 from pipeline.spells import build_ability_chains, build_spell, collect_spells  # noqa: E402
 from pipeline.talents import BuildError, attach_effects, build_talent_trees  # noqa: E402
 from pipeline.targets import build_targets  # noqa: E402
@@ -104,6 +105,7 @@ def run(a):
     weapons, ammo = build_weapons(db, era, manual.get("weapon-overrides.json", {}), icons, report)
 
     coverage = build_coverage(talent_files, spells_by_id, a.build)
+    pet_files = build_pets(db, icons, chains, manual.get("pets.json", {}), report)
 
     # report finishing
     seen = set()
@@ -128,6 +130,7 @@ def run(a):
     final["unknownStatIds"] = report["unknownStatIds"]
     final["manualValidation"] = report.get("manualValidation", [])
     final["warnings"] = report.get("warnings", [])
+    final["petsSkipped"] = report.get("petsSkipped", [])
 
     # ---- write ----
     out = a.out
@@ -151,6 +154,10 @@ def run(a):
     write_records(os.path.join(out, "weapons.json"), {"build": a.build}, {"weapons": weapons, "ammo": ammo})
     write_json(os.path.join(out, "targets.json"), targets)
     write_json(os.path.join(out, "pet-families.json"), pets)
+    # Phase 6: one lazy chunk per pet owner (hunter, warlock).
+    for tok, pf in sorted(pet_files.items()):
+        hdr = {"build": a.build, "classId": pf["classId"], "token": tok}
+        write_records(os.path.join(out, "pets", tok + ".json"), hdr, {"pets": pf["pets"], "spells": pf["spells"]})
     write_records(os.path.join(out, "coverage.json"), {"build": a.build, "summary": coverage["summary"]},
                   {"talents": coverage["talents"]})
     hdr = {k: v for k, v in final.items() if not isinstance(v, list)}
@@ -175,6 +182,8 @@ def run(a):
         "talents": n_talents, "hiddenTalents": n_hidden, "spells": len(spells), "abilityChains": len(chains),
         "weapons": len(weapons), "weaponsEraFallback": sum(1 for w in weapons if w["source"] == "classic_era"),
         "ammo": len(ammo), "targetLevels": len(targets["levels"]), "petFamilies": len(pets["families"]),
+        "pets": sum(len(pf["pets"]) for pf in pet_files.values()),
+        "petSpells": sum(len(pf["spells"]) for pf in pet_files.values()),
     }
     write_json(os.path.join(out, "manifest.json"), manifest)
 

@@ -32,7 +32,7 @@ class TestPhase4(unittest.TestCase):
         self.assertEqual([(e["effect"], e["base"], e["spCoef"]) for e in jc["effects"]], [(2, 356, 0.429)])
         self.assertIn(20286, pal)  # Judgement of Righteousness
         self.assertNotIn(707, pal)  # Seal of Fury DUMMY base 707 (Immolate) is a number, not a judgement
-        self.assertEqual(load(self.d, "manifest.json")["pipelineVersion"], 3)
+        self.assertEqual(load(self.d, "manifest.json")["pipelineVersion"], 4)
 
 
 if __name__ == "__main__":

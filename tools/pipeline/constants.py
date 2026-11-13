@@ -3,7 +3,7 @@ import re
 
 BUILD_DEFAULT = "1.60.1.70888"
 ERA_BUILD_DEFAULT = "1.15.9.70576"
-PIPELINE_VERSION = 3
+PIPELINE_VERSION = 4
 
 # (ChrClasses.ID, token, TraitTreeID, ClassMask). Verified against SkillLineXTraitTree + SkillLineAbility.
 CLASS_TREES = [
@@ -165,3 +165,8 @@ TARGET_PRESETS = [
      "note": "[tune] armor halved"},
     {"id": "custom", "label": "Custom", "levelOffset": 3, "armorMultiplier": 1.0, "editable": True},
 ]
+
+# ---- Pets (Phase 6) ----
+# Passive pet scaling auras in each family's skill line ("Hunter Pet Scaling", "Warlock Pet Scaling"; base points 0,
+# values are server-side): they mark the owner class of a CreatureFamily.
+PET_SCALING_SPELLS = {415429: "hunter", 416189: "warlock"}

@@ -1,157 +1,34 @@
 {
- "_source": "[VERIFY] Classic 1.12 hunter family damage modifiers (from memory); demon list from CreatureFamily. Numbers are filled in Phase 6.",
- "_status": "[VERIFY]",
- "hunterFamilies": {
-  "1": {
-   "name": "Wolf",
-   "damageModifier": 1.0,
-   "attackSpeed": 2.0
+ "_source": "Phase 6 (docs/phase6-implementation-plan.md section 3). Pet base stats, focus and owner scaling are server-side (not in client data): Classic 1.12 / TBC 2.4 values recalled from CMaNGOS / vmangos Pet::InitStatsForLevel and pet_levelstats. Family damage modifiers, pet abilities, the talent effects on pets and the sacrifice / Master Demonologist / Soul Link auras come from the client data (data/generated/<build>/pets/<owner>.json).",
+ "_status": "[VERIFY] base, scaling and focus numbers (Q5, Q69-Q73)",
+ "level": 60,
+ "owners": {
+  "hunter": {
+   "base": { "str": 136, "agi": 102, "sta": 154, "int": 66, "spi": 101, "apPerStr": 2, "apFlat": -20, "minDamage": 45, "maxDamage": 75, "speedMs": 2000, "meleeCrit": 5, "spellCrit": 5 },
+   "scaling": { "from": "rangedAttackPower", "attackPowerPct": 22, "spellPowerPct": 12.8, "inheritHit": true },
+   "focus": { "max": 100, "perSecond": 6 },
+   "noMelee": []
   },
-  "2": {
-   "name": "Cat",
-   "damageModifier": 1.1,
-   "attackSpeed": 2.0
-  },
-  "3": {
-   "name": "Spider",
-   "damageModifier": 1.07,
-   "attackSpeed": 2.0
-  },
-  "4": {
-   "name": "Bear",
-   "damageModifier": 0.91,
-   "attackSpeed": 2.0
-  },
-  "5": {
-   "name": "Boar",
-   "damageModifier": 0.9,
-   "attackSpeed": 2.0
-  },
-  "6": {
-   "name": "Crocolisk",
-   "damageModifier": 1.0,
-   "attackSpeed": 2.0
-  },
-  "7": {
-   "name": "Carrion Bird",
-   "damageModifier": 1.07,
-   "attackSpeed": 2.0
-  },
-  "8": {
-   "name": "Crab",
-   "damageModifier": 0.95,
-   "attackSpeed": 2.0
-  },
-  "9": {
-   "name": "Gorilla",
-   "damageModifier": 1.02,
-   "attackSpeed": 2.0
-  },
-  "11": {
-   "name": "Raptor",
-   "damageModifier": 1.1,
-   "attackSpeed": 2.0
-  },
-  "12": {
-   "name": "Tallstrider",
-   "damageModifier": 1.0,
-   "attackSpeed": 2.0
-  },
-  "20": {
-   "name": "Scorpid",
-   "damageModifier": 0.94,
-   "attackSpeed": 2.0
-  },
-  "21": {
-   "name": "Turtle",
-   "damageModifier": 0.9,
-   "attackSpeed": 2.0
-  },
-  "24": {
-   "name": "Bat",
-   "damageModifier": 1.07,
-   "attackSpeed": 2.0
-  },
-  "25": {
-   "name": "Hyena",
-   "damageModifier": 1.0,
-   "attackSpeed": 2.0
-  },
-  "26": {
-   "name": "Bird of Prey",
-   "damageModifier": 1.07,
-   "attackSpeed": 2.0
-  },
-  "27": {
-   "name": "Wind Serpent",
-   "damageModifier": 1.07,
-   "attackSpeed": 2.0
-  },
-  "312": {
-   "name": "Core Hound",
-   "damageModifier": null,
-   "attackSpeed": 2.0
-  },
-  "319": {
-   "name": "Fox",
-   "damageModifier": null,
-   "attackSpeed": 2.0
+  "warlock": {
+   "base": { "str": 136, "agi": 102, "sta": 154, "int": 66, "spi": 101, "apPerStr": 2, "apFlat": -20, "minDamage": 45, "maxDamage": 75, "speedMs": 2000, "meleeCrit": 5, "spellCrit": 5 },
+   "scaling": { "from": "spellPower", "attackPowerPct": 57, "spellPowerPct": 15, "inheritHit": true },
+   "focus": null,
+   "noMelee": [23]
   }
  },
- "warlockDemons": {
-  "23": {
-   "name": "Imp",
-   "model": "spell",
-   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
-   "damage": null,
-   "attackSpeed": null
-  },
-  "16": {
-   "name": "Voidwalker",
-   "model": "melee",
-   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
-   "damage": null,
-   "attackSpeed": null
-  },
-  "17": {
-   "name": "Succubus",
-   "model": "melee",
-   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
-   "damage": null,
-   "attackSpeed": null
-  },
-  "302": {
-   "name": "Incubus",
-   "model": "melee",
-   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
-   "damage": null,
-   "attackSpeed": null
-  },
-  "15": {
-   "name": "Felhunter",
-   "model": "melee",
-   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
-   "damage": null,
-   "attackSpeed": null
-  },
-  "310": {
-   "name": "Felguard",
-   "model": "melee",
-   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
-   "damage": null,
-   "attackSpeed": null
-  },
-  "19": {
-   "name": "Doomguard",
-   "model": "melee",
-   "notes": "[VERIFY] stats/abilities to be filled in Phase 6",
-   "damage": null,
-   "attackSpeed": null
-  }
- },
- "ownerScaling": {
-  "hunter": null,
-  "warlock": null,
-  "_note": "Q5: do pets scale with owner stats in Forever?"
- }
+ "sacrifice": [
+  { "family": 23, "name": "Imp", "spellId": 18789, "spellName": "Burning Shadow" },
+  { "family": 16, "name": "Voidwalker", "spellId": 18790, "spellName": "Fel Stamina" },
+  { "family": 17, "name": "Succubus", "spellId": 18791, "spellName": "Touch of Fire" },
+  { "family": 302, "name": "Incubus", "spellId": 18791, "spellName": "Touch of Fire" },
+  { "family": 15, "name": "Felhunter", "spellId": 18792, "spellName": "Fel Energy" }
+ ],
+ "masterDemonologist": [
+  { "family": 23, "name": "Imp", "valueIndex": 0, "spellId": 23759, "spellName": "Master Demonologist" },
+  { "family": 16, "name": "Voidwalker", "valueIndex": 1, "spellId": 23760, "spellName": "Master Demonologist" },
+  { "family": 17, "name": "Succubus", "valueIndex": 2, "spellId": 23761, "spellName": "Master Demonologist" },
+  { "family": 302, "name": "Incubus", "valueIndex": 2, "spellId": 23761, "spellName": "Master Demonologist" },
+  { "family": 15, "name": "Felhunter", "valueIndex": 3, "spellId": 23762, "spellName": "Master Demonologist" }
+ ],
+ "soulLink": { "spellId": 25228, "spellName": "Soul Link" }
 }

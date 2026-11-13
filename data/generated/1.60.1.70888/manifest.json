@@ -1,8 +1,8 @@
 {
  "build": "1.60.1.70888",
  "eraBuild": "1.15.9.70576",
- "generatedAt": "2026-11-12",
- "pipelineVersion": 3,
+ "generatedAt": "2026-11-13",
+ "pipelineVersion": 4,
  "options": {
   "includeHiddenNodes": false,
   "eraFallback": true
@@ -259,6 +259,8 @@
   "weaponsEraFallback": 1612,
   "ammo": 27,
   "targetLevels": 63,
-  "petFamilies": 27
+  "petFamilies": 27,
+  "pets": 24,
+  "petSpells": 229
  }
 }
